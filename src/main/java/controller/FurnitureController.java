@@ -4,10 +4,7 @@ import dto.FurnitureDTO;
 import dto.ImgDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.FurnitureService;
-import service.FurnitureServiceImpl;
-import service.ImgService;
-import service.ImgServiceImpl;
+import service.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,6 +16,9 @@ public class FurnitureController implements Controller {
     SizeService sizeService = new SizeServiceImp();
     TextureService textureService = new TextureServiceImpl();
     ImgService imgService = new ImgServiceImpl();
+
+    ReviewService reviewService = new ReviewServiceImpl();
+    RevImgService revImgService = new RevImgServiceImpl();
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -45,6 +45,10 @@ public class FurnitureController implements Controller {
             List<ImgDTO> imgList = imgService.selectImg(furnitureSeq);
             List<ImgDTO> imgDetailList = imgService.selectDetailImg(furnitureSeq);
 
+            List<ReivewDTO> reviewList = reviewService.selectAllReviews(furnitureSeq);
+            int reviewSeq
+            List<RevImgDTO> revImgList = revImgService.selectRevImg(reviewSeq)
+
             request.setAttribute("furnDTO", furnitureDTO);
             request.setAttribute("sizeList",sizeList);
             request.setAttribute("textureList",textureList);
@@ -52,6 +56,8 @@ public class FurnitureController implements Controller {
 
             request.setAttribute("imgList",imgList);
             request.setAttribute("imgDetailList",imgDetailList);
+
+            request.setAttribute("reviewList",reviewList);
         } catch (SQLException e) {
             e.printStackTrace();
         }

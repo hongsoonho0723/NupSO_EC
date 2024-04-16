@@ -1037,7 +1037,7 @@ textarea {
 /* 탭 스타일 */
 .tab_item {
     width: calc(100%/3);
-    height: 50px;
+    height: 60px;
     border-bottom: 3px solid #3b5d50;
     background-color: #3b5d50;
     line-height: 50px;

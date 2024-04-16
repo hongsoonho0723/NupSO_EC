@@ -197,6 +197,7 @@
                                     messages in con sectetur posuere dolor non.</p>
                             </div>
                         </li>
+
                         <li class="threaded-comments">
                             <div class="pro-reviewer">
                                 <img src="../images/person_2.jpg" alt="">
@@ -222,7 +223,6 @@
 
             <%--                상품에 대한 Q&A 탭 --%>
             <div class="tab_content" id="qna_content">
-
                 <div class="customer-review">
                     <h3 class="small-title">Q & A</h3>
                     구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.<br><br>
@@ -272,6 +272,4 @@
             </div>
         </div>
     </div>
-    <%--</div>--%>
-    <%--</div>--%>
 <jsp:include page="../common/footer.jsp"/>
