@@ -57,7 +57,7 @@
 
                                 <tr>
                                     <td>재질</td>
-                                    <td>${requestScope.textureList}</td>
+                                    <td>${requestScope.furnDTO.textureList}</td>
                                 </tr>
                                 <tr>
                                     <td>배송비</td>
@@ -67,16 +67,18 @@
                                     <td>사이즈</td>
                                     <td><select>
                                         <option value="0">사이즈 선택</option>
-                                        <c:forEach items="${requestScope.sizeList}" var="size" varStatus="status">
-                                            <option value="${status.count}">${status.current}</option>
+                                        <c:forEach items="${requestScope.furnDTO.sizeList}" var="size"
+                                                   varStatus="status">
+                                            <option value="${status.count}">${size}</option>
                                         </c:forEach></select></td>
                                 </tr>
                                 <tr>
                                     <td>색상</td>
                                     <td><select>
                                         <option value="0">색상 선택</option>
-                                        <c:forEach items="${requestScope.colorList}" var="color" varStatus="status">
-                                            <option value="${status.count}">${status.current}</option>
+                                        <c:forEach items="${requestScope.furnDTO.colorList}" var="color"
+                                                   varStatus="status">
+                                            <option value="${status.count}">${color}</option>
                                         </c:forEach></select></td>
                                 </tr>
                             </table>
@@ -178,45 +180,29 @@
                     상품을 구매하신 분들이 작성한 리뷰입니다.<br><br>
                     <ul class="product-comments clearfix">
 
-                        <li class="mb-30">
-                            <div class="pro-reviewer">
-                                <img src="../images/person-1.jpg" alt="">
-                            </div>
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-                                        ⭐️
-                                    </div>
+                        <c:forEach items="${requestScope.reviewList}" var="review" varStatus="status">
+                            <li class="mb-30">
+                                <div class="pro-reviewer">
+                                    <img src="${review.RevImgList.img_src}."${review.RevImgList.img_type}" alt="">
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
-                            </div>
-                        </li>
+                                <div class="pro-reviewer-comment">
+                                    <div class="fix">
+                                        <div class="pull-left mbl-center">
+                                            <h5><strong>${requestScope.userName}</strong></h5>
+                                            <p class="reply-date">
+                                                <fmt:formatDate value="${review.reg_date}"
+                                                                pattern="yyyy-MM-dd hh:mm:ss"/>
+                                            </p>
+                                        </div>
+                                        <div class="comment-reply pull-right">
+                                            ⭐️${review.score}
+                                        </div>
+                                    </div>
+                                    <p>${review.review}</p>
+                                </div>
+                            </li>
+                        </c:forEach>
 
-                        <li class="threaded-comments">
-                            <div class="pro-reviewer">
-                                <img src="../images/person_2.jpg" alt="">
-                            </div>
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5 class="text-uppercase mb-0"><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-                                        ⭐️⭐️⭐️⭐️
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>

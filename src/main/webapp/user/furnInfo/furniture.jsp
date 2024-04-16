@@ -345,6 +345,28 @@
                                     messages in con sectetur posuere dolor non.</p>
                             </div>
                         </li>
+
+                        <li class="threaded-comments">
+                            <div class="pro-reviewer">
+                                <img src="../images/person_1.jpg" alt="">
+                            </div>
+                            <div class="pro-reviewer-comment">
+                                <div class="fix">
+                                    <div class="pull-left mbl-center">
+                                        <h5 class="text-uppercase mb-0"><strong>Gerald Barnes</strong></h5>
+                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
+                                    </div>
+                                    <div class="comment-reply pull-right">
+                                        <a href="#"><i class="fa fa-reply"></i></a>
+                                        <a href="#"><i class="fa fa-close"></i></a>
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
+                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
+                                    messages in con sectetur posuere dolor non.</p>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>

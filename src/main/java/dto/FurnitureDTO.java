@@ -11,6 +11,34 @@ public class FurnitureDTO {
     private String CATEGORY;
     private String REG_DATE;
 
+    private List<ColorDTO> colorList;
+    private List<SizeDTO> sizeList;
+    private List<TextureDTO> textureList;
+
+    public List<ColorDTO> getColorList() {
+        return colorList;
+    }
+
+    public void setColorList(List<ColorDTO> colorList) {
+        this.colorList = colorList;
+    }
+
+    public List<SizeDTO> getSizeList() {
+        return sizeList;
+    }
+
+    public void setSizeList(List<SizeDTO> sizeList) {
+        this.sizeList = sizeList;
+    }
+
+    public List<TextureDTO> getTextureList() {
+        return textureList;
+    }
+
+    public void setTextureList(List<TextureDTO> textureList) {
+        this.textureList = textureList;
+    }
+
     public FurnitureDTO() {}
 
     public FurnitureDTO(int FURNITURE_SEQ, String FURNITURE_NUMBER, String FURNITURE_NAME, String FURNITURE_DISCRIPTION, int PRICE, int STOCK, int SALE_COUNT, String CATEGORY, String REG_DATE) {

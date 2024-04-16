@@ -9,10 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ImgServiceImpl implements ImgService {
-    ImgDAO imgDAO = new ImgDAOImpl();
-
-    public ImgServiceImpl() throws IOException {
-    }
+    private ImgDAO imgDAO = new ImgDAOImpl();
 
     @Override
     public List<ImgDTO> selectImg(int furnitureSeq) throws SQLException {

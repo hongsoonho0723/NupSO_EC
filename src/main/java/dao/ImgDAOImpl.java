@@ -14,11 +14,15 @@ import java.util.List;
 import java.util.Properties;
 
 public class ImgDAOImpl implements ImgDAO {
-    Properties proFile = new Properties();
+    private Properties proFile = new Properties();
 
-    public ImgDAOImpl() throws IOException {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
-        proFile.load(is);
+    public ImgDAOImpl() {
+        InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+        try {
+            proFile.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

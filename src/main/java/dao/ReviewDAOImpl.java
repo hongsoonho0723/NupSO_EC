@@ -13,11 +13,15 @@ import java.util.List;
 import java.util.Properties;
 
 public class ReviewDAOImpl implements ReviewDAO {
-    Properties proFile = new Properties();
+    private Properties proFile = new Properties();
 
-    public ReviewDAOImpl() throws IOException {
-        InputStream in = ReviewDAOImpl.class.getClassLoader().getResourceAsStream("dbQuery.properties");
-        proFile.load(in);
+    public ReviewDAOImpl() {
+        InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+        try {
+            proFile.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -44,6 +48,26 @@ public class ReviewDAOImpl implements ReviewDAO {
             DbUtil.dbClose(null, ps, rs);
         }
         return reviews;
+    }
+
+    @Override
+    public int findUserSeq(int reviewSeq) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("query.findUserReviews");
+        int userSeq = 0;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reviewSeq);
+            rs = ps.executeQuery();
+            if(rs.next()) userSeq = rs.getInt(1);
+        }finally {
+            DbUtil.dbClose(null, ps, rs);
+        }
+        return userSeq;
     }
 
     private List<RevImgDTO> getRimg(Connection con,int reviewSeq) throws SQLException {

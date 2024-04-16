@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class FurnitureServiceImpl implements FurnitureService {
-    FurnitureDAO furnitureDAO = new FurnitureDAOImpl();
-
-    public FurnitureServiceImpl() throws IOException {
-    }
+    private FurnitureDAO furnitureDAO = new FurnitureDAOImpl();
 
     @Override
     public FurnitureDTO selectFurnitureNumber(String furnitureNumber) throws SQLException {

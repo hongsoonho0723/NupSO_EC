@@ -12,13 +12,10 @@ import java.util.List;
 
 public class FurnitureController implements Controller {
     FurnitureService furnitureService = new FurnitureServiceImpl();
-    ColorService colorService = new ColorServiceImpl();
-    SizeService sizeService = new SizeServiceImp();
-    TextureService textureService = new TextureServiceImpl();
     ImgService imgService = new ImgServiceImpl();
 
     ReviewService reviewService = new ReviewServiceImpl();
-    RevImgService revImgService = new RevImgServiceImpl();
+    UserService userService = new UserServiceImpl();
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -38,26 +35,20 @@ public class FurnitureController implements Controller {
             FurnitureDTO furnitureDTO = furnitureService.selectFurnitureNumber(furnitureNumber);
             int furnitureSeq = furnitureService.findFurnitureSeqByNumber(furnitureNumber);
 
-            List<String> colorList = colorService.selectColorByFurnitureSeq(furnitureSeq);
-            List<String> sizeList = sizeService.selectSizeByFurnitureSeq(furnitureSeq);
-            List<String> textureList = textureService.selectTextureByFurnitureSeq(furnitureSeq);
-
             List<ImgDTO> imgList = imgService.selectImg(furnitureSeq);
             List<ImgDTO> imgDetailList = imgService.selectDetailImg(furnitureSeq);
 
             List<ReivewDTO> reviewList = reviewService.selectAllReviews(furnitureSeq);
-            int reviewSeq
-            List<RevImgDTO> revImgList = revImgService.selectRevImg(reviewSeq)
+            int userSeq = reviewService.findUserSeq(furnitureSeq);
+            String userName = userService.findUserNameBySeq(userSeq);
 
             request.setAttribute("furnDTO", furnitureDTO);
-            request.setAttribute("sizeList",sizeList);
-            request.setAttribute("textureList",textureList);
-            request.setAttribute("colorList",colorList);
 
             request.setAttribute("imgList",imgList);
             request.setAttribute("imgDetailList",imgDetailList);
 
             request.setAttribute("reviewList",reviewList);
+            request.setAttribute("userName",userName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
