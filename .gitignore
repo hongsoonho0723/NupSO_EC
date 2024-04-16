@@ -3,3 +3,5 @@
 .project
 .settings/
 *.properties
+
+.DS_Store
