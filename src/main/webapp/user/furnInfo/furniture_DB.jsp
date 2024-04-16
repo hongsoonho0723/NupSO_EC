@@ -31,29 +31,33 @@
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-6">
-                <h2 class="section-title">마일드소파</h2>
-                <p>패브릭쇼파 안락 1인소파 카페의자</p>
+                <h2 class="section-title">${requestScope.furnDTO.FURNITURE_NAME}</h2>
+                <p>${requestScope.furnDTO.FURNITURE_DISCRIPTION}</p>
 
                 <div class="row my-5">
+
+                    <%--                    <div class="col-6 col-md-6">--%>
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="feature">
+                            <%--        <div class="p-3 p-lg-5 border bg-white">--%>
                             <table class="table site-block-order-table mb-5">
                                 <tr>
                                     <td class="text-black font-weight-bold"><strong>가격</strong></td>
-                                    <td class="text-black font-weight-bold"><strong>108000원</strong></td>
+                                    <td class="text-black font-weight-bold"><strong><fmt:formatNumber
+                                            value="${requestScope.furnDTO.price}"/>원</strong></td>
                                 </tr>
                                 <tr>
                                     <td>상품코드</td>
-                                    <td>23-DK49J</td>
+                                    <td>${requestScope.furnDTO.FURNITURE_NUMBER}</td>
                                 </tr>
                                 <tr>
                                     <td>종류</td>
-                                    <td>1인용 소파</td>
+                                    <td>${requestScope.furnDTO.CATEGORY}</td>
                                 </tr>
 
                                 <tr>
                                     <td>재질</td>
-                                    <td>Fabric, Wood</td>
+                                    <td>${requestScope.textureList}</td>
                                 </tr>
                                 <tr>
                                     <td>배송비</td>
@@ -63,19 +67,17 @@
                                     <td>사이즈</td>
                                     <td><select>
                                         <option value="0">사이즈 선택</option>
-                                        <option value="1">25*50*100</option>
-                                        <option value="2">50*75*200</option>
-                                        <option value="3">80*90*700</option>
-                                    </select></td>
+                                        <c:forEach items="${requestScope.sizeList}" var="size" varStatus="status">
+                                            <option value="${status.count}">${status.current}</option>
+                                        </c:forEach></select></td>
                                 </tr>
                                 <tr>
                                     <td>색상</td>
                                     <td><select>
                                         <option value="0">색상 선택</option>
-                                        <option value="1">Gray</option>
-                                        <option value="2">Brown</option>
-                                        <option value="3">Red</option>
-                                    </select></td>
+                                        <c:forEach items="${requestScope.colorList}" var="color" varStatus="status">
+                                            <option value="${status.count}">${status.current}</option>
+                                        </c:forEach></select></td>
                                 </tr>
                             </table>
 
@@ -86,9 +88,11 @@
 
                                 <div class="collapse" id="collapsepaypal">
                                     <div class="py-2">
-                                        <p class="mb-0">Make your payment directly into our bank account. Please use
+                                        <p class="mb-0">
+                                            Make your payment directly into our bank account. Please use
                                             your Order ID as the payment reference. Your order won’t be shipped until
-                                            the funds have cleared in our account.</p>
+                                            the funds have cleared in our account.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -129,41 +133,20 @@
                                 <span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
                             </div>
 
+                            <%--                            상품 이미지 --%>
                             <div class="testimonial-slider">
-
-                                <div class="item">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8 mx-auto">
-                                            <div class="author-pic">
-                                                <img src="../images/img-grid-1.jpg" alt="image furniture"
-                                                     class="img-fluid">
+                                <c:forEach items="${requestScope.imgList}" var="img">
+                                    <div class="item">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 mx-auto">
+                                                <div class="author-pic">
+                                                    <img src="${img.img_src}.${img.img_type}" alt="image furniture"
+                                                         class="img-fluid">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- END item -->
-
-                                <div class="item">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8 mx-auto">
-                                            <div class="author-pic">
-                                                <img src="../images/img-grid-2.jpg" alt="image furniture"
-                                                     class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                                <div class="item">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8 mx-auto">
-                                            <div class="author-pic">
-                                                <img src="../images/img-grid-3.jpg" alt="image furniture"
-                                                     class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                                 <!-- END item -->
                             </div>
                         </div>
@@ -172,70 +155,6 @@
             </div>
         </div>
         <!-- End Why Choose Us Section -->
-
-
-        <!-- Start Testimonial Slider -->
-        <%--        <div class="testimonial-section before-footer-section">--%>
-        <%--            <div class="container">--%>
-        <%--                <div class="row">--%>
-        <%--                    <div class="col-lg-7 mx-auto text-center">--%>
-        <%--                        <h2 class="section-title">More Pictures</h2>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
-
-        <%--                <div class="row justify-content-center">--%>
-        <%--                    <div class="col-lg-12 w-50 h-50">--%>
-        <%--                        <div class="testimonial-slider-wrap text-center">--%>
-
-        <%--                            <div id="testimonial-nav">--%>
-        <%--                                <span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>--%>
-        <%--                                <span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>--%>
-        <%--                            </div>--%>
-
-        <%--                            <div class="testimonial-slider">--%>
-
-        <%--                                <div class="item">--%>
-        <%--                                    <div class="row justify-content-center">--%>
-        <%--                                        <div class="col-lg-8 mx-auto">--%>
-        <%--                                            <div class="author-pic">--%>
-        <%--                                                <img src="../images/img-grid-1.jpg" alt="image furniture"--%>
-        <%--                                                     class="img-fluid">--%>
-        <%--                                            </div>--%>
-        <%--                                        </div>--%>
-        <%--                                    </div>--%>
-        <%--                                </div>--%>
-        <%--                                <!-- END item -->--%>
-
-        <%--                                <div class="item">--%>
-        <%--                                    <div class="row justify-content-center">--%>
-        <%--                                        <div class="col-lg-8 mx-auto">--%>
-        <%--                                            <div class="author-pic">--%>
-        <%--                                                <img src="../images/img-grid-2.jpg" alt="image furniture"--%>
-        <%--                                                     class="img-fluid">--%>
-        <%--                                            </div>--%>
-        <%--                                        </div>--%>
-        <%--                                    </div>--%>
-        <%--                                </div>--%>
-        <%--                                <!-- END item -->--%>
-        <%--                                <div class="item">--%>
-        <%--                                    <div class="row justify-content-center">--%>
-        <%--                                        <div class="col-lg-8 mx-auto">--%>
-        <%--                                            <div class="author-pic">--%>
-        <%--                                                <img src="../images/img-grid-3.jpg" alt="image furniture"--%>
-        <%--                                                     class="img-fluid">--%>
-        <%--                                            </div>--%>
-        <%--                                        </div>--%>
-        <%--                                    </div>--%>
-        <%--                                </div>--%>
-        <%--                                <!-- END item -->--%>
-        <%--                            </div>--%>
-        <%--                        </div>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <!-- End Testimonial Slider -->
-
 
         <div class="tabs">
             <input id="detail" type="radio" name="tab_item" checked>
@@ -247,18 +166,18 @@
 
             <%--                상품 상세 설명 탭 --%>
             <div class="tab_content" id="detail_content">
-                <img src="../images/img-grid-1.jpg">
-                <img src="../images/img-grid-1.jpg">
-                <img src="../images/img-grid-1.jpg">
+                <c:forEach items="${requestScope.imgDetailList}" var="detail">
+                    <img src="${detail.img_src}.${detail.img_type}">
+                </c:forEach>
             </div>
 
             <%--                상품 리뷰 탭 --%>
             <div class="tab_content" id="review_content">
-
                 <div class="customer-review">
                     <h3 class="small-title">Customer review</h3>
                     상품을 구매하신 분들이 작성한 리뷰입니다.<br><br>
                     <ul class="product-comments clearfix">
+
                         <li class="mb-30">
                             <div class="pro-reviewer">
                                 <img src="../images/person-1.jpg" alt="">
@@ -340,11 +259,14 @@
                                         <a href="#"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
                                     elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
+                                    messages in con sectetur posuere dolor non.
+                                </p>
                             </div>
                         </li>
+
                     </ul>
                 </div>
             </div>

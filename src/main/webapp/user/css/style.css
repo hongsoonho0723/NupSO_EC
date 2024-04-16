@@ -454,7 +454,8 @@ a.more {
 .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [ 27 ];
+    /*-ms-grid-columns: (1fr)[ 27 ];*/
+    -ms-grid-columns: (1fr)[ 27 ];
     grid-template-columns: repeat(27, 1fr);
     position: relative;
 }
@@ -1020,4 +1021,144 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2);
+}
+
+
+
+/***************************************************************************************************/
+/* 탭 전체 스타일 */
+.tabs {
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 1100px;
+    margin: 25px 50px 75px 100px;}
+
+/* 탭 스타일 */
+.tab_item {
+    width: calc(100%/3);
+    height: 50px;
+    border-bottom: 3px solid #3b5d50;
+    background-color: #3b5d50;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.tab_item:hover {
+    opacity: 0.75;
+}
+
+/* 라디오 버튼 UI삭제*/
+input[name="tab_item"] {
+    display: none;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+}
+
+
+/* 선택 된 탭 콘텐츠를 표시 */
+#detail:checked ~ #detail_content,
+#review:checked ~ #review_content,
+#qna:checked ~ #qna_content {
+    display: block;
+}
+
+/* 선택된 탭 스타일 */
+.tabs input:checked + .tab_item {
+    background-color: #f9bf29;
+    color: #34383c;
+}
+
+
+/*REVIEW TAB CSS*/
+.customer-review {
+    margin-bottom: 30px;
+}
+.pro-reviewer-comment {
+    margin-left: 90px;
+    padding-left: 30px;
+}
+.small-title {
+    font-size: 24px;
+    padding: 15px 0;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.clearfix {
+    clear: both;
+}
+.product-comments li {
+    float: left;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+ul li {
+    list-style: none;
+    margin: 0;
+}
+.product-comments li {
+    float: left;
+}
+.pro-reviewer {
+    float: left;
+    width: 300px;
+    margin-right: 10px;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+.fix {
+    overflow: hidden;
+}
+.pull-left {
+    float: left;
+}
+
+.pull-left {
+    float: left!important;
+}
+b, strong {
+    font-weight: 700;
+}
+.reply-date {
+    color: #999;
+    margin-bottom: 10px;
+}
+@media (max-width: 480px)
+.pull-right {
+    float: left!important;
+}
+
+@media (max-width: 640px)
+.pull-right {
+    float: left!important;
+}
+.pull-right {
+    float: right;
+}
+.pull-right {
+    float: right!important;
 }
