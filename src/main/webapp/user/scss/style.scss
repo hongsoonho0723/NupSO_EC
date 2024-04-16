@@ -889,3 +889,127 @@ textarea {
 		background:rgba($primary, .2);
 	}
 }
+
+
+
+
+//////////////////////////
+.fh5co-tabs {
+	.fh5co-tab-nav {
+		clear: both;
+		margin: 0 0 3em 0;
+		padding: 3px;
+		float: left;
+		width: 100%;
+		background: lighten($brand-black, 95%);
+		@include border-radius(4px);
+		li {
+			float: left;
+			margin: 0;
+			padding: 0;
+			width: 33.33%;
+			text-align: center;
+			list-style: none;
+			@include inline-block;
+			.icon {
+				font-size: 30px;
+			}
+			a {
+				padding: 20px;
+				width: 100%;
+				float: left;
+				@include border-radius(4px);
+				color: lighten($brand-black, 70%);
+				&:hover {
+					color: lighten($brand-black, 30%);
+				}
+			}
+			&.active {
+				a {
+					background: $brand-white;
+					color: $brand-primary;
+				}
+			}
+		}
+	}
+	.fh5co-tab-content-wrap {
+		clear: both;
+		position: relative;
+		top: 70px;
+		.tab-content {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			opacity: 0;
+			visibility: hidden;
+			&.active {
+				opacity: 1;
+				visibility: visible;
+			}
+			.price{
+				letter-spacing: 2px;
+				border: 2px solid $brand-primary;
+				display: inline-block;
+				margin-bottom: 20px;
+				padding: 7px 20px 10px 20px;
+			}
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			margin-bottom: 3em;
+			li{
+				list-style: none;
+				margin-bottom: 20px;
+				position: relative;
+				padding-left: 30px;
+				&:before{
+					font-family: 'icomoon';
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: '\e116';
+				}
+			}
+		}
+		.feed{
+			width: 100%;
+			float: left;
+			margin-bottom: 7em;
+			>div{
+				width: 100%;
+				float: left;
+				margin-bottom: 1em;
+				blockquote{
+					border-left: 0;
+					padding: 20px;
+					background: rgba($brand-black,.04);
+				}
+				h3{
+					font-family: $font-secondary;
+					font-size: 18px;
+					display: inline-block;
+					padding-right: 20px;
+				}
+				.rate{
+					color: #ffba00;
+				}
+			}
+		}
+	}
+	.icon-xlg {
+		font-size: 400px;
+		margin-bottom: 30px;
+		text-align: center;
+		@media screen and (max-width: $screen-sm) {
+			font-size: 300px;
+		}
+		@media screen and (max-width: $screen-xs) {
+			font-size: 200px;
+		}
+		i {
+			color: $brand-primary;
+		}
+	}
+}

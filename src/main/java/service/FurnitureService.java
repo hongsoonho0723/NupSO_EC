@@ -1,14 +1,14 @@
-package dao;
+package service;
 
 import dto.FurnitureDTO;
 
 import java.sql.SQLException;
 
-public interface FurnitureDAO {
+public interface FurnitureService {
     /*
-    상품 상세 보기
+    상품 상세 정보
      */
-    FurnitureDTO selectByFurnitureByNumber(String furnitureNumber) throws SQLException;
+    FurnitureDTO selectFurnitureNumber(String furnitureNumber) throws SQLException;
 
     /*
     상품 코드로 상품 sequence 찾기
