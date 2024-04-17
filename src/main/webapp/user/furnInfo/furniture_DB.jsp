@@ -195,7 +195,9 @@
                                             </p>
                                         </div>
                                         <div class="comment-reply pull-right">
-                                            ⭐️${review.score}
+                                            <c:forEach begin="1" end="${review.score}">
+                                                ⭐
+                                            </c:forEach>
                                         </div>
                                     </div>
                                     <p>${review.review}</p>
@@ -213,45 +215,26 @@
                     <h3 class="small-title">Q & A</h3>
                     구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.<br><br>
                     <ul class="product-comments clearfix">
-                        <li class="mb-30">
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
+
+                        <c:forEach items="${requestScope.qnaList}" var="q" varStatus="status">
+                            <li class="mb-30">
+                                <div class="pro-reviewer-comment">
+                                    <div class="fix">
+                                        <div class="pull-left mbl-center">
+                                            <h5><strong>Gerald Barnes</strong></h5>
+                                            <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
+                                        </div>
+                                        <div class="comment-reply pull-right">
+                                            <a href="#"><i class="fa fa-reply"></i></a>
+                                            <a href="#"><i class="fa fa-close"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="comment-reply pull-right">
-                                        <a href="#"><i class="fa fa-reply"></i></a>
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
+                                        elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
+                                        messages in con sectetur posuere dolor non.</p>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
-                            </div>
-                        </li>
-                        <li class="threaded-comments">
-                            <div class="pro-reviewer">
-                                <img src="../images/person_2.jpg" alt="">
-                            </div>
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5 class="text-uppercase mb-0"><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-                                        <a href="#"><i class="fa fa-reply"></i></a>
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.
-                                </p>
-                            </div>
-                        </li>
+                            </li>
+                        </c:forEach>
 
                     </ul>
                 </div>

@@ -42,4 +42,25 @@ public class UserDAOImpl implements UserDAO {
 
         return name;
     }
+
+    @Override
+    public int findUserSeqById(String userId) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("query.findUserSeqById");
+        int result = 0;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, userId);
+            rs = ps.executeQuery();
+            if(rs.next()) result = rs.getInt(1);
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+
+        return result;
+    }
 }
