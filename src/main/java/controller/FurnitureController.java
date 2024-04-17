@@ -2,6 +2,7 @@ package controller;
 
 import dto.FurnitureDTO;
 import dto.ImgDTO;
+import dto.ReviewDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.*;
@@ -38,7 +39,7 @@ public class FurnitureController implements Controller {
             List<ImgDTO> imgList = imgService.selectImg(furnitureSeq);
             List<ImgDTO> imgDetailList = imgService.selectDetailImg(furnitureSeq);
 
-            List<ReivewDTO> reviewList = reviewService.selectAllReviews(furnitureSeq);
+            List<ReviewDTO> reviewList = reviewService.selectAllReviews(furnitureSeq);
             int userSeq = reviewService.findUserSeq(furnitureSeq);
             String userName = userService.findUserNameBySeq(userSeq);
 

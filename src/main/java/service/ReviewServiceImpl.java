@@ -2,8 +2,8 @@ package service;
 
 import dao.ReviewDAO;
 import dao.ReviewDAOImpl;
+import dto.ReviewDTO;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
