@@ -1,5 +1,7 @@
 package dao;
 
+import dto.ReviewDTO;
+import dto.ReviewImgDTO;
 import util.DbUtil;
 
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class ReviewDAOImpl implements ReviewDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = proFile.getProperty("query.getProductReviews");
-        List<ReivewDTO> reviews = new ArrayList<ReivewDTO>();
+        List<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
 
         try{
             con = DbUtil.getConnection();
@@ -41,7 +43,7 @@ public class ReviewDAOImpl implements ReviewDAO {
                 int rev_seq = rs.getInt(1);
                 ReviewDTO review = new ReviewDTO(rev_seq,rs.getInt(2),rs.getInt(3),
                         rs.getString(4),rs.getInt(5),rs.getString(6));
-                review.setRevImgList(this.getRimg(con,rev_seq));
+                review.setReviewImgs(this.getRimg(con,rev_seq));
                 reviews.add(review);
             }
         }finally {
@@ -70,11 +72,11 @@ public class ReviewDAOImpl implements ReviewDAO {
         return userSeq;
     }
 
-    private List<RevImgDTO> getRimg(Connection con,int reviewSeq) throws SQLException {
+    private List<ReviewImgDTO> getRimg(Connection con, int reviewSeq) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = proFile.getProperty("query.getProductReviewImages");
-        List<RevImgDTO> list = new ArrayList<RevImgDTO>();
+        List<ReviewImgDTO> list = new ArrayList<ReviewImgDTO>();
 
         try{
             con = DbUtil.getConnection();
@@ -82,7 +84,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             ps.setInt(1, reviewSeq);
             rs = ps.executeQuery();
             while(rs.next()){
-                RevImgDTO revImgDTO = new RevImgDTO(rs.getInt(1),rs.getInt(2),
+                ReviewImgDTO revImgDTO = new ReviewImgDTO(rs.getInt(1),rs.getInt(2),
                         rs.getString(3),rs.getString(4));
                 list.add(revImgDTO);
             }

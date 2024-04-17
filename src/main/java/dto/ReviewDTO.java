@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.List;
+
 public class ReviewDTO {
 
 	private int reviewSeq;
@@ -8,7 +10,17 @@ public class ReviewDTO {
 	private String review;
 	private int score;
 	private String regDate;
-	
+
+	private List<ReviewImgDTO> reviewImgs;
+
+	public List<ReviewImgDTO> getReviewImgs() {
+		return reviewImgs;
+	}
+
+	public void setReviewImgs(List<ReviewImgDTO> reviewImgs) {
+		this.reviewImgs = reviewImgs;
+	}
+
 	public ReviewDTO() {}
 	public ReviewDTO(int reviewSeq, int userSeq, int furnitureSeq, String review, int score, String regDate) {
 		this.reviewSeq = reviewSeq;
