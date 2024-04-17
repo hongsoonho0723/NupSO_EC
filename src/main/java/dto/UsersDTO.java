@@ -16,6 +16,7 @@ public class UsersDTO {
 	
 	
 	
+	
 	public UsersDTO(int userSeq, String userId, String password, String addr, String name, int age, int gender,
 			String phone, String date) {
 		super();
