@@ -1,7 +1,7 @@
 package controller;
 
-import service.QnaService;
-import service.QnaServiceImpl;
+import service.QnAService;
+import service.QnAServiceImpl;
 
 public class UserController {
 

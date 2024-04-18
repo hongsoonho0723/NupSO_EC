@@ -11,6 +11,9 @@ public class QnADTO {
 	private String name;
 	private String password;
 	
+	//QnA 입력시 가구 dto 생성하기
+	FurnitureDTO furniture;
+	
 	
 	public QnADTO(int qnASeq, int furnitureSeq, String question, String answer, int state, String answerDate,
 			String regDate, String name, String password) {
@@ -24,6 +27,16 @@ public class QnADTO {
 		this.regDate = regDate;
 		this.name = name;
 		this.password = password;
+	}
+
+
+	public FurnitureDTO getFurniture() {
+		return furniture;
+	}
+
+
+	public void setFurniture(FurnitureDTO furniture) {
+		this.furniture = furniture;
 	}
 
 
