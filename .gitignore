@@ -5,6 +5,7 @@
 *.properties
 
 /build/
-.DS_Store
+
+.DS*
 
 src/main/java/resources/
