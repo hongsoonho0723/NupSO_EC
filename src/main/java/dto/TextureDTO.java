@@ -7,8 +7,12 @@ public class TextureDTO {
 
     // 생성자
     public TextureDTO(int textureSeq, int furnitureSeq, String textureName) {
+        this(textureName);
         this.textureSeq = textureSeq;
         this.furnitureSeq = furnitureSeq;
+    }
+
+    public TextureDTO(String textureName) {
         this.textureName = textureName;
     }
 

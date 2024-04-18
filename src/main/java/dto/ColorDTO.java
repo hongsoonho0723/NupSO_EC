@@ -7,8 +7,12 @@ public class ColorDTO {
 
     // 생성자
     public ColorDTO(int colorSeq, int furnitureSeq, String colorName) {
+        this(colorName);
         this.colorSeq = colorSeq;
         this.furnitureSeq = furnitureSeq;
+    }
+
+    public ColorDTO(String colorName) {
         this.colorName = colorName;
     }
 
