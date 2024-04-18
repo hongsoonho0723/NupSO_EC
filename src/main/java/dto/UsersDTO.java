@@ -8,16 +8,12 @@ public class UsersDTO {
 	private String addr;
 	private String name;
 	private int age;
-	private int gender;
+	private String gender;
 	private String phone;
 	private String userState;
 	private String regDate;
 	
-	
-	
-	
-	
-	public UsersDTO(int userSeq, String userId, String password, String addr, String name, int age, int gender,
+	public UsersDTO(int userSeq, String userId, String password, String addr, String name, int age, String gender,
 			String phone, String userState, String regDate) {
 		super();
 		this.userSeq = userSeq;
@@ -31,6 +27,7 @@ public class UsersDTO {
 		this.userState = userState;
 		this.regDate = regDate;
 	}
+	
 	public int getUserSeq() {
 		return userSeq;
 	}
@@ -67,10 +64,10 @@ public class UsersDTO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getPhone() {
