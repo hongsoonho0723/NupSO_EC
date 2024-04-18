@@ -1,7 +1,5 @@
 package dao;
 
-import util.DbUtil;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import dto.UsersDTO;
+import util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
     private Properties proFile = new Properties();
@@ -63,4 +64,34 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
+
+	@Override
+	public UsersDTO loginCheck(UsersDTO usersDTO) throws SQLException {
+
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        UsersDTO dbDTO=null;
+        String sql = "select user_id,name from users where user_id=? and password=?";
+        //String sql = "select * from users where user_id=? and password=?";
+		
+		
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usersDTO.getUserId());
+            ps.setString(2, usersDTO.getPassword());
+            rs = ps.executeQuery();
+            if(rs.next()) {
+            	dbDTO = new UsersDTO(rs.getString(1),rs.getString(2));
+            }
+        
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return dbDTO;
+
+    }  
+		
+    
 }

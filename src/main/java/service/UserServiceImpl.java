@@ -1,9 +1,10 @@
 package service;
 
+import java.sql.SQLException;
+
 import dao.UserDAO;
 import dao.UserDAOImpl;
-
-import java.sql.SQLException;
+import dto.UsersDTO;
 
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
@@ -21,4 +22,13 @@ public class UserServiceImpl implements UserService {
         if (userSeq == 0) throw new SQLException("사용자를 찾을 수 없습니다.");
         return userSeq;
     }
+
+	@Override
+	public UsersDTO loginCheck(UsersDTO usersDTO) throws SQLException {
+	
+		UsersDTO dbDTO = userDAO.loginCheck(usersDTO);
+	
+		return dbDTO;
+	
+	}
 }
