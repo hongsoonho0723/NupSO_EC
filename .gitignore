@@ -8,6 +8,5 @@ src/main/webapp/js/jquery-3.7.1.js
 src/main/webapp/js/jquery-3.7.1.min.js
 
 /build/
-.DS_Store
 
-src/main/java/resources/
+.DS*
