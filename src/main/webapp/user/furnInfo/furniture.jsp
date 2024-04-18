@@ -3,6 +3,11 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <jsp:include page="../common/header.jsp"/>
+<script>
+    $(document).on("click","[id=delete]",function(){
+        alert("delete");
+    })
+</script>
 
 <!-- Start Hero Section -->
 <div class="hero">
@@ -12,7 +17,9 @@
                 <div class="intro-excerpt">
                     <h1>PRODUCT DETAIL</h1>
                     <p class="mb-4">상품 보기</p>
+                    <form method="post" action="">
                     <p><a href="" class="btn btn-secondary me-2">전체 상품</a></p>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -340,12 +347,10 @@
                                     </div>
                                     <div class="comment-reply pull-right">
                                         <a href="#"><i class="fa fa-reply"></i></a>
-                                        <a href="#"><i class="fa fa-close"></i></a>
+                                        <a href="#" id="delete"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
+                                <p>TESTTESTESTSTETSTSETSETTE</p>
                             </div>
                         </li>
 

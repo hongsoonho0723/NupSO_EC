@@ -1,11 +1,13 @@
 package dao;
 
+import dto.QnADTO;
 import util.DbUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -59,5 +61,27 @@ public class QnaDAOImpl implements QnaDAO {
             DbUtil.dbClose(con, ps);
         }
         return result;
+    }
+
+    @Override
+    public String getPwd(int qnaSeq) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFiles.getProperty("query.getPwd");
+        String pwd = null;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, qnaSeq);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                pwd = rs.getString("pwd");
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return pwd;
     }
 }
