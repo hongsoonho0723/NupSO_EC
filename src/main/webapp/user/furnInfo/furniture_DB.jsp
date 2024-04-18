@@ -4,6 +4,25 @@
 
 <jsp:include page="../common/header.jsp"/>
 
+<script>
+    //Q&A 삭제 버튼 눌렀을 경우
+    $(document).on("click", "#delete", function () {
+        if (confirm("삭제하시겠습니까?")) {
+            const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
+            $.ajax({
+                url: "${path}/ajax",
+                type: "post",
+                dataType: "text",
+                data: {key: "qna", methodName: "delete", qnaSeq: ('#qnaSeq').val(),password:password},
+                success: function (result) {
+                    if (result === 0) alert("삭제에 실패했습니다.");
+                    else location.reload();
+                }
+            });
+        }
+    });
+</script>
+
 <!-- Start Hero Section -->
 <div class="hero">
     <div class="container">
@@ -12,7 +31,12 @@
                 <div class="intro-excerpt">
                     <h1>PRODUCT DETAIL</h1>
                     <p class="mb-4">상품 보기</p>
-                    <p><a href="" class="btn btn-secondary me-2">전체 상품</a></p>
+                    <form method="get" action="showRoom.jsp">
+                        <input type="hidden" value="${requestScope.furnDTO.textureList}" name="texture">
+                        <input type="hidden" value="${requestScope.furnDTO.CATEGORY}" name="category">
+                        <input type="hidden" value="${requestScope.furnDTO.FURNITURE_NAME}" name="sofaName">
+                        <p><button type="submit" class="btn btn-secondary me-2">전체 상품</button></p>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -217,21 +241,26 @@
                     <ul class="product-comments clearfix">
 
                         <c:forEach items="${requestScope.qnaList}" var="q" varStatus="status">
-                            <li class="mb-30">
+                            <li class="mb-30 col-lg-12">
                                 <div class="pro-reviewer-comment">
                                     <div class="fix">
                                         <div class="pull-left mbl-center">
-                                            <h5><strong>Gerald Barnes</strong></h5>
-                                            <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
+                                            <h5><strong>${q.name}</strong></h5>
+                                            <p class="reply-date"><fmt:formatDate value="${q.reg_date}"
+                                                                                  pattern="yyyy-MM-dd hh:mm:ss"/></p>
                                         </div>
                                         <div class="comment-reply pull-right">
                                             <a href="#"><i class="fa fa-reply"></i></a>
-                                            <a href="#"><i class="fa fa-close"></i></a>
+                                            <form method="post">
+                                                <span id="delete">
+                                                    <i class="fa fa-close"></i>
+                                                    <input type="hidden" name="key" value="qna">
+                                                    <input type="hidden" name="methodName" value="delete"><input type="hidden" id="qnaSeq" value="${q.qnaSeq}">
+                                                </span>
+                                            </form>
                                         </div>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                        elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                        messages in con sectetur posuere dolor non.</p>
+                                    <p>${q.question}</p>
                                 </div>
                             </li>
                         </c:forEach>

@@ -4,11 +4,23 @@
 
 <jsp:include page="../common/header.jsp"/>
 <script>
-    $(document).on("click","[id=delete]",function(){
-        alert("delete");
-    })
+    //Q&A 삭제 버튼 눌렀을 경우
+    $(document).on("click", "#delete", function () {
+        if (confirm("삭제하시겠습니까?")) {
+            const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
+            $.ajax({
+                url: "${path}/ajax",
+                type: "post",
+                dataType: "text",
+                data: {key: "qna", methodName: "delete", qnaSeq: ('#qnaSeq').val(),password:password},
+                success: function (result) {
+                    if (result === 0) alert("삭제에 실패했습니다.");
+                    else location.reload();
+                }
+            });
+        }
+    });
 </script>
-
 <!-- Start Hero Section -->
 <div class="hero">
     <div class="container">
@@ -17,8 +29,11 @@
                 <div class="intro-excerpt">
                     <h1>PRODUCT DETAIL</h1>
                     <p class="mb-4">상품 보기</p>
-                    <form method="post" action="">
-                    <p><a href="" class="btn btn-secondary me-2">전체 상품</a></p>
+                    <form method="get" action="showRoom.jsp">
+                        <input type="hidden" value="[Fabric,Wood]" name="texture">
+                        <input type="hidden" value="single sofa" name="category">
+                        <input type="hidden" value="Mild Sofa" name="sofaName">
+                        <p><button type="submit" class="btn btn-secondary me-2">전체 상품</button></p>
                     </form>
                 </div>
             </div>
@@ -338,7 +353,8 @@
                                     messages in con sectetur posuere dolor non.</p>
                             </div>
                         </li>
-                        <li class="mb-30">
+
+                        <li class="mb-30 col-lg-12">
                             <div class="pro-reviewer-comment">
                                 <div class="fix">
                                     <div class="pull-left mbl-center">
@@ -346,8 +362,16 @@
                                         <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
                                     </div>
                                     <div class="comment-reply pull-right">
+<%--                                        Q&A 답변 페이지--%>
                                         <a href="#"><i class="fa fa-reply"></i></a>
-                                        <a href="#" id="delete"><i class="fa fa-close"></i></a>
+                                        <form method="post">
+                                            <span id="delete">
+                                            <i class="fa fa-close"></i>
+                                            <input type="hidden" name="key" value="qna">
+                                            <input type="hidden" name="methodName" value="delete">
+<%--                                                <input type="hidden" id="qnaSeq" value="${q.qnaSeq}">--%>
+                                                </span>
+                                        </form>
                                     </div>
                                 </div>
                                 <p>TESTTESTESTSTETSTSETSETTE</p>
