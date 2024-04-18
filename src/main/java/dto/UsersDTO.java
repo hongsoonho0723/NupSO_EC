@@ -28,6 +28,12 @@ public class UsersDTO {
 		this.regDate = regDate;
 	}
 	
+	public UsersDTO(String userId, String name) {
+		super();
+		this.userId = userId;
+		this.name = name;
+	}
+
 	public int getUserSeq() {
 		return userSeq;
 	}
