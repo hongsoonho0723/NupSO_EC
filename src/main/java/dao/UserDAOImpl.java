@@ -15,12 +15,12 @@ public class UserDAOImpl implements UserDAO {
     private Properties proFile = new Properties();
 
     public UserDAOImpl() {
-        InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+       /* InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
         try {
             proFile.load(input);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
@@ -66,15 +66,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
 	@Override
-	public UsersDTO loginCheck(UsersDTO usersDTO) throws SQLException {
+	public UsersDTO login(UsersDTO usersDTO) throws SQLException {
 
 		Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         UsersDTO dbDTO=null;
-        String sql = "select user_id,name from users where user_id=? and password=?";
+        String sql = "select user_seq,user_id,name from users where user_id=? and password=?";
         //String sql = "select * from users where user_id=? and password=?";
-		
+        //String sql = "select * from name where user_id=? and password=?";
 		
         try {
             con = DbUtil.getConnection();
@@ -83,9 +83,8 @@ public class UserDAOImpl implements UserDAO {
             ps.setString(2, usersDTO.getPassword());
             rs = ps.executeQuery();
             if(rs.next()) {
-            	dbDTO = new UsersDTO(rs.getString(1),rs.getString(2));
+            	dbDTO = new UsersDTO(rs.getInt(1),rs.getString(2),rs.getString(3));
             }
-        
         }finally {
             DbUtil.dbClose(con, ps, rs);
         }

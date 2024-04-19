@@ -13,7 +13,7 @@ public class QnAController implements RestController {
 	public void selectAll(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("QnA Controller selectAll");
 		
-		List<QnADTO> list = 
+		//List<QnADTO> list = 
 		
 		
 		

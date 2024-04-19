@@ -24,11 +24,11 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public UsersDTO loginCheck(UsersDTO usersDTO) throws SQLException {
+	public UsersDTO login(UsersDTO usersDTO) throws SQLException {
 	
-		UsersDTO dbDTO = userDAO.loginCheck(usersDTO);
+		UsersDTO dbDTO = userDAO.login(usersDTO);
 	
+		
 		return dbDTO;
-	
 	}
 }

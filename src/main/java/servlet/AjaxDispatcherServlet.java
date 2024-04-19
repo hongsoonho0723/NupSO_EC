@@ -1,6 +1,6 @@
 package servlet;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  *  사용자의 모든 ajax 요청을 처리할 진입점 Controller이다(FrontController의 역할한다)
  */
-@WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
+//@WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
 public class AjaxDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
