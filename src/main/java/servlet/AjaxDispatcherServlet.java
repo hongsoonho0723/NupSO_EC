@@ -29,7 +29,7 @@ public class AjaxDispatcherServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext applicaion = config.getServletContext();
 		ajaxMap = (Map<String, RestController>)applicaion.getAttribute("ajaxMap");
-		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("ClzMap");
+		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("clzMap");
 		
 	}
    

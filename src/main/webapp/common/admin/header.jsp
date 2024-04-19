@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
      <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/jquery-3.7.1.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     // 각 토글링할 항목에 대한 클릭 이벤트 처리

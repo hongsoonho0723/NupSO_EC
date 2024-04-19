@@ -1,5 +1,6 @@
 package dao;
 
+import dto.FurnitureDTO;
 import dto.QnADTO;
 import util.DbUtil;
 
@@ -9,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class QnADAOImpl implements QnADAO {
@@ -24,7 +27,7 @@ public class QnADAOImpl implements QnADAO {
     }
 
     @Override
-    public int insertQues(int furnitureSeq, String question,int state,String name, String password) throws SQLException {
+    public int insert(int furnitureSeq, String question,int state,String name, String password) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         String sql = proFiles.getProperty("query.insertQna");
@@ -46,7 +49,7 @@ public class QnADAOImpl implements QnADAO {
     }
 
     @Override
-    public int deleteQues(int qnaSeq) throws SQLException {
+    public int delete(int qnaSeq) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         String sql = proFiles.getProperty("query.deleteQna");
@@ -84,4 +87,38 @@ public class QnADAOImpl implements QnADAO {
         }
         return pwd;
     }
+
+	@Override
+	public List<QnADTO> selectAll() throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFiles.getProperty("QnA.selectAll");
+        System.out.println(sql);
+        
+        List<QnADTO> list = new ArrayList<QnADTO>();
+        QnADTO qna = null;
+        FurnitureDTO furniture = new FurnitureDTO();
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            	qna = new QnADTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getString(5) , 
+            			rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+            	furniture.setFURNITURE_NAME(rs.getString(10));
+            	qna.setFurniture(furniture);
+            	list.add(qna);
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        
+		return list;
+	}
+    
+    
+    
+    
 }

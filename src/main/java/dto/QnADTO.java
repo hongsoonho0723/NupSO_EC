@@ -5,7 +5,7 @@ public class QnADTO {
 	private int furnitureSeq;
 	private String question;
 	private String answer;
-	private int state;
+	private String state;
 	private String answerDate;
 	private String regDate;
 	private String name;
@@ -15,9 +15,8 @@ public class QnADTO {
 	FurnitureDTO furniture;
 	
 	
-	public QnADTO(int qnASeq, int furnitureSeq, String question, String answer, int state, String answerDate,
+	public QnADTO(int qnASeq, int furnitureSeq, String question, String answer, String state, String answerDate,
 			String regDate, String name, String password) {
-		super();
 		QnASeq = qnASeq;
 		this.furnitureSeq = furnitureSeq;
 		this.question = question;
@@ -80,12 +79,12 @@ public class QnADTO {
 	}
 
 
-	public int getState() {
+	public String getState() {
 		return state;
 	}
 
 
-	public void setState(int state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 

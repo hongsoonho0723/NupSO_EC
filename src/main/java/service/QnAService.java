@@ -10,5 +10,5 @@ public interface QnAService {
 
     void delete(int qnaSeq) throws SQLException;
     
-    List<QnADTO> selectAll();
+    List<QnADTO> selectAll() throws SQLException;
 }
