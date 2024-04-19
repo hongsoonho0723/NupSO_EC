@@ -1,11 +1,16 @@
 package controller;
 
+<<<<<<< HEAD
 import dto.UsersDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import service.UserService;
 import service.UserServiceImpl;
+=======
+import service.QnAService;
+import service.QnAServiceImpl;
+>>>>>>> 5b20651b9b4ce63e1b467e86863590c83e0e3ae7
 
 public class UserController {
 

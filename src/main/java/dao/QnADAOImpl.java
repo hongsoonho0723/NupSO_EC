@@ -11,11 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class QnaDAOImpl implements QnaDAO {
+public class QnADAOImpl implements QnADAO {
     private Properties proFiles = new Properties();
 
-    public QnaDAOImpl() {
-        InputStream in = QnaDAOImpl.class.getClassLoader().getResourceAsStream("dbQuery.properties");
+    public QnADAOImpl() {
+        InputStream in = QnADAOImpl.class.getClassLoader().getResourceAsStream("dbQuery.properties");
         try {
             proFiles.load(in);
         } catch (IOException e) {
