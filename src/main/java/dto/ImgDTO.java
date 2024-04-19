@@ -1,63 +1,63 @@
 package dto;
 
 public class ImgDTO {
-    private int IMG_SEQ;
-    private int FURNITURE_SEQ;
-    private String IMG_SRC;
-    private String IMG_TYPE;
-    private int IS_DETAIL; // 0:상품 상세 설명 , 1:상품 대표 이미지
+    private int imgSeq;
+    private int furnitureSeq;
+    private String imgSrc;
+    private String imgType;
+    private boolean isDetail; // 0: 상품 상세 설명, 1: 상품 대표 이미지 -> boolean으로 표현
 
     public ImgDTO() {}
 
-    public ImgDTO(int IMG_SEQ, int FURNITURE_SEQ, String IMG_SRC, String IMG_TYPE, int IS_DETAIL) {
-        this(IMG_SEQ,IMG_SRC,IMG_TYPE);
-        this.FURNITURE_SEQ = FURNITURE_SEQ;
-        this.IS_DETAIL = IS_DETAIL;
+    public ImgDTO(int imgSeq, int furnitureSeq, String imgSrc, String imgType, boolean isDetail) {
+        this(imgSeq, imgSrc, imgType);
+        this.furnitureSeq = furnitureSeq;
+        this.isDetail = isDetail;
     }
 
-    public ImgDTO(int IMG_SEQ, String IMG_SRC, String IMG_TYPE) {
-        this.IMG_SEQ = IMG_SEQ;
-        this.IMG_SRC = IMG_SRC;
-        this.IMG_TYPE = IMG_TYPE;
+    public ImgDTO(int imgSeq, String imgSrc, String imgType) {
+        this.imgSeq = imgSeq;
+        this.imgSrc = imgSrc;
+        this.imgType = imgType;
     }
 
-    public int getIMG_SEQ() {
-        return IMG_SEQ;
+    public int getImgSeq() {
+        return imgSeq;
     }
 
-    public void setIMG_SEQ(int IMG_SEQ) {
-        this.IMG_SEQ = IMG_SEQ;
+    public void setImgSeq(int imgSeq) {
+        this.imgSeq = imgSeq;
     }
 
-    public int getFURNITURE_SEQ() {
-        return FURNITURE_SEQ;
+    public int getFurnitureSeq() {
+        return furnitureSeq;
     }
 
-    public void setFURNITURE_SEQ(int FURNITURE_SEQ) {
-        this.FURNITURE_SEQ = FURNITURE_SEQ;
+    public void setFurnitureSeq(int furnitureSeq) {
+        this.furnitureSeq = furnitureSeq;
     }
 
-    public String getIMG_SRC() {
-        return IMG_SRC;
+    public String getImgSrc() {
+        return imgSrc;
     }
 
-    public void setIMG_SRC(String IMG_SRC) {
-        this.IMG_SRC = IMG_SRC;
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
 
-    public String getIMG_TYPE() {
-        return IMG_TYPE;
+    public String getImgType() {
+        return imgType;
     }
 
-    public void setIMG_TYPE(String IMG_TYPE) {
-        this.IMG_TYPE = IMG_TYPE;
+    public void setImgType(String imgType) {
+        this.imgType = imgType;
     }
 
-    public int isIS_DETAIL() {
-        return IS_DETAIL;
+    public boolean isDetail() { // Getter 메서드명 수정
+        return isDetail;
     }
 
-    public void setIS_DETAIL(int IS_DETAIL) {
-        this.IS_DETAIL = IS_DETAIL;
+    public void setDetail(boolean isDetail) { // Setter 메서드명 수정
+        this.isDetail = isDetail;
     }
 }
