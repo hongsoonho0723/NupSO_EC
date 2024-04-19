@@ -28,7 +28,7 @@ public class AdminLoginCheck extends HttpServlet {
     	
     	 
     	 if(adminId.equals(correctAdminId) && adminPwd.equals(correctAdminPwd)) {
-    		response.sendRedirect(request.getContextPath() + "/admin/adminCharts.jsp");
+    		response.sendRedirect(request.getContextPath() + "/admin/adminIndex.jsp");
     		 
     	 }else {
     		 response.setContentType("text/html;charset=UTF-8");
