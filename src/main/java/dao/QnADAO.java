@@ -21,5 +21,5 @@ public interface QnADAO {
      */
     String getPwd(int qnaSeq) throws SQLException;
     
-    List<QnADTO>
+   // List<QnADTO>
 }

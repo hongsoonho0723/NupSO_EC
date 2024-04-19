@@ -19,6 +19,6 @@ public interface UserDAO {
     /*
      아이디 비번으로 로그인
      */
-    UsersDTO loginCheck(UsersDTO usersDTO) throws SQLException;
+    UsersDTO login(UsersDTO usersDTO) throws SQLException;
     
 }

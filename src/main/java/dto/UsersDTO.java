@@ -28,8 +28,16 @@ public class UsersDTO {
 		this.regDate = regDate;
 	}
 	
-	public UsersDTO(String userId, String name) {
+	public UsersDTO(String userId, String password) {
 		super();
+		this.userId = userId;
+		this.password = password;
+	}
+	
+	
+	public UsersDTO(int userSeq, String userId, String name) {
+		super();
+		this.userSeq = userSeq;
 		this.userId = userId;
 		this.name = name;
 	}
