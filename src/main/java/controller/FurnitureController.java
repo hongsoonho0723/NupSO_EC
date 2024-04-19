@@ -43,7 +43,7 @@ public class FurnitureController implements Controller {
             int userSeq = reviewService.findUserSeq(furnitureSeq);
             String userName = userService.findUserNameBySeq(userSeq);
 
-            request.setAttribute("furnDTO", furnitureDTO);
+            request.setAttribute("furnitureDTO", furnitureDTO);
 
             request.setAttribute("imgList",imgList);
             request.setAttribute("imgDetailList",imgDetailList);
