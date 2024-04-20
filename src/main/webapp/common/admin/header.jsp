@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript">
+  $(function(){
+	  $("#logoutButton").click(function(){
+		  //로그아웃기능을하는 페이지로 이동해서 모든세션의 삭제
+			  location.href="${pageContext.request.contextPath}/adminlogout";  
+	  });
+  })
+</script>
+
+
 </head>
 <body>
      <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -24,7 +38,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="#" id="logoutButton">Logout</a></li>
                     </ul>
                 </li>
             </ul>

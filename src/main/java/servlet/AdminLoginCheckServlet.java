@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 
 @WebServlet(urlPatterns = "/adminLogin", loadOnStartup = 1)
-public class AdminLoginCheck extends HttpServlet {
+public class AdminLoginCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     private String correctAdminId="admin@kosta.com";		
