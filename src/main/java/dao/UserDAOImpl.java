@@ -88,6 +88,7 @@ public class UserDAOImpl implements UserDAO {
         }finally {
             DbUtil.dbClose(con, ps, rs);
         }
+        System.out.println("dao dbDTO = " +dbDTO);
         return dbDTO;
 
     }
@@ -143,30 +144,7 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-	@Override
-	public boolean passwordCheck(String password) throws SQLException {
-		
-		 Connection con = null;
-	     PreparedStatement ps = null;
-	     ResultSet rs = null;
-	     String sql = "select password from users where user_id = ?";
-	     boolean result = true;
 
-	        try {
-	            con = DbUtil.getConnection();
-	            ps = con.prepareStatement(sql);
-	            ps.setString(1, userId);
-	            rs = ps.executeQuery();
-	            if(rs.next()) 
-	            	result=false;
-	            
-	            
-	        }finally {
-	            DbUtil.dbClose(con, ps, rs);
-	        }
-		
-		return result;
-	}
 		
     
 }

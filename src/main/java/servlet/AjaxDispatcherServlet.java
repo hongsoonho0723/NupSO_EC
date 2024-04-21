@@ -43,6 +43,7 @@ public class AjaxDispatcherServlet extends HttpServlet {
 		try {
 			
 			Class<?> clz = clzMap.get(key);
+			System.out.println("clz === "+clz);
 			RestController controller = ajaxMap.get(key);
 			Method method = clz.getMethod(methodName,HttpServletRequest.class, HttpServletResponse.class);
 			

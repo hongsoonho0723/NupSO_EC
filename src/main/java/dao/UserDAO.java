@@ -27,11 +27,7 @@ public interface UserDAO {
     
     boolean idCheck(String userId) throws SQLException;
     
-    /*
-     비밀번호 확인
-     * */
-    
-    boolean passwordCheck(String password) throws SQLException;
+   
     
     
     

@@ -14,7 +14,6 @@ public interface UserService {
 
     boolean idCheck(String userIds) throws SQLException;
     
-    boolean passwordCheck(String password) throws SQLException;
     
     int insert(UsersDTO usersDTO) throws SQLException;
 

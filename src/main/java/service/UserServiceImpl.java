@@ -52,13 +52,7 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	@Override
-	public boolean passwordCheck(String password) throws SQLException {
 
-		boolean result = userDAO.passwordCheck(password);
-		
-		return result;
-	}
 	
 	
 	

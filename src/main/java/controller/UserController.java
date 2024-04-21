@@ -33,11 +33,12 @@ public class UserController implements RestController {
 		// 두개의 전송되는 값을 받는다.
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-
+		System.out.println("userId = "+userId);
+		System.out.println("password = "+password);
 		UsersDTO dbDTO = userService.login(new UsersDTO(userId, password));
 
 		System.out.println("dbname=" + dbDTO.getName());
-		System.out.println("dbDTO = "+dbDTO);
+		System.out.println("dbDTO ==== "+dbDTO);
 		// 로그인성공하면 세션에 정보를 저장 - ${loginUser} / ${loginName}
 		HttpSession session = request.getSession();
 
@@ -68,23 +69,7 @@ public class UserController implements RestController {
 		
 		
 	}
-	/**
-	 * 비밀번호 확인
-	 * */
-	
-	public void passwordCheck(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		System.out.println("passwordCheck controller");
-		String password =request.getParameter("password1");
 
-		boolean result = userService.passwordCheck(password);
-		System.out.println("result = "+ result);
-		//false 사용가능 //true 중복
-		PrintWriter out = response.getWriter();
-		out.print(result);
-		
-		
-	}
 	
 	
 	/**
