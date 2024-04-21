@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  *  사용자의 모든 ajax 요청을 처리할 진입점 Controller이다(FrontController의 역할한다)
  */
-//@WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
+@WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
 public class AjaxDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,7 +29,7 @@ public class AjaxDispatcherServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext applicaion = config.getServletContext();
 		ajaxMap = (Map<String, RestController>)applicaion.getAttribute("ajaxMap");
-		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("ClzMap");
+		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("clzMap");
 		
 	}
    
@@ -42,9 +42,8 @@ public class AjaxDispatcherServlet extends HttpServlet {
 		
 		try {
 			
-			RestController controller = ajaxMap.get(key);
 			Class<?> clz = clzMap.get(key);
-			
+			RestController controller = ajaxMap.get(key);
 			Method method = clz.getMethod(methodName,HttpServletRequest.class, HttpServletResponse.class);
 			
 			method.invoke(controller, request,response);

@@ -21,4 +21,25 @@ public interface UserDAO {
      */
     UsersDTO login(UsersDTO usersDTO) throws SQLException;
     
+    /*
+     회원가입 아이디 중복체크 
+     */
+    
+    boolean idCheck(String userId) throws SQLException;
+    
+    /*
+     비밀번호 확인
+     * */
+    
+    boolean passwordCheck(String password) throws SQLException;
+    
+    
+    
+    /*
+     회원등록
+      */
+    int insert (UsersDTO usersDTO) throws SQLException;
+    
+    
+    
 }

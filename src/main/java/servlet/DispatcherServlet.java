@@ -42,11 +42,11 @@ public class DispatcherServlet extends HttpServlet {
 		String key = request.getParameter("key"); //
 		String methodName = request.getParameter("methodName");
 		if(key==null || key.equals("")) {
-			key="elec";
+			key="user";
 		}
 		
 		if(methodName==null || methodName.equals("")) {
-			methodName="select";//
+			methodName="login";//
 		}
 		
 		System.out.println("key = " + key +" , methodName = " + methodName);

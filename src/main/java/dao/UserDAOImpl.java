@@ -90,7 +90,83 @@ public class UserDAOImpl implements UserDAO {
         }
         return dbDTO;
 
-    }  
+    }
+
+	@Override
+	public boolean idCheck(String userId) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     ResultSet rs = null;
+	     String sql = "select user_id from users where user_id = ?";
+	     boolean result = true;
+
+	        try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setString(1, userId);
+	            rs = ps.executeQuery();
+	            if(rs.next()) 
+	            	result=false;
+	            
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps, rs);
+	        }
+		
+		return result;
+	}
+
+	@Override
+	public int insert(UsersDTO usersDTO) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     String sql = "insert into users values(user_seq.nextval,?,?,?,?,?,?,?,default,default)";
+	     int result = 0;
+
+	        try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setString(1, usersDTO.getUserId());
+	            ps.setString(2, usersDTO.getPassword());
+	            ps.setString(3, usersDTO.getAddr());
+	            ps.setString(4, usersDTO.getName());
+	            ps.setInt(5, usersDTO.getAge());
+	            ps.setString(6, usersDTO.getGender());
+	            ps.setString(7, usersDTO.getPhone());
+	            result = ps.executeUpdate();
+	  
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps);
+	        }
+		
+		return result;
+	}
+
+	@Override
+	public boolean passwordCheck(String password) throws SQLException {
+		
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     ResultSet rs = null;
+	     String sql = "select password from users where user_id = ?";
+	     boolean result = true;
+
+	        try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setString(1, userId);
+	            rs = ps.executeQuery();
+	            if(rs.next()) 
+	            	result=false;
+	            
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps, rs);
+	        }
+		
+		return result;
+	}
 		
     
 }
