@@ -510,7 +510,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div>2
                     </div>
                 </main>
                 <jsp:include page="../common/admin/footer.jsp"></jsp:include>
