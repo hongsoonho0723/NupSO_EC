@@ -18,7 +18,7 @@ public class HandlerMappingListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("HandlerMappingListener contextInitialized");
+		
 
 		Map<String, Controller> map = new HashMap<String, Controller>();
 		Map<String, RestController> ajaxMap = new HashMap<String, RestController>();

@@ -28,9 +28,11 @@ public class DispatcherServlet extends HttpServlet {
 	private Map<String, Controller> map;
 	private Map<String, Class<?>> clzMap;
 	
+
 	public DispatcherServlet() {
 		System.out.println("DispatcherServlet 생성자...");
 	}
+
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = super.getServletContext();
@@ -41,40 +43,41 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key"); //
 		String methodName = request.getParameter("methodName");
-		if(key==null || key.equals("")) {
-			key="user";
-		}
+		String adminUrl = request.getParameter("search");
 		
-		if(methodName==null || methodName.equals("")) {
-			methodName="login";//
-		}
 		
 		System.out.println("key = " + key +" , methodName = " + methodName);
+		System.out.println("adminUrl = "+adminUrl);
 		try {
+			
 			Controller con = map.get(key);
 			Class<?> clz = clzMap.get(key);
-			Method method = 
-					   clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
+			Method method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
 			
-			    ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
+			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
 			
 			/////////////////////////////////////////////////////////
 			if(mv.isRedirect()) {
+				System.out.println("mv.getViewName() redirect = " + mv.getViewName());
 				response.sendRedirect( mv.getViewName() );
 			}else {
+				System.out.println("mv.getViewName() forward = " + mv.getViewName());
 				request.getRequestDispatcher(mv.getViewName()).forward(request, response);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getCause().getMessage());
-			request.getRequestDispatcher("error/error.jsp").forward(request, response);
+//			request.setAttribute("errorMsg", e.getCause().getMessage());
+//			request.getRequestDispatcher("error/error.jsp").forward(request, response);
 		}
 		
 	}//service끝
 
+
+			
+			
+
+
 }
-
-
 
 
 

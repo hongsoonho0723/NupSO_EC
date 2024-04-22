@@ -1,6 +1,8 @@
 package service;
 
+
 import java.sql.SQLException;
+import java.util.List;
 
 import dao.UserDAO;
 import dao.UserDAOImpl;
@@ -24,6 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
+
 	public UsersDTO login(UsersDTO usersDTO) throws SQLException {
 	
 		UsersDTO dbDTO = userDAO.login(usersDTO);
@@ -53,11 +56,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	public List<UsersDTO> selectGender() throws SQLException {
+		List<UsersDTO> list = userDAO.selectGender();
+		return list;
+	}
+
+	@Override
+	public List<UsersDTO> selectAge() throws SQLException {
+		List<UsersDTO> list = userDAO.selectAge();
+		return list;
+	}
+    
 	
-	
-	
-	
-	
-	
-	
+
 }
