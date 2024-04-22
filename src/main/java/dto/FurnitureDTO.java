@@ -16,7 +16,8 @@ public class FurnitureDTO {
     private List<ColorDTO> colorList;
     private List<SizeDTO> sizeList;
     private List<TextureDTO> textureList;
-
+    
+    
     public List<ColorDTO> getColorList() {
         return colorList;
     }
@@ -126,4 +127,5 @@ public class FurnitureDTO {
     public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
+
 }

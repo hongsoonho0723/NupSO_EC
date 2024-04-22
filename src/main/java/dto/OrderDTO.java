@@ -10,6 +10,10 @@ public class OrderDTO {
 	private String deliveryDate;
 	private String regDate;
 	
+	//상세정보 가구이름 뺄때 사용하는 변수
+	OrderInfoDTO orderInfo = new OrderInfoDTO();
+	FurnitureDTO furniture = new FurnitureDTO();
+	
 	public OrderDTO() {}
 
 	public OrderDTO(int orderSeq, int userSeq, int totalPrice, int orderState, String deliveryDate, String regDate) {
@@ -23,6 +27,22 @@ public class OrderDTO {
 	}
 
 	
+	public OrderInfoDTO getOrderInfo() {
+		return orderInfo;
+	}
+
+	public void setOrderInfo(OrderInfoDTO orderInfo) {
+		this.orderInfo = orderInfo;
+	}
+
+	public FurnitureDTO getFurniture() {
+		return furniture;
+	}
+
+	public void setFurniture(FurnitureDTO furniture) {
+		this.furniture = furniture;
+	}
+
 	public int getUserSeq() {
 		return userSeq;
 	}

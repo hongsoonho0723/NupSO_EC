@@ -1,24 +1,23 @@
 package dto;
 
 public class QnADTO {
-	private int QnASeq;
+	private int qnASeq;
 	private int furnitureSeq;
 	private String question;
 	private String answer;
-	private int state;
+	private String state;
 	private String answerDate;
 	private String regDate;
 	private String name;
 	private String password;
 	
-	//QnA 입력시 가구 dto 생성하기
-	FurnitureDTO furniture;
+	//QnA 입력시 가구 dto 생성하기 qna개수 셀 때 필요한 변수
+	FurnitureDTO furniture = new FurnitureDTO();
+	int qnaCount;
 	
-	
-	public QnADTO(int qnASeq, int furnitureSeq, String question, String answer, int state, String answerDate,
+	public QnADTO(int qnASeq, int furnitureSeq, String question, String answer, String state, String answerDate,
 			String regDate, String name, String password) {
-		super();
-		QnASeq = qnASeq;
+		this.qnASeq = qnASeq;
 		this.furnitureSeq = furnitureSeq;
 		this.question = question;
 		this.answer = answer;
@@ -27,6 +26,20 @@ public class QnADTO {
 		this.regDate = regDate;
 		this.name = name;
 		this.password = password;
+	}
+
+
+	public QnADTO() {
+	}
+
+
+	public int getQnaCount() {
+		return qnaCount;
+	}
+
+
+	public void setQnaCount(int qnaCount) {
+		this.qnaCount = qnaCount;
 	}
 
 
@@ -39,14 +52,13 @@ public class QnADTO {
 		this.furniture = furniture;
 	}
 
-
 	public int getQnASeq() {
-		return QnASeq;
+		return qnASeq;
 	}
 
 
 	public void setQnASeq(int qnASeq) {
-		QnASeq = qnASeq;
+		this.qnASeq = qnASeq;
 	}
 
 
@@ -80,12 +92,12 @@ public class QnADTO {
 	}
 
 
-	public int getState() {
+	public String getState() {
 		return state;
 	}
 
 
-	public void setState(int state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
@@ -127,6 +139,14 @@ public class QnADTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	@Override
+	public String toString() {
+		return "QnADTO [qnASeq=" + qnASeq + ", furnitureSeq=" + furnitureSeq + ", question=" + question + ", answer="
+				+ answer + ", state=" + state + ", answerDate=" + answerDate + ", regDate=" + regDate + ", name=" + name
+				+ ", password=" + password + ", furniture=" + furniture + "]";
 	}
 	
 	

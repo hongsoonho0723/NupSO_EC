@@ -55,4 +55,12 @@ public class FurnitureController implements Controller {
         }
         return new ModelAndView("furniture/furniture.jsp");
     }
+    
+    public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	List<FurnitureDTO> list = furnitureService.selectAll();
+    	
+    	 request.setAttribute("list", list);
+    	
+    	return new ModelAndView("admin/adminCharts.jsp");
+    }
 }
