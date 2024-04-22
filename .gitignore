@@ -8,6 +8,8 @@ src/main/webapp/js/*
 src/main/webapp/WEB-INF/*
 src/main/webapp/WEB-INF/web.xml
 
+resources/Wallet_NupSO
+
 
 /build/
 src/main/webapp/WEB-INF/*

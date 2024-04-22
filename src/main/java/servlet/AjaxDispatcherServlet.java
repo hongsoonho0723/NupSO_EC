@@ -1,7 +1,7 @@
 
 package servlet;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -24,8 +24,6 @@ public class AjaxDispatcherServlet extends HttpServlet {
 	private Map<String, RestController> ajaxMap;
 	private Map<String, Class<?>> clzMap;
 		
-	
-	
  	@Override
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext applicaion = config.getServletContext();
@@ -43,9 +41,9 @@ public class AjaxDispatcherServlet extends HttpServlet {
 		
 		try {
 			
-			RestController controller = ajaxMap.get(key);
 			Class<?> clz = clzMap.get(key);
-			
+			System.out.println("clz === "+clz);
+			RestController controller = ajaxMap.get(key);
 			Method method = clz.getMethod(methodName,HttpServletRequest.class, HttpServletResponse.class);
 			
 			method.invoke(controller, request,response);

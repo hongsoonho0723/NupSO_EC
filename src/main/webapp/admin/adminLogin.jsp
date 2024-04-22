@@ -10,7 +10,7 @@
         <meta name="author" content="" />
 
         <title>NupSO Admin Login</title>
-        <link href="${path}/css/styles.css" rel="stylesheet" />
+        <link href="${path}/assets/css/styles.css" rel="stylesheet" />
 
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script>
@@ -65,10 +65,10 @@
                     </div>
                 </main>
             </div>
-              <jsp:include page="../common/admin/footer.jsp"></jsp:include>
+              <jsp:include page="../assets/common/admin/footer.jsp"></jsp:include>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="${path}/js/scripts.js"></script>
+        <script src="${path}/assets/js/scripts.js"></script>
     </body>
 </html>
     

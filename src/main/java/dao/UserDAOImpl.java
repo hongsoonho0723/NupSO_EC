@@ -1,7 +1,5 @@
 package dao;
 
-import util.DbUtil;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,12 +11,14 @@ import java.util.List;
 import java.util.Properties;
 
 import dto.UsersDTO;
+import util.DbUtil;
+
 
 public class UserDAOImpl implements UserDAO {
     private Properties proFile = new Properties();
 
     public UserDAOImpl() {
-        InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+       InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
         try {
             proFile.load(input);
         } catch (IOException e) {
@@ -69,6 +69,88 @@ public class UserDAOImpl implements UserDAO {
     }
 
 	@Override
+
+	public UsersDTO login(UsersDTO usersDTO) throws SQLException {
+
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        UsersDTO dbDTO=null;
+        String sql = "select user_seq,user_id,name from users where user_id=? and password=?";
+        //String sql = "select * from users where user_id=? and password=?";
+        //String sql = "select * from name where user_id=? and password=?";
+		
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usersDTO.getUserId());
+            ps.setString(2, usersDTO.getPassword());
+            rs = ps.executeQuery();
+            if(rs.next()) {
+            	dbDTO = new UsersDTO(rs.getInt(1),rs.getString(2),rs.getString(3));
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        System.out.println("dao dbDTO = " +dbDTO);
+        return dbDTO;
+
+    }
+
+	@Override
+	public boolean idCheck(String userId) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     ResultSet rs = null;
+	     String sql = "select user_id from users where user_id = ?";
+	     boolean result = true;
+
+	        try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setString(1, userId);
+	            rs = ps.executeQuery();
+	            if(rs.next()) 
+	            	result=false;
+	            
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps, rs);
+	        }
+		
+		return result;
+	}
+
+	@Override
+	public int insert(UsersDTO usersDTO) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     String sql = "insert into users values(user_seq.nextval,?,?,?,?,?,?,?,default,default)";
+	     int result = 0;
+
+	        try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setString(1, usersDTO.getUserId());
+	            ps.setString(2, usersDTO.getPassword());
+	            ps.setString(3, usersDTO.getAddr());
+	            ps.setString(4, usersDTO.getName());
+	            ps.setInt(5, usersDTO.getAge());
+	            ps.setString(6, usersDTO.getGender());
+	            ps.setString(7, usersDTO.getPhone());
+	            result = ps.executeUpdate();
+	  
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps);
+	        }
+		
+		return result;
+	}
+
+
+		
+
 	public List<UsersDTO> selectGender() throws SQLException {
 		 Connection con = null;
 		 PreparedStatement ps = null;
@@ -117,6 +199,6 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return list;
 	}
-    
+
     
 }
