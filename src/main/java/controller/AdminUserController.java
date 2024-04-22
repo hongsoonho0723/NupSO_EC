@@ -1,39 +1,54 @@
 package controller;
 
 import java.sql.SQLException;
-
 import java.util.List;
 
-import dto.ReviewDTO;
+
+import dto.UsersDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.ReviewService;
-import service.ReviewServiceImpl;
+import service.AdminUserService;
+import service.AdminUserServiceImpl;
 
 public class AdminUserController implements Controller {
-	ReviewService service = new ReviewServiceImpl();
+	AdminUserService service = new AdminUserServiceImpl();
 	
 	
 	
-    @Override
+    public AdminUserController() {}
+
+	@Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
         return null;
     }
-
+	
+	
     public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-    	List<ReviewDTO> list = service.selectAll(); 	
+    	List<UsersDTO> list = service.selectUser(); 	
     	request.setAttribute("list", list);
-		return new ModelAndView("admin/adminReview.jsp");
+		return new ModelAndView("admin/adminUser.jsp");
     }
     
+    
+    public ModelAndView searchByState(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String userState = request.getParameter("userState");
+		
+		service.findUserSeqByState(userState);
+		request.setAttribute("userState", userState);
+    	
+    	return new ModelAndView("admin/adminUser.jsp");
+    	
+    }
+    
+    
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException{
-    	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
+    	int userSeq = Integer.parseInt(request.getParameter("userSeq"));
     	
-    	service.delete(reviewSeq);
+    	service.delete(userSeq);
     	
-    	List<ReviewDTO> list = service.selectAll(); 	
+    	List<UsersDTO> list = service.selectUser(); 	
     	request.setAttribute("list", list);
-		return new ModelAndView("admin/adminReview.jsp");
+		return new ModelAndView("admin/adminUser.jsp");
     }
     
 }

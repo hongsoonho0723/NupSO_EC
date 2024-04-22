@@ -28,7 +28,7 @@ public class AdminUserDAOImpl implements AdminUserDAO {
 	}
 
 	@Override
-	public List<UsersDTO> selectUserBySeq(int userSeq) throws SQLException {
+	public List<UsersDTO> selectUser() throws SQLException {
 		Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

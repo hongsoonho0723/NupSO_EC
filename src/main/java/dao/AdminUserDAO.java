@@ -9,7 +9,7 @@ public interface AdminUserDAO {
 	/*
     사용자 전체 조회
      */
-    List<UsersDTO> selectUserBySeq(int userSeq) throws SQLException;
+    List<UsersDTO> selectUser() throws SQLException;
 
     /*
     UserState로 사용자 고유번호 찾기

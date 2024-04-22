@@ -1,52 +1,35 @@
 package service;
 
-import dao.ReviewDAO;
-
-import dao.ReviewDAOImpl;
-import dto.ReviewDTO;
-
 import java.sql.SQLException;
 import java.util.List;
 
+import dao.AdminUserDAO;
+import dao.AdminUserDAOImpl;
+import dto.UsersDTO;
+
 public class AdminUserServiceImpl implements AdminUserService {
-
-    private ReviewDAO reviewDAO = new ReviewDAOImpl();
-
-    @Override
-    public List<ReviewDTO> selectAllReviews(int furnitureSeq) throws SQLException {
-        List<ReviewDTO> list = reviewDAO.selectAllReviews(furnitureSeq);
-        return list;
-    }
-
-    @Override
-    public int findUserSeq(int reviewSeq) throws SQLException {
-        int userSeq = reviewDAO.findUserSeq(reviewSeq);
-        if (userSeq == 0) throw new SQLException("리뷰를 작성한 회원번호 조회를 실패하였습니다.");
-        return userSeq;
-    }
-
+	
+	private AdminUserDAO adminUserDAO = new AdminUserDAOImpl();
+	
 	@Override
-	public List<ReviewDTO> selectAll() throws SQLException {
-		List<ReviewDTO> list = reviewDAO.selectAll();
+	public List<UsersDTO> selectUser() throws SQLException {
+		List<UsersDTO> list = adminUserDAO.selectUser();
 		return list;
 	}
 
 	@Override
-	public int delete(int reviewSeq) throws SQLException {
-		int result = reviewDAO.delete(reviewSeq);
-		if (result == 0) throw new SQLException("리뷰 삭제에 실패하였습니다.");
+	public List<UsersDTO> findUserSeqByState(String userState) throws SQLException {
+		List<UsersDTO> list = adminUserDAO.findUserSeqByState(userState);
+		return list;
+	}
+
+	@Override
+	public int delete(int userSeq) throws SQLException {
+		int result = adminUserDAO.delete(userSeq);
+		if (result == 0) throw new SQLException("회원정보 삭제 실패하였습니다.");
 		return result;
+		
+		
 	}
 
-	@Override
-	public List<ReviewDTO> selectReviewCount() throws SQLException {
-		List<ReviewDTO> list = reviewDAO.selectReviewCount();
-		return list;
-
-	}
-    
-    
-    
-    
-    
 }
