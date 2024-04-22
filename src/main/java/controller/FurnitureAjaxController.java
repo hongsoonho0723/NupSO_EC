@@ -37,7 +37,8 @@ public class FurnitureAjaxController implements RestController {
 	
 	public List<FurnitureDTO> selectAll() throws SQLException, IOException {
 		
-		List<FurnitureDTO> furnitureList = furnitureService.selectAll();	
+		List<FurnitureDTO> furnitureList = furnitureService.selectAll();
+		System.out.println(furnitureList);
 		return furnitureList;
 		
 	}

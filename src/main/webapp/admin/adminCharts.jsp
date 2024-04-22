@@ -37,7 +37,6 @@
                 data: { key: "furniture", methodName: "selectChartAll" },
                 success: function(result) {
                     // 성공적으로 데이터를 가져왔을 때, 차트를 업데이트합니다.
-                    console.log(result)
                     updateAreaChart(result.furnitureList);
                     updatePieChart(result.maleCount,result.femaleCount);
                     updateBarChart(result.reviewCountList);
@@ -100,8 +99,7 @@
                     }
                 });
             }
-             
-            
+
             function drawEmptyPieChart() {
             	myPieChart = new Chart(ctxPie, {
             		type: 'pie',
