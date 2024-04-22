@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="${path}/assets/common/user/header.jsp"/>
 
 
 <!-- Start Hero Section -->
@@ -126,4 +126,4 @@
 <!-- End Contact Form -->
 
 
-<jsp:include page="../common/footer.jsp"/>
+<jsp:include page="${path}/assets/common/user/footer.jsp"/>

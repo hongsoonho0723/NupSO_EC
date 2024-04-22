@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../../assets/common/user/header.jsp"/>
 
 <script type="text/javascript">
     async function query(data) {

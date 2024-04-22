@@ -28,7 +28,30 @@ public class UsersDTO {
 		this.regDate = regDate;
 	}
 	
+
+	public UsersDTO(String userId, String password, String name,String addr, int age, String gender,  String phone) {
+		this.userId = userId;
+		this.password = password;
+		this.name = name;
+		this.addr = addr;
+		this.age = age;
+		this.gender = gender;
+		this.phone = phone;
+	}
+	public UsersDTO(String userId, String password) {
+		super();
+		this.userId = userId;
+		this.password = password;
+	}
+	
+	public UsersDTO(int userSeq, String userId, String name) {
+		super();
+		this.userSeq = userSeq;
+		this.userId = userId;
+		this.name = name;
+	}
 	public UsersDTO() {
+
 	}
 
 	public int getUserSeq() {

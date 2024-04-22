@@ -28,6 +28,11 @@ public class DispatcherServlet extends HttpServlet {
 	private Map<String, Controller> map;
 	private Map<String, Class<?>> clzMap;
 	
+
+	public DispatcherServlet() {
+		System.out.println("DispatcherServlet 생성자...");
+	}
+
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = super.getServletContext();
@@ -68,9 +73,11 @@ public class DispatcherServlet extends HttpServlet {
 	}//service끝
 
 
+			
+			
+
+
 }
-
-
 
 
 
