@@ -10,7 +10,11 @@ public class ReviewDTO {
 	private String review;
 	private int score;
 	private String regDate;
-
+	
+	UsersDTO user = new UsersDTO();
+	FurnitureDTO furniture = new FurnitureDTO();
+	private int count; // 리뷰 개수 사용할때 쓰는 변수 칼럼x
+	
 	private List<ReviewImgDTO> reviewImgs;
 
 	public List<ReviewImgDTO> getReviewImgs() {
@@ -32,6 +36,30 @@ public class ReviewDTO {
 	}
 
 
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public UsersDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UsersDTO user) {
+		this.user = user;
+	}
+
+	public FurnitureDTO getFurniture() {
+		return furniture;
+	}
+
+	public void setFurniture(FurnitureDTO furniture) {
+		this.furniture = furniture;
+	}
 
 	public int getReviewSeq() {
 		return reviewSeq;

@@ -15,4 +15,10 @@ public interface ReviewDAO {
     리뷰를 작성한 회원번호 조회
      */
     int findUserSeq(int reviewSeq) throws SQLException;
+    
+    List<ReviewDTO> selectAll() throws SQLException;
+
+	int delete(int reviewSeq) throws SQLException;
+
+	List<ReviewDTO> selectReviewCount() throws SQLException;
 }

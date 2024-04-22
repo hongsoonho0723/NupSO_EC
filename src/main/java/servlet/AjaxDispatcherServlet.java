@@ -29,7 +29,7 @@ public class AjaxDispatcherServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext applicaion = config.getServletContext();
 		ajaxMap = (Map<String, RestController>)applicaion.getAttribute("ajaxMap");
-		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("ClzMap");
+		clzMap = (Map<String, Class<?>>)applicaion.getAttribute("clzMap");
 		
 	}
    
@@ -52,11 +52,12 @@ public class AjaxDispatcherServlet extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			//비동기는 페이지 이동할 필요가 없다 . catch로 오면 실행오류인거고 ajax의 error로 간다
+
 		}
 		
 		
 	}//service 메소드 끝 
+
 
 }
 
