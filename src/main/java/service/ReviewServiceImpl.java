@@ -23,4 +23,29 @@ public class ReviewServiceImpl implements ReviewService {
         if (userSeq == 0) throw new SQLException("리뷰를 작성한 회원번호 조회를 실패하였습니다.");
         return userSeq;
     }
+
+	@Override
+	public List<ReviewDTO> selectAll() throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectAll();
+		return list;
+	}
+
+	@Override
+	public int delete(int reviewSeq) throws SQLException {
+		int result = reviewDAO.delete(reviewSeq);
+		if (result == 0) throw new SQLException("리뷰 삭제에 실패하였습니다.");
+		return result;
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewCount() throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectReviewCount();
+		return list;
+
+	}
+    
+    
+    
+    
+    
 }

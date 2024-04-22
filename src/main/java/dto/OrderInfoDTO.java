@@ -6,14 +6,14 @@ public class OrderInfoDTO {
 	private int furnitureSeq;
 	private int quantity;
 	private String colorName;
-	private int sizeVal;
+	private String sizeVal;
 	private String textureName;
 	
 	
 	public OrderInfoDTO() {}
 
 
-	public OrderInfoDTO(int orderInfoSeq, int orderSeq, int furnitureSeq, int quantity, String colorName, int sizeVal,
+	public OrderInfoDTO(int orderInfoSeq, int orderSeq, int furnitureSeq, int quantity, String colorName, String sizeVal,
 			String textureName) {
 		super();
 		this.orderInfoSeq = orderInfoSeq;
@@ -76,12 +76,12 @@ public class OrderInfoDTO {
 	}
 
 
-	public int getSizeVal() {
+	public String getSizeVal() {
 		return sizeVal;
 	}
 
 
-	public void setSizeVal(int sizeVal) {
+	public void setSizeVal(String sizeVal) {
 		this.sizeVal = sizeVal;
 	}
 

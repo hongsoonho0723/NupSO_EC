@@ -8,8 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+
         <title>NupSO Admin Login</title>
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="${path}/css/styles.css" rel="stylesheet" />
+
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script>
         function loginForm(event) {
@@ -48,7 +50,11 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn btn-primary" type="submit">Login</button>
+
+                                               <!-- <button class="btn btn-primary" type="submit">Login</button> -->
+
+                                               <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFunitureName">Login</a>
+
                                             </div>
                                         </form>
                                     </div>
