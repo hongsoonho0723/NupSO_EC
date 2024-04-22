@@ -61,7 +61,7 @@
 					console.log("result = " + result)
 					if (result && result.name) {
 						alert("아이디 일치");
-						window.location.href = "signUp.jsp";
+						window.location.href = "${path}/cart/cart.jsp";
 						
 					/* 	let str = "";
 						str=result.name
