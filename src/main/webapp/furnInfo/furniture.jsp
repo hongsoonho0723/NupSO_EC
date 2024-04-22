@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../../assets/common/user/header.jsp"/>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
     $(document).on("click", "#delete", function () {
@@ -385,4 +385,4 @@
     </div>
     <%--</div>--%>
     <%--</div>--%>
-<jsp:include page="../common/footer.jsp"/>
+<jsp:include page="../../assets/common/user/footer.jsp"/>

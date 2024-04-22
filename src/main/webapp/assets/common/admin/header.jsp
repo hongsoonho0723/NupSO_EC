@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="${path}/js/jquery-3.6.0.min.js"></script>
+<script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
 
 <script type="text/javascript">
   $(function(){
