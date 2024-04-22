@@ -35,10 +35,9 @@
                 url: "${path}/ajax", // 서버에서 데이터를 가져오는 URL
                 type: "post",
                 dataType: "json",
-                data: { key: "furniture", methodName: "selectChartAll" },
+                data: { key: "furnitureAjax", methodName: "selectChartAll" },
                 success: function(result) {
                     // 성공적으로 데이터를 가져왔을 때, 차트를 업데이트합니다.
-                    console.log(result);
                     updateAreaChart(result.qnaCountList);
                     updateBarChart(result.furnitureList);
                 },
@@ -70,6 +69,14 @@
                         }]
                     },
                     options: {
+                    	scales: {
+                            y: {
+                            	suggestedMin: 0, // y 축의 최소 값
+                                ticks: {
+                                    stepSize: 1 // y 축 간격을 1로 설정
+                                }
+                            }
+                        },
                         plugins: {
                             legend: {
                                 display: false,
@@ -127,7 +134,7 @@
                 var dataSet = [0];
 
                 // 데이터를 처리하여 labels와 dataSet을 채웁니다.
-                data.forEach(function(item) { labels.push(item.furnitureName); dataSet.push(item.stock); });
+                data.forEach(function(item) { labels.push(item.furnitureName); dataSet.push(parseInt(item.stock)); });
 
                 // 차트의 데이터를 업데이트하고 차트를 다시 그립니다.
                 myBarChart.data.labels = labels;

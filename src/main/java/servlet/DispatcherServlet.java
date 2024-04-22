@@ -43,11 +43,11 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key"); //
 		String methodName = request.getParameter("methodName");
-		String adminUrl = request.getParameter("search");
+
 		
 		
-		System.out.println("key = " + key +" , methodName = " + methodName);
-		System.out.println("adminUrl = "+adminUrl);
+		System.out.println("dispatcher key = " + key +" , methodName = " + methodName);
+
 		try {
 			
 			Controller con = map.get(key);

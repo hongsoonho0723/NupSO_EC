@@ -2,6 +2,7 @@ package dao;
 
 import dto.ColorDTO;
 import dto.FurnitureDTO;
+import dto.ImgDTO;
 import dto.SizeDTO;
 import dto.TextureDTO;
 import util.DbUtil;
@@ -157,6 +158,45 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		 
+		return list;
+	}
+
+
+	//isDetail 0: 상품 상세 설명, 1: 상품 대표 이미지
+	@Override
+	public List<FurnitureDTO> selectFurnitureList() throws SQLException {
+		 Connection con = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 String sql = proFile.getProperty("furniture.selectFurnitureImg");
+		 System.out.println("sql selectFurnitureList"+sql);
+		 FurnitureDTO furniture = null;
+		 ImgDTO img = null;
+		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+		 boolean mainImg = false;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
+		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+				if(rs.getInt("is_detail") ==1 ) mainImg= true; 
+				img = new ImgDTO(rs.getInt("img_seq"),rs.getInt(1),rs.getString("img_src"),rs.getString("img_type"),mainImg);
+				if(mainImg) {
+					//메인 이미지
+					furniture.setImg(img);
+				}else {
+					// 상세보기 이미지 리스트 저장
+					furniture.getImgList().add(img);
+				}
+				list.add(furniture);
+			}
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
 		return list;
 	}
     

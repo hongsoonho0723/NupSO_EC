@@ -31,6 +31,13 @@ public class FurnitureServiceImpl implements FurnitureService {
 		if(list.isEmpty()) throw new SQLException("정보 검색에 실패했습니다.");
 		return list;
 	}
+
+	@Override
+	public List<FurnitureDTO> selectFurnitureList() throws SQLException {
+		List<FurnitureDTO> list = furnitureDAO.selectFurnitureList();
+		if(list.isEmpty()) throw new SQLException("정보 검색에 실패했습니다.");
+		return list;
+	}
     
     
 }
