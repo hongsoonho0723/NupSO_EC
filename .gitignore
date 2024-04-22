@@ -4,8 +4,9 @@
 .settings/
 *.properties
 src/main/webapp/META-INF/*
-src/main/webapp/js/jquery-3.7.1.js
-src/main/webapp/js/jquery-3.7.1.min.js
+src/main/webapp/js/*
+src/main/webapp/WEB-INF/*
+src/main/webapp/WEB-INF/web.xml
 
 /build/
 
