@@ -28,7 +28,8 @@ public class AdminLoginCheckServlet extends HttpServlet {
     	
     	 
     	 if(adminId.equals(correctAdminId) && adminPwd.equals(correctAdminPwd)) {
-    		response.sendRedirect(request.getContextPath() + "/admin/adminIndex.jsp");
+
+    		response.sendRedirect(request.getContextPath() + "/front?key=order&methodName=selectOrderFunitureName");
     		 
     	 }else {
     		 response.setContentType("text/html;charset=UTF-8");

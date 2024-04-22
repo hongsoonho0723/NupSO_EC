@@ -51,9 +51,9 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 
-                                               <!-- <button class="btn btn-primary" type="submit">Login</button> -->
+                                               <button class="btn btn-primary" type="submit">Login</button>
 
-                                               <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFunitureName">Login</a>
+                                               <%-- <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFunitureName">Login</a> --%>
 
                                             </div>
                                         </form>
