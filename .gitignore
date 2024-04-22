@@ -4,11 +4,11 @@
 .settings/
 *.properties
 src/main/webapp/META-INF/*
-src/main/webapp/js/jquery-3.7.1.js
-src/main/webapp/js/jquery-3.7.1.min.js
+src/main/webapp/js/*
+
 
 /build/
-
+src/main/webapp/WEB-INF/*
 
 ### Oracle WALLET ###
 Wallet_NupSO
