@@ -5,7 +5,7 @@ public class SizeDTO {
     private int furnitureSeq;  // 가구 고유번호 (외래키)
     private String sizeVal;   // 사이즈 명세
 
-    // 생성자
+    // 생성자	
     public SizeDTO(int sizeSeq, int furnitureSeq, String sizeVal) {
         this(sizeVal);
         this.sizeSeq = sizeSeq;

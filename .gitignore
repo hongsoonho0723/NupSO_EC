@@ -8,8 +8,9 @@ src/main/webapp/js/*
 src/main/webapp/WEB-INF/*
 src/main/webapp/WEB-INF/web.xml
 
-/build/
 
+/build/
+src/main/webapp/WEB-INF/*
 
 ### Oracle WALLET ###
 Wallet_NupSO

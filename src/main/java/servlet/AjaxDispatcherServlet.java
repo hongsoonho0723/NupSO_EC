@@ -1,3 +1,4 @@
+
 package servlet;
 
 import java.io.IOException;
@@ -60,12 +61,4 @@ public class AjaxDispatcherServlet extends HttpServlet {
 
 
 }
-
-
-
-
-
-
-
-
 
