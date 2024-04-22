@@ -29,6 +29,28 @@ public class QnAServiceImpl implements QnAService {
 		return list;
 	}
     
+	@Override
+	public int update(QnADTO qna) throws SQLException {
+		int result = qnaDAO.update(qna);
+		if(result == 0 ) throw new SQLException("문의 수정에 실패했습니다.");
+		
+		return result;
+	}
+
+	@Override
+	public QnADTO select(int qnaSeq) throws SQLException {
+		QnADTO qna = qnaDAO.select(qnaSeq);
+		if(qna==null) throw new SQLException("문의 찾는데 실패했습니다.");
+		
+		return qna;
+	}
+
+	@Override
+	public List<QnADTO> selectCount() throws SQLException {
+		List<QnADTO> list = qnaDAO.selectCount();
+		return list;
+	}
     
+	
     
 }

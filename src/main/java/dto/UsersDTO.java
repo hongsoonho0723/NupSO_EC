@@ -28,6 +28,9 @@ public class UsersDTO {
 		this.regDate = regDate;
 	}
 	
+	public UsersDTO() {
+	}
+
 	public int getUserSeq() {
 		return userSeq;
 	}

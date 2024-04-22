@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>NoopSO Admin Login</title>
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="${path}/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -36,7 +36,7 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-primary" href="adminIndex.jsp">Login</a>
+                                                <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFunitureName">Login</a>
                                             </div>
                                         </form>
                                     </div>

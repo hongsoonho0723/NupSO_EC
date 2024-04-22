@@ -133,4 +133,34 @@ public class FurnitureDAOImpl implements FurnitureDAO {
         }
         return -1;
     }
+
+	@Override
+	public List<FurnitureDTO> selectAll() throws SQLException {
+		 Connection con = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 String sql = proFile.getProperty("furniture.selectAll");
+		 FurnitureDTO furniture = null;
+		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
+		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+				list.add(furniture);
+			}
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		 
+		return list;
+	}
+    
+    
+    
+    
 }

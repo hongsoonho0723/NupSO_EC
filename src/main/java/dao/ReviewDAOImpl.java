@@ -93,4 +93,78 @@ public class ReviewDAOImpl implements ReviewDAO {
         }
         return list;
     }
+
+	@Override
+	public List<ReviewDTO> selectAll() throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectAll");
+        List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+        ReviewDTO review = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
+                        rs.getString(4),rs.getInt(5),rs.getString(6));
+                review.getFurniture().setFurnitureName(rs.getString(7));
+                review.getUser().setName(rs.getString(8));
+                list.add(review);
+            }
+        }finally {
+            DbUtil.dbClose(null, ps, rs);
+        }
+        return list;
+	}
+
+	@Override
+	public int delete(int reviewSeq) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        String sql = proFile.getProperty("review.delete");
+        int result = 0;
+        
+        try {
+        	con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reviewSeq);
+            result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewCount() throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectReviewCount");
+        List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+        ReviewDTO review = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	review = new ReviewDTO();
+            	review.getFurniture().setFurnitureName(rs.getString(1));
+            	review.setCount(rs.getInt(2));
+                list.add(review);
+            }
+        }finally {
+            DbUtil.dbClose(null, ps, rs);
+        }
+        return list;
+	}
+    
+    
+    
+    
+    
 }

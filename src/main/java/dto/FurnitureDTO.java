@@ -3,127 +3,109 @@ package dto;
 import java.util.List;
 
 public class FurnitureDTO {
-    private int FURNITURE_SEQ;
-    private String FURNITURE_NUMBER;
-    private String FURNITURE_NAME;
-    private String FURNITURE_DISCRIPTION;
-    private int PRICE;
-    private int STOCK;
-    private int SALE_COUNT; //판매량
-    private String CATEGORY;
-    private String REG_DATE;
+    private int furnitureSeq;
+    private String furnitureNumber;
+    private String furnitureName;
+    private String furnitureDiscriptiom;
+    private int price;
+    private int stock;
+    private int saleCount; //판매량
+    private String category;
+    private String regDate;
 
     private List<ColorDTO> colorList;
     private List<SizeDTO> sizeList;
     private List<TextureDTO> textureList;
+    
+    
+    public FurnitureDTO() {};
+    
+	public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDiscriptiom,
+			int price, int stock, int saleCount, String category, String regDate) {
+		this.furnitureSeq = furnitureSeq;
+		this.furnitureNumber = furnitureNumber;
+		this.furnitureName = furnitureName;
+		this.furnitureDiscriptiom = furnitureDiscriptiom;
+		this.price = price;
+		this.stock = stock;
+		this.saleCount = saleCount;
+		this.category = category;
+		this.regDate = regDate;
+	}
+	
+	public int getFurnitureSeq() {
+		return furnitureSeq;
+	}
+	public void setFurnitureSeq(int furnitureSeq) {
+		this.furnitureSeq = furnitureSeq;
+	}
+	public String getFurnitureNumber() {
+		return furnitureNumber;
+	}
+	public void setFurnitureNumber(String furnitureNumber) {
+		this.furnitureNumber = furnitureNumber;
+	}
+	public String getFurnitureName() {
+		return furnitureName;
+	}
+	public void setFurnitureName(String furnitureName) {
+		this.furnitureName = furnitureName;
+	}
+	
+	public String getFurnitureDiscriptiom() {
+		return furnitureDiscriptiom;
+	}
+	public void setFurnitureDiscriptiom(String furnitureDiscriptiom) {
+		this.furnitureDiscriptiom = furnitureDiscriptiom;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public int getSaleCount() {
+		return saleCount;
+	}
+	public void setSaleCount(int saleCount) {
+		this.saleCount = saleCount;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public List<ColorDTO> getColorList() {
+		return colorList;
+	}
+	public void setColorList(List<ColorDTO> colorList) {
+		this.colorList = colorList;
+	}
+	public List<SizeDTO> getSizeList() {
+		return sizeList;
+	}
+	public void setSizeList(List<SizeDTO> sizeList) {
+		this.sizeList = sizeList;
+	}
+	public List<TextureDTO> getTextureList() {
+		return textureList;
+	}
+	public void setTextureList(List<TextureDTO> textureList) {
+		this.textureList = textureList;
+	}
 
-    public List<ColorDTO> getColorList() {
-        return colorList;
-    }
-
-    public void setColorList(List<ColorDTO> colorList) {
-        this.colorList = colorList;
-    }
-
-    public List<SizeDTO> getSizeList() {
-        return sizeList;
-    }
-
-    public void setSizeList(List<SizeDTO> sizeList) {
-        this.sizeList = sizeList;
-    }
-
-    public List<TextureDTO> getTextureList() {
-        return textureList;
-    }
-
-    public void setTextureList(List<TextureDTO> textureList) {
-        this.textureList = textureList;
-    }
-
-    public FurnitureDTO() {}
-
-    public FurnitureDTO(int FURNITURE_SEQ, String FURNITURE_NUMBER, String FURNITURE_NAME, String FURNITURE_DISCRIPTION, int PRICE, int STOCK, int SALE_COUNT, String CATEGORY, String REG_DATE) {
-        this.FURNITURE_SEQ = FURNITURE_SEQ;
-        this.FURNITURE_NUMBER = FURNITURE_NUMBER;
-        this.FURNITURE_NAME = FURNITURE_NAME;
-        this.FURNITURE_DISCRIPTION = FURNITURE_DISCRIPTION;
-        this.PRICE = PRICE;
-        this.STOCK = STOCK;
-        this.SALE_COUNT = SALE_COUNT;
-        this.CATEGORY = CATEGORY;
-        this.REG_DATE = REG_DATE;
-    }
-
-    public int getFURNITURE_SEQ() {
-        return FURNITURE_SEQ;
-    }
-
-    public void setFURNITURE_SEQ(int FURNITURE_SEQ) {
-        this.FURNITURE_SEQ = FURNITURE_SEQ;
-    }
-
-    public String getFURNITURE_NUMBER() {
-        return FURNITURE_NUMBER;
-    }
-
-    public void setFURNITURE_NUMBER(String FURNITURE_NUMBER) {
-        this.FURNITURE_NUMBER = FURNITURE_NUMBER;
-    }
-
-    public String getFURNITURE_NAME() {
-        return FURNITURE_NAME;
-    }
-
-    public void setFURNITURE_NAME(String FURNITURE_NAME) {
-        this.FURNITURE_NAME = FURNITURE_NAME;
-    }
-
-    public String getFURNITURE_DISCRIPTION() {
-        return FURNITURE_DISCRIPTION;
-    }
-
-    public void setFURNITURE_DISCRIPTION(String FURNITURE_DISCRIPTION) {
-        this.FURNITURE_DISCRIPTION = FURNITURE_DISCRIPTION;
-    }
-
-    public int getPRICE() {
-        return PRICE;
-    }
-
-    public void setPRICE(int PRICE) {
-        this.PRICE = PRICE;
-    }
-
-    public int getSTOCK() {
-        return STOCK;
-    }
-
-    public void setSTOCK(int STOCK) {
-        this.STOCK = STOCK;
-    }
-
-    public int getSALE_COUNT() {
-        return SALE_COUNT;
-    }
-
-    public void setSALE_COUNT(int SALE_COUNT) {
-        this.SALE_COUNT = SALE_COUNT;
-    }
-
-    public String getCATEGORY() {
-        return CATEGORY;
-    }
-
-    public void setCATEGORY(String CATEGORY) {
-        this.CATEGORY = CATEGORY;
-    }
-
-    public String getREG_DATE() {
-        return REG_DATE;
-    }
-
-    public void setREG_DATE(String REG_DATE) {
-        this.REG_DATE = REG_DATE;
-    }
+   
 }
