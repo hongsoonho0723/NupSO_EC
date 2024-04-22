@@ -63,4 +63,17 @@ public class FurnitureController implements Controller {
     	
     	return new ModelAndView("admin/adminCharts.jsp");
     }
+    
+    /*
+     * 상품 전체보기 select문
+     * */
+    public ModelAndView selectFurnitureList(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	System.out.println("selectFurnitureList 메서드 까지는 오나?");
+    	List<FurnitureDTO> list = furnitureService.selectFurnitureList();
+    	System.out.println(list);
+    	 request.setAttribute("list", list);
+    	
+    	return new ModelAndView("user/shop.jsp");
+    }
+    
 }

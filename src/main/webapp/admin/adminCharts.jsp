@@ -34,7 +34,7 @@
                 url: "${path}/ajax", // 서버에서 데이터를 가져오는 URL
                 type: "post",
                 dataType: "json",
-                data: { key: "furniture", methodName: "selectChartAll" },
+                data: { key: "furnitureAjax", methodName: "selectChartAll" },
                 success: function(result) {
                     // 성공적으로 데이터를 가져왔을 때, 차트를 업데이트합니다.
                     updateAreaChart(result.furnitureList);

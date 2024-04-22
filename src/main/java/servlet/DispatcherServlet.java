@@ -41,7 +41,7 @@ public class DispatcherServlet extends HttpServlet {
 
 		
 		
-		System.out.println("key = " + key +" , methodName = " + methodName);
+		System.out.println("dispatcher key = " + key +" , methodName = " + methodName);
 
 		try {
 			

@@ -36,7 +36,7 @@ public class HandlerMappingListener implements ServletContextListener {
 				 Class<?> className = Class.forName(value);
 			 
 				 Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
-				 System.out.println("key " + key + "value "+value);
+				 System.out.println("actionMapping key " + key + " value "+value);
 				 map.put(key, controller); 
 				 clzMap.put(key, className); 
 				 
@@ -50,7 +50,7 @@ public class HandlerMappingListener implements ServletContextListener {
 				 Class<?> className = Class.forName(value);
 			 
 				 RestController controller = (RestController)className.getDeclaredConstructor().newInstance();
-				 System.out.println("key " + key + "value "+value);
+				 System.out.println("ajaxMapping key " + key + " value "+value);
 				 ajaxMap.put(key, controller); 
 				 clzMap.put(key, className); 
 				 
