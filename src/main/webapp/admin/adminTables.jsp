@@ -14,9 +14,9 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-       <jsp:include page="../../assets/common/admin/header.jsp"></jsp:include>
+       <jsp:include page="../common/admin/header.jsp"></jsp:include>
         <div id="layoutSidenav">
-           <jsp:include page="../../assets/common/admin/sideNav.jsp"></jsp:include>
+           <jsp:include page="../common/admin/sideNav.jsp"></jsp:include>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -513,7 +513,7 @@
                         </div>2
                     </div>
                 </main>
-                <jsp:include page="../../assets/common/admin/footer.jsp"></jsp:include>
+                <jsp:include page="../common/admin/footer.jsp"></jsp:include>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

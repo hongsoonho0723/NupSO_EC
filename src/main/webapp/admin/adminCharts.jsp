@@ -9,9 +9,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>NoopSO Admin Chart</title>
-        <link href="${path}/assets/css/styles.css" rel="stylesheet" />
+        <link href="${path}/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="${path}/assets/js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function() {
             // Area Chart Example
@@ -154,9 +154,9 @@
         </script>
     </head>
     <body class="sb-nav-fixed">
-          <jsp:include page="${path}/assets/common/admin/header.jsp"></jsp:include>
+          <jsp:include page="${path}/common/admin/header.jsp"></jsp:include>
         <div id="layoutSidenav">
-           <jsp:include page="${path}/assets/common/admin/sideNav.jsp"></jsp:include>
+           <jsp:include page="${path}/common/admin/sideNav.jsp"></jsp:include>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -197,7 +197,7 @@
                         </div>
                     </div>
                 </main>
-                	<jsp:include page="${path}/assets/common/admin/footer.jsp"></jsp:include>
+                	<jsp:include page="${path}/common/admin/footer.jsp"></jsp:include>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

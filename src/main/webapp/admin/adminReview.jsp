@@ -91,7 +91,7 @@
   		
     </head>
     <body class="sb-nav-fixed">
-       <jsp:include page="../../assets/common/admin/header.jsp"></jsp:include>
+       <jsp:include page="../common/admin/header.jsp"></jsp:include>
         <div id="layoutSidenav">
            <jsp:include page="../../assets/common/admin/sideNav.jsp"></jsp:include>
             <div id="layoutSidenav_content">

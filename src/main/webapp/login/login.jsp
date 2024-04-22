@@ -118,7 +118,7 @@
 
 						<hr class="mb-4">
 
-						<div class="mb-4"></div>
+						<div class="mb-4" ></div>
 						<input type="button" class="btn btn-primary btn-lg btn-block" value="로그인" id="btn">
 						<!-- <button class="btn btn-primary btn-lg btn-block" id = "btn" type="submit">로그인</button> -->
 				</form>
@@ -137,9 +137,9 @@
 
 
 
-	<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-	<script src="../../assets/js/tiny-slider.js"></script>
-	<script src="../../assets/js/custom.js"></script>
+	<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="${path}/assets/js/tiny-slider.js"></script>
+	<script src="${path}/assets/js/custom.js"></script>
 </body>
 
 </html>
