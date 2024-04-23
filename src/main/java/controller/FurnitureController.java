@@ -31,29 +31,32 @@ public class FurnitureController implements Controller {
     public ModelAndView furnitureInfo(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("FurnitureController productInfo");
 
-        String furnitureNumber = request.getParameter("furnitureNumber");
+        String furnitureName = request.getParameter("furnitureName");
         try {
-            FurnitureDTO furnitureDTO = furnitureService.selectFurnitureNumber(furnitureNumber);
-            int furnitureSeq = furnitureService.findFurnitureSeqByNumber(furnitureNumber);
+            FurnitureDTO furnitureDTO = furnitureService.selectFurnitureName(furnitureName);
+            // 상세페이지 설명 사진 가져오기
+            furnitureDTO.setImgDetailList(imgService.selectImgDetail(furnitureDTO));
 
-            List<ImgDTO> imgList = imgService.selectImg(furnitureSeq);
-            List<ImgDTO> imgDetailList = imgService.selectDetailImg(furnitureSeq);
-
-            List<ReviewDTO> reviewList = reviewService.selectAllReviews(furnitureSeq);
-            int userSeq = reviewService.findUserSeq(furnitureSeq);
-            String userName = userService.findUserNameBySeq(userSeq);
+            // 상세페이지 슬라이드 사진 가져오기
+            furnitureDTO.setImgList(imgService.selectImg(furnitureDTO));
+            
+            // 상세페이지 사이즈 가져오기
+            furnitureDTO.setColorList(furnitureService.selectColorList(furnitureName));
+            //List<ReviewDTO> reviewList = reviewService.selectAllReviews(furnitureDTO.getFurnitureSeq());
+            //int userSeq = reviewService.findUserSeq(furnitureSeq);
+            //String userName = userService.findUserNameBySeq(userSeq);
 
             request.setAttribute("furnitureDTO", furnitureDTO);
 
-            request.setAttribute("imgList",imgList);
-            request.setAttribute("imgDetailList",imgDetailList);
-
-            request.setAttribute("reviewList",reviewList);
-            request.setAttribute("userName",userName);
+//            request.setAttribute("imgList",imgList);
+//            request.setAttribute("imgDetailList",imgDetailList);
+//
+//            request.setAttribute("reviewList",reviewList);
+//            request.setAttribute("userName",userName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new ModelAndView("furniture/furniture.jsp");
+        return new ModelAndView("furniture.jsp");
     }
     
     public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
@@ -68,12 +71,12 @@ public class FurnitureController implements Controller {
      * 상품 전체보기 select문
      * */
     public ModelAndView selectFurnitureList(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-    	System.out.println("selectFurnitureList 메서드 까지는 오나?");
+    	
     	List<FurnitureDTO> list = furnitureService.selectFurnitureList();
     	System.out.println(list);
     	 request.setAttribute("list", list);
     	
-    	return new ModelAndView("user/shop.jsp");
+    	return new ModelAndView("shop.jsp");
     }
     
 }

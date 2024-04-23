@@ -30,44 +30,44 @@ public class FurnitureDAOImpl implements FurnitureDAO {
     }
 
     @Override
-    public FurnitureDTO selectByFurnitureByNumber(String furnitureNumber) throws SQLException {
+    public FurnitureDTO selectFurnitureName(String furnitureName) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         FurnitureDTO furniture = null;
-        String sql = proFile.getProperty("query.selectByFurnitureNumber");
+        String sql = proFile.getProperty("furniture.selectFurnitureByName");
 
         try {
             con = DbUtil.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, furnitureNumber);
-
+            ps = con.prepareStatement(sql);           
+            ps.setString(1, furnitureName);
             rs = ps.executeQuery();
             if(rs.next()){
-                int furniture_seq = rs.getInt(1);
-                furniture = new FurnitureDTO(furniture_seq,rs.getString(2),rs.getString(3), rs.getString(4),
-                rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9));
-                furniture.setColorList(this.getColor(con,furniture_seq));
-                furniture.setSizeList(this.getSize(con,furniture_seq));
-                furniture.setTextureList(this.getTexture(con,furniture_seq));
+            	furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
+		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+            	furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
+            	furniture.setTexture(rs.getString("texture"));
             }
         }finally {
             DbUtil.dbClose(con, ps, rs);
         }
         return furniture;
     }
-
-    private List<ColorDTO> getColor(Connection con,int furniture_seq) throws SQLException{
+    
+    @Override
+    public List<ColorDTO> selectColorList(String furnitureName) throws SQLException{
+    	Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<ColorDTO> list = new ArrayList<ColorDTO>();
-        String sql = proFile.getProperty("query.selectColorByFurnitureSeq");
+        String sql = proFile.getProperty("color.selectAllByFurniutreName");
         try{
+        	con = DbUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, furniture_seq);
+            ps.setString(1, furnitureName);
             rs = ps.executeQuery();
             while(rs.next()){
-                ColorDTO color = new ColorDTO(rs.getString(1));
+                ColorDTO color = new ColorDTO(rs.getString("color_name"));
                 list.add(color);
             }
         }finally {
@@ -88,25 +88,6 @@ public class FurnitureDAOImpl implements FurnitureDAO {
             while(rs.next()){
                 SizeDTO size = new SizeDTO(rs.getString(1));
                 list.add(size);
-            }
-        }finally {
-            DbUtil.dbClose(null, ps, rs);
-        }
-        return list;
-    }
-
-    private List<TextureDTO> getTexture(Connection con,int furniture_seq) throws SQLException{
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        List<TextureDTO> list = new ArrayList<TextureDTO>();
-        String sql = proFile.getProperty("query.selectTextureByFurnitureSeq");
-        try{
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, furniture_seq);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                TextureDTO texture = new TextureDTO(rs.getString(1));
-                list.add(texture);
             }
         }finally {
             DbUtil.dbClose(null, ps, rs);
@@ -162,18 +143,16 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 	}
 
 
-	//isDetail 0: 상품 상세 설명, 1: 상품 대표 이미지
+
 	@Override
 	public List<FurnitureDTO> selectFurnitureList() throws SQLException {
 		 Connection con = null;
 		 PreparedStatement ps = null;
 		 ResultSet rs = null;
-		 String sql = proFile.getProperty("furniture.selectFurnitureImg");
-		 System.out.println("sql selectFurnitureList"+sql);
+		 String sql = proFile.getProperty("furniture.selectAll");
 		 FurnitureDTO furniture = null;
-		 ImgDTO img = null;
 		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
-		 boolean mainImg = false;
+
 		
 		try {
 			con = DbUtil.getConnection();
@@ -183,15 +162,8 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 			while(rs.next()) {
 				furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
 		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
-				if(rs.getInt("is_detail") ==1 ) mainImg= true; 
-				img = new ImgDTO(rs.getInt("img_seq"),rs.getInt(1),rs.getString("img_src"),rs.getString("img_type"),mainImg);
-				if(mainImg) {
-					//메인 이미지
-					furniture.setImg(img);
-				}else {
-					// 상세보기 이미지 리스트 저장
-					furniture.getImgList().add(img);
-				}
+				furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
+				
 				list.add(furniture);
 			}
 		} finally {

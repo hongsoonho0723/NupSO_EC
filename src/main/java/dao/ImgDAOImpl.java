@@ -1,8 +1,5 @@
 package dao;
 
-import dto.ImgDTO;
-import util.DbUtil;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -12,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import dto.FurnitureDTO;
+import dto.ImgDTO;
+import util.DbUtil;
 
 public class ImgDAOImpl implements ImgDAO {
     private Properties proFile = new Properties();
@@ -25,49 +26,64 @@ public class ImgDAOImpl implements ImgDAO {
         }
     }
 
+    //is_detail 이 1이면 상세페이지 설명에 사용하고 아니면 슬라이드 사진으로 사용
     @Override
-    public List<ImgDTO> selectImg(int furnitureSeq) throws SQLException {
-        Connection conn = null;
+    public List<ImgDTO> selectImgDetail(FurnitureDTO furnitureDTO) throws SQLException {
+        Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<ImgDTO> imgList = new ArrayList<>();
-        String sql = proFile.getProperty("query.selectImg");
+        FurnitureDTO furniture = furnitureDTO;
+        String sql = proFile.getProperty("furniture.selectFurnitureImgDetail");
 
+        System.out.println("selectImgDetail = " +sql);
+        List<ImgDTO> imgList = new ArrayList<ImgDTO>();
+        
         try {
-            conn = DbUtil.getConnection();
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,furnitureSeq);
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,furniture.getFurnitureName());
             rs = ps.executeQuery();
             while (rs.next()) {
-                ImgDTO imgDTO = new ImgDTO(rs.getInt(1),rs.getString(2),rs.getString(3));
-                imgList.add(imgDTO);
+            	ImgDTO img = new ImgDTO(rs.getInt("img_seq"),rs.getString("img_src"),rs.getString("img_type"));
+            	if(rs.getInt("is_detail") == 1) {
+            		imgList.add(img);
+            	}
             }
         }finally {
-            DbUtil.dbClose(conn,ps,rs);
+            DbUtil.dbClose(con,ps,rs);
         }
         return imgList;
     }
 
-    @Override
-    public List<ImgDTO> selectDetailImg(int furnitureSeq) throws SQLException {
-        Connection conn = null;
+	@Override
+	public List<ImgDTO> selectImg(FurnitureDTO furnitureDTO) throws SQLException {
+		Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<ImgDTO> imgList = new ArrayList<>();
-        String sql = proFile.getProperty("query.selectDetailImg");
+        FurnitureDTO furniture = furnitureDTO;
+        String sql = proFile.getProperty("furniture.selectFurnitureImgDetail");
 
+        System.out.println("selectImg = " +sql);
+        List<ImgDTO> imgList = new ArrayList<ImgDTO>();
+        
         try {
-            conn = DbUtil.getConnection();
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,furnitureSeq);
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,furniture.getFurnitureName());
             rs = ps.executeQuery();
             while (rs.next()) {
-                ImgDTO imgDTO = new ImgDTO(rs.getInt(1),rs.getString(2),rs.getString(3));
-                imgList.add(imgDTO);
+            	ImgDTO img = new ImgDTO(rs.getInt("img_seq"),rs.getString("img_src"),rs.getString("img_type"));
+            	if(rs.getInt("is_detail") == 0) {
+            		imgList.add(img);
+            	}
             }
         }finally {
-            DbUtil.dbClose(conn,ps,rs);
+            DbUtil.dbClose(con,ps,rs);
         }
         return imgList;
-    }
+	}
+    
+    
+    
+    
 }
