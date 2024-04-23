@@ -87,12 +87,13 @@ public class AdminUserDAOImpl implements AdminUserDAO {
 	public int delete(int userSeq) throws SQLException {
 		 	Connection con = null;
 	        PreparedStatement ps = null;
-	        String sql = proFiles.getProperty("AdminUser.delect");
+	        String sql = proFiles.getProperty("AdminUser.delete");
 	        int result;
 	        
 	        try {
 	            con = DbUtil.getConnection();
 	            ps = con.prepareStatement(sql);
+	            ps.setInt(1, userSeq);
 	            result = ps.executeUpdate();
 	        } finally {
 	            DbUtil.dbClose(con, ps);
