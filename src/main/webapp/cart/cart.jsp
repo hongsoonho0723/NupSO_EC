@@ -26,7 +26,7 @@
 		 let userName = '<%= session.getAttribute("userName") %>';
 		console.log("userName = "+ userName);
 		
-		//${sessionScope.userName}안되는이유
+		//${sessionScope.userName}안되는이유 <script>태그는 자바영역이라서 body태그안인 html영역에 사용해야한다
 		
 	})//load end
 
@@ -36,8 +36,7 @@
 	</head>
 
 	<body>
-
-	
+<div>${sessionScope.userId}</div>
 
 		<!-- Start Hero Section -->
 			<div class="hero">
@@ -67,17 +66,17 @@
                       <thead>
                         <tr>
                           <th class="product-thumbnail">Image</th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
-                          <th class="product-total">Total</th>
-                          <th class="product-remove">Remove</th>
+                          <th class="product-name">상품명</th>
+                          <th class="product-price">가격</th>
+                          <th class="product-quantity">수량</th>
+                          <th class="product-color">색상</th>
+                          <th class="product-size">사이즈</th>
+                          <th class="product-remove">삭제</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td class="product-thumbnail">
-                            <!-- <img src="../assets/images/product-1.png" alt="Image" class="img-fluid"> -->
                             <img src="${path}/assets/images/product-1.png" alt="Image" class="img-fluid">
                           </td>
                           <td class="product-name">
@@ -85,10 +84,10 @@
                           </td>
                           <td>$49.00</td>
                           <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="margin: auto; max-width: 120px;">
                               <div class="input-group-prepend">
                                 <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
+                              </div>ㄴ
                               <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-black increase" type="button">&plus;</button>
@@ -96,8 +95,9 @@
                             </div>
         
                           </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                          <td>색상</td>
+                          <td>사이즈</td>
+                          <td><a href="#" class="btn btn-black btn-sm">삭제</a></td>
                         </tr>
         
                         <tr>
@@ -109,7 +109,7 @@
                           </td>
                           <td>$49.00</td>
                           <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="margin: auto; max-width: 120px;">
                               <div class="input-group-prepend">
                                 <button class="btn btn-outline-black decrease" type="button">&minus;</button>
                               </div>
@@ -120,8 +120,9 @@
                             </div>
         
                           </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                          <td>색상</td>
+                          <td>사이즈</td>
+                          <td><a href="#" class="btn btn-black btn-sm">삭제</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -155,14 +156,6 @@
               </div>
             </div>
           </div>
-
-
-
-
-
-		
-
-	
 
 		<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
 		<script src="${path}/assets/js/tiny-slider.js"></script>

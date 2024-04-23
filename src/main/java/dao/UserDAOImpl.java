@@ -76,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         UsersDTO dbDTO=null;
-        String sql = "select user_seq,user_id,name from users where user_id=? and password=?";
+        String sql = proFile.getProperty("user.login");
         //String sql = "select * from users where user_id=? and password=?";
         //String sql = "select * from name where user_id=? and password=?";
 		
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 		 Connection con = null;
 	     PreparedStatement ps = null;
 	     ResultSet rs = null;
-	     String sql = "select user_id from users where user_id = ?";
+	     String sql = proFile.getProperty("user.idCheck");
 	     boolean result = true;
 
 	        try {
@@ -125,7 +125,7 @@ public class UserDAOImpl implements UserDAO {
 	public int insert(UsersDTO usersDTO) throws SQLException {
 		 Connection con = null;
 	     PreparedStatement ps = null;
-	     String sql = "insert into users values(user_seq.nextval,?,?,?,?,?,?,?,default,default)";
+	     String sql = proFile.getProperty("user.insert");
 	     int result = 0;
 
 	        try {
