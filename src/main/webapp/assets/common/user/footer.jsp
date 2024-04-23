@@ -115,13 +115,6 @@
 <script src="${path}/assets/js/tiny-slider.js"></script>
 <script src="${path}/assets/js/custom.js"></script>
 
-<<<<<<< HEAD
-
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/tiny-slider.js"></script>
-<script src="../../assets/js/custom.js"></script>
-=======
->>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
 </body>
 
 </html>

@@ -28,37 +28,22 @@ public class HandlerMappingListener implements ServletContextListener {
 		 ResourceBundle rb = ResourceBundle.getBundle("actionMapping");
 		 ResourceBundle ajaxRb = ResourceBundle.getBundle("ajaxMapping");
 		 
-<<<<<<< HEAD
+
 		 try{ 
 			 for(String key : rb.keySet()){ 
 				 System.out.println("key "+key);
 				 String value = rb.getString(key);
 				 System.out.println("value "+value);
-=======
-
-		 try{
-			 
-			 for(String key : rb.keySet()){
-				 String value = rb.getString(key);
-
->>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
 				 Class<?> className = Class.forName(value);
 			 
 				 Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
-<<<<<<< HEAD
-=======
 
->>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
 				 System.out.println("actionMapping key " + key + " value "+value);
 				 map.put(key, controller); 
 				 clzMap.put(key, className); 
 				 
 			 }
-<<<<<<< HEAD
-			 
-=======
 
->>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
 			 //ajax Class<?> , RestController 넣기
 		 	for(String key : ajaxRb.keySet()){ 
 		 		 System.out.println("ajax key "+key);

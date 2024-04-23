@@ -16,7 +16,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="assets/css/tiny-slider.css" rel="stylesheet">
 		<link href="assets/css/style.css" rel="stylesheet">
-		<title>눕소 메인</title>
+		<title>NupSO - Index</title>
 	</head>
 
 	<body>
@@ -31,8 +31,8 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<h1>Discover Your Dreamy Sofa <span clsas="d-block"></span></h1>
+								<p class="mb-4">당신의 휴식을 위한 최적의 선택, 눕소의 프리미엄 소파를 탐색하세요.</p>
 								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>

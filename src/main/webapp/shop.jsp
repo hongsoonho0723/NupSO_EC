@@ -23,12 +23,8 @@
 
 	<body>
 
-		<!-- Start Header/Navigation -->
-<<<<<<< HEAD
-		<jsp:include page="common/user/header.jsp"></jsp:include>
-=======
+		<<!-- Start Header/Navigation -->
 		<jsp:include page="assets/common/user/header.jsp"></jsp:include>
->>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
 		<!-- End Header/Navigation -->
 
 		<!-- Start Hero Section -->
