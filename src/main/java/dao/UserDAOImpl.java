@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,12 +18,12 @@ public class UserDAOImpl implements UserDAO {
     private Properties proFile = new Properties();
 
     public UserDAOImpl() {
-       /* InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+       InputStream input = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
         try {
             proFile.load(input);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override

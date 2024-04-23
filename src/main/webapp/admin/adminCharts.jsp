@@ -9,9 +9,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>NoopSO Admin Chart</title>
-        <link href="${path}/css/styles.css" rel="stylesheet" />
+        <link href="${path}/assets/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
+        <script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function() {
             // Area Chart Example
@@ -34,7 +34,7 @@
                 url: "${path}/ajax", // 서버에서 데이터를 가져오는 URL
                 type: "post",
                 dataType: "json",
-                data: { key: "furniture", methodName: "selectChartAll" },
+                data: { key: "furnitureAjax", methodName: "selectChartAll" },
                 success: function(result) {
                     // 성공적으로 데이터를 가져왔을 때, 차트를 업데이트합니다.
                     console.log(result)
@@ -100,8 +100,7 @@
                     }
                 });
             }
-             
-            
+
             function drawEmptyPieChart() {
             	myPieChart = new Chart(ctxPie, {
             		type: 'pie',
@@ -154,9 +153,9 @@
         </script>
     </head>
     <body class="sb-nav-fixed">
-          <jsp:include page="${path}/common/admin/header.jsp"></jsp:include>
+          <jsp:include page="../assets/common/admin/header.jsp"></jsp:include>
         <div id="layoutSidenav">
-           <jsp:include page="${path}/common/admin/sideNav.jsp"></jsp:include>
+           <jsp:include page="../assets/common/admin/sideNav.jsp"></jsp:include>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -197,11 +196,11 @@
                         </div>
                     </div>
                 </main>
-                	<jsp:include page="${path}/common/admin/footer.jsp"></jsp:include>
+                	<jsp:include page="../assets/common/admin/footer.jsp"></jsp:include>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="${path}/js/scripts.js"></script>
+        <script src="${path}/assets/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     </body>
 </html>

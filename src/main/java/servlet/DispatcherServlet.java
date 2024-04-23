@@ -43,11 +43,11 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key"); //
 		String methodName = request.getParameter("methodName");
-		String adminUrl = request.getParameter("search");
+
 		
 		
-		System.out.println("key = " + key +" , methodName = " + methodName);
-		System.out.println("adminUrl = "+adminUrl);
+		System.out.println("dispatcher key = " + key +" , methodName = " + methodName);
+
 		try {
 			
 			Controller con = map.get(key);
@@ -56,7 +56,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
 			
-			/////////////////////////////////////////////////////////
+
 			if(mv.isRedirect()) {
 				System.out.println("mv.getViewName() redirect = " + mv.getViewName());
 				response.sendRedirect( mv.getViewName() );

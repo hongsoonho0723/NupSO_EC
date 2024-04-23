@@ -1,5 +1,6 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FurnitureDTO {
@@ -17,8 +18,28 @@ public class FurnitureDTO {
     private List<SizeDTO> sizeList;
     private List<TextureDTO> textureList;
     
+    //상품 전체보기에서 사용될 변수
+    private ImgDTO img = new ImgDTO();
+    //상품 상세페이지에서 사용될 변수
+    private List<ImgDTO> imgList = new ArrayList<ImgDTO>();
     
-    public List<ColorDTO> getColorList() {
+    public List<ImgDTO> getImgList() {
+		return imgList;
+	}
+
+	public void setImgList(List<ImgDTO> imgList) {
+		this.imgList = imgList;
+	}
+
+	public ImgDTO getImg() {
+		return img;
+	}
+
+	public void setImg(ImgDTO img) {
+		this.img = img;
+	}
+
+	public List<ColorDTO> getColorList() {
         return colorList;
     }
 
