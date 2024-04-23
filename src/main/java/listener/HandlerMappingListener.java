@@ -27,32 +27,35 @@ public class HandlerMappingListener implements ServletContextListener {
 		 ResourceBundle rb = ResourceBundle.getBundle("actionMapping");
 		 ResourceBundle ajaxRb = ResourceBundle.getBundle("ajaxMapping");
 		 
+
 		 try{
+			 
 			 for(String key : rb.keySet()){
 				 String value = rb.getString(key);
+
 				 Class<?> className = Class.forName(value);
 				 
 				 Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
 
-				 System.out.println("key " + key + "value "+value);
-
+				 System.out.println("actionMapping key " + key + " value "+value);
 				 map.put(key, controller); 
 				 clzMap.put(key, className); 
 				 
 			 }
-			 System.out.println("==================================");
+
 			 //ajax Class<?> , RestController 넣기
-			 	for(String key : ajaxRb.keySet()){ 
-					 String value = ajaxRb.getString(key);
-
-					 Class<?> className = Class.forName(value);
-					 RestController controller = (RestController)className.getDeclaredConstructor().newInstance();
-					 ajaxMap.put(key, controller); 
-					 clzMap.put(key, className); 
-					 
-				 } 
-
-
+		 	for(String key : ajaxRb.keySet()){ 
+		 		 System.out.println("ajax key "+key);
+				 String value = ajaxRb.getString(key);
+				 System.out.println("ajax value "+value);
+				 Class<?> className = Class.forName(value);
+			 
+				 RestController controller = (RestController)className.getDeclaredConstructor().newInstance();
+				 System.out.println("ajaxMapping key " + key + " value "+value);
+				 ajaxMap.put(key, controller); 
+				 clzMap.put(key, className); 
+				 
+			 } 
 
 			 
 		 }catch(Exception e){

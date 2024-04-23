@@ -114,9 +114,15 @@
 <!-- End Footer Section -->
 
 
+<<<<<<< HEAD:src/main/webapp/user/common/footer.jsp
+<script src="${path}/user/js/bootstrap.bundle.min.js"></script>
+<script src="${path}/user/js/tiny-slider.js"></script>
+<script src="${path}/user/js/custom.js"></script>
+=======
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/js/tiny-slider.js"></script>
 <script src="../../assets/js/custom.js"></script>
+>>>>>>> 5669e444a374fe552267eb82e616967c5962ae9f:src/main/webapp/assets/common/user/footer.jsp
 </body>
 
 </html>

@@ -24,8 +24,6 @@ public class AjaxDispatcherServlet extends HttpServlet {
 	private Map<String, RestController> ajaxMap;
 	private Map<String, Class<?>> clzMap;
 		
-	
-	
  	@Override
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext applicaion = config.getServletContext();

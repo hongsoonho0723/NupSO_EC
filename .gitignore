@@ -5,6 +5,8 @@
 *.properties
 src/main/webapp/META-INF/*
 src/main/webapp/js/*
+src/main/webapp/WEB-INF/*
+src/main/webapp/WEB-INF/web.xml
 
 resources/Wallet_NupSO
 
