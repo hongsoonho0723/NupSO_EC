@@ -7,16 +7,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
+<<<<<<< HEAD
     <link rel="shortcut icon" href="${path}/user/images/cow.png">
 
+=======
+    <link rel="shortcut icon" href="${path}/assets/images/cow.png">
+>>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
 
     <!-- Bootstrap CSS -->
+<<<<<<< HEAD
     <link href="${path}/user/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="${path}/user/css/tiny-slider.css" rel="stylesheet">
     <link href="${path}/user/css/style.css" rel="stylesheet">
+=======
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/tiny-slider.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/tiny-slider.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+>>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
     <title>눕소</title>
 </head>
 
@@ -44,8 +60,14 @@
                 <li><a class="nav-link" href="contact.html">Contact us</a></li>
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+<<<<<<< HEAD
                 <li><a class="nav-link" href="#"><img src="${path}/user/images/user.svg"></a></li>
                 <li><a class="nav-link" href="cart.html"><img src="${path}/user/images/cart.svg"></a></li>
+=======
+                <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li>
+                <li><a class="nav-link" href="cart.html"><img src="assets/images/cart.svg"></a></li>
+
+>>>>>>> 73ccd368b9661d3920788cbe2b1d751450df7837
             </ul>
         </div>
     </div>

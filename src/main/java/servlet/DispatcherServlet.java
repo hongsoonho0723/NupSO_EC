@@ -56,7 +56,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
 			
-			/////////////////////////////////////////////////////////
+
 			if(mv.isRedirect()) {
 				System.out.println("mv.getViewName() redirect = " + mv.getViewName());
 				response.sendRedirect( mv.getViewName() );
