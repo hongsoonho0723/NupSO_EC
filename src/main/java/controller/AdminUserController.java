@@ -31,10 +31,11 @@ public class AdminUserController implements Controller {
     
     
     public ModelAndView searchByState(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String userState = request.getParameter("userState");
+		System.out.println("체크박스 컨트롤러 테스트");
+    	String userState = request.getParameter("userState");
 		
-		service.findUserSeqByState(userState);
-		request.setAttribute("userState", userState);
+		List <UsersDTO> list = service.findUserSeqByState(userState);
+		request.setAttribute("list", list);
     	
     	return new ModelAndView("admin/adminUser.jsp");
     	
