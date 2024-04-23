@@ -131,9 +131,6 @@ a.more {
 .custom-navbar .custom-navbar-cta li {
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.custom-navbar .custom-navbar-cta li:first-child {
     margin-right: 20px;
 }
 
@@ -454,11 +451,11 @@ a.more {
 .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    /*-ms-grid-columns: (1fr)[ 27 ];*/
-    -ms-grid-columns: (1fr)[ 27 ];
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* 27개의 1fr 반복 */
     grid-template-columns: repeat(27, 1fr);
     position: relative;
 }
+
 
 .we-help-section .imgs-grid:before {
     position: absolute;
@@ -1147,18 +1144,15 @@ b, strong {
     color: #999;
     margin-bottom: 10px;
 }
-@media (max-width: 480px)
-.pull-right {
-    float: left!important;
-}
 
-@media (max-width: 640px)
-.pull-right {
-    float: left!important;
-}
 .pull-right {
     float: right;
 }
-.pull-right {
-    float: right!important;
+
+@media (max-width: 640px) {
+    .pull-right {
+        float: left !important;
+    }
 }
+
+
