@@ -49,7 +49,7 @@
 		$("#btn").click(function() {
 
 			$.ajax({
-				url : "${path}/ajax?key=user&methodName=login", //통신할 서버의 주소
+				url : "${path}/ajax?key=userAjax&methodName=login", //통신할 서버의 주소
 				type : "post", //요청방식(get | post | put | delete | fetch)
 				dataType : "json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
 				data : {
@@ -61,7 +61,7 @@
 					console.log("result = " + result)
 					if (result && result.name) {
 						alert("아이디 일치");
-						window.location.href = "signUp.jsp";
+						window.location.href = "${path}/cart/cart.jsp";
 						
 					/* 	let str = "";
 						str=result.name
