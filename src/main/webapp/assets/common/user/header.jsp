@@ -16,12 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="assets/css/tiny-slider.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="assets/css/tiny-slider.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <title>눕소</title>
+    <title>NupSO - HomePage</title>
 </head>
 
 <body>
@@ -30,7 +25,7 @@
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
     <div class="container">
-        <a class="navbar-brand" href="index.html">눕소<span>.</span></a>
+        <a class="navbar-brand" href="${path}/front?key=furniture&methodName=indexPage">NupSO<span>.</span></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,18 +34,18 @@
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item ">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="${path}/front?key=furniture&methodName=indexPage">Home</a>
                 </li>
                 <li><a class="nav-link" href="${path}/front?key=furniture&methodName=selectFurnitureList">Shop</a></li>
-                <li class="active"><a class="nav-link" href="about.html">About us</a></li>
-                <li><a class="nav-link" href="services.html">Services</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="contact.html">Contact us</a></li>
+                <li><a class="nav-link" href="${path}/about.jsp">About us</a></li>
+                <li><a class="nav-link" href="#">Services</a></li>
+                <li><a class="nav-link" href="#">Blog</a></li>
+                <li><a class="nav-link" href="#">Contact us</a></li>
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li>
-                <li><a class="nav-link" href="cart.html"><img src="assets/images/cart.svg"></a></li>
-
+               <li><a class="nav-link" href="${path}/user/login.jsp"><img src="assets/images/user.svg" alt="유저 로그인"></a></li>
+               <li><a class="nav-link" href="${path}/front?key=furniture&methodName=cart"><img src="assets/images/cart.svg" alt="장바구니"></a></li>
+               <li><a class="nav-link" href="admin/adminLogin.jsp"><img src="assets/images/admin.svg" alt = "관리자 로그인"></a></li>
             </ul>
         </div>
     </div>

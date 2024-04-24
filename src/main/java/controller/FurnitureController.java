@@ -87,4 +87,27 @@ public class FurnitureController implements Controller {
     	return new ModelAndView("shop.jsp");
     }
     
+    /**
+     * 상품 메인 페이지로 연결
+     */
+    public ModelAndView indexPage(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	
+		/*
+		 * List<FurnitureDTO> list = furnitureService.selectFurnitureList();
+		 * System.out.println(list); request.setAttribute("list", list);
+		 */
+    	return new ModelAndView("index.jsp");
+    }
+    /**
+     * 장바구니 페이지로 연결
+     */
+    public ModelAndView cart(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	
+		/*
+		 * List<FurnitureDTO> list = furnitureService.selectFurnitureList();
+		 * System.out.println(list); request.setAttribute("list", list);
+		 */
+    	return new ModelAndView("cart.jsp");
+    }
+    
 }
