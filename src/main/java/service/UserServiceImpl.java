@@ -66,6 +66,14 @@ public class UserServiceImpl implements UserService {
 		List<UsersDTO> list = userDAO.selectAge();
 		return list;
 	}
+
+	@Override
+	public UsersDTO findUserById(String userId) throws SQLException {
+		UsersDTO user = userDAO.findUserById(userId);
+		if(user == null) { throw new SQLException("해당 유저가 없습니다."); }
+		
+		return user;
+	}
     
 	
 

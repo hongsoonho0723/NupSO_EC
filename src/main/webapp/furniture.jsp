@@ -4,23 +4,40 @@
 
 <jsp:include page="assets/common/user/header.jsp"/>
 <script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
+<style>
+	#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section{display:none;}
+</style>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
-    $(document).on("click", "#delete", function () {
-        if (confirm("삭제하시겠습니까?")) {
-            const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
-            $.ajax({
-                url: "${path}/ajax",
-                type: "post",
-                dataType: "text",
-                data: {key: "qna", methodName: "delete", qnaSeq: ('#qnaSeq').val(),password:password},
-                success: function (result) {
-                    if (result === 0) alert("삭제에 실패했습니다.");
-                    else location.reload();
-                }
-            });
-        }
-    });
+    
+    $(function(){
+    	
+        $(document).on("click", "#delete", function () {
+            if (confirm("삭제하시겠습니까?")) {
+                const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
+                $.ajax({
+                    url: "${path}/ajax",
+                    type: "post",
+                    dataType: "text",
+                    data: {key: "qna", methodName: "delete", qnaSeq: ('#qnaSeq').val(),password:password},
+                    success: function (result) {
+                        if (result === 0) alert("삭제에 실패했습니다.");
+                        else location.reload();
+                    }
+                });
+            }
+        });//삭제 이벤트 end
+        
+        $(document).on("click",".reply-button",function(){
+        	 event.preventDefault(); // 기본 동작 방지
+        	$("#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section").toggle();
+        });//답변 이벤트 end
+        
+        
+        
+    	
+    });// ready end
+
 </script>
 <!-- Start Hero Section -->
 <div class="hero">
@@ -86,9 +103,9 @@
                                     <td>사이즈</td>
                                     <td><select>
                                         <option value="0">사이즈 선택</option>
-                                        <option value="1">25*50*100</option>
-                                        <option value="2">50*75*200</option>
-                                        <option value="3">80*90*700</option>
+                                        <c:forEach items="${furnitureDTO.sizeList}" var="item" varStatus="state">
+                                        	<option value="${state.index}">${item.sizeVal}</option>
+                                         </c:forEach>
                                     </select></td>
                                 </tr>
                                 <tr>
@@ -120,7 +137,7 @@
 
             </div>
 
-            <%--            상품 이미지 출력  --%>
+            <%--            상품 슬라이드 이미지 출력  --%>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="img-wrap">
 
@@ -164,9 +181,9 @@
 
             <%--                상품 상세 설명 탭 --%>
             <div class="tab_content" id="detail_content">
-                <img src="${path}/assets/images/img-grid-1.jpg">
-                <img src="${path}/assets/images/img-grid-1.jpg">
-                <img src="${path}/assets/images/img-grid-1.jpg">
+            	<c:forEach items="${furnitureDTO.imgDetailList}" var="item">
+               	 	<img src="${path}/assets/${item.imgSrc}">
+                </c:forEach>
             </div>
 
             <%--                상품 리뷰 탭 --%>
@@ -176,48 +193,34 @@
                     <h3 class="small-title">Customer review</h3>
                     상품을 구매하신 분들이 작성한 리뷰입니다.<br><br>
                     <ul class="product-comments clearfix">
-                        <li class="mb-30">
-                            <div class="pro-reviewer">
-                                <img src="${path}/assets/images/person-1.jpg" alt="">
-                            </div>
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-                                        ⭐️
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
-                            </div>
-                        </li>
-                        <li class="threaded-comments">
-                            <div class="pro-reviewer">
-                                <img src="${path}/assets/images/person_2.jpg" alt="">
-                            </div>
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5 class="text-uppercase mb-0"><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-                                        <c:forEach begin="1" end="3">
-                                            ⭐
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
-                            </div>
-                        </li>
+                    	<c:forEach items="${furnitureDTO.reviewList}" var="item">
+	                        <li class="mb-30">
+	                            <div class="pro-reviewer">
+	                            <c:forEach items="${item.reviewImgs}" var="reviewImg">   
+	                                <img src="${path}/assets/${reviewImg.imgSrc}" alt="이미지" width="120" height="120">
+                                </c:forEach>
+	                            </div>
+	                            <div class="pro-reviewer-comment">
+	                                <div class="fix">
+	                                    <div class="pull-left mbl-center">
+	                                        <h5><strong>${item.user.name}</strong></h5>
+	                                        <p class="reply-date">${item.regDate}</p>
+	                                    </div>
+	                                    <div class="comment-reply pull-right">
+	                                       <c:forEach var="i" begin="1" end="${item.score}">
+	                                       		 ⭐
+	                                    	</c:forEach>
+	                                	</div>
+                                	</div>
+		                                <div>
+		                                <p><br>${item.review}</p>
+		                                </div>
+	                            </div>
+	                        </li>
+                         </c:forEach>
                     </ul>
                 </div>
+                
             </div>
 
             <%--                상품에 대한 Q&A 탭 --%>
@@ -227,52 +230,31 @@
                     <div class="row">
                         <h3 class="small-title">Q & A</h3>
                         구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.
-                        <a href="qna/qna.jsp" class="btn btn-secondary me-2">Go to Q&A</a>
+                        <a href="qna/qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}" class="btn btn-secondary me-2">Go to Q&A</a>
                     </div>
                     <br><br>
                     <ul class="product-comments clearfix">
+                   	 <c:forEach items="${furnitureDTO.qnaList}" var="item">
                         <li class="mb-30">
                             <div class="pro-reviewer-comment">
                                 <div class="fix">
                                     <div class="pull-left mbl-center">
-                                        <h5><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
+                                        <h5><strong>${item.name}</strong></h5>
+                                        <p class="reply-date">${item.regDate}</p>
                                     </div>
                                     <div class="comment-reply pull-right">
-                                        <a href="#"><i class="fa fa-reply"></i></a>
+                                        <a href="#" class="reply-button"><i class="fa fa-reply"></i></a>
                                         <a href="#"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas
-                                    elese ifend. Phasellus a felis at est bibendum feugiat ut eget eni Praesent et
-                                    messages in con sectetur posuere dolor non.</p>
+                                <p>${item.question}</p>
+                                 <div class="pull-left mbl-center answer-section" >
+                                      <h5><strong>A: ${item.answer}</strong></h5>
+                                       <p class="answer-date">${item.answerDate}</p>
+                                 </div>
                             </div>
                         </li>
-
-                        <li class="mb-30 col-lg-12">
-                            <div class="pro-reviewer-comment">
-                                <div class="fix">
-                                    <div class="pull-left mbl-center">
-                                        <h5><strong>Gerald Barnes</strong></h5>
-                                        <p class="reply-date">27 Jun, 2016 at 2:30pm</p>
-                                    </div>
-                                    <div class="comment-reply pull-right">
-<%--                                        Q&A 답변 페이지--%>
-                                        <a href="#"><i class="fa fa-reply"></i></a>
-                                        <form method="post">
-                                            <span id="delete">
-                                            <i class="fa fa-close"></i>
-                                            <input type="hidden" name="key" value="qna">
-                                            <input type="hidden" name="methodName" value="delete">
-<%--                                                <input type="hidden" id="qnaSeq" value="${q.qnaSeq}">--%>
-                                                </span>
-                                        </form>
-                                    </div>
-                                </div>
-                                <p>TESTTESTESTSTETSTSETSETTE</p>
-                            </div>
-                        </li>
-
+					</c:forEach>
                     </ul>
                 </div>
             </div>

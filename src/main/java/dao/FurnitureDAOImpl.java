@@ -59,6 +59,7 @@ public class FurnitureDAOImpl implements FurnitureDAO {
     	Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        ColorDTO color = null;
         List<ColorDTO> list = new ArrayList<ColorDTO>();
         String sql = proFile.getProperty("color.selectAllByFurniutreName");
         try{
@@ -67,7 +68,7 @@ public class FurnitureDAOImpl implements FurnitureDAO {
             ps.setString(1, furnitureName);
             rs = ps.executeQuery();
             while(rs.next()){
-                ColorDTO color = new ColorDTO(rs.getString("color_name"));
+                color = new ColorDTO(rs.getString("color_name"));
                 list.add(color);
             }
         }finally {
@@ -76,45 +77,54 @@ public class FurnitureDAOImpl implements FurnitureDAO {
         return list;
     }
 
-    private List<SizeDTO> getSize(Connection con,int furniture_seq) throws SQLException{
+   
+
+    @Override
+	public List<SizeDTO> selectSizeList(String furnitureName) throws SQLException {
+    	Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<SizeDTO> list = new ArrayList<SizeDTO>();
-        String sql = proFile.getProperty("query.selectSizeByFurnitureSeq");
+        SizeDTO size = null;
+        String sql = proFile.getProperty("size.selectAllByFurnitureName");
         try{
+        	con = DbUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, furniture_seq);
+            ps.setString(1, furnitureName);
             rs = ps.executeQuery();
             while(rs.next()){
-                SizeDTO size = new SizeDTO(rs.getString(1));
+            	size=new SizeDTO(rs.getString("size_val"));
                 list.add(size);
             }
         }finally {
             DbUtil.dbClose(null, ps, rs);
         }
         return list;
-    }
+	}
 
-    @Override
-    public int findFurnitureSeqByNumber(String furnitureNumber) throws SQLException {
-        Connection con = null;
+    
+
+	@Override
+	public int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException {
+		Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = proFile.getProperty("query.findFurnitureSeqByNumber");
-
-        try{
-            con = DbUtil.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, furnitureNumber);
-            rs = ps.executeQuery();
-            if(rs.next()){
-                return rs.getInt(1);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return -1;
-    }
+        int reviewSeq= 0;
+        String sql = proFile.getProperty("review.findReviewSeqByfurnitureSeq");
+        try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, furnitureSeq);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				reviewSeq=rs.getInt(1);
+			}
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+        
+		return reviewSeq;
+	}
 
 	@Override
 	public List<FurnitureDTO> selectAll() throws SQLException {
