@@ -27,32 +27,6 @@ public class ReviewDAOImpl implements ReviewDAO {
     }
 
     @Override
-    public List<ReviewDTO> selectAllReviews(int furnitureSeq) throws SQLException {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = proFile.getProperty("query.getProductReviews");
-        List<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
-
-        try{
-            con = DbUtil.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, furnitureSeq);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                int rev_seq = rs.getInt(1);
-                ReviewDTO review = new ReviewDTO(rev_seq,rs.getInt(2),rs.getInt(3),
-                        rs.getString(4),rs.getInt(5),rs.getString(6));
-                review.setReviewImgs(this.getRimg(con,rev_seq));
-                reviews.add(review);
-            }
-        }finally {
-            DbUtil.dbClose(null, ps, rs);
-        }
-        return reviews;
-    }
-
-    @Override
     public int findUserSeq(int reviewSeq) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -67,32 +41,12 @@ public class ReviewDAOImpl implements ReviewDAO {
             rs = ps.executeQuery();
             if(rs.next()) userSeq = rs.getInt(1);
         }finally {
-            DbUtil.dbClose(null, ps, rs);
+            DbUtil.dbClose(con, ps, rs);
         }
         return userSeq;
     }
 
-    private List<ReviewImgDTO> getRimg(Connection con, int reviewSeq) throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = proFile.getProperty("query.getProductReviewImages");
-        List<ReviewImgDTO> list = new ArrayList<ReviewImgDTO>();
 
-        try{
-            con = DbUtil.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, reviewSeq);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                ReviewImgDTO revImgDTO = new ReviewImgDTO(rs.getInt(1),rs.getInt(2),
-                        rs.getString(3),rs.getString(4));
-                list.add(revImgDTO);
-            }
-        }finally {
-            DbUtil.dbClose(con, ps, rs);
-        }
-        return list;
-    }
 
 	@Override
 	public List<ReviewDTO> selectAll() throws SQLException {
@@ -115,7 +69,35 @@ public class ReviewDAOImpl implements ReviewDAO {
                 list.add(review);
             }
         }finally {
-            DbUtil.dbClose(null, ps, rs);
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return list;
+	}
+	
+	
+
+	@Override
+	public List<ReviewDTO> selectAll(int furnitureSeq) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectAllByfurnitureSeq");
+        List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+        ReviewDTO review = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, furnitureSeq);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
+                        rs.getString(4),rs.getInt(5),rs.getString(6));
+                review.getUser().setName(rs.getString(8));
+                list.add(review);
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
         }
         return list;
 	}
@@ -158,7 +140,71 @@ public class ReviewDAOImpl implements ReviewDAO {
                 list.add(review);
             }
         }finally {
-            DbUtil.dbClose(null, ps, rs);
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return list;
+	}
+
+	@Override
+	public List<ReviewImgDTO> selectReviewImgByReviewSeq(int reviewSeq) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectReviewImgByReviewSeq");
+        List<ReviewImgDTO> list = new ArrayList<ReviewImgDTO>();
+        ReviewImgDTO reviewImg = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reviewSeq);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	reviewImg = new ReviewImgDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4), rs.getString(5));
+                list.add(reviewImg);
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return list;
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewUser(int reviewSeq, int furnitureSeq) throws SQLException {
+		List<ReviewDTO> list = this.selectAll(furnitureSeq);
+
+			for (ReviewDTO reviewDTO : list) {
+				String userName = reviewDTO.getUser().getName();
+				reviewDTO.setReviewImgs(this.selectReviewImgByReviewSeq(reviewSeq,furnitureSeq,userName));
+			}
+		return list;
+	}
+
+	private List<ReviewImgDTO> selectReviewImgByReviewSeq(int reviewSeq,int furnitureSeq,String userName) throws SQLException {
+        Connection con = null;
+		PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectReviewDetailImg");
+        List<ReviewImgDTO> list = new ArrayList<ReviewImgDTO>();
+        ReviewImgDTO reviewImg = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reviewSeq);
+            ps.setInt(2, furnitureSeq);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	reviewImg = new ReviewImgDTO();
+            	reviewImg.setImgSrc(rs.getString("img_src"));
+            	reviewImg.setImgType(rs.getString("img_type"));
+            	if(rs.getString("user_name").equals(userName)) {
+            		System.out.println("이미지 추가됨");
+            		list.add(reviewImg);
+            	}
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
         }
         return list;
 	}

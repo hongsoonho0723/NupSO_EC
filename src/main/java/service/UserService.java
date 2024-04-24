@@ -13,6 +13,7 @@ public interface UserService {
 
     int findUserSeqById(String userId) throws SQLException;
 
+    UsersDTO findUserById(String userId) throws SQLException;
     
     UsersDTO login(UsersDTO usersDTO) throws SQLException;
 

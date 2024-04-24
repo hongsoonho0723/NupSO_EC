@@ -1,18 +1,21 @@
 package dao;
 
+import dto.FurnitureDTO;
 import dto.ImgDTO;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface ImgDAO {
-    /*
-    소파 대표 이미지 불러오기
-     */
-    List<ImgDTO> selectImg(int furnitureSeq) throws SQLException;
+   
 
     /*
     특정 소파 상품에 대한 상세 설명 이미지 불러오기
      */
-    List<ImgDTO> selectDetailImg(int furnitureSeq) throws SQLException;
+	List<ImgDTO> selectImgDetail(FurnitureDTO furnitureDTO) throws SQLException;
+	
+	/*
+	 * 상세페이지 슬라이드 사진 가져오기
+	 * */
+	List<ImgDTO> selectImg(FurnitureDTO furnitureDTO) throws SQLException;
 }

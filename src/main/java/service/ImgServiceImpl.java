@@ -2,6 +2,7 @@ package service;
 
 import dao.ImgDAO;
 import dao.ImgDAOImpl;
+import dto.FurnitureDTO;
 import dto.ImgDTO;
 
 import java.io.IOException;
@@ -11,17 +12,22 @@ import java.util.List;
 public class ImgServiceImpl implements ImgService {
     private ImgDAO imgDAO = new ImgDAOImpl();
 
-    @Override
-    public List<ImgDTO> selectImg(int furnitureSeq) throws SQLException {
-        List<ImgDTO> imgList = imgDAO.selectImg(furnitureSeq);
-        if(imgList.isEmpty()) throw new SQLException("해당 상품에는 이미지가 등록되지 않았습니다.");
-        return imgList;
-    }
 
     @Override
-    public List<ImgDTO> selectDetailImg(int furnitureSeq) throws SQLException {
-        List<ImgDTO> imgList = imgDAO.selectDetailImg(furnitureSeq);
-        if(imgList.isEmpty()) throw new SQLException("해당 상품에는 상세 이미지가 등록되지 않았습니다.");
-        return imgList;
+    public List<ImgDTO> selectImgDetail(FurnitureDTO furnitureDTO) throws SQLException {
+    	List<ImgDTO> list = imgDAO.selectImgDetail(furnitureDTO);
+        
+        return list;
     }
+
+
+	@Override
+	public List<ImgDTO> selectImg(FurnitureDTO furnitureDTO) throws SQLException {
+		List<ImgDTO> list = imgDAO.selectImg(furnitureDTO);
+        
+        return list;
+	}
+    
+    
+    
 }

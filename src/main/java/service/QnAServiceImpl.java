@@ -50,7 +50,14 @@ public class QnAServiceImpl implements QnAService {
 		List<QnADTO> list = qnaDAO.selectCount();
 		return list;
 	}
+
+	@Override
+	public List<QnADTO> selectAll(int furnitureSeq) throws SQLException {
+		List<QnADTO> list = qnaDAO.selectAll(furnitureSeq);
+		return list;
+	}
     
+	
 	
     
 }

@@ -38,4 +38,6 @@ public interface UserDAO {
 
 	List<UsersDTO> selectAge() throws SQLException;
 
+	UsersDTO findUserById(String userId) throws SQLException;
+
 }

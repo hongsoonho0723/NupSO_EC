@@ -30,4 +30,6 @@ public interface QnADAO {
 
 	List<QnADTO> selectCount() throws SQLException;
 
+	List<QnADTO> selectAll(int furnitureSeq) throws SQLException;
+
 }

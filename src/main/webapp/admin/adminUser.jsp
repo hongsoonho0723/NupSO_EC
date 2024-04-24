@@ -92,9 +92,9 @@
 			    	 checkBoxVisibility(isChecked);
 			    	  
 			    	  if (isChecked) {
-			    		    $("#userForm").attr("action", "${path}/front?key=adminUser&methodName=searchByState");
+			    		    $("#userForm").attr("action", "${path}/front?key=adminuser&methodName=searchByState");
 			    		  } else {
-			    		    $("#userForm").attr("action", "${path}/front?key=adminUser&methodName=selectAll");
+			    		    $("#userForm").attr("action", "${path}/front?key=adminuser&methodName=selectAll");
 			    		  }
 			    		  $("#userForm").submit();
 			    	  
@@ -124,7 +124,7 @@
 								return;
 							}
 							$("#inForm").attr("action",
-									"${path}/front?key=adminUser&methodName=delete");
+									"${path}/front?key=adminuser&methodName=delete");
 							$("#inForm").submit();
 
 						})
