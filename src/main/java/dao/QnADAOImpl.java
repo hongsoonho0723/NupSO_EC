@@ -115,6 +115,36 @@ public class QnADAOImpl implements QnADAO {
         
 		return list;
 	}
+	
+	
+
+	@Override
+	public List<QnADTO> selectAll(int furnitureSeq) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFiles.getProperty("QnA.selectAllByFurnitureSeq");
+        System.out.println(sql);
+        
+        List<QnADTO> list = new ArrayList<QnADTO>();
+        QnADTO qna = null;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, furnitureSeq);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            	qna = new QnADTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getString(5) , 
+            			rs.getString(6), rs.getString("reg_date"), rs.getString("name"), rs.getString("password"));
+            	qna.getFurniture().setFurnitureName(rs.getString(10));
+            	list.add(qna);
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+		return list;
+	}
 
 	@Override
 	public int update(QnADTO qna) throws SQLException {

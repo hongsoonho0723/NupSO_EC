@@ -22,7 +22,6 @@ public class FurnitureDTO {
     private List<ImgDTO> imgDetailList = new ArrayList<ImgDTO>();
     private List<ColorDTO> colorList = new ArrayList<ColorDTO>();
     private List<SizeDTO> sizeList = new ArrayList<SizeDTO>();
-    private List<TextureDTO> textureList = new ArrayList<TextureDTO>();
     private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
     private List<QnADTO> qnaList = new ArrayList<QnADTO>();
     
@@ -50,7 +49,6 @@ public class FurnitureDTO {
 		this.furnitureImgSrc = furnitureImgSrc;
 	}
 
-	
 	
 	public List<ReviewDTO> getReviewList() {
 		return reviewList;
@@ -115,14 +113,6 @@ public class FurnitureDTO {
 
     public void setSizeList(List<SizeDTO> sizeList) {
         this.sizeList = sizeList;
-    }
-
-    public List<TextureDTO> getTextureList() {
-        return textureList;
-    }
-
-    public void setTextureList(List<TextureDTO> textureList) {
-        this.textureList = textureList;
     }
 
     public int getFurnitureSeq() {

@@ -38,11 +38,8 @@ public class UserController implements RestController {
 		// 로그인성공하면 세션에 정보를 저장 - ${loginUser} / ${loginName}
 		HttpSession session = request.getSession();
 
-		session.setAttribute("userDTO", dbDTO);
-		session.setAttribute("userSeq", dbDTO.getUserSeq());
-		session.setAttribute("userId", dbDTO.getUserId());
-		session.setAttribute("userName", dbDTO.getName());
-		
+		session.setAttribute("loginUser", dbDTO);
+
 		Gson gson = new Gson();
 		String jsonArr = gson.toJson(dbDTO);
 		PrintWriter out = response.getWriter();

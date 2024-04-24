@@ -4,6 +4,7 @@ import dao.FurnitureDAO;
 import dao.FurnitureDAOImpl;
 import dto.ColorDTO;
 import dto.FurnitureDTO;
+import dto.SizeDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,13 +20,6 @@ public class FurnitureServiceImpl implements FurnitureService {
 	        return furnitureDTO;
 	}
 
-
-    @Override
-    public int findFurnitureSeqByNumber(String furnitureNumber) throws SQLException {
-        int furnitureSeq = furnitureDAO.findFurnitureSeqByNumber(furnitureNumber);
-        if (furnitureSeq == -1) throw new SQLException("해당 모델 번호에 해당하는 정보가 없습니다.");
-        return furnitureSeq;
-    }
 
 	@Override
 	public List<FurnitureDTO> selectAll() throws SQLException {
@@ -49,6 +43,23 @@ public class FurnitureServiceImpl implements FurnitureService {
 		return list;
 	}
 
+
+	@Override
+	public List<SizeDTO> selectSizeList(String furnitureName) throws SQLException {
+		List<SizeDTO> list = furnitureDAO.selectSizeList(furnitureName);
+		if(list.isEmpty()) throw new SQLException("정보 검색에 실패했습니다.");
+		return list;
+	}
+
+
+	@Override
+	public int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException {
+		int reviewSeq = furnitureDAO.findReviewSeqByfurnitureSeq(furnitureSeq);
+		return reviewSeq;
+	}
+
+	
+	
 	
     
     

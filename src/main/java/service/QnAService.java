@@ -17,4 +17,6 @@ public interface QnAService {
     QnADTO select(int qnaSeq) throws SQLException;
 
 	List<QnADTO> selectCount()throws SQLException;
+
+	List<QnADTO> selectAll(int furnitureSeq) throws SQLException;
 }

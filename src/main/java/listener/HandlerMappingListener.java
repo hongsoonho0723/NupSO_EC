@@ -33,7 +33,12 @@ public class HandlerMappingListener implements ServletContextListener {
 			 for(String key : rb.keySet()){ 
 				 System.out.println("key "+key);
 				 String value = rb.getString(key);
+
 				 System.out.println("value "+value);
+
+				 System.out.println("actionMapping start");
+
+
 				 Class<?> className = Class.forName(value);
 			 
 				 Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
@@ -46,6 +51,7 @@ public class HandlerMappingListener implements ServletContextListener {
 
 			 //ajax Class<?> , RestController 넣기
 		 	for(String key : ajaxRb.keySet()){ 
+		 		 System.out.println("ajaxMapping start");
 		 		 System.out.println("ajax key "+key);
 				 String value = ajaxRb.getString(key);
 				 System.out.println("ajax value "+value);
