@@ -37,7 +37,7 @@ $(document).ready(function(){
                             </a>
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="${path}/front?key=adminUser&methodName=selectAll">회원 조회</a>
+                                    <a class="nav-link" href="${path}/front?key=adminuser&methodName=selectAll">회원 조회</a>
                                 </nav>
                             </div>
                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
