@@ -43,8 +43,8 @@
                 <li><a class="nav-link" href="#">Contact us</a></li>
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-               <li><a class="nav-link" href="user/login.jsp"><img src="assets/images/user.svg" alt="유저 로그인"></a></li>
-               <li><a class="nav-link" href="cart/cart.jsp"><img src="assets/images/cart.svg" alt="장바구니"></a></li>
+               <li><a class="nav-link" href="login.jsp"><img src="assets/images/user.svg" alt="유저 로그인"></a></li>
+               <li><a class="nav-link" href="cart.jsp"><img src="assets/images/cart.svg" alt="장바구니"></a></li>
                <li><a class="nav-link" href="admin/adminLogin.jsp"><img src="assets/images/admin.svg" alt = "관리자 로그인"></a></li>
             </ul>
         </div>
