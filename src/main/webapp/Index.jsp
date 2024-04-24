@@ -33,7 +33,8 @@
 							<div class="intro-excerpt">
 								<h1>Discover Your Dreamy Sofa <span clsas="d-block"></span></h1>
 								<p class="mb-4">당신의 휴식을 위한 최적의 선택, 눕소의 프리미엄 소파를 탐색하세요.</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="" class="btn btn-secondary me-2">Shop Now</a>
+								<!-- <a href="#" class="btn btn-white-outline">Explore</a></p> -->
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -55,7 +56,7 @@
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
 						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
+						<p><a href="shop.html" class="btn">상품 전체 보기</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
