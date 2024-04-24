@@ -113,7 +113,7 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Checkout</h1>
+								<h1>checkout</h1>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -249,26 +249,17 @@
 																			width="22" height="22" viewBox="0 0 22 23">
 																		
 																		</svg></span><span
-																		class="PaymentMethodLabel_text__2n7PP">일반결제</span></span></label>
+																		class="PaymentMethodLabel_text__2n7PP">카카오페이</span></span></label>
 														</div>
 													</div>
 												</div>
 											</div>
-
-											<!--/////////////////-->
-											<div class="collapse" id="collapsepaypal">
-												<div class="py-2">
-													<p class="mb-0">Make your payment directly into our bank account.
-														Please use your Order ID as the payment reference. Your order
-														won’t be shipped until the funds have cleared in our account.
-													</p>
-												</div>
-											</div>
+											
 										</div>
 
 										<div class="form-group">
-											<button class="btn btn-black btn-lg py-3 btn-block"
-												onclick="window.location='thankyou.html'">Place Order</button>
+											<button id="btn" class="btn btn-black btn-lg py-3 btn-block"
+												>Place Order</button>
 										</div>
 
 									</div>
@@ -287,6 +278,11 @@
 			<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
 			<script src="${path}/assets/js/tiny-slider.js"></script>
 			<script src="${path}/assets/js/custom.js"></script>
+			
+			<!--포트원 결제  -->
+			<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+			<script src="${path}/assets/js/main.js"></script>
+			
 		</body>
 
 		</html>

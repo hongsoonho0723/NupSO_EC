@@ -87,7 +87,7 @@
                             <div class="input-group mb-3 d-flex align-items-center quantity-container" style="margin: auto; max-width: 120px;">
                               <div class="input-group-prepend">
                                 <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>ㄴ
+                              </div>
                               <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-black increase" type="button">&plus;</button>
@@ -160,7 +160,8 @@
 		<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
 		<script src="${path}/assets/js/tiny-slider.js"></script>
 		<script src="${path}/assets/js/custom.js"></script>
-	
+		<script src="${path}/assets/js/payment.js"></script>
+		<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	</body>
 
 </html>

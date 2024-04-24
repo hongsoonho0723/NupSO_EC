@@ -27,18 +27,12 @@
 		  <script src="https://code.jquery.com/jquery-3.6.0.js" rel="stylesheet"></script>
 		  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 		
-					
-		<!-- 포트원 결제 -->
-		<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-		<!-- iamport.payment.js -->
-		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-		
-		
-		<!-- 주소api script -->
-		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		
-		
-		<script>
+		<!-- 결제 api-->
+			<!-- iamport.payment.js -->
+			<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+
+		  <script>
 		  $( function() {
 			  
 			  
@@ -56,7 +50,8 @@
 		  </script>
 
 
-
+<!-- 주소api script -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -105,25 +100,20 @@
             }
         }).open();
     }
-
-
-
-
-	
-	</script>
-
+</script>
 
 		</head>
 
 		<body>
-			<button id="payment">구매하기</button> <!-- 결제하기 버튼 생성 -->
+		
+
 			<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Checkout</h1>
+								<h1>checkout</h1>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -264,21 +254,12 @@
 													</div>
 												</div>
 											</div>
-
-											<!--/////////////////-->
-											<div class="collapse" id="collapsepaypal">
-												<div class="py-2">
-													<p class="mb-0">Make your payment directly into our bank account.
-														Please use your Order ID as the payment reference. Your order
-														won’t be shipped until the funds have cleared in our account.
-													</p>
-												</div>
-											</div>
+											
 										</div>
 
 										<div class="form-group">
-											<button class="btn btn-black btn-lg py-3 btn-block"
-												onclick="window.location='thankyou.html'">Place Order</button>
+											<button id="btn" class="btn btn-black btn-lg py-3 btn-block"
+												>Place Order</button>
 										</div>
 
 									</div>
@@ -297,7 +278,11 @@
 			<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
 			<script src="${path}/assets/js/tiny-slider.js"></script>
 			<script src="${path}/assets/js/custom.js"></script>
-			<script src="${path}/assets/js/payment.js"></script>
+			
+			<!--포트원 결제  -->
+			<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+			<script src="../assets/js/main.js"></script>
+			
 		</body>
 
 		</html>
