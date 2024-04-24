@@ -7,6 +7,8 @@ public class CartDTO {
 	private int funitureSeq;
 	private int quantity;
 	private String regDate;
+	private String colorName;
+	private String sizeVal;
 	
 	
 	public CartDTO() {}
