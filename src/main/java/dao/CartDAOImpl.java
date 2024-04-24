@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -31,7 +32,7 @@ public class CartDAOImpl implements CartDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+		List<CartDTO> list = new ArrayList<>();
 		String sql = proFile.getProperty("cart.selectAll");
 		
 		try {

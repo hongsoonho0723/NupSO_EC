@@ -86,7 +86,7 @@ public class UserController implements RestController {
 			gender = "M";
 
 		} else
-			gender = "W";
+			gender = "F";
 
 		UsersDTO usersDTO = new UsersDTO(request.getParameter("userId"), request.getParameter("password1"),
 				request.getParameter("name"), request.getParameter("addr"), age, gender, request.getParameter("phone"));
