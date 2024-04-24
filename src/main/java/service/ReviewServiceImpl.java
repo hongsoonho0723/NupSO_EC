@@ -3,6 +3,7 @@ package service;
 import dao.ReviewDAO;
 import dao.ReviewDAOImpl;
 import dto.ReviewDTO;
+import dto.ReviewImgDTO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,11 +12,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     private ReviewDAO reviewDAO = new ReviewDAOImpl();
 
-    @Override
-    public List<ReviewDTO> selectAllReviews(int furnitureSeq) throws SQLException {
-        List<ReviewDTO> list = reviewDAO.selectAllReviews(furnitureSeq);
-        return list;
-    }
 
     @Override
     public int findUserSeq(int reviewSeq) throws SQLException {
@@ -43,6 +39,29 @@ public class ReviewServiceImpl implements ReviewService {
 		return list;
 
 	}
+
+	@Override
+	public List<ReviewDTO> selectAll(int furnitureSeq) throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectAll(furnitureSeq);
+		return list;
+	}
+
+	@Override
+	public List<ReviewImgDTO> selectReviewImgByReviewSeq(int reviewSeq) throws SQLException{
+		List<ReviewImgDTO> list = reviewDAO.selectReviewImgByReviewSeq(reviewSeq);
+		return list;
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewUser(int reviewSeq, int furnitureSeq) throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectReviewUser(reviewSeq,furnitureSeq);
+		return list;
+	}
+	
+	
+
+	
+	
     
     
     

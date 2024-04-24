@@ -8,22 +8,89 @@ public class FurnitureDTO {
     private String furnitureNumber;
     private String furnitureName;
     private String furnitureDescription;
+    private String furnitureImgSrc;
     private int price;
     private int stock;
     private int saleCount; // 판매량
     private String category;
+    private String texture;
     private String regDate;
 
-    private List<ColorDTO> colorList;
-    private List<SizeDTO> sizeList;
-    private List<TextureDTO> textureList;
-    
-    //상품 전체보기에서 사용될 변수
-    private ImgDTO img = new ImgDTO();
+   
     //상품 상세페이지에서 사용될 변수
     private List<ImgDTO> imgList = new ArrayList<ImgDTO>();
+    private List<ImgDTO> imgDetailList = new ArrayList<ImgDTO>();
+    private List<ColorDTO> colorList = new ArrayList<ColorDTO>();
+    private List<SizeDTO> sizeList = new ArrayList<SizeDTO>();
+    private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+    private List<QnADTO> qnaList = new ArrayList<QnADTO>();
     
-    public List<ImgDTO> getImgList() {
+    
+    
+    
+    public FurnitureDTO() {}
+
+    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
+        this.furnitureSeq = furnitureSeq;
+        this.furnitureNumber = furnitureNumber;
+        this.furnitureName = furnitureName;
+        this.furnitureDescription = furnitureDescription;
+        this.price = price;
+        this.stock = stock;
+        this.saleCount = saleCount;
+        this.category = category;
+        this.regDate = regDate;
+    }
+    
+	public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription,
+			String furnitureImgSrc, int price, int stock, int saleCount, String category, String texture,
+			String regDate) {
+		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock, saleCount, category, regDate);
+		this.furnitureImgSrc = furnitureImgSrc;
+	}
+
+	
+	public List<ReviewDTO> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<ReviewDTO> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	public List<QnADTO> getQnaList() {
+		return qnaList;
+	}
+
+	public void setQnaList(List<QnADTO> qnaList) {
+		this.qnaList = qnaList;
+	}
+
+	public List<ImgDTO> getImgDetailList() {
+		return imgDetailList;
+	}
+
+	public void setImgDetailList(List<ImgDTO> imgDetailList) {
+		this.imgDetailList = imgDetailList;
+	}
+
+	public String getFurnitureImgSrc() {
+		return furnitureImgSrc;
+	}
+
+	public void setFurnitureImgSrc(String furnitureImgSrc) {
+		this.furnitureImgSrc = furnitureImgSrc;
+	}
+
+	public String getTexture() {
+		return texture;
+	}
+
+	public void setTexture(String texture) {
+		this.texture = texture;
+	}
+
+	public List<ImgDTO> getImgList() {
 		return imgList;
 	}
 
@@ -31,13 +98,6 @@ public class FurnitureDTO {
 		this.imgList = imgList;
 	}
 
-	public ImgDTO getImg() {
-		return img;
-	}
-
-	public void setImg(ImgDTO img) {
-		this.img = img;
-	}
 
 	public List<ColorDTO> getColorList() {
         return colorList;
@@ -53,28 +113,6 @@ public class FurnitureDTO {
 
     public void setSizeList(List<SizeDTO> sizeList) {
         this.sizeList = sizeList;
-    }
-
-    public List<TextureDTO> getTextureList() {
-        return textureList;
-    }
-
-    public void setTextureList(List<TextureDTO> textureList) {
-        this.textureList = textureList;
-    }
-
-    public FurnitureDTO() {}
-
-    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
-        this.furnitureSeq = furnitureSeq;
-        this.furnitureNumber = furnitureNumber;
-        this.furnitureName = furnitureName;
-        this.furnitureDescription = furnitureDescription;
-        this.price = price;
-        this.stock = stock;
-        this.saleCount = saleCount;
-        this.category = category;
-        this.regDate = regDate;
     }
 
     public int getFurnitureSeq() {
@@ -149,4 +187,14 @@ public class FurnitureDTO {
         this.regDate = regDate;
     }
 
+	@Override
+	public String toString() {
+		return "FurnitureDTO [furnitureSeq=" + furnitureSeq + ", furnitureNumber=" + furnitureNumber
+				+ ", furnitureName=" + furnitureName + ", furnitureDescription=" + furnitureDescription
+				+ ", furnitureImgSrc=" + furnitureImgSrc + ", price=" + price + ", stock=" + stock + ", saleCount="
+				+ saleCount + ", category=" + category + ", texture=" + texture + ", regDate=" + regDate + "]";
+	}
+
+    
+    
 }
