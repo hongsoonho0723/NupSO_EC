@@ -76,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         UsersDTO dbDTO=null;
-        String sql = proFile.getProperty("user.login");
+        String sql = "select user_seq,user_id,name from users where user_id=? and password=?";
         //String sql = "select * from users where user_id=? and password=?";
         //String sql = "select * from name where user_id=? and password=?";
 		
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 		 Connection con = null;
 	     PreparedStatement ps = null;
 	     ResultSet rs = null;
-	     String sql = proFile.getProperty("user.idCheck");
+	     String sql = "select user_id from users where user_id = ?";
 	     boolean result = true;
 
 	        try {
@@ -125,7 +125,7 @@ public class UserDAOImpl implements UserDAO {
 	public int insert(UsersDTO usersDTO) throws SQLException {
 		 Connection con = null;
 	     PreparedStatement ps = null;
-	     String sql = proFile.getProperty("user.insert");
+	     String sql = "insert into users values(user_seq.nextval,?,?,?,?,?,?,?,default,default)";
 	     int result = 0;
 
 	        try {
@@ -200,5 +200,30 @@ public class UserDAOImpl implements UserDAO {
 		return list;
 	}
 
+	@Override
+	public UsersDTO findUserById(String userId) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        UsersDTO user=null;
+        String sql = proFile.getProperty("user.findUserById");
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, userId);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+            	user = new UsersDTO(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),
+            			rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        System.out.println("dao user = " +user);
+        return user;
+	}
+
+	
     
 }

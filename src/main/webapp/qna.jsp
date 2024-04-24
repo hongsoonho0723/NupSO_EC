@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-
-<jsp:include page="../assets/common/user/header.jsp"/>
+<script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
+<script>
+	console.log(${requestScope.furnitureSeq})''
+</script>
+<jsp:include page="assets/common/user/header.jsp"/>
 
 
 <!-- Start Hero Section -->
@@ -19,7 +22,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="hero-img-wrap">
-                    <img src="../images/couch.png" class="img-fluid">
+                    <img src="assets/images/couch.png" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -126,4 +129,4 @@
 <!-- End Contact Form -->
 
 
-<jsp:include page="../assets/common/user/footer.jsp"/>
+<jsp:include page="assets/common/user/footer.jsp"/>

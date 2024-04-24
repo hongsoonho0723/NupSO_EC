@@ -5,6 +5,7 @@ public class ColorDTO {
     private int furnitureSeq;     // 가구 고유번호 (외래키)
     private String colorName;     // 색상 이름
 
+
     // 생성자
     public ColorDTO(int colorSeq, int furnitureSeq, String colorName) {
         this(colorName);
@@ -16,7 +17,8 @@ public class ColorDTO {
         this.colorName = colorName;
     }
 
-    // Getters and Setters
+
+	// Getters and Setters
     public int getColorSeq() {
         return colorSeq;
     }

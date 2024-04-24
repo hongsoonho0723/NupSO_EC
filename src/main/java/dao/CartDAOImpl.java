@@ -55,7 +55,7 @@ public class CartDAOImpl implements CartDAO {
 		
 		
 		
-		return list;
+		return null;
 	}
 
 }

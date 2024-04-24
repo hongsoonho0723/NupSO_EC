@@ -6,14 +6,14 @@
     <div class="container relative">
 
         <div class="sofa-img">
-            <img src="${path}/user/images/sofa.png" alt="Image" class="img-fluid">
+            <img src="assets/images/sofa.png" alt="Image" class="img-fluid">
         </div>
 
         <div class="row">
             <div class="col-lg-8">
                 <div class="subscription-form">
                     <h3 class="d-flex align-items-center"><span class="me-1"><img
-                            src="${path}/user/images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span>
+                            src="assets/images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span>
                     </h3>
 
                     <form action="#" class="row g-3">
@@ -111,18 +111,10 @@
 
     </div>
 </footer>
-<!-- End Footer Section -->
+<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
+<script src="${path}/assets/js/tiny-slider.js"></script>
+<script src="${path}/assets/js/custom.js"></script>
 
-
-<<<<<<< HEAD:src/main/webapp/user/common/footer.jsp
-<script src="${path}/user/js/bootstrap.bundle.min.js"></script>
-<script src="${path}/user/js/tiny-slider.js"></script>
-<script src="${path}/user/js/custom.js"></script>
-=======
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/tiny-slider.js"></script>
-<script src="../../assets/js/custom.js"></script>
->>>>>>> 5669e444a374fe552267eb82e616967c5962ae9f:src/main/webapp/assets/common/user/footer.jsp
 </body>
 
 </html>
