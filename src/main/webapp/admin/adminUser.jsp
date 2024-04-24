@@ -54,6 +54,16 @@
 <script type="text/javascript">
 	//전체검색
 	$(function() {
+		<!-- 유효성 검사 코드 추가 -->
+        <%
+            HttpSession adminSession = request.getSession(false);
+            if (adminSession == null || adminSession.getAttribute("adminId") == null) {
+                response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp");
+                return;
+            }
+        %>
+        <!-- 유효성 검사 코드 추가 끝 -->
+		
 		let isChecked = localStorage.getItem("userStateChecked") === "true";
 		  $("#userState").prop("checked", isChecked);
 		  checkBoxVisibility(isChecked);

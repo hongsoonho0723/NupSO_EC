@@ -1,12 +1,15 @@
 package servlet;
 
+import java.io.IOException;
+
+import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.servlet.http.HttpSession;
 
 
 @WebServlet(urlPatterns = "/adminLogin", loadOnStartup = 1)
@@ -28,7 +31,13 @@ public class AdminLoginCheckServlet extends HttpServlet {
     	
     	 
     	 if(adminId.equals(correctAdminId) && adminPwd.equals(correctAdminPwd)) {
-
+    		
+    		 // 세션 정보 설정
+    		 HttpSession session = request.getSession();
+    		 session.setAttribute("adminId", adminId);
+    		 session.setAttribute("adminPassword", adminPwd);
+    		 
+    		
     		response.sendRedirect(request.getContextPath() + "/front?key=order&methodName=selectOrderFunitureName");
     		 
     	 }else {

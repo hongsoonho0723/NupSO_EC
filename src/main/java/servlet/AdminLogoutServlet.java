@@ -16,12 +16,20 @@ public class AdminLogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("로그아웃테스트");
 		
-		HttpSession session = request.getSession();
-		 session.invalidate();//모든세션정보 삭제
-		 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-		 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-		 response.setDateHeader("Expires", 0); // Proxies.
-		 response.sendRedirect(request.getContextPath() + "/templates/index.html");//폼으로이동
+		HttpSession session = request.getSession(false);
+		 if(session != null) {
+			 session.invalidate();
+			 
+			// 캐시 관련 헤더 추가
+		        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		        response.setDateHeader("Expires", 0); // Proxies.
+			 
+			 response.sendRedirect(request.getContextPath() + "/Index.jsp");//폼으로이동
+			 
+		 }else {
+		 response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp");
+		 }
 	}
 }
 
