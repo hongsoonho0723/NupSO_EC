@@ -106,7 +106,19 @@
 
 		<body>
 		
-
+<%
+// total 값 가져오기
+String totalValue = request.getParameter("total");
+String totalValue1 = request.getParameter("totalValue");
+String furnitureName = request.getParameter("furnitureName");
+// total 값이 넘어온 경우에만 출력
+%>
+    <p>주문 총액: <%= totalValue %></p>
+    <p>주문 총액: <%= totalValue1 %></p>
+    <p>상품이름: <%= furnitureName %></p>
+    
+    
+    
 			<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
@@ -194,40 +206,17 @@
 								<div class="col-md-12">
 									<h2 class="h3 mb-3 text-black">Your Order</h2>
 									<div class="p-3 p-lg-5 border bg-white">
-										<table class="table site-block-order-table mb-5">
-											<thead>
-												<th>상품이름</th>
-												<th>수량</th>
-												<th>금액</th>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-													<td>1</td>
-													<td>$250.00</td>
-												</tr>
-												<tr>
-													<td>Polo Shirt <strong class="mx-2">x</strong> 1</td>
-													<td>1</td>
-													<td>$100.00</td>
-												</tr>
-												<tr>
-													<td class="text-black font-weight-bold"><strong>Cart
-															Subtotal</strong></td>
-															<td>1</td>
-													<td class="text-black">$350.00</td>
-												</tr>
-												<tr>
-													<td class="text-black font-weight-bold"><strong>Order Total</strong>
-													</td>
-													<td>1</td>
-													<td class="text-black font-weight-bold"><strong>$350.00</strong>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-
 									
+									
+									
+									<!-- //////////////////////// -->
+									
+									
+									<!-- 전송된 데이터 출력 -->
+							
+									
+									
+									<!-- /////////////////////// -->
 
 										<div class="border p-3 mb-5">
 											<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"></a>
