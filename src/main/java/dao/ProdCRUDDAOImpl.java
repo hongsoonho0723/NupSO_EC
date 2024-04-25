@@ -59,7 +59,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
         public int delete(int furnitureSeq) throws SQLException {
             Connection con = null;
             PreparedStatement ps = null;
-            String sql = proFiles.getProperty("QnA.delete");
+            String sql = proFiles.getProperty("ProdCRUD.delete");
             int result;
 
             try {

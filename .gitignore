@@ -17,3 +17,4 @@ src/main/webapp/WEB-INF/*
 ### Oracle WALLET ###
 Wallet_NupSO
 .tern-project
+/bulid/
