@@ -23,7 +23,7 @@
 
 	<body>
 
-		<!-- Start Header/Navigation -->
+		<<!-- Start Header/Navigation -->
 		<jsp:include page="assets/common/user/header.jsp"></jsp:include>
 		<!-- End Header/Navigation -->
 
