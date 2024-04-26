@@ -72,16 +72,6 @@
  				 }
  			  
  		   });
- 		  		
- 		   // 추후 상품 추가 기능
- 			 /* $(document).on("click","#update", function(){
- 				 if($("#questionSeq").val()===""){
- 					 return;
- 				 }
- 				 
- 				 $("#inForm").attr("action","${path}/front?key=product&methodName=update");
- 				 $("#inForm").submit();
- 			 }) */
  			 
  			 $(document).on("click","#delete", function(){
  				 if($("#furnitureSeq").val()===""){

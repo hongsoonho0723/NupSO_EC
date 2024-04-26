@@ -15,13 +15,8 @@ public class ProdCRUDController implements Controller{
 	public ProdCRUDController() {}
 	
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
-	    try {
-	        List<FurnitureDTO> list = service.selectAll();
-	        request.setAttribute("list", list);
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return new ModelAndView("admin/adminCRUD.jsp");
+
+		return null;
 	}
 	
 	public ModelAndView selectAll (HttpServletRequest request, HttpServletResponse response) throws SQLException {
