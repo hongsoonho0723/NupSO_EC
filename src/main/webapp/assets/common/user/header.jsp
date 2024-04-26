@@ -76,7 +76,7 @@ document.getElementById('logoutButton').onclick = function() {
 
 // 로그아웃 함수
 function logout() {
-    // 세션 종료 로직, 예를 들어 서버에 로그아웃 요청을 보냅니다.
+   
     window.location.href = '${path}/userLogout'; // 서버 로그아웃 경로로 리다이렉트
 }
 

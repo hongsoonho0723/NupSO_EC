@@ -38,7 +38,8 @@ public class UserAjaxController implements RestController {
 		// 로그인성공하면 세션에 정보를 저장 - ${loginUser} / ${loginName}
 		HttpSession session = request.getSession();
 
-		session.setAttribute("userDTO", dbDTO);
+		session.setAttribute("loginUser", dbDTO);
+
 		session.setAttribute("userSeq", dbDTO.getUserSeq());
 		session.setAttribute("userId", dbDTO.getUserId());
 		session.setAttribute("userName", dbDTO.getName());
