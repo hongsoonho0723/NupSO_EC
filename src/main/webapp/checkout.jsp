@@ -45,7 +45,8 @@
 			  
 			/* 달력 클릭시 이벤트 */
 		    $("#datepicker").datepicker();
-		    
+		   
+			
 		    function insertOrder(){
 		    	
 		    	
@@ -61,7 +62,7 @@
 					 data: { key: "cartAjax", methodName: "selectAll" },
 					success :function(result , status){
 						  //화면갱신
-						  console.log(result)
+						  console.log("result = "+result)
 						  let table="";
 						  let str="";
 						  let total=0;
