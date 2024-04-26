@@ -13,7 +13,7 @@
   $(function(){
 	  $("#logoutButton").click(function(){
 		  //로그아웃기능을하는 페이지로 이동해서 모든세션의 삭제
-			  location.href="${pageContext.request.contextPath}/adminlogout";  
+			  location.href="${path}/front?key=adminLogInOut&methodName=adminLogout";  
 	  });
   })
 </script>

@@ -60,7 +60,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form action="../adminLogin" method="post" onsubmit="return loginForm(event)">
+                                        <form action="${path}/front?key=adminLogInOut&methodName=adminLogin" method="post" onsubmit="return loginForm(event)">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" name="inputEmail" type="email" value="${adminId}" placeholder="name@example.com" />
                                                 <label for="inputEmail">admin ID</label>
