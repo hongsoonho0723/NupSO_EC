@@ -33,9 +33,9 @@
 
 
 		  <script>
-		  $( function() {
+		  $(function(){
 			  
-			  
+			  selectAll()
 			  
 			  
 			/* 달력 클릭시 이벤트 */
@@ -43,10 +43,53 @@
 		    
 		    
 		    
+		    function selectAll(){
+		        alert(1)
+	        	$.ajax({
+	        		 url: "ajax", //통신할 서버의 주소
+					 type: "post", //요청방식(get | post | put | delete | fetch)
+					 dataType:"json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
+					 data: { key: "cartAjax", methodName: "selectAll" },
+					success :function(result , status){
+						  //화면갱신
+						  console.log(result)
+						  let table="";
+						  let str="";
+						  let total=0;
+						  $.each(result,function(index,item){
+							/*   상품이름 색상 수량 금액 */
+					              table += "<tr>";
+					              table += "<td><img src="+'${path}/assets/'+item.furnitureDTO.furnitureImgSrc+"></img></td>";
+					              table += "<td><h2 class='h5 text-black'>"+item.furnitureDTO.furnitureName+"</h2></td>";
+					              table += "<td>" + item.furnitureDTO.price + "</td>";
+					              table += "<td>" + item.quantity + "</td>";
+					              table += "<td>" + item.colorName + "</td>";
+					              table += "<td>" + item.sizeVal + "</td>";
+					              table += "<td><input type=button value='삭제' data-id="+item.furnitureSeq+"></td>";
+					              table += "</tr>";												
+					              
+					              total += (item.furnitureDTO.price*item.quantity);
+					              
+					         });
+								$("#listTable tr:gt(0)").remove();
+					            $("#listTable").append(table);
+					            $("#totalInput").val(total);
+					            $("#total").text(numberWithCommas(total));
+					            
+					            
+					      
+
+					            
+					 },
+					 error : function(err, status){
+						 //통신에 실패하면 해야할 일 
+						 alert(err+"발생했어요 status :" + status);
+					 }
+				 });//ajax end
 		    
+		    };//selectAll end
 		    
-		    
-		  } );//load end
+		  });//load end
 		  </script>
 
 
@@ -212,7 +255,18 @@ String furnitureName = request.getParameter("furnitureName");
 									<!-- //////////////////////// -->
 									
 									
-									<!-- 전송된 데이터 출력 -->
+								<table id="listTable" class="table site-block-order-table mb-5">
+											<thead>
+												<th>상품이름</th>
+												<th>색상</th>
+												<th>수량</th>
+												<th>금액</th>
+											</thead>
+											<tbody>
+											
+											</tbody>
+										</table>
+
 							
 									
 									
