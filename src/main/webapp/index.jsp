@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!Doctype html>
 <html>
 <head>
@@ -55,18 +57,19 @@
 
 					<!-- Start Column 1 -->
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">상품 전체 보기</a></p>
+						<h2 class="mb-4 section-title" style="weight: bold">인기 상품</h2>
+						<p class="mb-4">NupSO에서 판매량이 가장 높은 제품들입니다.</p>
+						<p><a href="shop.jsp" class="btn">상품 전체 보기</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
 					<!-- Start Column 2 -->
+				<c:forEach items="${list}" var="item">
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="assets/images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+						<a class="product-item" href="${path}/front?key=furniture&methodName=furnitureInfo&furnitureName=${item.furnitureName}">
+							<img src="assets/${item.furnitureImgSrc}" class="img-fluid product-thumbnail" alt="이미지가 경로에 없습니다.">
+							<h3 class="product-title">${item.furnitureName}</h3>
+							<strong class="product-price"><fmt:formatNumber value ="${item.price}"/></strong>
 
 							<span class="icon-cross">
 								<img src="assets/images/cross.svg" class="img-fluid">
@@ -106,6 +109,7 @@
 				</div>
 			</div>
 		</div>
+	</c:forEach> 
 		<!-- End Product Section -->
 
 		<!-- Start Why Choose Us Section -->
