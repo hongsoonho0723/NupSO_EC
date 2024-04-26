@@ -39,6 +39,7 @@ public class UserAjaxController implements RestController {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("loginUser", dbDTO);
+
 		session.setAttribute("userSeq", dbDTO.getUserSeq());
 		session.setAttribute("userId", dbDTO.getUserId());
 		session.setAttribute("userName", dbDTO.getName());

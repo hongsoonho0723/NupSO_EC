@@ -78,7 +78,6 @@
 				         });
 							$("#listTable tr:gt(0)").remove();
 				            $("#listTable").append(table);
-				            $("#totalInput").val(total);
 				            $("#total").text(numberWithCommas(total));
 				            
 				            
@@ -178,7 +177,6 @@
                   <div class="col-md-4">
              		<form action="checkout.jsp">
 		      	  		<!-- hidden input을 추가하여 total 값을 포함시킵니다 -->
-		        		<input type="hidden" id="totalInput" name="total" value="">
 		       	 	<button type="submit" id="btn" class="btn btn-black btn-lg py-3 btn-block">주문하기</button>
 					</form>
                   </div>

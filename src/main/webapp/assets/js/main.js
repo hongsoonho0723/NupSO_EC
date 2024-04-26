@@ -16,9 +16,9 @@ const onClickPay = async () =>{
 	IMP.request_pay({
     pg : 'kakaopay',
     pay_method : 'card',
-    merchant_uid: "order_no_0007", //상점에서 생성한 고유 주문번호 //성공시 주문번호가 어딘가에저장되어 변경해줘야함
+   /* merchant_uid: "order_no_0007",*/ //상점에서 생성한 고유 주문번호 //성공시 주문번호가 어딘가에저장되어 변경해줘야함
     name : '주문명:결제테스트',
-    amount : 1200000,
+    amount :$("#totalInput").val(),
  }, function(rsp) {
     if ( !rsp.success ) {
     	//결제 시작 페이지로 리디렉션되기 전에 오류가 난 경우
@@ -30,7 +30,7 @@ const onClickPay = async () =>{
 		alert("결제 성공")
 		
 		//메서드 주문테이블에 insert필요 정보
-		
+		insertOrder();
 		
   window.location.href = 'http://localhost:8000/NupSO_EC/cart.jsp';
       }

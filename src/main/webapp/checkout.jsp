@@ -37,14 +37,23 @@
 			  
 			  selectAll()
 			  
+			  // 쉼표를 추가하여 숫자를 포맷하는 함수
+				function numberWithCommas(x) {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+			  
 			  
 			/* 달력 클릭시 이벤트 */
 		    $("#datepicker").datepicker();
 		    
+		    function insertOrder(){
+		    	
+		    	
+		    	
+		    }//insert end
 		    
 		    
 		    function selectAll(){
-		        alert(1)
 	        	$.ajax({
 	        		 url: "ajax", //통신할 서버의 주소
 					 type: "post", //요청방식(get | post | put | delete | fetch)
@@ -59,23 +68,20 @@
 						  $.each(result,function(index,item){
 							/*   상품이름 색상 수량 금액 */
 					              table += "<tr>";
-					              table += "<td><img src="+'${path}/assets/'+item.furnitureDTO.furnitureImgSrc+"></img></td>";
 					              table += "<td><h2 class='h5 text-black'>"+item.furnitureDTO.furnitureName+"</h2></td>";
-					              table += "<td>" + item.furnitureDTO.price + "</td>";
-					              table += "<td>" + item.quantity + "</td>";
 					              table += "<td>" + item.colorName + "</td>";
-					              table += "<td>" + item.sizeVal + "</td>";
-					              table += "<td><input type=button value='삭제' data-id="+item.furnitureSeq+"></td>";
+					              table += "<td>" + item.quantity + "</td>";
+					              table += "<td>" + item.furnitureDTO.price + "</td>";
 					              table += "</tr>";												
 					              
 					              total += (item.furnitureDTO.price*item.quantity);
 					              
 					         });
 								$("#listTable tr:gt(0)").remove();
-					            $("#listTable").append(table);
+					            $("#listTable").append(table); 
+					           /*  $("table tbody").after(table); */
 					            $("#totalInput").val(total);
-					            $("#total").text(numberWithCommas(total));
-					            
+					            $("#total").text(numberWithCommas(total+" 원"));
 					            
 					      
 
@@ -147,37 +153,9 @@
 
 		</head>
 
-		<body>
-		
-<%
-// total 값 가져오기
-String totalValue = request.getParameter("total");
-String totalValue1 = request.getParameter("totalValue");
-String furnitureName = request.getParameter("furnitureName");
-// total 값이 넘어온 경우에만 출력
-%>
-    <p>주문 총액: <%= totalValue %></p>
-    <p>주문 총액: <%= totalValue1 %></p>
-    <p>상품이름: <%= furnitureName %></p>
-    
-    
-    
-			<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>checkout</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Hero Section -->
+	<body>
+	 <!-- Start Header/Navigation -->
+    <jsp:include page="assets/common/user/header.jsp"></jsp:include>
 
 			<div class="untree_co-section">
 				<div class="container">
@@ -255,16 +233,26 @@ String furnitureName = request.getParameter("furnitureName");
 									<!-- //////////////////////// -->
 									
 									
-								<table id="listTable" class="table site-block-order-table mb-5">
+								<table class="table site-block-order-table mb-5">
 											<thead>
 												<th>상품이름</th>
 												<th>색상</th>
 												<th>수량</th>
 												<th>금액</th>
 											</thead>
-											<tbody>
+											<tbody id="listTable">
 											
 											</tbody>
+											
+											<tfoot>
+												<th>총 금액 :</th>
+												<th></th>
+												<th></th>
+												<th id="total"></th>
+											</tfoot>
+											
+											
+											<input id="totalInput"type="hidden" value="">
 										</table>
 
 							
@@ -282,17 +270,21 @@ String furnitureName = request.getParameter("furnitureName");
 																						
 												<div class="PaymentMethodItem_article__2AASS">
 													<div class="PaymentMethodLabel_article__2FrYH">
-														<div class="PaymentMethodLabel_section-label__ifCBQ"><input
-																type="radio" id="general-payment-item" name="payment"
+														<div class="PaymentMethodLabel_section-label__ifCBQ">
+														<input type="radio" id="general-payment-item" name="payment"
 																class="PaymentMethodLabel_label-input__knOyW"
-																disabled=""><label for="general-payment-item"
+																disabled="">
+																
+																
+																<label for="general-payment-item"
 																class="PaymentMethodLabel_label-text__2YQb8"><span
 																	class="PaymentMethodLabel_area-text__2MvU-"><span
 																		class="PaymentMethodLabel_icon__3rc0M"><svg
 																			width="22" height="22" viewBox="0 0 22 23">
 																		
-																		</svg></span><span
-																		class="PaymentMethodLabel_text__2n7PP">카카오페이</span></span></label>
+																		</svg></span>
+																		
+																		<span class="PaymentMethodLabel_text__2n7PP">카카오페이</span></span></label>
 														</div>
 													</div>
 												</div>
@@ -300,9 +292,8 @@ String furnitureName = request.getParameter("furnitureName");
 											
 										</div>
 
-										<div class="form-group">
-											<button id="btn" class="btn btn-black btn-lg py-3 btn-block"
-												>Place Order</button>
+										<div class="form-group" align="right">
+											<button id="btn" class="btn btn-black btn-lg py-3 btn-block">주문하기</button>
 										</div>
 
 									</div>
