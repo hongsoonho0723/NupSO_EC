@@ -57,6 +57,26 @@ public class ReviewServiceImpl implements ReviewService {
 		List<ReviewDTO> list = reviewDAO.selectReviewUser(reviewSeq,furnitureSeq);
 		return list;
 	}
+
+	@Override
+	public int insert(int furnitureSeq, int userSeq, String review, int score, String imgName, String type)
+			throws SQLException {
+		int result = reviewDAO.insert(furnitureSeq,userSeq,review,score);
+		int reviewSeq = 0;
+		if (result == 0) throw new SQLException("리뷰 등록에 실패하였습니다.");
+		List<ReviewDTO> list = reviewDAO.selectReviewByUserSeq(userSeq);
+		for (ReviewDTO r : list) {
+			if(r.getFurnitureSeq()==furnitureSeq && r.getReview().equals(review)) {
+				reviewSeq = r.getReviewSeq();
+			}
+		}
+		if(reviewSeq != 0) {
+			reviewDAO.insertImg(reviewSeq,imgName,type);
+		}
+		return result;
+		
+	}
+	
 	
 	
 
