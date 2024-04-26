@@ -1,3 +1,4 @@
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -16,43 +17,77 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="assets/css/tiny-slider.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="assets/css/tiny-slider.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <title>눕소</title>
+    <title>NupSO - HomePage</title>
 </head>
 
 <body>
 
 <!-- Start Header/Navigation -->
+<%-- 세션에서 사용자 정보 가져오기 --%>
+<%
+session = request.getSession(false); 
+boolean isLoggedIn = (session != null && session.getAttribute("loginUser") != null);
+%>
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
-
     <div class="container">
-        <a class="navbar-brand" href="index.html">눕소<span>.</span></a>
-
+        <a class="navbar-brand" href="${path}/front?key=furniture&methodName=indexPage">NupSO<span>.</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item ">
-                    <a class="nav-link" href="${path}/index.jsp">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="${path}/front?key=furniture&methodName=indexPage">Home</a>
                 </li>
                 <li><a class="nav-link" href="${path}/front?key=furniture&methodName=selectFurnitureList">Shop</a></li>
-                <li class="active"><a class="nav-link" href="about.html">About us</a></li>
-                <li><a class="nav-link" href="services.html">Services</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="contact.html">Contact us</a></li>
+                <li><a class="nav-link" href="about.jsp">About us</a></li>
+                <li><a class="nav-link" href="#">Services</a></li>
+                <li><a class="nav-link" href="#">Blog</a></li>
+                <li><a class="nav-link" href="#">Contact us</a></li>
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+<<<<<<< HEAD
                 <li><a class="nav-link" href="${path}/front?key=order&methodName=selectOrderAll"><img src="assets/images/user.svg"></a></li>
                 <li><a class="nav-link" href="cart.html"><img src="assets/images/cart.svg"></a></li>
+=======
+               <% if (!isLoggedIn) { %>
+                   <li><a class="nav-link" href="login.jsp"><img src="assets/images/login.svg" title ="로그인" alt ="로그인" width="24px" height="24px"></a></li>
+               <% } else { %>
+                   <li><a class="nav-link" href="#"><img src="assets/images/logout.svg" id = "logoutButton" title ="로그아웃" alt ="로그아웃" width="24px" height="24px"></a></li>
+                   <li><a class="nav-link" href="mypage.jsp"><img src="assets/images/user.svg" title ="마이페이지" alt="마이페이지" width="24px" height="24px"></a></li>
+               <% } %>
+               <li><a class="nav-link" href="cart.jsp"><img src="assets/images/cart.svg" title ="장바구니" alt="장바구니"></a></li>
+               <li><a class="nav-link" href="admin/adminLogin.jsp"><img src="assets/images/admin.svg" title ="관리자 로그인" alt ="관리자 로그인"></a></li>
+>>>>>>> 13a59bdb85acea7c5e2d229de978fc875618f051
             </ul>
         </div>
     </div>
-
 </nav>
+
+<div id = "confirmModal" class="confirmModal">
+    <p>로그아웃하시겠습니까?</p>
+    <div>
+    <button class="btn btn-primary btn-lg btn-block" onclick="logout()">예</button>
+    <button class="btn btn-primary btn-lg btn-block" onclick="hideModal()">아니오</button>
+    </div>
+    
+</div>
+
+<script>
+// 모달 보여주기
+document.getElementById('logoutButton').onclick = function() {
+    document.getElementById('confirmModal').style.display = 'flex';
+};
+
+// 로그아웃 함수
+function logout() {
+   
+    window.location.href = '${path}/userLogout'; // 서버 로그아웃 경로로 리다이렉트
+}
+
+// 모달 숨기기
+function hideModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+}
+</script>
 <!-- End Header/Navigation -->

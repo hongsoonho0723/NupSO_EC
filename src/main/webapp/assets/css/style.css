@@ -122,6 +122,24 @@ a.more {
     flex-direction: row;
 }
 
+.confirmModal{
+	min-width: 300px;
+	width: 20%;
+	display:none; 
+	flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	position:fixed; 
+	left:50%; top:50%; 
+	transform:translate(-50%, -50%); 
+	z-index:1000; 
+	background: #fff;
+	padding:20px; 
+	border-radius: 10px;
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+
 @media (min-width: 768px) {
     .custom-navbar .custom-navbar-cta {
         margin-left: 40px !important;
@@ -131,9 +149,6 @@ a.more {
 .custom-navbar .custom-navbar-cta li {
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.custom-navbar .custom-navbar-cta li:first-child {
     margin-right: 20px;
 }
 
@@ -454,11 +469,11 @@ a.more {
 .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    /*-ms-grid-columns: (1fr)[ 27 ];*/
-    -ms-grid-columns: (1fr)[ 27 ];
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* 27개의 1fr 반복 */
     grid-template-columns: repeat(27, 1fr);
     position: relative;
 }
+
 
 .we-help-section .imgs-grid:before {
     position: absolute;
@@ -1147,18 +1162,15 @@ b, strong {
     color: #999;
     margin-bottom: 10px;
 }
-@media (max-width: 480px)
-.pull-right {
-    float: left!important;
-}
 
-@media (max-width: 640px)
-.pull-right {
-    float: left!important;
-}
 .pull-right {
     float: right;
 }
-.pull-right {
-    float: right!important;
+
+@media (max-width: 640px) {
+    .pull-right {
+        float: left !important;
+    }
 }
+
+

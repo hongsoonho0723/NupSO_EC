@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!Doctype html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="assets/css/tiny-slider.css" rel="stylesheet">
 		<link href="assets/css/style.css" rel="stylesheet">
-		<title>눕소 메인</title>
+		<title>NupSO - Index</title>
 	</head>
 
 	<body>
@@ -31,9 +33,11 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+								<h1>Discover Your Dreamy Sofa <span class="d-block"></span></h1>
+								<p class="mb-4">당신의 휴식을 위한 최적의 선택, 눕소의 프리미엄 소파를 탐색하세요.
+								<a href="#" class="btn btn-secondary me-2">Shop Now</a>
+								<!-- <a href="#" class="btn btn-white-outline">Explore</a> -->
+								</p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -53,18 +57,19 @@
 
 					<!-- Start Column 1 -->
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
+						<h2 class="mb-4 section-title" style="weight: bold">인기 상품</h2>
+						<p class="mb-4">NupSO에서 판매량이 가장 높은 제품들입니다.</p>
+						<p><a href="shop.jsp" class="btn">상품 전체 보기</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
 					<!-- Start Column 2 -->
+				<c:forEach items="${list}" var="item">
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="assets/images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+						<a class="product-item" href="${path}/front?key=furniture&methodName=furnitureInfo&furnitureName=${item.furnitureName}">
+							<img src="assets/${item.furnitureImgSrc}" class="img-fluid product-thumbnail" alt="이미지가 경로에 없습니다.">
+							<h3 class="product-title">${item.furnitureName}</h3>
+							<strong class="product-price"><fmt:formatNumber value ="${item.price}"/></strong>
 
 							<span class="icon-cross">
 								<img src="assets/images/cross.svg" class="img-fluid">
@@ -104,6 +109,7 @@
 				</div>
 			</div>
 		</div>
+	</c:forEach> 
 		<!-- End Product Section -->
 
 		<!-- Start Why Choose Us Section -->
@@ -118,7 +124,7 @@
 							<div class="col-6 col-md-6">
 								<div class="feature">
 									<div class="icon">
-										<img src="assets/images/truck.svg" alt="Image" class="imf-fluid">
+										<img src="assets/images/truck.svg" alt="Image" class="img-fluid">
 									</div>
 									<h3>Fast &amp; Free Shipping</h3>
 									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
@@ -190,7 +196,7 @@
 							<li>Donec vitae odio quis nisl dapibus malesuada</li>
 							<li>Donec vitae odio quis nisl dapibus malesuada</li>
 						</ul>
-						<p><a herf="#" class="btn">Explore</a></p>
+						<p><a href="#" class="btn">Explore</a></p>
 					</div>
 				</div>
 			</div>
