@@ -32,6 +32,7 @@ public interface ReviewDAO {
 	List<ReviewDTO> selectReviewByUserSeq(int userSeq) throws SQLException;
 	
 	int insertImg(int reviewSeq, String imgName, String type) throws SQLException;
+	
 
 	
 	
