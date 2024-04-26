@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import service.UserService;
 import service.UserServiceImpl;
 
-public class UserController implements RestController {
+public class UserAjaxController implements RestController {
 
 	UserService userService = new UserServiceImpl();
     
