@@ -73,8 +73,6 @@ public class ReviewDAOImpl implements ReviewDAO {
         }
         return list;
 	}
-	
-	
 
 	@Override
 	public List<ReviewDTO> selectAll(int furnitureSeq) throws SQLException {

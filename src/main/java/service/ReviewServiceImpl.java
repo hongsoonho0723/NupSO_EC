@@ -1,5 +1,7 @@
 package service;
 
+import dao.FurnitureDAO;
+import dao.FurnitureDAOImpl;
 import dao.ReviewDAO;
 import dao.ReviewDAOImpl;
 import dto.ReviewDTO;
@@ -11,7 +13,7 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService {
 
     private ReviewDAO reviewDAO = new ReviewDAOImpl();
-
+    private FurnitureDAO furnitureDAO = new FurnitureDAOImpl();
 
     @Override
     public int findUserSeq(int reviewSeq) throws SQLException {
@@ -23,6 +25,18 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<ReviewDTO> selectAll() throws SQLException {
 		List<ReviewDTO> list = reviewDAO.selectAll();
+		return list;
+	}
+	
+	
+
+	@Override
+	public List<ReviewDTO> selectAllByUser(int userSeq) throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectReviewByUserSeq(userSeq);
+		for (ReviewDTO review : list) {
+			String furnitureName = review.getFurniture().getFurnitureName();
+			review.setFurniture(furnitureDAO.selectFurnitureName(furnitureName));
+		}
 		return list;
 	}
 

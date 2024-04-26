@@ -13,7 +13,7 @@
 			<div class="col-lg-5">
 				<div class="intro-excerpt">
                    <p>
-                   	<a href="javascript:void(0);" class="btn btn-secondary me-2" onclick="">내가 쓴 리뷰조회</a>
+                   	<a href="${path}/front?key=review&methodName=selectAllByUser" class="btn btn-secondary me-2">내가 쓴 리뷰조회</a>
                    	<a href="javascript:void(0);" class="btn btn-secondary me-2" onclick="history.back();">My Page</a>
                     </p>
                	</div>

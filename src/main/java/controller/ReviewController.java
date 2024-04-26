@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
+import dto.FurnitureDTO;
 import dto.ReviewDTO;
 import dto.UsersDTO;
 import jakarta.servlet.ServletException;
@@ -12,11 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import service.FurnitureService;
+import service.FurnitureServiceImpl;
 import service.ReviewService;
 import service.ReviewServiceImpl;
 
 public class ReviewController implements Controller {
 	ReviewService service = new ReviewServiceImpl();
+	FurnitureService furnitureService = new FurnitureServiceImpl();
 	
 	
 	
@@ -31,14 +35,29 @@ public class ReviewController implements Controller {
 		return new ModelAndView("admin/adminReview.jsp");
     }
     
+    public ModelAndView selectAllByUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	HttpSession session = request.getSession();
+    	UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
+    	int userSeq = user.getUserSeq();
+    	List<ReviewDTO> list = service.selectAllByUser(userSeq);
+    	
+    	request.setAttribute("list", list);
+		return new ModelAndView("myPageReview.jsp");
+    }
+    
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException{
     	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
+    	String reqUrl = request.getParameter("mypage");
     	
     	service.delete(reviewSeq);
     	
-    	List<ReviewDTO> list = service.selectAll(); 	
-    	request.setAttribute("list", list);
-		return new ModelAndView("admin/adminReview.jsp");
+    	if(reqUrl.equals("mypage")) {
+    		return this.selectAllByUser(request, response);
+    	}else {
+        	List<ReviewDTO> list = service.selectAll(); 	
+        	request.setAttribute("list", list);
+    		return new ModelAndView("admin/adminReview.jsp");
+    	}
     }
     
     public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
@@ -80,10 +99,6 @@ public class ReviewController implements Controller {
     		out.println("history.back();");
     		out.println("</script>");
     	}else {
-    		//test용 코드 로그인이 됬다는 과정하에 로그인 구현되고 user없으면 메시지 출력 -> 다시 로그인해 주세요.
-    		if(user==null) {
-    			user = new UsersDTO(45, "bob_jones", "secure789");
-    		}
     		
     		int userSeq = user.getUserSeq();
     		service.insert(furnitureSeq,userSeq,review,score,imgName,Type);
