@@ -48,7 +48,7 @@ $(document).ready(function(){
                             </a>
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                	<a class="nav-link" href="${path}/front?key=product&methodName=create">상품 등록</a>
+                                	<a class="nav-link" href="${path}./admin/adminCRUDC.jsp">상품 등록</a>
                                     <a class="nav-link" href="${path}/front?key=product&methodName=selectAll">상품 조회</a>
                                 </nav>
                             </div>
@@ -99,7 +99,7 @@ $(document).ready(function(){
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as: 관리자</div>
-                        Mady by NupSo
+                        Made by NupSo
                     </div>
                 </nav>
             </div>

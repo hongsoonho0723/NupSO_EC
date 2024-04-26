@@ -48,6 +48,7 @@ public class FurnitureDTO {
 		this.furnitureImgSrc = furnitureImgSrc;
 	}
 	
+	// 상품 Create 생성자
 	public FurnitureDTO(String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, String category, String texture, String furnitureImgSrc) {
         this.furnitureNumber = furnitureNumber;
         this.furnitureName = furnitureName;

@@ -30,11 +30,6 @@ public class ProdCRUDController implements Controller{
 	    int stock = Integer.parseInt(request.getParameter("stock"));
 	    String category = request.getParameter("category");
 	    String texture = request.getParameter("texture");
-	    
-	    // 현재 날짜를 yyyy-MM-dd HH:mm:ss 형식으로 가져오기
-	    LocalDateTime now = LocalDateTime.now();
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	    String regDate = now.format(formatter);
 
 	    // 새로운 FurnitureDTO 객체 생성
 	    FurnitureDTO newFurniture = new FurnitureDTO(furnitureNumber, furnitureName, furnitureDescription, price, stock, category, texture, furnitureImgSrc);

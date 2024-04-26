@@ -61,7 +61,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">상품 추가</h1>
                         <div>
-                     <form name="inForm" method="post" id="inForm" action="${path}/fron?key=product">
+                     <form name="inForm" method="post" id="inForm" action="${path}/front?key=product&methodName=create">
 				<table>
             <tr>
                 <th>furnitureNumber</th>
@@ -102,13 +102,22 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="등록" onclick="showAction()">
-                </td>
-                <script>
-   					 function showAlert() {
-        			 alert("상품이 등록되었습니다!");
-    					}
-				</script>
+    				<input type="submit" value="등록" onclick="submitForm()">
+				</td>
+
+			<script>
+    				function submitForm() {
+    					
+        			// 폼을 submit
+        			document.getElementById("inForm").submit();
+        			
+        			// 알림창 띄우기
+        			alert("상품이 등록되었습니다!");
+        			
+        			// 페이지 이동
+        			window.location.href = "${path}/adminCRUD.jsp";
+    			}
+			</script>
             </tr>
         </table>
 		</form>
