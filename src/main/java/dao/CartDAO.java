@@ -7,6 +7,7 @@ import dto.CartDTO;
 
 public interface CartDAO {
 	
-	public List<CartDTO> selectAll() throws SQLException ;
+	List<CartDTO> selectAll(int userSeq) throws SQLException ;
 
+	int delete(int furintureSeq) throws SQLException;
 }
