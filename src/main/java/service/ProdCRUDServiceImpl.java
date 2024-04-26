@@ -23,4 +23,14 @@ public class ProdCRUDServiceImpl implements ProdCRUDService{
         if (result == 0) throw new SQLException("상품 삭제에 실패했습니다.");
     }
 	
+	 @Override
+	    public int create(FurnitureDTO furniture) throws SQLException {
+	        // 상품 추가 메서드 구현
+	        int generatedKey = prodCRUDDAO.create(furniture);
+	        if (generatedKey == -1) {
+	            throw new SQLException("상품 추가에 실패했습니다.");
+	        }
+	        return generatedKey;
+	    }
+	
 }

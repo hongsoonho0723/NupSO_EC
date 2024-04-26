@@ -11,5 +11,8 @@ public interface ProdCRUDDAO {
 	
 	// 상품 삭제
 	int delete(int furnitureSeq) throws SQLException;
+	
+	// 상품 추가
+	int create(FurnitureDTO furniture) throws SQLException;
 
 }

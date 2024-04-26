@@ -27,9 +27,6 @@ public class FurnitureDTO {
     
     
     
-    
-
-    
     public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, 
     		String furnitureDescription,
     		int price, int stock,  String category,int saleCount, String regDate) {
@@ -50,6 +47,17 @@ public class FurnitureDTO {
 		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock,  category,saleCount, regDate);
 		this.furnitureImgSrc = furnitureImgSrc;
 	}
+	
+	public FurnitureDTO(String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, String category, String texture, String furnitureImgSrc) {
+        this.furnitureNumber = furnitureNumber;
+        this.furnitureName = furnitureName;
+        this.furnitureDescription = furnitureDescription;
+        this.price = price;
+        this.stock = stock;
+        this.category = category;
+        this.texture = texture;
+        this.furnitureImgSrc = furnitureImgSrc;
+    }
 
 	
 	public List<ReviewDTO> getReviewList() {

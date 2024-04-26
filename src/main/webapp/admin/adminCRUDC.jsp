@@ -64,25 +64,17 @@
                      <form name="inForm" method="post" id="inForm" action="${path}/fron?key=product">
 				<table>
             <tr>
-                <th>furnitureSeq</th>
-                <td><input type="text" name="productName" id="productName"></td>
-            </tr>
-            <tr>
                 <th>furnitureNumber</th>
-                <td><input type="text" name="description" id="description"></td>
+                <td><input type="text" name="furnitureNumber" id="furnitureNumber"></td>
             </tr>
             <tr>
                 <th>furnitureName</th>
-                <td><input type="text" name="price" id="price"></td>
+                <td><input type="text" name="furnitureName" id="furnitureName"></td>
             </tr>
             <tr>
     		<th>furnitureDescription</th>
     			<td><textarea name="furnitureDescription" id="furnitureDescription" style="width: 100%; height: 100px;"></textarea></td>
 			</tr>
-            <tr>
-                <th>furnitureImgSrc</th>
-                <td><input type="file" name="furnitureImgSrc" id="furnitureImgSrc"></td>
-            </tr>
             <tr>
                 <th>price</th>
                 <td><input type="text" name="price" id="price"></td>
@@ -96,17 +88,27 @@
                 <td><input type="text" name="category" id="category"></td>
             </tr>
             <tr>
+            <th>regDate</th>
+    			<td><input type="text" name="regDate" id="regDate" value="<%= new java.util.Date() %>"></td>
+			</tr>
+            <tr>
                 <th>texture</th>
                 <td><input type="text" name="texture" id="texture"></td>
             </tr>
             <tr>
-    		<th>regDate</th>
-    			<td><input type="text" name="regDate" id="regDate" value="<%= new java.util.Date() %>"></td>
-			</tr>
+			<tr>
+                <th>furnitureImgSrc</th>
+                <td><input type="file" name="furnitureImgSrc" id="furnitureImgSrc"></td>
+            </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="등록">
+                    <input type="submit" value="등록" onclick="showAction()">
                 </td>
+                <script>
+   					 function showAlert() {
+        			 alert("상품이 등록되었습니다!");
+    					}
+				</script>
             </tr>
         </table>
 		</form>

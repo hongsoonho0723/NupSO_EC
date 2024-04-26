@@ -9,4 +9,6 @@ public interface ProdCRUDService {
 	List<FurnitureDTO> selectAll() throws SQLException;
 	
 	void delete(int furnitureSeq) throws SQLException;
+	
+	int create(FurnitureDTO furniture) throws SQLException; 
 }
