@@ -94,6 +94,7 @@ public class ReviewDAOImpl implements ReviewDAO {
                 review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
                         rs.getString(4),rs.getInt(5),rs.getString(6));
                 review.getUser().setName(rs.getString(8));
+                System.out.println("리뷰 select All userName "+review.getUser().getName());
                 list.add(review);
             }
         }finally {
@@ -172,10 +173,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public List<ReviewDTO> selectReviewUser(int reviewSeq, int furnitureSeq) throws SQLException {
 		List<ReviewDTO> list = this.selectAll(furnitureSeq);
-
 			for (ReviewDTO reviewDTO : list) {
 				String userName = reviewDTO.getUser().getName();
-				reviewDTO.setReviewImgs(this.selectReviewImgByReviewSeq(reviewSeq,furnitureSeq,userName));
+				reviewDTO.setReviewImgs(this.selectReviewImgByReviewSeq(reviewDTO.getReviewSeq(),furnitureSeq,userName));
 			}
 		return list;
 	}
@@ -187,7 +187,7 @@ public class ReviewDAOImpl implements ReviewDAO {
         String sql = proFile.getProperty("review.selectReviewDetailImg");
         List<ReviewImgDTO> list = new ArrayList<ReviewImgDTO>();
         ReviewImgDTO reviewImg = null;
-
+        int maxImgNum =1;
         try{
             con = DbUtil.getConnection();
             ps = con.prepareStatement(sql);
@@ -198,8 +198,8 @@ public class ReviewDAOImpl implements ReviewDAO {
             	reviewImg = new ReviewImgDTO();
             	reviewImg.setImgSrc(rs.getString("img_src"));
             	reviewImg.setImgType(rs.getString("img_type"));
-            	if(rs.getString("user_name").equals(userName)) {
-            		System.out.println("이미지 추가됨");
+            	System.out.println("리뷰안에 이름 "+rs.getString("user_name"));
+            	if(rs.getString("user_name").equals(userName)&&list.size()<maxImgNum) {
             		list.add(reviewImg);
             	}
             }
@@ -207,6 +207,77 @@ public class ReviewDAOImpl implements ReviewDAO {
             DbUtil.dbClose(con, ps, rs);
         }
         return list;
+	}
+
+	@Override
+	public int insert(int furnitureSeq, int userSeq, String review, int score)
+			throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        String sql = proFile.getProperty("review.insert");
+        int result = 0;
+        
+        try {
+        	con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, userSeq);
+            ps.setInt(2, furnitureSeq);
+            ps.setString(3, review);
+            ps.setInt(4, score);
+            
+            result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewByUserSeq(int userSeq) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = proFile.getProperty("review.selectReviewByUserSeq");
+        List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+        ReviewDTO review = null;
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, userSeq);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
+                        rs.getString(4),rs.getInt(5),rs.getString(6));
+                review.getFurniture().setFurnitureName(rs.getString(7));
+                review.getUser().setName(rs.getString(8));           
+                list.add(review);
+            }
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return list;
+	}
+
+	@Override
+	public int insertImg(int reviewSeq, String imgName, String type) throws SQLException {
+		Connection con = null;
+        PreparedStatement ps = null;
+        String sql = proFile.getProperty("review.insertImg");
+        int result = 0;
+        
+        try {
+        	con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reviewSeq);
+            ps.setString(2, imgName);
+            ps.setString(3, type);
+            
+            result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
 	}
     
     

@@ -53,7 +53,7 @@
 	 $("#userId").keyup(function(){
 		
 		 $.ajax({
-			 url: "${path}/ajax?key=user&methodName=idCheck", //통신할 서버의 주소
+			 url: "${path}/ajax?key=userAjax&methodName=idCheck", //통신할 서버의 주소
 			 type: "post", //요청방식(get | post | put | delete | fetch)
 			 dataType:"json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
 			 data:"userId="+$("#userId").val(), //서버에게 전달할 데이터 parameter정보
@@ -78,7 +78,7 @@
 		 
 	$("#btn").click(function(){
 		 $.ajax({
-			 url: "${path}/ajax?key=user&methodName=insert", //통신할 서버의 주소
+			 url: "${path}/ajax?key=userAjax&methodName=insert", //통신할 서버의 주소
 			 type: "post", //요청방식(get | post | put | delete | fetch)
 			 dataType:"json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
 			 data:$("#inForm").serialize(), //서버에게 전달할 데이터 parameter정보

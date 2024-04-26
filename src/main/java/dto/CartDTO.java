@@ -4,19 +4,43 @@ public class CartDTO {
 
 	private int cartSeq;
 	private int userSeq;
-	private int funitureSeq;
+	private int furnitureSeq;
 	private int quantity;
 	private String regDate;
+	private String colorName;
+	private String sizeVal;
 	
+	FurnitureDTO furnitureDTO= new FurnitureDTO();
 	
 	public CartDTO() {}
 	
-	public CartDTO(int cartSeq, int userSeq, int funitureSeq, int quantity, String regDate) {
+	public CartDTO(int cartSeq, int userSeq, int furnitureSeq, int quantity, String regDate) {
 		this.cartSeq = cartSeq;
 		this.userSeq = userSeq;
-		this.funitureSeq = funitureSeq;
+		this.furnitureSeq = furnitureSeq;
 		this.quantity = quantity;
 		this.regDate = regDate;
+	}
+
+	
+	
+	
+	
+	public CartDTO(int furnitureSeq, int quantity, String colorName, String sizeVal, FurnitureDTO furnitureDTO) {
+		super();
+		this.furnitureSeq = furnitureSeq;
+		this.quantity = quantity;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+		this.furnitureDTO = furnitureDTO;
+	}
+
+	public FurnitureDTO getFurnitureDTO() {
+		return furnitureDTO;
+	}
+
+	public void setFurnitureDTO(FurnitureDTO furnitureDTO) {
+		this.furnitureDTO = furnitureDTO;
 	}
 
 	public int getCartSeq() {
@@ -35,12 +59,12 @@ public class CartDTO {
 		this.userSeq = userSeq;
 	}
 
-	public int getFunitureSeq() {
-		return funitureSeq;
+	public int getFurnitureSeq() {
+		return furnitureSeq;
 	}
 
-	public void setFunitureSeq(int funitureSeq) {
-		this.funitureSeq = funitureSeq;
+	public void setFurnitureSeq(int furnitureSeq) {
+		this.furnitureSeq = furnitureSeq;
 	}
 
 	public int getQuantity() {

@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import service.UserService;
 import service.UserServiceImpl;
 
-public class UserController implements RestController {
+public class UserAjaxController implements RestController {
 
 	UserService userService = new UserServiceImpl();
     
@@ -40,11 +40,18 @@ public class UserController implements RestController {
 
 		session.setAttribute("loginUser", dbDTO);
 
+		session.setAttribute("userSeq", dbDTO.getUserSeq());
+		session.setAttribute("userId", dbDTO.getUserId());
+		session.setAttribute("userName", dbDTO.getName());
+		
 		Gson gson = new Gson();
 		String jsonArr = gson.toJson(dbDTO);
 		PrintWriter out = response.getWriter();
 		out.print(jsonArr);
 	}
+	
+	
+	
 
 	/**
 	 * 아디중복체크
@@ -86,7 +93,7 @@ public class UserController implements RestController {
 			gender = "M";
 
 		} else
-			gender = "W";
+			gender = "F";
 
 		UsersDTO usersDTO = new UsersDTO(request.getParameter("userId"), request.getParameter("password1"),
 				request.getParameter("name"), request.getParameter("addr"), age, gender, request.getParameter("phone"));

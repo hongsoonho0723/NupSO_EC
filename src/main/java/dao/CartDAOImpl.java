@@ -6,10 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import dto.CartDTO;
+import dto.FurnitureDTO;
 import util.DbUtil;
 
 public class CartDAOImpl implements CartDAO {
@@ -26,25 +28,29 @@ public class CartDAOImpl implements CartDAO {
 	    }
 	
 	@Override
-	public List<CartDTO> selectAll() throws SQLException {
+	public List<CartDTO> selectAll(int userSeq) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+		List<CartDTO> list = new ArrayList<>();
 		String sql = proFile.getProperty("cart.selectAll");
+		//String sql = "select *from cart where user_seq=?"
+		CartDTO cartDTO = new CartDTO();
 		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, userSeq);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int furnitureSeq = rs.getInt(1);
+				FurnitureDTO furnitureDTO = FurnitureAdd(furnitureSeq);
 				
+				cartDTO = new CartDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),furnitureDTO);
 				
-				
-				
-				
+				list.add(cartDTO);
 			}
 			
 			
@@ -52,9 +58,62 @@ public class CartDAOImpl implements CartDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		
+		return list;
+	}
+
+	public FurnitureDTO FurnitureAdd(int furnitureSeq) throws SQLException{
 		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = proFile.getProperty("cart.FurnitureAdd");
+		FurnitureDTO furnitureDTO = new FurnitureDTO();
 		
-		return null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, furnitureSeq);
+			rs = ps.executeQuery();
+		
+			if(rs.next()) {
+				furnitureDTO = new FurnitureDTO(rs.getString(1),rs.getString(2),rs.getInt(3));
+			}
+		
+		return furnitureDTO;
+	}finally {
+		DbUtil.dbClose(con, ps, rs);
+	}
+	
+	
+	
+	
+	
+	
+	}
+
+	@Override
+	public int delete(int furintureSeq) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result =0;
+		String sql = proFile.getProperty("cart.delete");
+		//String sql = "select *from cart where user_seq=?"
+		CartDTO cartDTO = new CartDTO();
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, furintureSeq);
+			result = ps.executeUpdate();
+			
+					
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+				
+		return result;
 	}
 
 }

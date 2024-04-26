@@ -26,6 +26,12 @@ public interface ReviewDAO {
 	
 	//해당 유저가 작성한 리뷰이미지와 리뷰를 가져오단
 	List<ReviewDTO> selectReviewUser(int reviewSeq, int furnitureSeq) throws SQLException;
+	
+	int insert(int furnitureSeq, int userSeq, String review, int score) throws SQLException;
+	
+	List<ReviewDTO> selectReviewByUserSeq(int userSeq) throws SQLException;
+	
+	int insertImg(int reviewSeq, String imgName, String type) throws SQLException;
 
 	
 	
