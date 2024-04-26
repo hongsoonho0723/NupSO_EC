@@ -48,6 +48,9 @@ public class UserAjaxController implements RestController {
 		PrintWriter out = response.getWriter();
 		out.print(jsonArr);
 	}
+	
+	
+	
 
 	/**
 	 * 아디중복체크

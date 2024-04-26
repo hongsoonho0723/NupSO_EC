@@ -16,7 +16,7 @@ public class OrderController implements Controller {
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -28,5 +28,7 @@ public class OrderController implements Controller {
    	
  		return new ModelAndView("admin/adminIndex.jsp");
 	}
+	
+	
 	
 }

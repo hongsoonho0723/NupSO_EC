@@ -82,7 +82,7 @@ public class FurnitureController implements Controller {
     	
     	List<FurnitureDTO> list = furnitureService.selectFurnitureList();
     	System.out.println(list);
-    	 request.setAttribute("list", list);
+    	request.setAttribute("list", list);
     	
     	return new ModelAndView("shop.jsp");
     }
