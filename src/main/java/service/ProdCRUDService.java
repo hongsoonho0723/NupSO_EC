@@ -7,4 +7,6 @@ import dto.FurnitureDTO;
 
 public interface ProdCRUDService {
 	List<FurnitureDTO> selectAll() throws SQLException;
+	
+	void delete(int furnitureSeq) throws SQLException;
 }

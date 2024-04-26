@@ -1,10 +1,10 @@
-<%@page import="dto.FurnitureDTO"%>
+<%@page import="dto.QnADTO"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.ProdCRUDDAOImpl"%>
-<%@page import="dao.ProdCRUDDAO"%>
+<%@page import="dao.QnADAOImpl"%>
+<%@page import="dao.QnADAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>NoopSO Admin CRUD</title>
+        <title>NoopSO Admin QnA</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="${path}/assets/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -57,42 +57,48 @@
  	   //전체검색
  	   $(function(){
  		  /*아이디를 클릭했을때 이벤트 처리 */
- 		  $("#furnitureSeq").attr("readonly","readonly");
+ 		  $("#questionSeq").attr("readonly","readonly");
  		  
  		   $(document).on("click","main .card-body table > tbody td" , function(){
  			  	//text박스에 값넣기 
  				let tr = $(this).closest("tr");
 				
-				$("#furnitureSeq").val(tr.find("td:eq(0)").text());
+				$("#questionSeq").val(tr.find("td:eq(0)").text());
+				$("span.question").text(tr.find("td:eq(2)").text());
+				$("#answer").val(tr.find("td:eq(3)").text());
+				$("#state").val(tr.find("td:eq(4)").text());
+				$("span.answerDate").text(tr.find("td:eq(5)").text());	
+				$("span.name").text(tr.find("td:eq(6)").text());
+				$("span.password").text(tr.find("td:eq(7)").text());
+				$("span.regDate").text(tr.find("td:eq(8)").text());
 
 				
 				
 				if( $("#answer").val()!==""){
- 					$("#update").val("상품 수정하기");
+ 					$("#update").val("답변 수정하기");
  				 }
  			  
  		   });
- 		  		
- 		   // 추후 상품 추가 기능
- 			 /* $(document).on("click","#update", function(){
+ 		  
+ 			 $(document).on("click","#update", function(){
  				 if($("#questionSeq").val()===""){
  					 return;
  				 }
  				 
- 				 $("#inForm").attr("action","${path}/front?key=product&methodName=update");
+ 				 $("#inForm").attr("action","${path}/front?key=qna&methodName=update");
  				 $("#inForm").submit();
- 			 }) */
+ 			 })
  			 
  			 $(document).on("click","#delete", function(){
- 				 if($("#furnitureSeq").val()===""){
+ 				 if($("#questionSeq").val()===""){
  					 return;
  				 }
- 				$("#inForm").attr("action","${path}/front?key=product&methodName=delete");
+ 				$("#inForm").attr("action","${path}/front?key=qna&methodName=delete");
 				 $("#inForm").submit();
  				 
  			 })
- 			 
- 			 
+ 			
+ 	
  	   })//ready 함수 END
  	   /////////////////////////////////////////////////////////////
   		</script>
@@ -105,24 +111,41 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">상품 CRUD</h1>
+                        <h1 class="mt-4">QnA</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="${path}/front?key=product&methodName=selectAll">새로고침</a></li>
-                            <li class="breadcrumb-item active">상품 생성, 조회, 갱신, 삭제</li>
+                            <li class="breadcrumb-item"><a href="${path}/front?key=qna&methodName=selectAll">새로고침</a></li>
+                            <li class="breadcrumb-item active">QnA</li>
                         </ol>
-                        <div>
-                     <form name="inForm" method="post" id="inForm" action="${path}/fron?key=product">
+                     <div>
+                            <!--  <div class="card-body">
+                                고객의 소리를 듣자!
+                            </div>-->
+         	 <form name="inForm" method="post" id="inForm" action="${path}/fron?key=qna">
 				<table>
 					<tr>
-						<th>수정 및 삭제할 상품 클릭</th>
+						<th>QuestionSeq</th>
+						<th>Question</th>
+                        <th>Answer</th>
+                        <th>State</th>
+                        <th>Answer date</th>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>RegDate</th>
 					</tr>
 					<tr>
-						<td><input type="text" size="7" name="furnitureSeq" id="furnitureSeq"></td>
+						<td><input type="text" size="7" name="questionSeq" id="questionSeq"></td>
+						<td><span class="question">Question</span></td>
+						<td><input type="text" size="50" name="answer" id="answer"></td>
+						<td><input type="text" size="5" name="state" id="state"></td>
+						<td><span class="answerDate">answerDate</span></td>
+						<td><span class="name">Name</span></td>
+						<td><span class="password">Password</span></td>
+						<td><span class="regDate">RegDate</span></td>
 					</tr>
 					<tr>
 						<td colspan="8" align="center"> 
-							<input type="button" value="상품 수정하기"  id="update">
-							<input type="button" value="상품 삭제하기"  id="delete">
+							<input type="button" value="답변 등록하기"  id="update">
+							<input type="button" value="QnA 삭제하기"  id="delete">
 						</td>
 					</tr>
 					</table>
@@ -132,35 +155,38 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               	상품 조회
+                               	QnA조회
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                        	<th>FurnitureSeq</th>
-                                        	<th>furnitureNumber</th>
-                                            <th>furnitureName</th>
-                                            <th>furnitureDescription</th>
-                                            <th>price</th>
-                                            <th>stock</th>
-                                            <th>saleCount</th>
-                                            <th>category</th>
-                                            <th>regDate</th>
+                                        	<th>QuestionSeq</th>
+                                        	<th>FurnitureName</th>
+                                            <th>Question</th>
+                                            <th>Answer</th>
+                                            <th>State</th>
+                                            <th>Answer date</th>
+                                            <th>Name</th>
+                                            <th>Password</th>
+                                            <th>Registration  date</th>
                                         </tr>
                                     </thead>
                                      <tbody>
+											<!-- table td  QnA값 등록 -->
+											<!-- Question 에 a태크 넣고 눌르면 form으로 이동해서
+											수정 삭제를 할 수 있게 함. -->
 									<c:forEach items="${list}" var="item">
 									   <tr>
-									     <td class="furnitureSeq">${item.furnitureSeq}</td>
-									     <td>${item.furnitureNumber}</td>
-									     <td>${item.furnitureName}</td>
-									     <td>${item.furnitureDescription}</td>
-									     <td>${item.price}</td>
-									     <td>${item.stock}</td>
-									     <td>${item.saleCount}</td>
-									     <td>${item.category}</td>
-									     <td>${item.regDate}</td>
+									     <td class="qnASeq">${item.qnASeq}</td>
+									     <td class="furnitureName">${item.furniture.furnitureName}</td>
+									     <td class="question">${item.question}</td>
+									     <td class="answer">${item.answer}</td>
+									     <td class="state">${item.state}</td>
+									     <td class="answerDate">${item.answerDate}</td>
+									     <td class="name">${item.name}</td>
+									     <td class="password">${item.password}</td>
+									     <td class="regDate">${item.regDate}</td>
 									   </tr>
 									</c:forEach>
                                     </tbody>

@@ -20,6 +20,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
         InputStream in = ProdCRUDDAOImpl.class.getClassLoader().getResourceAsStream("dbQuery.properties");
         try {
             proFiles.load(in);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,8 +32,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
             Connection con = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
-            String sql = proFiles.getProperty("ProdCRUD.selectAll");
-            System.out.println(sql);
+            String sql = proFiles.getProperty("prodCRUD.selectAll");
             
             List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
             FurnitureDTO furniture = null;
@@ -43,14 +43,13 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
                 rs = ps.executeQuery();
                 while (rs.next()) {
                 	furniture = new FurnitureDTO(rs.getInt(1), rs.getString(2), rs.getString(3),
-                	        rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7),
-                	        rs.getString(8), rs.getString(9));
+                	        rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7),
+                	        rs.getInt(8), rs.getString(9));
                 	list.add(furniture);
                 }
             }finally {
                 DbUtil.dbClose(con, ps, rs);
             }
-            
     		return list;
     	}
     	
@@ -59,7 +58,8 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
         public int delete(int furnitureSeq) throws SQLException {
             Connection con = null;
             PreparedStatement ps = null;
-            String sql = proFiles.getProperty("ProdCRUD.delete");
+            String sql = proFiles.getProperty("prodCRUD.delete");
+            System.out.println("sql = "+sql);
             int result;
 
             try {
@@ -70,6 +70,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
             } finally {
                 DbUtil.dbClose(con, ps);
             }
+            System.out.println("얘! 다오야 너 지금 일 안 하고 자니?! = " + result);
             return result;
         }
 

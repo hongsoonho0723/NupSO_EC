@@ -28,9 +28,11 @@ public class FurnitureDTO {
     
     
     
-    public FurnitureDTO() {}
 
-    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
+    
+    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, 
+    		String furnitureDescription,
+    		int price, int stock,  String category,int saleCount, String regDate) {
         this.furnitureSeq = furnitureSeq;
         this.furnitureNumber = furnitureNumber;
         this.furnitureName = furnitureName;
@@ -45,7 +47,7 @@ public class FurnitureDTO {
 	public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription,
 			String furnitureImgSrc, int price, int stock, int saleCount, String category, String texture,
 			String regDate) {
-		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock, saleCount, category, regDate);
+		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock,  category,saleCount, regDate);
 		this.furnitureImgSrc = furnitureImgSrc;
 	}
 

@@ -49,7 +49,7 @@ $(document).ready(function(){
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                 	<a class="nav-link" href="#">상품 등록</a>
-                                    <a class="nav-link" href="#">상품 조회</a>
+                                    <a class="nav-link" href="${path}/front?key=product&methodName=selectAll">상품 조회</a>
                                 </nav>
                             </div>
                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

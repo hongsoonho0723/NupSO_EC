@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import dto.FurnitureDTO;
-import dto.QnADTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.ProdCRUDService;
@@ -21,15 +20,29 @@ public class ProdCRUDController implements Controller{
 	        request.setAttribute("list", list);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        // SQL 예외 처리 로직 추가
-	        // 예외 처리 후 적절한 뷰 경로를 설정할 수 있습니다.
 	    }
 	    return new ModelAndView("admin/adminCRUD.jsp");
 	}
 	
 	public ModelAndView selectAll (HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		// System.out.println("controller 오니?");
+		List<FurnitureDTO> list = service.selectAll();
+		/*
+		 * for (FurnitureDTO furnitureDTO : list) { System.out.println(furnitureDTO); }
+		 */
+		request.setAttribute("list", list);
+		return new ModelAndView("admin/adminCRUD.jsp");
+	}
+	
+	public ModelAndView delete (HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		System.out.println("controller 오니?");
+		int furnitureSeq = Integer.parseInt(request.getParameter("furnitureSeq"));
+		
+		service.delete(furnitureSeq);
+		
 		List<FurnitureDTO> list = service.selectAll();
 		request.setAttribute("list", list);
+		
 		return new ModelAndView("admin/adminCRUD.jsp");
 	}
 }
