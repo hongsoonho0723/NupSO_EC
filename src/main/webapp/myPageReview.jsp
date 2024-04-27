@@ -19,28 +19,10 @@
 	<link href="assets/css/style.css" rel="stylesheet">
 		
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
-		
-	$(function(){
-		$(document).on("click",".product-review-btn",function(){
-			
-			if($(".product-order-state").text().trim() !== "배송 완료"){
-				event.preventDefault();
-				alert("배송 완료된 후 리뷰를 작성할 수 있습니다.");
-				return;
-			}
-			
-		})		
-		
-	})
-
-
-
-	</script>
 	<jsp:include page="assets/common/user/header.jsp"/>
 		
 		
-	<title>MyPage</title>
+	<title>My Review</title>
 </head>
 
 <body>
@@ -52,23 +34,19 @@
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
-                <form class="col-md-12" method="post" action="${path}/review.jsp">
+                <form class="col-md-12" method="post" action="${path}/front">
                   <div class="site-blocks-table">
                   	<div class="intro-excerpt">
-						<h1>주문 내역</h1>
+						<h1>리뷰 조회</h1>
 					</div>
                     <table class="table">
                       <thead>
                         <tr>
                           <th>상품 이미지</th>
                           <th>이름</th>
-                          <th>재질</th>
-                          <th>색상</th>
-                          <th>사이즈</th>
-                          <th>수량</th>
-                          <th>총 가격</th>
-                          <th>배송 상태</th>
+                          <th>점수</th>
                           <th>리뷰</th>
+                          <th>등록일</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -76,16 +54,15 @@
                         	<c:forEach items="${list}" var="item">
                         	<tr>
 		                          <td class="product-thumbnail"><img src="assets/${item.furniture.furnitureImgSrc}" alt="경로에 이미지가 없음" width="100" height="100"></td>
-		                          <td class="product-name">${item.furniture.furnitureName}</td>
-		                          <td class="product-texture">${item.furniture.texture}</td>
-		                          <td class="product-color">${item.orderInfo.colorName}</td>
-		                          <td class="product-size">${item.orderInfo.sizeVal}</td>
-		                          <td class="product-quantity">${item.orderInfo.quantity}</td>
-		                          <td class="product-total">${item.totalPrice}</td>
-		                          <td class="product-order-state">${item.deliveryState}</td>
-		                          <td><button class="product-review-btn">리뷰작성</button></td>
-		                          <td> <input type="hidden" value="${item.furniture.furnitureSeq}" id="furnitureSeq" name="furnitureSeq">
-                        				<input type="hidden" value="${item.furniture.furnitureImgSrc}" id="furnitureImgSrc" name="furnitureImgSrc"></td>
+		                          <td class="user-name">${item.furniture.furnitureName}</td>
+		                          <td class="review-score">${item.score}</td>
+		                          <td class="review-context">${item.review}</td>
+		                          <td class="review-date">${item.regDate}</td>
+		                          <td><button class="del-btn">리뷰삭제</button></td>
+		                          <td> <input type="hidden" value="${item.reviewSeq}" id="reviewSeq" name="reviewSeq">
+		                          		<input type="hidden" value="mypage" id="mypage" name="mypage">
+                        				<input type="hidden" value="review" id="key" name="key">
+                       					 <input type="hidden" value="delete" id="methodName" name="methodName"></td>
                        		 </tr>
                         	</c:forEach>  
                         </tr>
@@ -96,8 +73,8 @@
                   </div>
                 </form>
               </div>
-             </div>
             </div>
+          </div>
         <br>
 		<jsp:include page="assets/common/user/footer.jsp"/>
 		

@@ -25,4 +25,6 @@ public interface ReviewService {
 
 	int insert(int furnitureSeq, int userSeq, String review, int score, String imgName, String type)throws SQLException;
 
+	List<ReviewDTO> selectAllByUser(int userSeq) throws SQLException;
+
 }

@@ -14,6 +14,7 @@ import service.OrderService;
 import service.OrderServiceImpl;
 
 public class OrderController implements Controller {
+
    OrderService orderService = new OrderServiceImpl();
    
    @Override
@@ -45,4 +46,6 @@ public class OrderController implements Controller {
       return new ModelAndView("myPage.jsp");
    }
 
+
 }
+
