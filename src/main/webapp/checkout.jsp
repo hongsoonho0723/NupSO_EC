@@ -44,15 +44,12 @@
 			  
 			  
 			/* 달력 클릭시 이벤트 */
-		    $("#datepicker").datepicker();
-		   
-			
-		    function insertOrder(){
-		    	
-		    	
-		    	
-		    }//insert end
-		    
+		    $("#datepicker").datepicker({
+		        dateFormat: 'y/mm/dd', // 날짜 형식 설정
+		        yearRange: 'c-100:c+10', // 연도 범위 설정 (예: 현재 연도로부터 100년 전부터 10년 후까지)
+		        changeMonth: true, // 월 변경 기능 활성화
+		        changeYear: true // 연도 변경 기능 활성화
+		    });
 		    
 		    function selectAll(){
 	        	$.ajax({
@@ -80,12 +77,8 @@
 					         });
 								$("#listTable tr:gt(0)").remove();
 					            $("#listTable").append(table); 
-					           /*  $("table tbody").after(table); */
 					            $("#totalInput").val(total);
 					            $("#total").text(numberWithCommas(total+" 원"));
-					            
-					      
-
 					            
 					 },
 					 error : function(err, status){
@@ -95,7 +88,7 @@
 				 });//ajax end
 		    
 		    };//selectAll end
-		    
+			    
 		  });//load end
 		  </script>
 
@@ -144,9 +137,9 @@
 					}
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
               
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById("addr1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("addr2").focus();
             }
         }).open();
     }
@@ -164,13 +157,13 @@
 					<div class="row">
 						<div class="col-md-6 mb-5 mb-md-0">
 							<h2 class="h3 mb-3 text-black">주문서</h2>
+						<form id="orderForm" method="post" action="front">
 							<div class="p-3 p-lg-5 border bg-white">
-								
 								<div class="form-group row">
 									<div class="col-md-12">
 										<label for="sample6_address" class="text-black">배송지 <span
 												class="text-danger">*</span></label>
-										<input type="text" class="form-control" id="sample6_address" name="sample6_address" placeholder="우편번호 주소" readonly>
+										<input type="text" class="form-control" id="addr1" name="addr1" placeholder="우편번호 주소" readonly>
 									
 									</div>
 									
@@ -178,7 +171,7 @@
 										<div class="col-md-10">
 
 											
-												<input type="text" class="form-control" id="sample6_detailAddress" name="sample6_detailAddress"
+												<input type="text" class="form-control" id="addr2" name="addr2"
 													placeholder="상세주소를 입력해주세요">
 													
 											
@@ -196,7 +189,7 @@
 									<div class="col-md-12">
 										<label for="c_address" class="text-black">받는분(이름) <span
 												class="text-danger">*</span></label>
-										<input type="text" class="form-control" id="c_address" name="c_address"
+										<input type="text" class="form-control" id="name" name="name"
 											placeholder="">
 									</div>
 								</div>
@@ -205,20 +198,27 @@
 									<div class="col-md-12">
 										<label for="c_address" class="text-black">받는분(번호) <span
 												class="text-danger">*</span></label>
-										<input type="text" class="form-control" id="c_address" name="c_address"
+										<input type="text" class="form-control" id="phone" name="phone"
 											placeholder="">
 									</div>
 								</div>
 								<br>
-								<p>배송날짜 : <input type="text" id="datepicker"></p>
+								<p>배송날짜 : <input type="text" id="datepicker" name="date"></p>
 								<br>
 								<div class="form-group">
 									<label for="c_order_notes" class="text-black">배송메모</label>
-									<textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5"
+									<textarea name="memo" id="memo" cols="30" rows="5"
 										class="form-control" placeholder="요청사항을 입력해주세요"></textarea>
 								</div>
 
 							</div>
+							<input type="hidden" name="key" value="order">
+							<input type="hidden" name="methodName" value="insertOrder">
+							<input type="hidden" id="totalInput" name="totalPrice">
+							</form>
+							
+							
+							
 						</div>
 						<div class="col-md-6">
 
@@ -226,7 +226,7 @@
 
 							<div class="row mb-5">
 								<div class="col-md-12">
-									<h2 class="h3 mb-3 text-black">Your Order</h2>
+									<h2 class="h3 mb-3 text-black">주문상세</h2>
 									<div class="p-3 p-lg-5 border bg-white">
 									
 									
@@ -253,7 +253,7 @@
 											</tfoot>
 											
 											
-											<input id="totalInput"type="hidden" value="">
+											
 										</table>
 
 							
@@ -306,9 +306,6 @@
 					<!-- </form> -->
 				</div>
 			</div>
-
-		
-
 
 			<script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
 			<script src="${path}/assets/js/tiny-slider.js"></script>

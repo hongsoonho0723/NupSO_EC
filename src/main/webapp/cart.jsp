@@ -25,20 +25,13 @@
     <script type="text/javascript" src="${path}/assets/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
 	$(function(){
-
-
 		
 		selectAll()
-       
-        
         
         // 쉼표를 추가하여 숫자를 포맷하는 함수
 		function numberWithCommas(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}
-        
-        
-        
         
         function selectAll(){
     
@@ -70,6 +63,7 @@
 				         });
 							$("#listTable tr:gt(0)").remove();
 				            $("#listTable").append(table);
+				            $("#totalInput").val(total);
 				            $("#total").text(numberWithCommas(total));
 				            
 				            
@@ -99,14 +93,12 @@
  					 
  						 selectAll()
  					 
- 					 
  				 },
  				 error : function(err, status){
  					 //통신에 실패하면 해야할 일 
  					 alert(err+"발생했어요 status :" + status);
  				 }
  			 });//ajax end
-        	
         	
         });
         
@@ -168,7 +160,6 @@
                   
                   <div class="col-md-4">
              		<form action="checkout.jsp">
-		      	  		<!-- hidden input을 추가하여 total 값을 포함시킵니다 -->
 		       	 	<button type="submit" id="btn" class="btn btn-black btn-lg py-3 btn-block">주문하기</button>
 					</form>
                   </div>

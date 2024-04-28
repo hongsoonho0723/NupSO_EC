@@ -36,7 +36,20 @@ public class OrderDTO {
 		this.regDate = regDate;
 	}
 
-	
+	//주문성공시 insert
+	public OrderDTO(int userSeq,int totalPrice, String deliveryDate,String deliveryAddr1,String deliveryAddr2,
+			String deliveryName,String deliveryPhone, String deliveryMemo){
+		super();
+		this.userSeq = userSeq;
+		this.totalPrice = totalPrice;
+		this.deliveryDate = deliveryDate;
+		this.deliveryAddr1 = deliveryAddr1;
+		this.deliveryAddr2 = deliveryAddr2;
+		this.deliveryName = deliveryName;
+		this.deliveryPhone = deliveryPhone;
+		this.deliveryMemo = deliveryMemo;
+				
+	}
 	
 	public String getDeliveryState() {
 		return deliveryState;

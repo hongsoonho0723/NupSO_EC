@@ -69,11 +69,12 @@ public class FurnitureDTO {
     }
     
 	//장바구니에서 필요
-	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price) {
+	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price, String texture) {
 		super();
 		this.furnitureName = furnitureName;
 		this.furnitureImgSrc = furnitureImgSrc;
 		this.price = price;
+		this.texture = texture;
 
 	}
 

@@ -12,4 +12,7 @@ public interface OrderDAO {
 
 	List<OrderDTO> selectOrderAll(int userSeq) throws SQLException;
 
+	int insertOrder(OrderDTO orderDTO) throws SQLException;
+	
+	int insertOrderInfo(OrderDTO orderDTO) throws SQLException;
 }

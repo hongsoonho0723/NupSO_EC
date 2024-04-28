@@ -11,6 +11,7 @@ if (typeof window.IMP === "undefined") {
   
 const button = document.querySelector("#btn");
 
+
 const onClickPay = async () =>{
 	
 	IMP.request_pay({
@@ -30,9 +31,7 @@ const onClickPay = async () =>{
 		alert("결제 성공")
 		
 		//메서드 주문테이블에 insert필요 정보
-		insertOrder();
-		
-  window.location.href = 'http://localhost:8000/NupSO_EC/cart.jsp';
+		document.getElementById("orderForm").submit();
       }
 });
 	
