@@ -10,6 +10,4 @@ public interface OrderService {
 
 	List<OrderDTO> selectOrderFunitureName() throws SQLException, IOException;
 
-	List<OrderDTO> selectOrderAll(int userSeq) throws SQLException, IOException;
-
 }

@@ -12,8 +12,6 @@ public interface FurnitureService {
     상품 상세 정보
      */
 	FurnitureDTO selectFurnitureName(String furnitureName) throws SQLException;
-	
-	FurnitureDTO selectFurnitureByFurnitureSeq(int furnitureSeq) throws SQLException;
 
 	List<FurnitureDTO> selectAll() throws SQLException;
 

@@ -31,14 +31,12 @@ public class FurnitureController implements Controller {
     /*
     상품 상세 조회 페이지
      */
-    public ModelAndView furnitureInfo(HttpServletRequest request, HttpServletResponse response,String furniture) throws SQLException {
-        	System.out.println("FurnitureController productInfo");
-        	String furnitureName = furniture;
-        	
-        	if(furnitureName.equals("")) {
-        		furnitureName = request.getParameter("furnitureName");
-        	}
-        	
+    public ModelAndView furnitureInfo(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        System.out.println("FurnitureController productInfo");
+        
+        String furnitureName = request.getParameter("furnitureName");
+
+    
             FurnitureDTO furnitureDTO = furnitureService.selectFurnitureName(furnitureName);
             // 상세페이지 설명 사진 가져오기
             furnitureDTO.setImgDetailList(imgService.selectImgDetail(furnitureDTO));
