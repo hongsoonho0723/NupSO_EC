@@ -6,7 +6,7 @@ import java.util.List;
 import dto.QnADTO;
 
 public interface QnAService {
-    void insert(int furnitureSeq, String question,String name, String password) throws SQLException;
+    void insert(int furnitureSeq, String question,int state,String name, String password) throws SQLException;
 
     void delete(int qnaSeq) throws SQLException;
     
@@ -19,5 +19,4 @@ public interface QnAService {
 	List<QnADTO> selectCount()throws SQLException;
 
 	List<QnADTO> selectAll(int furnitureSeq) throws SQLException;
-
 }
