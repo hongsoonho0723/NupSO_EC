@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -19,34 +20,7 @@
 		
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<jsp:include page="assets/common/user/header.jsp"/>
-	<script type="text/javascript">
-	
-	$(function(){
-		 $(document).on("click",".del-btn", function(){
-			 	event.preventDefault();
-			 	let reviewSeq = $(this).closest("tr").find(".reviewSeq").val(); // 현재 버튼이 속한 행의 reviewSeq 값 가져오기
-			 	
-		        if (reviewSeq === "") {
-		            return;
-		        }
-			 	
-		        $(".reviewSeq").val(reviewSeq); // 폼의 reviewSeq 필드에 reviewSeq 값 설정
-		        $("#inForm").submit(); // 폼 제출
-				 
-			 })
-			 
-			 if("${message}"!== ""){
-				alert("${message}");
-			 }
 		
-
-	})
-	
-	
-	
-	
-	
-	</script>	
 		
 	<title>My Review</title>
 </head>
@@ -60,7 +34,7 @@
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
-                <form class="col-md-12" method="post" action="${path}/front" id="inForm">
+                <form class="col-md-12" method="post" action="${path}/front">
                   <div class="site-blocks-table">
                   	<div class="intro-excerpt">
 						<h1>리뷰 조회</h1>
@@ -85,11 +59,10 @@
 		                          <td class="review-context">${item.review}</td>
 		                          <td class="review-date">${item.regDate}</td>
 		                          <td><button class="del-btn">리뷰삭제</button></td>
-		                          <td><input type="hidden" value="${item.reviewSeq}" class="reviewSeq" name="reviewSeq">
-            							<input type="hidden" value="mypage" name="mypage">
-            							<input type="hidden" value="review" name="key">
-            							<input type="hidden" value="delete" name="methodName">
-		                          		<input type="hidden" value="mypage" id="mypage" name="mypage"></td>
+		                          <td> <input type="hidden" value="${item.reviewSeq}" id="reviewSeq" name="reviewSeq">
+		                          		<input type="hidden" value="mypage" id="mypage" name="mypage">
+                        				<input type="hidden" value="review" id="key" name="key">
+                       					 <input type="hidden" value="delete" id="methodName" name="methodName"></td>
                        		 </tr>
                         	</c:forEach>  
                         </tr>

@@ -15,6 +15,8 @@ public class FurnitureDTO {
     private String category;
     private String texture;
     private String regDate;
+    
+    private int flag;
 
    
     //상품 상세페이지에서 사용될 변수
@@ -49,6 +51,23 @@ public class FurnitureDTO {
 		this.furnitureImgSrc = furnitureImgSrc;
 	}
 
+
+	
+	public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription,
+			String furnitureImgSrc, int price, int stock, int saleCount, String category, String texture,
+			String regDate, int flag) {
+		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, furnitureImgSrc, price, stock, saleCount, category, texture, regDate);
+		this.flag = flag;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+    }
+    
 	//장바구니에서 필요
 	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price, String texture) {
 		super();
