@@ -59,45 +59,6 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 	}
 
-	@Override
-	public List<OrderDTO> selectOrderAll(int userSeq) throws SQLException {
-		Connection con = null;
-		 PreparedStatement ps = null;
-		 ResultSet rs = null;
-		 String sql = proFile.getProperty("order.selectOrderAll");
-
-		 OrderDTO order = null;
-		 List<OrderDTO> list = new ArrayList<OrderDTO>();
-
-		
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, userSeq);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				order = new OrderDTO();
-				order.getFurniture().setFurnitureSeq(rs.getInt(1));
-				order.getFurniture().setFurnitureImgSrc(rs.getString(2));
-				order.getFurniture().setFurnitureName(rs.getString(3));
-				order.setTotalPrice(rs.getInt(4));
-				order.getFurniture().setCategory(rs.getString(5));
-				order.getFurniture().setTexture(rs.getString(6));
-				order.setOrderState(rs.getInt(7));
-				order.setDeliveryDate(rs.getString(8));
-				order.getOrderInfo().setColorName(rs.getString(9));
-				order.getOrderInfo().setSizeVal(rs.getString(10));
-				order.getOrderInfo().setQuantity(rs.getInt(11));
-				list.add(order);
-			}
-		} finally {
-			DbUtil.dbClose(con, ps, rs);
-		}
-		 
-		return list;
-	}
-
 	
 	
 }

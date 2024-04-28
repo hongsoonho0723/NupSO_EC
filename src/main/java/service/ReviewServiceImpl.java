@@ -1,7 +1,5 @@
 package service;
 
-import dao.FurnitureDAO;
-import dao.FurnitureDAOImpl;
 import dao.ReviewDAO;
 import dao.ReviewDAOImpl;
 import dto.ReviewDTO;
@@ -13,7 +11,7 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService {
 
     private ReviewDAO reviewDAO = new ReviewDAOImpl();
-    private FurnitureDAO furnitureDAO = new FurnitureDAOImpl();
+
 
     @Override
     public int findUserSeq(int reviewSeq) throws SQLException {
@@ -25,18 +23,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<ReviewDTO> selectAll() throws SQLException {
 		List<ReviewDTO> list = reviewDAO.selectAll();
-		return list;
-	}
-	
-	
-
-	@Override
-	public List<ReviewDTO> selectAllByUser(int userSeq) throws SQLException {
-		List<ReviewDTO> list = reviewDAO.selectReviewByUserSeq(userSeq);
-		for (ReviewDTO review : list) {
-			String furnitureName = review.getFurniture().getFurnitureName();
-			review.setFurniture(furnitureDAO.selectFurnitureName(furnitureName));
-		}
 		return list;
 	}
 
@@ -71,26 +57,6 @@ public class ReviewServiceImpl implements ReviewService {
 		List<ReviewDTO> list = reviewDAO.selectReviewUser(reviewSeq,furnitureSeq);
 		return list;
 	}
-
-	@Override
-	public int insert(int furnitureSeq, int userSeq, String review, int score, String imgName, String type)
-			throws SQLException {
-		int result = reviewDAO.insert(furnitureSeq,userSeq,review,score);
-		int reviewSeq = 0;
-		if (result == 0) throw new SQLException("리뷰 등록에 실패하였습니다.");
-		List<ReviewDTO> list = reviewDAO.selectReviewByUserSeq(userSeq);
-		for (ReviewDTO r : list) {
-			if(r.getFurnitureSeq()==furnitureSeq && r.getReview().equals(review)) {
-				reviewSeq = r.getReviewSeq();
-			}
-		}
-		if(reviewSeq != 0) {
-			reviewDAO.insertImg(reviewSeq,imgName,type);
-		}
-		return result;
-		
-	}
-	
 	
 	
 

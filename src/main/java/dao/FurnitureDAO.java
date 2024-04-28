@@ -12,8 +12,6 @@ public interface FurnitureDAO {
     상품 상세 보기
      */
 	FurnitureDTO selectFurnitureName(String furnitureName) throws SQLException;
-	
-	FurnitureDTO selectFurnitureByFurnitureSeq(int furnitureSeq) throws SQLException;
 
 
 	List<FurnitureDTO> selectAll() throws SQLException;
@@ -25,6 +23,9 @@ public interface FurnitureDAO {
 	List<SizeDTO> selectSizeList(String furnitureName) throws SQLException;
 
 	int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException;
+
+
+	List<FurnitureDTO> selectFurnitureOrderBySales();
 
 	
 }
