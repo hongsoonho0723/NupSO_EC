@@ -14,7 +14,9 @@
 				<div class="intro-excerpt">
                    <p>
                    	<a href="${path}/front?key=review&methodName=selectAllByUser" class="btn btn-secondary me-2">내가 쓴 리뷰조회</a>
+
                    	<a href="wishList.jsp" class="btn btn-secondary me-2">관심 목록</a>
+
                     </p>
                	</div>
 			</div>

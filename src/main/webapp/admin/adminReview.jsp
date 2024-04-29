@@ -48,7 +48,7 @@
 				
 				
   		</style>
-  		<script src="${path}/js/jquery-3.6.0.min.js"></script>
+  		<script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
 		<script type="text/javascript">
  	   //전체검색
  	   $(function(){

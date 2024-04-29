@@ -26,4 +26,8 @@ public interface FurnitureService {
 	int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException;
 
 	
+	List<FurnitureDTO> selectFurnitureOrderBySales() throws SQLException;
+
+
+	
 }

@@ -134,6 +134,7 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 		 String sql = proFile.getProperty("furniture.selectAll");
 		 FurnitureDTO furniture = null;
 		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+
 		
 		try {
 			con = DbUtil.getConnection();
@@ -143,12 +144,14 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 			while(rs.next()) {
 				furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
 		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+
 				list.add(furniture);
+
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		 
+
 		return list;
 	}
 
@@ -162,6 +165,7 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 		 String sql = proFile.getProperty("furniture.selectAll");
 		 FurnitureDTO furniture = null;
 		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+		 int deletFalg =1;
 
 		
 		try {
@@ -173,8 +177,12 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 				furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
 		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
 				furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
+				furniture.setFlag(rs.getInt("flag"));
 				
-				list.add(furniture);
+				if(furniture.getFlag() != deletFalg) {
+					list.add(furniture);
+				}
+				
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -182,7 +190,8 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 		return list;
 	}
 
-	@Override
+
+
 	public FurnitureDTO selectFurnitureByFurnitureSeq(int furnitureSeq) throws SQLException {
 		Connection con = null;
         PreparedStatement ps = null;
@@ -205,10 +214,36 @@ public class FurnitureDAOImpl implements FurnitureDAO {
             DbUtil.dbClose(con, ps, rs);
         }
         return furniture;
+
 	}
-    
-	
-    
+
+	@Override
+	public List<FurnitureDTO> selectFurnitureOrderBySales() {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+		String sql = proFile.getProperty("furniture.selectFurnitureOrderBySales");
+		FurnitureDTO furniture = null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				furniture = new FurnitureDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+				furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
+				list.add(furniture);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+
     
     
 }

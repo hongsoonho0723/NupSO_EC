@@ -30,8 +30,12 @@
 				return;
 			}
 			
-		})		
+		})// 클릭 이벤트 끝		
 		
+		
+		 	if("${message}"!== ""){
+				alert("${message}");
+			}
 	})
 
 

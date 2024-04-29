@@ -15,7 +15,7 @@ public class FurnitureDTO {
     private String category;
     private String texture;
     private String regDate;
-    
+
     private int flag;
 
    
@@ -85,7 +85,7 @@ public class FurnitureDTO {
 		this.furnitureImgSrc = furnitureImgSrc;
 		this.price = price;
 	}
-	
+
 	public List<ReviewDTO> getReviewList() {
 		return reviewList;
 	}
