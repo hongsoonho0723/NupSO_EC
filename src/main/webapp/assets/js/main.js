@@ -10,7 +10,6 @@ if (typeof window.IMP === "undefined") {
 
   
 const button = document.querySelector("#btn");
-
 const onClickPay = async () =>{
 	
 	IMP.request_pay({

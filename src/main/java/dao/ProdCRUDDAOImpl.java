@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import dto.FurnitureDTO;
+import dto.OrderDTO;
 import util.DbUtil;
 
 public class ProdCRUDDAOImpl implements ProdCRUDDAO{
@@ -32,9 +33,9 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
             Connection con = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
-            String sql = proFiles.getProperty("delivery.deliveryState");
+            String sql = proFiles.getProperty("prodCRUD.selectAll");
             
-            List<OrderDTO> list = new ArrayList<OrderDTO>();
+            List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
             FurnitureDTO furniture = null;
 
             try {

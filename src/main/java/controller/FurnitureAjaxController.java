@@ -111,4 +111,5 @@ public class FurnitureAjaxController implements RestController {
 		PrintWriter out = response.getWriter();
 		out.print(jsonFurnitureList);
 	}
+	
 }

@@ -54,6 +54,21 @@
 <script type="text/javascript">
 	//전체검색
 	$(function() {
+		<!-- 유효성 검사 코드 추가 -->
+        <%
+            HttpSession adminSession = request.getSession(false);
+            if (adminSession == null || adminSession.getAttribute("adminId") == null) {
+                response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp");
+                return;
+            }
+        %>
+        <!-- 유효성 검사 코드 추가 끝 -->
+        <%
+        // 캐시 관리 헤더 추가
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        response.setDateHeader("Expires", 0); // Proxies
+    %>
 		let isChecked = localStorage.getItem("userStateChecked") === "true";
 		  $("#userState").prop("checked", isChecked);
 		  checkBoxVisibility(isChecked);
