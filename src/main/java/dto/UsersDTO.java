@@ -13,6 +13,14 @@ public class UsersDTO {
 	private String userState;
 	private String regDate;
 	
+	@Override
+	public String toString() {
+		return "UsersDTO [userSeq=" + userSeq + ", userId=" + userId + ", password=" + password + ", addr=" + addr
+				+ ", name=" + name + ", age=" + age + ", gender=" + gender + ", phone=" + phone + ", userState="
+				+ userState + ", regDate=" + regDate + "]";
+	}
+
+
 	public UsersDTO(int userSeq, String userId, String password, String addr, String name, int age, String gender,
 			String phone, String userState, String regDate) {
 		super();
@@ -38,6 +46,8 @@ public class UsersDTO {
 		this.gender = gender;
 		this.phone = phone;
 	}
+	
+	
 	public UsersDTO(String userId, String password) {
 		super();
 		this.userId = userId;
@@ -53,6 +63,17 @@ public class UsersDTO {
 	public UsersDTO() {
 
 	}
+
+
+	public UsersDTO(int userSeq, String name, String password, String addr, int age, String phone) {
+		this.userSeq = userSeq;
+		this.name = name;
+		this.password = password;
+		this.addr = addr;
+		this.age = age;
+		this.phone = phone;
+	}
+
 
 	public int getUserSeq() {
 		return userSeq;

@@ -57,6 +57,19 @@ public class ReviewServiceImpl implements ReviewService {
 		List<ReviewDTO> list = reviewDAO.selectReviewUser(reviewSeq,furnitureSeq);
 		return list;
 	}
+
+	@Override
+	public int insert(int furnitureSeq, int userSeq, String review, int score, String imgName, String type)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ReviewDTO> selectAllByUser(int userSeq) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 
