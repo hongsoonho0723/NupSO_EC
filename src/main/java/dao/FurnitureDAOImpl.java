@@ -134,6 +134,7 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 		 String sql = proFile.getProperty("furniture.selectAll");
 		 FurnitureDTO furniture = null;
 		 List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+
 		
 		try {
 			con = DbUtil.getConnection();
@@ -187,8 +188,6 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 		return list;
 	}
 
-
-
 	@Override
 	public FurnitureDTO selectFurnitureByFurnitureSeq(int furnitureSeq) throws SQLException {
 		Connection con = null;
@@ -215,28 +214,29 @@ public class FurnitureDAOImpl implements FurnitureDAO {
 	}
     
 	@Override
-	public FurnitureDTO selectFurnitureByFurnitureSeq(int furnitureSeq) throws SQLException {
+	public List<FurnitureDTO> selectFurnitureOrderBySales() {
 		Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        FurnitureDTO furniture = null;
-        String sql = proFile.getProperty("furniture.selectFurnitureBySeq");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+		String sql = proFile.getProperty("furniture.selectFurnitureOrderBySales");
+		FurnitureDTO furniture = null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				furniture = new FurnitureDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
+				furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
+				list.add(furniture);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 
-        try {
-            con = DbUtil.getConnection();
-            ps = con.prepareStatement(sql);           
-            ps.setInt(1, furnitureSeq);
-            rs = ps.executeQuery();
-            if(rs.next()){
-            	furniture = new FurnitureDTO(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),
-		                rs.getInt(5), rs.getInt(6), rs.getInt("sale_count"), rs.getString("category"), rs.getString(9));
-            	furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
-            	furniture.setTexture(rs.getString("texture"));
-            }
-        }finally {
-            DbUtil.dbClose(con, ps, rs);
-        }
-        return furniture;
 	}
     
     

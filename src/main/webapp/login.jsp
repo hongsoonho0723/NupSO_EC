@@ -61,11 +61,8 @@
 					console.log("result = " + result)
 					if (result && result.name) {
 						alert("아이디 일치");
-						window.location.href = "index.jsp";
-						
-					/* 	let str = "";
-						str=result.name
-						$("#span1").html(str); */
+						//window.location.href = "index.jsp";
+						window.history.back();
 						
 					} else {
 

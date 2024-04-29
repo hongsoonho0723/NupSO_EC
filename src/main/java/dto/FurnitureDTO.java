@@ -18,7 +18,6 @@ public class FurnitureDTO {
     
     private int flag;
 
-    private int flag;
 
    
     //상품 상세페이지에서 사용될 변수
@@ -69,13 +68,7 @@ public class FurnitureDTO {
 		this.flag = flag;
 	}
 
-	public int getFlag() {
-		return flag;
-	}
-
-	public void setFlag(int flag) {
-		this.flag = flag;
-    }
+	
     
 	//장바구니에서 필요
 	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price, String texture) {

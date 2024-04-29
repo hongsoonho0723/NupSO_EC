@@ -89,7 +89,7 @@
         	
         })
         
- 
+         
              	
         //선택한 값들 저장해주기
         $(document).on("change", "#quantity", function(){
@@ -108,9 +108,20 @@
         });
 	
         
-        
-        
-    	
+        //유저 아이디 확인후 버튼 유무
+     	function userCheck(){
+     	   let userId = $("#userId").val();
+     	   if(userId == "null"){
+     		   
+     		   $("[date-id=btn]").remove();
+     		   $("#btn").text("로그인 하고 이용해주세요");
+     	   } 
+     	   
+     	}
+        userCheck();
+
+    
+    
     });// ready end
 
 </script>
@@ -170,7 +181,6 @@
 
                                 <tr>
                                     <td>재질</td>
-                                    <td></td>
                                     <td>${furnitureDTO.texture}</td>
                                 </tr>
                                 <tr>
@@ -206,11 +216,11 @@
                                 </tr>
                             </table>
     					
-                            <div class="form-group">
+                            <div id="btn" class="form-group">
                                 <p>
-                                    <a href="" class="btn btn-secondary me-2">♥️</a>
-                                    <button id="cart" class="btn btn-secondary me-2">🛍️</button>
-                                    <button id="checkout" class="btn btn-black btn-lg py-3 btn-block">구매하기</button>
+                                    <a href="" date-id="btn" class="btn btn-secondary me-2">♥️</a>
+                                    <button date-id="btn" id="cart" class="btn btn-secondary me-2">🛍️</button>
+                                    <button date-id="btn" id="checkout" class="btn btn-black btn-lg py-3 btn-block">구매하기</button>
                                 </p>
 							
                             </div>
@@ -223,6 +233,10 @@
 							<input type="hidden" name="furniturePrice" id="furniturePrice" value="${furnitureDTO.price}">
 							<input type="hidden" name="furnitureName" id="furnitureName" value="${furnitureDTO.furnitureName}">
 							<input type="hidden" name="url" id="url">
+							<input type="hidden" name="userId" id="userId" value="<%= session.getAttribute("userId") %>">
+							
+						<%-- 	<div id="userId" style="display:none;"><%= session.getAttribute("userId") %></div>
+                --%>
 						</form>
                         </div>
                     </div>
