@@ -60,7 +60,7 @@
         	
         });//답변 이벤트 end
         
-        
+        //장바구니 저장버튼 이벤트
         $("#cart").click(function(){
         	$("#key").val("cart");
         	$("#methodName").val("insertCart");
