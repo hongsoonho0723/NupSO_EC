@@ -15,6 +15,9 @@ public class FurnitureDTO {
     private String category;
     private String texture;
     private String regDate;
+    
+    //추가된 컬럼
+    private int flag;
 
    
     //상품 상세페이지에서 사용될 변수
@@ -61,6 +64,14 @@ public class FurnitureDTO {
     }
 
 	
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
 	public List<ReviewDTO> getReviewList() {
 		return reviewList;
 	}

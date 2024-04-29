@@ -63,7 +63,15 @@
  			  	//text박스에 값넣기 
  				let tr = $(this).closest("tr");
 				
-				$("#furnitureSeq").val(tr.find("td:eq(0)").text());
+ 				$("#furnitureSeq").val(tr.find("td:eq(0)").text());
+				$("#furnitureNumber").val(tr.find("td:eq(1)").text());
+				$("#furnitureName").val(tr.find("td:eq(2)").text());
+				$("#furnitureDescription").val(tr.find("td:eq(3)").text());
+				$("#price").val(tr.find("td:eq(4)").text());	
+				$("#stock").val(tr.find("td:eq(5)").text());
+				$("#category").val(tr.find("td:eq(7)").text());
+				$("#flag").val(tr.find("td:eq(8)").text());
+				$("#furnitureImgSrc").val(tr.find("td:eq(10)").text());
 
 				
 				
@@ -72,12 +80,21 @@
  				 }
  			  
  		   });
+ 		   
+ 		  $(document).on("click","#update", function(){
+				 if($("#furnitureSeq").val()===""){
+					 return;
+				 }
+				 
+				 $("#inForm").attr("action","${path}/front?key=product&methodName=update");
+				 $("#inForm").submit();
+			 })
  			 
  			 $(document).on("click","#delete", function(){
  				 if($("#furnitureSeq").val()===""){
  					 return;
  				 }
- 				$("#inForm").attr("action","${path}/front?key=product&methodName=delete");
+ 				 $("#inForm").attr("action","${path}/front?key=product&methodName=delete");
 				 $("#inForm").submit();
  				 
  			 })
@@ -101,14 +118,31 @@
                             <li class="breadcrumb-item active">상품 생성, 조회, 갱신, 삭제</li>
                         </ol>
                         <div>
+                        	<h3>수정 및 삭제할 상품 클릭</h3>
                      <form name="inForm" method="post" id="inForm" action="${path}/fron?key=product">
 				<table>
 					<tr>
-						<th>수정 및 삭제할 상품 클릭</th>
+                                        	<th>FurnitureSeq</th>
+                                        	<th>furnitureNumber</th>
+                                            <th>furnitureName</th>
+                                            <th>furnitureDescription</th>
+                                            <th>price</th>
+                                            <th>stock</th>
+                                            <th>category</th>
+                                            <th>flag</th>
+                                            <th>furnitureImgSrc</th>
 					</tr>
 					<tr>
-						<td><input type="text" size="7" name="furnitureSeq" id="furnitureSeq"></td>
-					</tr>
+					     <td><input type="text" id="furnitureSeq" name = "furnitureSeq"></td>
+					     <td><input type="text" id="furnitureNumber" name = "furnitureNumber"></td>
+					     <td><input type="text" id="furnitureName" name = "furnitureName"></td>
+					     <td><input type="text" id="furnitureDescription" name = "furnitureDescription"></td>
+					     <td><input type="text" id="price" name = "price"></td>
+					     <td><input type="text" id="stock" name = "stock"></td>
+					     <td><input type="text" id="category" name = "category"></td>
+					     <td><input type="text" id="flag" name = "flag"></td>
+					     <td><input type="text" id="furnitureImgSrc" name = "furnitureImgSrc"></td>
+				   </tr>
 					<tr>
 						<td colspan="8" align="center"> 
 							<input type="button" value="상품 수정하기"  id="update">
@@ -136,7 +170,9 @@
                                             <th>stock</th>
                                             <th>saleCount</th>
                                             <th>category</th>
+                                            <th>flag</th>
                                             <th>regDate</th>
+                                            <th>furnitureImgSrc</th>
                                         </tr>
                                     </thead>
                                      <tbody>
@@ -150,7 +186,9 @@
 									     <td>${item.stock}</td>
 									     <td>${item.saleCount}</td>
 									     <td>${item.category}</td>
+									     <td>${item.flag}</td>
 									     <td>${item.regDate}</td>
+									     <td>${item.furnitureImgSrc}</td>
 									   </tr>
 									</c:forEach>
                                     </tbody>

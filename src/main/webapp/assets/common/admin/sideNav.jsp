@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    // 각 토글링할 항목에 대한 클릭 이벤트 처리
+    // 각 토글링할 항목에 대한 클릭 이벤트 처리 
     $(".nav-link.collapsed").click(function(){
         // 해당 항목의 다음 요소를 토글 (보이기/감추기)
         $(this).next(".collapse").toggle();

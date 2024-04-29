@@ -61,7 +61,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">상품 추가</h1>
                         <div>
-                     <form name="inForm" method="post" id="inForm" action="${path}/front?key=product&methodName=create">
+           <form name="inForm" method="post" id="inForm" action="${path}/front?key=product&methodName=create">
 				<table>
             <tr>
                 <th>furnitureNumber</th>

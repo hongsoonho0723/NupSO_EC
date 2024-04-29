@@ -11,4 +11,6 @@ public interface ProdCRUDService {
 	void delete(int furnitureSeq) throws SQLException;
 	
 	int create(FurnitureDTO furniture) throws SQLException; 
+	
+	
 }

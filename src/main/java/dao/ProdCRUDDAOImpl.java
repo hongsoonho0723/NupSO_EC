@@ -45,6 +45,8 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
                 	furniture = new FurnitureDTO(rs.getInt(1), rs.getString(2), rs.getString(3),
                 	        rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7),
                 	        rs.getInt(8), rs.getString(9));
+                	furniture.setFlag(rs.getInt("flag"));
+                	furniture.setFurnitureImgSrc(rs.getString("furniture_img_src"));
                 	list.add(furniture);
                 }
             }finally {
@@ -84,7 +86,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
 
     	    try {
     	        con = DbUtil.getConnection();
-    	        ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+    	        ps = con.prepareStatement(sql);
     	        ps.setString(1, furniture.getFurnitureNumber());
     	        ps.setString(2, furniture.getFurnitureName());
     	        ps.setString(3, furniture.getFurnitureDescription());
@@ -96,18 +98,11 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
 
     	        result = ps.executeUpdate();
 
-    	        // 새로 추가된 상품의 시퀀스 번호를 가져오기
-    	        if (result == 1) {
-    	            rs = ps.getGeneratedKeys();
-    	            if (rs.next()) {
-    	                int generatedKey = rs.getInt(1);
-    	                return generatedKey;
-    	            }
-    	        }
+
     	    } finally {
     	        DbUtil.dbClose(con, ps, rs);
     	    }
 
-    	    return -1; // 상품 추가 실패 시 -1 반환
+    	    return result; // 상품 추가 실패 시 -1 반환
     	}
 }
