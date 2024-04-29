@@ -29,6 +29,7 @@ public class FurnitureDTO {
     private List<QnADTO> qnaList = new ArrayList<QnADTO>();
     
     
+    public FurnitureDTO() {};
     
     public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, 
     		String furnitureDescription,

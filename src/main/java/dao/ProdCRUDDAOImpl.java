@@ -32,9 +32,9 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
             Connection con = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
-            String sql = proFiles.getProperty("prodCRUD.selectAll");
+            String sql = proFiles.getProperty("delivery.deliveryState");
             
-            List<FurnitureDTO> list = new ArrayList<FurnitureDTO>();
+            List<OrderDTO> list = new ArrayList<OrderDTO>();
             FurnitureDTO furniture = null;
 
             try {

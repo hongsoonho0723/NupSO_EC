@@ -1,7 +1,7 @@
-<%@page import="dto.FurnitureDTO"%>
-<%@page import="dto.OrderDTO" %>
-<%@page import="dto.OrderInfoDTO" %>
+<%@page import="dto.OrderDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="dao.DeliveryDAOImpl"%>
+<%@page import="dao.DeliveryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -56,34 +56,32 @@
 		<script type="text/javascript">
  	   //전체검색
  	    $(function(){
+ 	    	$("#orderSeq").attr("readonly","readonly");
+ 	    	$("#userSeq").attr("readonly","readonly");
+ 	    	$("#totalPrice").attr("readonly","readonly");
+ 	    	$("#deliveryDate").attr("readonly","readonly");
+ 	    	$("#regDate").attr("readonly","readonly");
+ 	    	
                 $(document).on("click", "main .card-body table > tbody td", function(){
                     let tr = $(this).closest("tr");
                     $("#orderSeq").val(tr.find("td:eq(0)").text());
                     $("#userSeq").val(tr.find("td:eq(1)").text());
-                    $("#furnitureSeq").val(tr.find("td:eq(2)").text());
-                    $("#furnitureNumber").val(tr.find("td:eq(3)").text());
-                    $("#furnitureName").val(tr.find("td:eq(4)").text());
-                    $("#colorName").val(tr.find("td:eq(5)").text());
-                    $("#sizeVal").val(tr.find("td:eq(6)").text());
-                    $("#category").val(tr.find("td:eq(7)").text());
-                    $("#quantity").val(tr.find("td:eq(8)").text());
-                    $("#deliveryDate").val(tr.find("td:eq(9)").text());
-                    $("#orderState").val(tr.find("td:eq(10)").text());
-                    if($("#orderState").val() !== ""){
-                        $("#update").val("배송 상태 변경하기");
-                    }
+                    $("#totalPrice").val(tr.find("td:eq(2)").text());
+                    $("#orderState").val(tr.find("td:eq(3)").text());
+                    $("#deliveryDate").val(tr.find("td:eq(4)").text());
+                    $("#regDate").val(tr.find("td:eq(5)").text());
                 });
  		   
                 $(document).on("click", "#update", function(){
-                    if($("#userSeq").val() === ""){
+                    if($("#orderSeq").val() === ""){
                         return;
                     }
-                    $("#inForm").attr("action", "${path}/front?key=delivery&methodName=update"); // 수정된 부분
+                    $("#inForm").attr("action", "${path}/front?key=delivery&methodName=update");
                     $("#inForm").submit();
 			 });
  			 
  			 
- 	   };)//ready 함수 END
+ 	   })//ready 함수 END
  	   /////////////////////////////////////////////////////////////
   		</script>
   		
@@ -101,37 +99,27 @@
                             <li class="breadcrumb-item active">0: 취소, 1: 결제완료, 2: 배송중, 3: 배송 완료</li>
                         </ol>
                         <div>
-                        	<h3>배송 상태 변경할 상품 선택</h3>
-                            <form name="inForm" method="post" id="inForm" action="${path}/front?key=delivery&methodName=update"> <!-- 수정된 부분 -->
+                        	<h3>orderState 변경</h3>
+                            <form name="inForm" method="post" id="inForm" action="${path}/front?key=delivery">
                                 <table id="inForm">
                                     <tr>
                                         <th>orderSeq</th>
                                         <th>userSeq</th>
-                                        <th>furnitureSeq</th>
-                                        <th>furnitureNumber</th>
-                                        <th>furnitureName</th>
-                                        <th>colorName</th>
-                                        <th>sizeVal</th>
-                                        <th>category</th>
-                                        <th>quantity</th>
-                                        <th>deliveryDate</th>
+                                        <th>totalPrice</th>
                                         <th>orderState</th>
+                                        <th>deliveryDate</th>
+                                        <th>regDate</th>
                                     </tr>
                                     <tr>
                                         <td><input type="text" id="orderSeq" name="orderSeq"></td>
                                         <td><input type="text" id="userSeq" name="userSeq"></td>
-                                        <td><input type="text" id="furnitureSeq" name="furnitureSeq"></td>
-                                        <td><input type="text" id="furnitureNumber" name="furnitureNumber"></td>
-                                        <td><input type="text" id="furnitureName" name="furnitureName"></td>
-                                        <td><input type="text" id="colorName" name="colorName"></td>
-                                        <td><input type="text" id="sizeVal" name="sizeVal"></td>
-                                        <td><input type="text" id="category" name="category"></td>
-                                        <td><input type="text" id="quantity" name="quantity"></td>
-                                        <td><input type="text" id="deliveryDate" name="deliveryDate"></td>
+                                        <td><input type="text" id="totalPrice" name="totalPrice"></td>
                                         <td><input type="text" id="orderState" name="orderState"></td>
+                                        <td><input type="text" id="deliveryDate" name="deliveryDate"></td>
+                                        <td><input type="text" id="regDate" name="regDate"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="11" align="center"> 
+                                        <td colspan="6" align="center"> 
                                             <input type="button" value="배송 상태 변경하기" id="update">
                                         </td>
                                     </tr>
@@ -150,31 +138,21 @@
                                         <tr>
                                             <th>orderSeq</th>
                                             <th>userSeq</th>
-                                            <th>furnitureSeq</th>
-                                            <th>furnitureNumber</th>
-                                            <th>furnitureName</th>
-                                            <th>colorName</th>
-                                            <th>sizeVal</th>
-                                            <th>category</th>
-                                            <th>quantity</th>
-                                            <th>deliveryDate</th>
+                                            <th>totalPrice</th>
                                             <th>orderState</th>
+                                            <th>deliveryDate</th>
+                                            <th>regDate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${list}" var="item">
                                             <tr>
-                                                <td>${item.orderSeq}</td>
+                                                <td class="orderSeq">${item.orderSeq}</td>
                                                 <td>${item.userSeq}</td>
-                                                <td>${item.furniture.furnitureSeq}</td>
-                                                <td>${item.furniture.furnitureNumber}</td>
-                                                <td>${item.furniture.furnitureName}</td>
-                                                <td>${item.orderInfo.colorName}</td>
-                                                <td>${item.orderInfo.sizeVal}</td>
-                                                <td>${item.furniture.category}</td>
-                                                <td>${item.orderInfo.quantity}</td>
-                                                <td>${item.deliveryDate}</td>
+                                                <td>${item.totalPrice}</td>
                                                 <td>${item.orderState}</td>
+                                                <td>${item.deliveryDate}</td>
+                                                <td>${item.regDate}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

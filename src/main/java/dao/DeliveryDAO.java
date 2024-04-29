@@ -5,7 +5,7 @@ import java.util.List;
 
 import dto.OrderDTO;
 
-public interface OrderDAO {
-    void updateOrderState(int orderSeq, int orderState) throws SQLException;
-    List<OrderDTO> selectAll() throws SQLException;
+public interface DeliveryDAO {
+	// 배송 관리를 위한 주문 현황 조회
+		List<OrderDTO> selectAll() throws SQLException;
 }
