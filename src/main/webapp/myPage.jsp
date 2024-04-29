@@ -30,8 +30,11 @@
 				return;
 			}
 			
-		})		
+		})
 		
+		 	if("${message}"!== ""){
+				alert("${message}");
+			}
 	})
 
 

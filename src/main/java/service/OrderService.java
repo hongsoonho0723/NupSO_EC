@@ -12,5 +12,4 @@ public interface OrderService {
 
 	List<OrderDTO> selectOrderAll(int userSeq) throws SQLException, IOException;
 
-	int insertOrder(OrderDTO orderDTO) throws SQLException;
 }

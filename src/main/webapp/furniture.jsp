@@ -36,7 +36,6 @@
                         	console.log(err)
                            alert(err);
                         }
-                        
                     });
                     
                 }else{
@@ -290,12 +289,12 @@
                    <c:forEach items="${furnitureDTO.reviewList}" var="item">
                     <ul class="product-comments clearfix">
 	                        <li class="mb-30">
-	                            <div class="pro-reviewer">
-	                            <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-	                                <img src="${pageContext.request.contextPath}/reviewImg/${reviewImg.imgSrc}" alt="이미지" >
-                                </c:forEach>
-	                            </div>
 	                            <div class="pro-reviewer-comment">
+	                              <div class="pro-reviewer">
+		                             <c:forEach items="${item.reviewImgs}" var="reviewImg">   
+		                                <img src="assets/img/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
+	                                 </c:forEach>
+	                            	</div>
 	                                <div class="fix">
 	                                    <div class="pull-left mbl-center">
 	                                        <h5><strong>${item.user.name}</strong></h5>
@@ -329,7 +328,7 @@
                         <a href="qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}&furnitureImgSrc=${furnitureDTO.furnitureImgSrc}" class="btn btn-secondary me-2">Go to Q&A</a>
                     </div>
                     <br><br>
-                   <c:forEach items="${furnitureDTO.qnaList}" var="item">
+                   	<c:forEach items="${furnitureDTO.qnaList}" var="item">
                     <ul class="product-comments clearfix">
                         <li class="mb-30">
                             <div class="pro-reviewer-comment">

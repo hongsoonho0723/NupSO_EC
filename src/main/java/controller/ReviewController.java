@@ -45,11 +45,19 @@ public class ReviewController implements Controller {
 		return new ModelAndView("myPageReview.jsp");
     }
     
-    public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException{
+    public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
     	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
-    	String reqUrl = request.getParameter("mypage");
+    	String reqUrl ="";
+    	if(request.getParameter("mypage")!=null) {
+    		reqUrl = request.getParameter("mypage");
+    	}
+    	
+    	PrintWriter out = response.getWriter();
+    	response.setContentType("text/html;charset=utf-8");
     	
     	service.delete(reviewSeq);
+    	
+    	request.setAttribute("message", "삭제에 성공했습니다.");
     	
     	if(reqUrl.equals("mypage")) {
     		return this.selectAllByUser(request, response);
@@ -80,7 +88,7 @@ public class ReviewController implements Controller {
     	if(part!=null) {
 			imgName = this.getFilename(part);
 			
-			String saveDir = request.getServletContext().getRealPath("/reviewImg");
+			String saveDir = "C:/Edu/reviewImg";
 			
 			if (imgName!=null && !imgName.equals("")) {
 				for(int i=0; i<imgType.length ; i++) {
