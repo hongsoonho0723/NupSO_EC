@@ -16,6 +16,8 @@ public class FurnitureDTO {
     private String texture;
     private String regDate;
 
+    private int flag;
+
    
     //상품 상세페이지에서 사용될 변수
     private List<ImgDTO> imgList = new ArrayList<ImgDTO>();
@@ -26,11 +28,11 @@ public class FurnitureDTO {
     private List<QnADTO> qnaList = new ArrayList<QnADTO>();
     
     
+    public FurnitureDTO() {};
     
-    
-    public FurnitureDTO() {}
-
-    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
+    public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, 
+    		String furnitureDescription,
+    		int price, int stock,  String category,int saleCount, String regDate) {
         this.furnitureSeq = furnitureSeq;
         this.furnitureNumber = furnitureNumber;
         this.furnitureName = furnitureName;
@@ -42,12 +44,19 @@ public class FurnitureDTO {
         this.regDate = regDate;
     }
     
-	public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription,
-			String furnitureImgSrc, int price, int stock, int saleCount, String category, String texture,
-			String regDate) {
-		this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock, saleCount, category, regDate);
-		this.furnitureImgSrc = furnitureImgSrc;
-	}
+	
+	// 상품 Create 생성자
+	public FurnitureDTO(String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, String category, String texture, String furnitureImgSrc) {
+        this.furnitureNumber = furnitureNumber;
+        this.furnitureName = furnitureName;
+        this.furnitureDescription = furnitureDescription;
+        this.price = price;
+        this.stock = stock;
+        this.category = category;
+        this.texture = texture;
+        this.furnitureImgSrc = furnitureImgSrc;
+    }
+
 
 	//장바구니에서 필요
 	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price) {
@@ -55,6 +64,34 @@ public class FurnitureDTO {
 		this.furnitureName = furnitureName;
 		this.furnitureImgSrc = furnitureImgSrc;
 		this.price = price;
+	}
+
+	 public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
+	        this.furnitureSeq = furnitureSeq;
+	        this.furnitureNumber = furnitureNumber;
+	        this.furnitureName = furnitureName;
+	        this.furnitureDescription = furnitureDescription;
+	        this.price = price;
+	        this.stock = stock;
+	        this.saleCount = saleCount;
+	        this.category = category;
+	        this.regDate = regDate;
+	    }
+	    
+		public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription,
+				String furnitureImgSrc, int price, int stock, int saleCount, String category, String texture,
+				String regDate) {
+			this(furnitureSeq, furnitureNumber, furnitureName, furnitureDescription, price, stock, saleCount, category, regDate);
+			this.furnitureImgSrc = furnitureImgSrc;
+		}
+
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 
 	public List<ReviewDTO> getReviewList() {

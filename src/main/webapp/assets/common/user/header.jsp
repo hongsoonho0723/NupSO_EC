@@ -50,8 +50,9 @@ boolean isLoggedIn = (session != null && session.getAttribute("loginUser") != nu
                    <li><a class="nav-link" href="login.jsp"><img src="assets/images/login.svg" title ="로그인" alt ="로그인" width="24px" height="24px"></a></li>
                <% } else { %>
                    <li><a class="nav-link" href="#"><img src="assets/images/logout.svg" id = "logoutButton" title ="로그아웃" alt ="로그아웃" width="24px" height="24px"></a></li>
-                   <li><a class="nav-link" href="myPage.jsp"><img src="assets/images/user.svg" title ="마이페이지" alt="마이페이지" width="24px" height="24px"></a></li>
-               <% } %>
+
+                   <li><a class="nav-link" href="${path}/front?key=order&methodName=selectOrderAll"><img src="assets/images/user.svg" title ="마이페이지" alt="마이페이지" width="24px" height="24px"></a></li>
+				<% } %>
                <li><a class="nav-link" href="cart.jsp"><img src="assets/images/cart.svg" title ="장바구니" alt="장바구니"></a></li>
                <li><a class="nav-link" href="admin/adminLogin.jsp"><img src="assets/images/admin.svg" title ="관리자 로그인" alt ="관리자 로그인"></a></li>
             </ul>
