@@ -30,4 +30,13 @@ public class CartServiceImpl implements CartService {
 		return 0;
 	}
 
+	@Override
+	public int insertCart(CartDTO cartDTO) throws SQLException {
+		
+
+		int result = cartDAO.insertCart(cartDTO);
+		if (result == 0) throw new SQLException("회원정보 삭제 실패하였습니다.");
+		return result;
+	}
+
 }

@@ -17,9 +17,10 @@ const onClickPay = async () => {
     const addr2 = document.getElementById("addr2").value;
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
+    const date = document.getElementById("datepicker").value;
     
        // 주소, 이름, 전화번호 필드가 비어 있는지 확인
-    if (!addr1 || !addr2 || !name || !phone) {
+    if (!addr1 || !addr2 || !name || !phone || !date) {
         alert("주소, 이름, 전화번호를 모두 입력해주세요.");
         return; // 필드가 하나라도 비어 있으면 결제를 진행하지 않음
     }    

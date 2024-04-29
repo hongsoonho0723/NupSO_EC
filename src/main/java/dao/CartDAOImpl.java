@@ -118,4 +118,45 @@ public class CartDAOImpl implements CartDAO {
 		return result;
 	}
 
+	@Override
+	public int insertCart(CartDTO cartDTO) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result =0;
+		String sql = proFile.getProperty("cart.insertCart");
+		//String sql =insert into cart values(cart_seq.nextval,?,?,?,default,?,?)
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, cartDTO.getUserSeq());
+			ps.setInt(2, cartDTO.getFurnitureSeq());
+			ps.setInt(3, cartDTO.getQuantity());
+			ps.setString(4, cartDTO.getSizeVal());
+			ps.setString(5, cartDTO.getColorName());
+			
+			result = ps.executeUpdate();
+			
+					
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+				
+		return result;
+	}
+
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+

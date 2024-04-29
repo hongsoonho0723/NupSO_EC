@@ -23,7 +23,15 @@ public class CartDTO {
 		this.regDate = regDate;
 	}
 
-	
+	public CartDTO(int userSeq,int furnitureSeq,int quantity,String colorName, String sizeVal) {
+		super();
+		this.userSeq = userSeq;
+		this.furnitureSeq = furnitureSeq;
+		this.quantity = quantity;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+		
+	}
 	
 	
 	
