@@ -68,17 +68,28 @@
         	if(confirm("장바구니로 이동하시겠습니까?")) {
  			    $("#url").val("cart.jsp");  
         		// 확인을 선택한 경우 폼 제출
-        		$("#cartForm").submit();
+        		$("#furnitureForm").submit();
             	 window.location.href = cart.jsp;
             } else {
             	let currentPageURL = window.location.href;
  			    $("#url").val(currentPageURL);  
-            	$("#cartForm").submit();
+            	$("#furnitureForm").submit();
             }
+        })
+        
+        //버튼 변경
+        
+        
+        //결제 버튼 클릭시 이벤트
+        $("#checkout").click(function(){
+        	$("#key").val("checkout");
+        	$("#methodName").val("checkout");
         	
+        	$("#furnitureForm").submit();
         	
         	
         })
+        
  
              	
         //선택한 값들 저장해주기
@@ -143,7 +154,7 @@
                 <div class="row my-5">
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="feature">
-                           <form id="cartForm" method="post" action="front" >
+                           <form id="furnitureForm" method="post" action="front" >
                             <table class="table site-block-order-table mb-5">
                                 <tr>
                                     <td class="text-black font-weight-bold"><strong>가격</strong></td>
@@ -160,6 +171,7 @@
 
                                 <tr>
                                     <td>재질</td>
+                                    <td></td>
                                     <td>${furnitureDTO.texture}</td>
                                 </tr>
                                 <tr>
@@ -199,9 +211,7 @@
                                 <p>
                                     <a href="" class="btn btn-secondary me-2">♥️</a>
                                     <button id="cart" class="btn btn-secondary me-2">🛍️</button>
-                                    <button class="btn btn-black btn-lg py-3 btn-block"
-                                            onclick="window.location='thankyou.html'">구매하기
-                                    </button>
+                                    <button id="checkout" class="btn btn-black btn-lg py-3 btn-block">구매하기</button>
                                 </p>
 							
                             </div>
@@ -211,6 +221,8 @@
 							<input type="hidden" name="quantity" id="quantityInput">
 							<input type="hidden" name="colorName" id="colorNameInput">
 							<input type="hidden" name="sizeVal" id="sizeValInput">
+							<input type="hidden" name="furniturePrice" id="furniturePrice" value="${furnitureDTO.price}">
+							<input type="hidden" name="furnitureName" id="furnitureName" value="${furnitureDTO.furnitureName}">
 							<input type="hidden" name="url" id="url">
 						</form>
                         </div>

@@ -68,6 +68,30 @@ public class OrderController implements Controller {
    }
    
 
+   //개별주문시 주문내역 저장
+   public ModelAndView insertOrderInof(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	   
+	   HttpSession session = request.getSession();
+	   int userSeq = (int) session.getAttribute("userSeq");
+	   
+	   String deliveryDate = request.getParameter("date");
+	   String deliveryAddr1 = request.getParameter("addr1");
+	   String deliveryAddr2 = request.getParameter("addr2");
+	   String deliveryName = request.getParameter("name");
+	   String deliveryPhone = request.getParameter("phone");
+	   String deliveryMemo = request.getParameter("memo");
+	   int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+	   
+	   OrderDTO orderDTO = new OrderDTO(userSeq,totalPrice,deliveryDate,deliveryAddr1,deliveryAddr2,deliveryName,deliveryPhone,deliveryMemo);
+	  
+	   //orderService.insertOrderInof(orderDTO);
+	   
+	   return new ModelAndView("myPage.jsp");
+   }
+
+	   
+   
+   
 }
 
 
