@@ -53,7 +53,7 @@
         		 url: "ajax", //통신할 서버의 주소
 				 type: "post", //요청방식(get | post | put | delete | fetch)
 				 dataType:"json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
-				 data: { key: "cartAjax", methodName: "selectAll" },
+				 data: { key: "wishListAjax", methodName: "selectAll" },
 				success :function(result , status){
 					  //화면갱신
 					  console.log(result)
@@ -66,7 +66,6 @@
 				              table += "<td><img src="+'${path}/assets/'+item.furnitureDTO.furnitureImgSrc+"></img></td>";
 				              table += "<td><h2 class='h5 text-black'>"+item.furnitureDTO.furnitureName+"</h2></td>";
 				              table += "<td>" + item.furnitureDTO.price + "</td>";
-				              table += "<td>" + item.quantity + "</td>";
 				              table += "<td>" + item.colorName + "</td>";
 				              table += "<td>" + item.sizeVal + "</td>";
 				              table += "<td><input type=button value='삭제' data-id="+item.furnitureSeq+"></td>";
@@ -99,7 +98,7 @@
  				 url: "ajax", //통신할 서버의 주소
  				 type: "post", //요청방식(get | post | put | delete | fetch)
  				 dataType:"text", //서버가 보내오는 응답데이터타입(text | html | xml | json)
- 				 data:{furnitureSeq:$(this).data('id') ,key: "cartAjax", methodName: "delete" }, //서버에게 전달할 데이터 parameter정보
+ 				 data:{furnitureSeq:$(this).data('id') ,key: "wishListAjax", methodName: "delete" }, //서버에게 전달할 데이터 parameter정보
  				 success :function(result , status){
  					 
  					 if(result==1)
@@ -146,7 +145,6 @@
                     <th class="product-thumbnail">Image</th>
                     <th class="product-name">상품명</th>
                     <th class="product-price">가격</th>
-                    <th class="product-quantity">수량</th>
                     <th class="product-color">색상</th>
                     <th class="product-size">사이즈</th>
                     <th class="product-remove">삭제</th>

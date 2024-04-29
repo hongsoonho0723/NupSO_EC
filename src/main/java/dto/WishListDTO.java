@@ -10,7 +10,11 @@ public class WishListDTO {
     private String colorName;
     private String sizeVal;
     
-    //생성자
+    FurnitureDTO furnitureDTO= new FurnitureDTO();
+    
+    public WishListDTO() {}
+
+	//생성자
 	public WishListDTO(int wishListSeq, int userSeq, int furnitureSeq, Date regDate, String colorName, String sizeVal) {
 		super();
 		this.wishListSeq = wishListSeq;
@@ -19,6 +23,25 @@ public class WishListDTO {
 		this.regDate = regDate;
 		this.colorName = colorName;
 		this.sizeVal = sizeVal;
+	}
+	
+	
+	
+	public WishListDTO(int furnitureSeq, String colorName, String sizeVal, FurnitureDTO furnitureDTO) {
+		super();
+		this.furnitureSeq = furnitureSeq;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+		this.furnitureDTO = furnitureDTO;
+	}
+
+	public WishListDTO(int userSeq,int furnitureSeq,String colorName, String sizeVal) {
+		super();
+		this.userSeq = userSeq;
+		this.furnitureSeq = furnitureSeq;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+		
 	}
 	
 	//getters and setters
@@ -73,4 +96,13 @@ public class WishListDTO {
 		this.sizeVal = sizeVal;
 	}
 
+	public FurnitureDTO getFurnitureDTO() {
+		return furnitureDTO;
+	}
+
+	public void setFurnitureDTO(FurnitureDTO furnitureDTO) {
+		this.furnitureDTO = furnitureDTO;
+	}
+
+	
 }

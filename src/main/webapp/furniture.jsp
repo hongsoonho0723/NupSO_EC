@@ -6,32 +6,113 @@
 <script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
 <style>
 	#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section{display:none;}
+	.pull-left.mbl-center>h6{display:none;}
 </style>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
     
     $(function(){
     	
-        $(document).on("click", "#delete", function () {
+        $(document).on("click", ".delete-button", function () {
+        	event.preventDefault(); // 기본 동작 방지
+        	let reviewerComment = $(this).closest(".pro-reviewer-comment");
+        	let qnaSeq = reviewerComment.find(".mbl-center h6>strong.qnASeq").text();
+        	let qnaPassword = reviewerComment.find(".mbl-center h6>strong.password").text();
+        	
             if (confirm("삭제하시겠습니까?")) {
                 const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
-                $.ajax({
-                    url: "${path}/ajax",
-                    type: "post",
-                    dataType: "text",
-                    data: {key: "qna", methodName: "delete", qnaSeq: ('#qnaSeq').val(),password:password},
-                    success: function (result) {
-                        if (result === 0) alert("삭제에 실패했습니다.");
-                        else location.reload();
-                    }
-                });
+                if(qnaPassword===password){
+                    $.ajax({
+                        url: "${path}/ajax",
+                        type: "post",
+                        dataType: "text",
+                        data: {key: "qnaAjax", methodName: "delete", qnaSeq: qnaSeq,password:password},
+                        success: function (result) {
+                        	event.preventDefault(); // 기본 동작 방지
+                            alert("삭제에 성공했습니다.");
+                        	location.reload();
+                        }, 
+                        error: function(err) {
+                        	console.log(err)
+                           alert(err);
+                        }
+                        
+                    });
+                    
+                }else{
+                	alert("비밀 번호가 일치하지 않습니다.")
+                }
+         
             }
         });//삭제 이벤트 end
         
         $(document).on("click",".reply-button",function(){
         	 event.preventDefault(); // 기본 동작 방지
-        	$("#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section").toggle();
+        	 let reviewerComment = $(this).closest(".pro-reviewer-comment");
+        	 
+        	 let answerText = reviewerComment.find(".answer-section h5>strong").text();
+        	 
+        	 if(answerText.trim()!==""){
+        		 reviewerComment.find(".answer-section").toggle();
+        	 }else{
+        		 alert("답변내용이 없습니다! 관리자에게 문의해주세요");
+        	 }
+        	
         });//답변 이벤트 end
+        
+        //장바구니 저장버튼 이벤트
+        $("#cart").click(function(){
+        	$("#key").val("cart");
+        	$("#methodName").val("insertCart");
+        	
+        	if(confirm("장바구니로 이동하시겠습니까?")) {
+ 			    $("#url").val("cart.jsp");  
+        		// 확인을 선택한 경우 폼 제출
+        		$("#furnitureForm").submit();
+            	 window.location.href = cart.jsp;
+            } else {
+            	let currentPageURL = window.location.href;
+ 			    $("#url").val(currentPageURL);  
+            	$("#furnitureForm").submit();
+            }
+        		
+        })
+ 
+         //관심목록 저장버튼 이벤트
+        $("#wishList").click(function(){
+        	$("#key").val("wishList");
+        	$("#methodName").val("insert");
+        	
+        	if(confirm("관심목록으로 이동하시겠습니까?")) {
+ 			    $("#url").val("wishList.jsp");  
+        		// 확인을 선택한 경우 폼 제출
+        		$("#furnitureForm").submit();
+            	 window.location.href = wishList.jsp;
+            } else {
+            	let currentPageURL = window.location.href;
+ 			    $("#url").val(currentPageURL);  
+            	$("#furnitureForm").submit();
+            }
+        		
+        })
+        
+        
+        //선택한 값들 저장해주기
+        $(document).on("change", "#quantity", function(){
+            let selectedQuantity = this.value; // 선택된 수량 값 읽기
+            $("#quantityInput").val(selectedQuantity); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#colorName", function(){
+            let selectedColorName = this.value; // 선택된 수량 값 읽기
+            $("#colorNameInput").val(selectedColorName); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#sizeVal", function(){
+            let selectedSizeVal = this.value; // 선택된 수량 값 읽기
+            $("#sizeValInput").val(selectedSizeVal); // hidden input 필드에 선택된 수량 설정
+        });
+	
         
         
         
@@ -46,11 +127,12 @@
             <div class="col-lg-5">
                 <div class="intro-excerpt">
                     <h1>${furnitureDTO.furnitureName}</h1>
-                    <p class="mb-4">가구 보기</p>
-                    <form method="get" action="showRoom.jsp">
-                        <input type="hidden" value="[Fabric,Wood]" name="texture">
-                        <input type="hidden" value="single sofa" name="category">
-                        <input type="hidden" value="Mild Sofa" name="sofaName">
+                    <p class="mb-4">쇼파에 맞는 눕소의 추천 인테리어</p>
+                    <form method="get" action="${path}/showRoom.jsp">
+                        <input type="hidden" value="${furnitureDTO.texture}" name="texture">
+                        <input type="hidden" value="${furnitureDTO.category}" name="category">
+                        <input type="hidden" value="${furnitureDTO.furnitureName}" name="sofaName">
+                        <input type="hidden" value="${furnitureDTO.furnitureDescription}" name="description">
                         <p><button type="submit" class="btn btn-secondary me-2">Show Room으로 확인하기</button></p>
                     </form>
                 </div>
@@ -77,6 +159,7 @@
                 <div class="row my-5">
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="feature">
+                           <form id="furnitureForm" method="post" action="front" >
                             <table class="table site-block-order-table mb-5">
                                 <tr>
                                     <td class="text-black font-weight-bold"><strong>가격</strong></td>
@@ -101,35 +184,51 @@
                                 </tr>
                                 <tr>
                                     <td>사이즈</td>
-                                    <td><select>
+                                    <td><select id="sizeVal">
                                         <option value="0">사이즈 선택</option>
                                         <c:forEach items="${furnitureDTO.sizeList}" var="item" varStatus="state">
-                                        	<option value="${state.index}">${item.sizeVal}</option>
+                                        	<option value="${item.sizeVal}">${item.sizeVal}</option>
                                          </c:forEach>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <td>색상</td>
-                                    <td><select>
+                                    <td><select id="colorName">
                                     		<option value="0">색상 선택</option>
                                     	<c:forEach items="${furnitureDTO.colorList}" var="item" varStatus="state">
-                                        	<option value="${state.index}">${item.colorName}</option>
+                                        	<option value="${item.colorName}">${item.colorName}</option>
                                          </c:forEach>
+                                    </select></td>
+                                </tr>      	
+                                <tr>
+                                    <td>수량</td>
+                                    <td><select id="quantity">
+                                    		<option value="0">수량 선택</option>
+                                    	<c:forEach begin="1" end="${furnitureDTO.stock}" var="index">
+    										<option value="${index}">${index}</option>
+										</c:forEach>
                                     </select></td>
                                 </tr>
                             </table>
-
+    					
                             <div class="form-group">
                                 <p>
-                                    <a href="" class="btn btn-secondary me-2">♥️</a>
-                                    <a href="" class="btn btn-secondary me-2">🛍️</a>
+                                    <button id="wishList" class="btn btn-secondary me-2">♥️</button>
+                                    <button id="cart" class="btn btn-secondary me-2">🛍️</button>
                                     <button class="btn btn-black btn-lg py-3 btn-block"
                                             onclick="window.location='thankyou.html'">구매하기
                                     </button>
                                 </p>
-
+							
                             </div>
-
+                       		<input type="hidden" name="key" id="key">
+							<input type="hidden" name="methodName" id="methodName">
+							<input type="hidden" name="furnitureSeq" id="furnitureSeq" value="${furnitureDTO.furnitureSeq}">
+							<input type="hidden" name="quantity" id="quantityInput">
+							<input type="hidden" name="colorName" id="colorNameInput">
+							<input type="hidden" name="sizeVal" id="sizeValInput">
+							<input type="hidden" name="url" id="url">
+						</form>
                         </div>
                     </div>
                 </div>
@@ -192,33 +291,34 @@
                 <div class="customer-review">
                     <h3 class="small-title">Customer review</h3>
                     상품을 구매하신 분들이 작성한 리뷰입니다.<br><br>
+                   <c:forEach items="${furnitureDTO.reviewList}" var="item">
                     <ul class="product-comments clearfix">
-                    	<c:forEach items="${furnitureDTO.reviewList}" var="item">
 	                        <li class="mb-30">
 	                            <div class="pro-reviewer">
 	                            <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-	                                <img src="${path}/assets/${reviewImg.imgSrc}" alt="이미지" width="120" height="120">
+	                                <img src="${pageContext.request.contextPath}/reviewImg/${reviewImg.imgSrc}" alt="이미지" >
                                 </c:forEach>
 	                            </div>
 	                            <div class="pro-reviewer-comment">
 	                                <div class="fix">
 	                                    <div class="pull-left mbl-center">
 	                                        <h5><strong>${item.user.name}</strong></h5>
-	                                        <p class="reply-date">${item.regDate}</p>
-	                                    </div>
-	                                    <div class="comment-reply pull-right">
-	                                       <c:forEach var="i" begin="1" end="${item.score}">
+	                                        <c:forEach var="i" begin="1" end="${item.score}">
 	                                       		 ⭐
 	                                    	</c:forEach>
+	                                        <p class="reply-date">${item.regDate}</p>
+	                                    </div>             
+	                                    <div class="comment-reply pull-right">
+	                                    	<br>
 	                                	</div>
-                                	</div>
-		                                <div>
-		                                <p><br>${item.review}</p>
+	                                	 <div>
+		                                	<p>${item.review}</p>
 		                                </div>
+                                	</div>
 	                            </div>
 	                        </li>
-                         </c:forEach>
                     </ul>
+               	 </c:forEach>
                 </div>
                 
             </div>
@@ -230,32 +330,34 @@
                     <div class="row">
                         <h3 class="small-title">Q & A</h3>
                         구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.
-                        <a href="qna/qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}" class="btn btn-secondary me-2">Go to Q&A</a>
+                        <a href="qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}&furnitureImgSrc=${furnitureDTO.furnitureImgSrc}" class="btn btn-secondary me-2">Go to Q&A</a>
                     </div>
                     <br><br>
+                   <c:forEach items="${furnitureDTO.qnaList}" var="item">
                     <ul class="product-comments clearfix">
-                   	 <c:forEach items="${furnitureDTO.qnaList}" var="item">
                         <li class="mb-30">
                             <div class="pro-reviewer-comment">
                                 <div class="fix">
                                     <div class="pull-left mbl-center">
+                                    	<h6><strong class="qnASeq">${item.qnASeq}</strong></h6>
+                                    	<h6><strong class="password">${item.password}</strong></h6>
                                         <h5><strong>${item.name}</strong></h5>
                                         <p class="reply-date">${item.regDate}</p>
                                     </div>
                                     <div class="comment-reply pull-right">
                                         <a href="#" class="reply-button"><i class="fa fa-reply"></i></a>
-                                        <a href="#"><i class="fa fa-close"></i></a>
+                                        <a href="#" class="delete-button"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
                                 <p>${item.question}</p>
                                  <div class="pull-left mbl-center answer-section" >
-                                      <h5><strong>A: ${item.answer}</strong></h5>
+                                      <h5><strong>${item.answer}</strong></h5>
                                        <p class="answer-date">${item.answerDate}</p>
                                  </div>
                             </div>
                         </li>
-					</c:forEach>
                     </ul>
+                  	</c:forEach>
                 </div>
             </div>
         </div>
