@@ -116,6 +116,15 @@
                                         	<option value="${state.index}">${item.colorName}</option>
                                          </c:forEach>
                                     </select></td>
+                                </tr>      	
+                                <tr>
+                                    <td>수량</td>
+                                    <td><select>
+                                    		<option value="0">수량 선택</option>
+                                    	<c:forEach begin="1" end="${furnitureDTO.stock}" var="index">
+    										<option value="${index}">${index}</option>
+										</c:forEach>
+                                    </select></td>
                                 </tr>
                             </table>
 
