@@ -24,7 +24,7 @@
 
 <style>
 #btn {
-	width: 620px;
+	width: 100%;
 }
 
 .input-form {
@@ -61,7 +61,7 @@
 					console.log("result = " + result)
 					if (result && result.name) {
 						alert("아이디 일치");
-						window.location.href = "signUp.jsp";
+						window.location.href = "index.jsp";
 						
 					/* 	let str = "";
 						str=result.name

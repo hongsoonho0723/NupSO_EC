@@ -70,6 +70,13 @@ public class FurnitureDTO {
 
 	public void setFlag(int flag) {
 		this.flag = flag;
+    }
+	//장바구니에서 필요
+	public FurnitureDTO( String furnitureName, String furnitureImgSrc, int price) {
+		super();
+		this.furnitureName = furnitureName;
+		this.furnitureImgSrc = furnitureImgSrc;
+		this.price = price;
 	}
 
 	public List<ReviewDTO> getReviewList() {
