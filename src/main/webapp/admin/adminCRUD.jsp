@@ -144,7 +144,7 @@
 					     <td><input type="text" id="furnitureImgSrc" name = "furnitureImgSrc"></td>
 				   </tr>
 					<tr>
-						<td colspan="8" align="center"> 
+						<td colspan="9" align="center"> 
 							<input type="button" value="상품 수정하기"  id="update">
 							<input type="button" value="상품 삭제하기"  id="delete">
 						</td>
