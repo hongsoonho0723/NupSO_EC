@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +28,15 @@ public class CartServiceImpl implements CartService {
 		cartDAO.delete(furnitureSeq);
 		
 		return 0;
+	}
+
+	@Override
+	public int insertCart(CartDTO cartDTO) throws SQLException {
+		
+
+		int result = cartDAO.insertCart(cartDTO);
+		if (result == 0) throw new SQLException("회원정보 삭제 실패하였습니다.");
+		return result;
 	}
 
 }

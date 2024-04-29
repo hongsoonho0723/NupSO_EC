@@ -103,12 +103,4 @@ public class FurnitureAjaxController implements RestController {
 		
 	}
 	
-	public void selectFurnitureOrderBySales(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-		List<FurnitureDTO> furnitureList = furnitureService.selectFurnitureOrderBySales();
-		
-		Gson gson = new Gson();
-		String jsonFurnitureList = gson.toJson(furnitureList);
-		PrintWriter out = response.getWriter();
-		out.print(jsonFurnitureList);
-	}
 }

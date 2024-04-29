@@ -6,8 +6,10 @@ import java.util.List;
 import dto.WishListDTO;
 
 public interface WishListService {
-List<WishListDTO> selectAll(int userSeq) throws SQLException;
-
 	
+	List<WishListDTO> selectAll(int userSeq) throws SQLException;
+
 	int delete(int furnitureSeq) throws SQLException;
+	
+	int insert(WishListDTO wishlistDTO) throws SQLException;
 }

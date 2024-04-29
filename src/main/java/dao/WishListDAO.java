@@ -8,6 +8,8 @@ import dto.WishListDTO;
 public interface WishListDAO {
 	
 	List<WishListDTO> selectAll(int userSeq) throws SQLException ;
+	
+	int insert(WishListDTO wishlistDTO) throws SQLException;
 
 	int delete(int furintureSeq) throws SQLException;
 }

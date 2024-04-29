@@ -14,6 +14,7 @@ public class WishListServiceImpl implements WishListService {
 	
 	@Override
 	public List<WishListDTO> selectAll(int userSeq) throws SQLException {
+		System.out.println("서비스호출테스트");
 		List<WishListDTO> list = wishListDAO.selectAll(userSeq);
 
 		return list;
@@ -25,4 +26,12 @@ public class WishListServiceImpl implements WishListService {
 		return 0;
 	}
 
+	@Override
+	public int insert(WishListDTO wishlistDTO) throws SQLException {
+		int result = wishListDAO.insert(wishlistDTO);
+		if (result == 0) throw new SQLException("관심목록 등록 실패");
+		return result;
+	}
+	
+	
 }
