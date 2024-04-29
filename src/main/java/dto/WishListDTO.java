@@ -104,5 +104,13 @@ public class WishListDTO {
 		this.furnitureDTO = furnitureDTO;
 	}
 
+	@Override
+	public String toString() {
+		return "WishListDTO [wishListSeq=" + wishListSeq + ", userSeq=" + userSeq + ", furnitureSeq=" + furnitureSeq
+				+ ", regDate=" + regDate + ", colorName=" + colorName + ", sizeVal=" + sizeVal + ", furnitureDTO="
+				+ furnitureDTO + "]";
+	}
+
+	
 	
 }

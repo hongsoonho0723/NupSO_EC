@@ -1,8 +1,10 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import dto.CartDTO;
+import dto.UsersDTO;
 import dto.WishListDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,10 +22,12 @@ public class WishListController implements Controller {
 		return null;
 	}
 	
-public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		
+		System.out.println("확인테스트");
 		HttpSession session = request.getSession();
-		int userSeq=(Integer)session.getAttribute("userSeq");
+		UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
+		int userSeq=user.getUserSeq();
 		int furnitureSeq= Integer.parseInt(request.getParameter("furnitureSeq"));
 		String colorName = request.getParameter("colorName");
 		String sizeVal = request.getParameter("sizeVal");
@@ -37,8 +41,10 @@ public ModelAndView insert(HttpServletRequest request, HttpServletResponse respo
 		
 		wishListService.insert(wishListDTO);
 		
+		FurnitureController controller = new FurnitureController();
+		ModelAndView mv = controller.furnitureInfo(request, response,"");
 		
-		return new ModelAndView(url,true);
+		return mv;
 		
 	}
 	

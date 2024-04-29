@@ -99,6 +99,7 @@ public class WishListDAOImpl implements WishListDAO {
 		int result =0;
 		String sql = proFile.getProperty("wishList.insert");
 		
+		System.out.println(wishlistDTO);
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);

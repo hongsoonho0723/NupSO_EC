@@ -80,19 +80,14 @@
  
          //관심목록 저장버튼 이벤트
         $("#wishList").click(function(){
-        	$("#key").val("wishList");
-        	$("#methodName").val("insert");
         	
-        	if(confirm("관심목록으로 이동하시겠습니까?")) {
- 			    $("#url").val("wishList.jsp");  
-        		// 확인을 선택한 경우 폼 제출
-        		$("#furnitureForm").submit();
-            	 window.location.href = wishList.jsp;
-            } else {
-            	let currentPageURL = window.location.href;
- 			    $("#url").val(currentPageURL);  
-            	$("#furnitureForm").submit();
-            }
+        	$("#furnitureForm").attr("action","${path}/front?key=wishList&methodName=insert&furnitureName=${furnitureDTO.furnitureName}")
+			$("#colorNameInput").val($("#colorName").val());
+			$("#sizeValInput").val($("#sizeVal").val());
+			  
+			 $("#furnitureForm").submit();
+        	
+			 alert("관심 목록에 추가되었습니다.")
         		
         })
         
