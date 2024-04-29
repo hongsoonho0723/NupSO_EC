@@ -15,7 +15,10 @@ public class OrderDTO {
 	private String deliveryPhone;
 	private String deliveryMemo;
 	
-	
+	private int furnitureSeq;
+	private int quantity;
+	private String colorName;
+	private String sizeVal;
 	
 	//상세정보 가구이름 뺄때 사용하는 변수
 	OrderInfoDTO orderInfo = new OrderInfoDTO();
@@ -50,6 +53,24 @@ public class OrderDTO {
 				
 	}
 	
+	public OrderDTO(int userSeq,int totalPrice, String deliveryDate,String deliveryAddr1,String deliveryAddr2,
+			String deliveryName,String deliveryPhone, String deliveryMemo,int furnitureSeq,int quantity,String colorName, String sizeVal){
+		super();
+		this.userSeq = userSeq;
+		this.totalPrice = totalPrice;
+		this.deliveryDate = deliveryDate;
+		this.deliveryAddr1 = deliveryAddr1;
+		this.deliveryAddr2 = deliveryAddr2;
+		this.deliveryName = deliveryName;
+		this.deliveryPhone = deliveryPhone;
+		this.deliveryMemo = deliveryMemo;
+		
+		this.furnitureSeq = furnitureSeq;
+		this.quantity = quantity;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+				
+	}
 	
 
 
@@ -163,6 +184,38 @@ public class OrderDTO {
 
 	public void setDeliveryMemo(String deliveryMemo) {
 		this.deliveryMemo = deliveryMemo;
+	}
+
+	public int getFurnitureSeq() {
+		return furnitureSeq;
+	}
+
+	public void setFurnitureSeq(int furnitureSeq) {
+		this.furnitureSeq = furnitureSeq;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getColorName() {
+		return colorName;
+	}
+
+	public void setColorName(String colorName) {
+		this.colorName = colorName;
+	}
+
+	public String getSizeVal() {
+		return sizeVal;
+	}
+
+	public void setSizeVal(String sizeVal) {
+		this.sizeVal = sizeVal;
 	}
 	
 	

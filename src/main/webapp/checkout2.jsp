@@ -176,9 +176,11 @@
 								</div>
 
 							</div>
+							<input type="hidden" id="furnitureSeq" name="furnitureSeq" value="${param.furnitureSeq}">
 							<input type="hidden" id="furnitureName" name="furnitureName" value="${param.furnitureName}">
-							<input type="hidden" id="colorName" name="colorName" value="${param.colorName}">
 							<input type="hidden" id="quantity" name="quantity" value="${param.quantity}">
+							<input type="hidden" id="colorName" name="colorName" value="${param.colorName}">
+							<input type="hidden" id="sizeVal" name="sizeVal" value="${param.sizeVal}">
 							<input type="hidden" id="totalInput" name="totalPrice" value="${param.furniturePrice}">
 
 							<input type="hidden" name="key" value="order">

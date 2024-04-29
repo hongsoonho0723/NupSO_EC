@@ -82,6 +82,13 @@ public class OrderController implements Controller {
 	   String deliveryMemo = request.getParameter("memo");
 	   int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 	   
+	   int furnitureSeq = Integer.parseInt(request.getParameter("furnitureSeq"));
+	   int quantity = Integer.parseInt(request.getParameter("quantity"));
+	   String colorName = request.getParameter("colorName");
+	   String sizeVal = request.getParameter("sizeVal");
+
+	   
+	   
 	   OrderDTO orderDTO = new OrderDTO(userSeq,totalPrice,deliveryDate,deliveryAddr1,deliveryAddr2,deliveryName,deliveryPhone,deliveryMemo);
 	  
 	   //orderService.insertOrderInof(orderDTO);

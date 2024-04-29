@@ -235,8 +235,6 @@
 							<input type="hidden" name="url" id="url">
 							<input type="hidden" name="userId" id="userId" value="<%= session.getAttribute("userId") %>">
 							
-						<%-- 	<div id="userId" style="display:none;"><%= session.getAttribute("userId") %></div>
-                --%>
 						</form>
                         </div>
                     </div>

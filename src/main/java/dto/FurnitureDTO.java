@@ -17,7 +17,7 @@ public class FurnitureDTO {
     private String regDate;
     
     private int flag;
-
+ 
 
    
     //상품 상세페이지에서 사용될 변수
@@ -80,6 +80,8 @@ public class FurnitureDTO {
 
 	}
 
+	
+	
 	 public FurnitureDTO(int furnitureSeq, String furnitureNumber, String furnitureName, String furnitureDescription, int price, int stock, int saleCount, String category, String regDate) {
 	        this.furnitureSeq = furnitureSeq;
 	        this.furnitureNumber = furnitureNumber;
@@ -244,6 +246,9 @@ public class FurnitureDTO {
     public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
+    
+    
+
 
 	@Override
 	public String toString() {
