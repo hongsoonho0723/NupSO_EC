@@ -294,12 +294,12 @@
                    <c:forEach items="${furnitureDTO.reviewList}" var="item">
                     <ul class="product-comments clearfix">
 	                        <li class="mb-30">
-	                            <div class="pro-reviewer">
-	                            <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-	                                <img src="assets/img/${item.reviewImgs.imgSrc}" alt="이미지" width="150" height="150">
-                                </c:forEach>
-	                            </div>
 	                            <div class="pro-reviewer-comment">
+	                              <div class="pro-reviewer">
+		                             <c:forEach items="${item.reviewImgs}" var="reviewImg">   
+		                                <img src="assets/img/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
+	                                 </c:forEach>
+	                            	</div>
 	                                <div class="fix">
 	                                    <div class="pull-left mbl-center">
 	                                        <h5><strong>${item.user.name}</strong></h5>
