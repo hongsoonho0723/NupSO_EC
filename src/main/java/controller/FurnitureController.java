@@ -72,7 +72,7 @@ public class FurnitureController implements Controller {
     public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	List<FurnitureDTO> list = furnitureService.selectAll();
     	
-    	 request.setAttribute("list", list);
+    	request.setAttribute("list", list);
     	
     	return new ModelAndView("admin/adminCharts.jsp");
     }

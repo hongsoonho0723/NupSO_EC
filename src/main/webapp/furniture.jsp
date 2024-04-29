@@ -36,7 +36,6 @@
                         	console.log(err)
                            alert(err);
                         }
-                        
                     });
                     
                 }else{
