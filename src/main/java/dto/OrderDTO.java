@@ -14,6 +14,8 @@ public class OrderDTO {
 	OrderInfoDTO orderInfo = new OrderInfoDTO();
 	FurnitureDTO furniture = new FurnitureDTO();
 	
+	private String DeliveryState;
+	
 	public OrderDTO() {}
 
 	public OrderDTO(int orderSeq, int userSeq, int totalPrice, int orderState, String deliveryDate, String regDate) {
@@ -27,6 +29,17 @@ public class OrderDTO {
 	}
 
 	
+	
+
+
+	public String getDeliveryState() {
+		return DeliveryState;
+	}
+
+	public void setDeliveryState(String deliveryState) {
+		DeliveryState = deliveryState;
+	}
+
 	public OrderInfoDTO getOrderInfo() {
 		return orderInfo;
 	}

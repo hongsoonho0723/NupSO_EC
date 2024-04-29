@@ -108,6 +108,13 @@ public class ReviewDTO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+
+	@Override
+	public String toString() {
+		return "ReviewDTO [reviewSeq=" + reviewSeq + ", userSeq=" + userSeq + ", furnitureSeq=" + furnitureSeq
+				+ ", review=" + review + ", score=" + score + ", regDate=" + regDate + ", user=" + user + ", furniture="
+				+ furniture + ", count=" + count + ", reviewImgs=" + reviewImgs + "]";
+	}
 	
 	
 }

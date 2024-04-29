@@ -18,5 +18,47 @@ public class OrderServiceImpl implements OrderService {
 
 		return list;
 	}
+
+	@Override
+	public List<OrderDTO> selectOrderAll(int userSeq) throws SQLException, IOException {
+		List<OrderDTO> list = orderDao.selectOrderAll(userSeq);
+
+		for (OrderDTO order : list) {
+			order.setDeliveryState(setDeliveryStae(order.getOrderState()));
+		}
+		
+		return list;
+	}
+	
+	
+	/*
+	 * 	0 일때 취소
+		1 일때 결제완료
+		2 일때 배송중
+		3 일때 배송완료
+	 * */
+	public String setDeliveryStae(int orderState) {
+		String deliveryState="";
+		System.out.println(orderState);
+		switch (orderState) {
+			case 0: {
+				deliveryState= "주문 취소";
+				break;
+			}
+			case 1: {
+				deliveryState= "결제 완료";
+				break;
+			}
+			case 2: {
+				deliveryState= "배송중";
+				break;
+			}
+			case 3: {
+				deliveryState= "배송 완료";
+				break;
+			}
+		}
+		return deliveryState;
+	}
 	
 }
