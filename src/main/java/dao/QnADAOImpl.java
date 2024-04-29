@@ -27,14 +27,10 @@ public class QnADAOImpl implements QnADAO {
     }
 
     @Override
-    public int insert(int furnitureSeq, String question,String name, String password) throws SQLException {
+    public int insert(int furnitureSeq, String question,int state,String name, String password) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = proFiles.getProperty("QnA.insert");
-        System.out.println("DAO furnitureSeq "+ furnitureSeq);
-		System.out.println("DAO name "+ name);
-		System.out.println("DAO password "+ password);
-		System.out.println("DAO question "+ question);
+        String sql = proFiles.getProperty("query.insertQna");
         int result;
 
         try {
@@ -42,8 +38,9 @@ public class QnADAOImpl implements QnADAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, furnitureSeq);
             ps.setString(2, question);
-            ps.setString(3, name);
-            ps.setString(4, password);
+            ps.setInt(3, state);
+            ps.setString(4, name);
+            ps.setString(5, password);
             result = ps.executeUpdate();
         } finally {
             DbUtil.dbClose(con, ps);
@@ -66,11 +63,10 @@ public class QnADAOImpl implements QnADAO {
         } finally {
             DbUtil.dbClose(con, ps);
         }
-        System.out.println("쿼리문 끝 result"+result);
         return result;
     }
 
-	@Override
+    @Override
     public String getPwd(int qnaSeq) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;

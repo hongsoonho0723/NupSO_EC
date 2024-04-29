@@ -10,6 +10,4 @@ public interface OrderDAO {
 
 	List<OrderDTO> selectOrderFunitureName() throws SQLException;
 
-	List<OrderDTO> selectOrderAll(int userSeq) throws SQLException;
-
 }

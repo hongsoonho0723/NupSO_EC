@@ -6,19 +6,13 @@
 <script src="${path}/assets/js/jquery-3.6.0.min.js"></script>
 <style>
 	#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section{display:none;}
-	.pull-left.mbl-center>h6{display:none;}
 </style>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
     
     $(function(){
     	
-        $(document).on("click", ".delete-button", function () {
-        	event.preventDefault(); // 기본 동작 방지
-        	let reviewerComment = $(this).closest(".pro-reviewer-comment");
-        	let qnaSeq = reviewerComment.find(".mbl-center h6>strong.qnASeq").text();
-        	let qnaPassword = reviewerComment.find(".mbl-center h6>strong.password").text();
-        	
+        $(document).on("click", "#delete", function () {
             if (confirm("삭제하시겠습니까?")) {
                 const password = prompt("Q&A 등록 시 설정했던 비밀번호를 입력해주세요.");
                 if(qnaPassword===password){
@@ -42,21 +36,13 @@
                 	alert("비밀 번호가 일치하지 않습니다.")
                 }
          
+
             }
         });//삭제 이벤트 end
         
         $(document).on("click",".reply-button",function(){
         	 event.preventDefault(); // 기본 동작 방지
-        	 let reviewerComment = $(this).closest(".pro-reviewer-comment");
-        	 
-        	 let answerText = reviewerComment.find(".answer-section h5>strong").text();
-        	 
-        	 if(answerText.trim()!==""){
-        		 reviewerComment.find(".answer-section").toggle();
-        	 }else{
-        		 alert("답변내용이 없습니다! 관리자에게 문의해주세요");
-        	 }
-        	
+        	$("#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section").toggle();
         });//답변 이벤트 end
         
         
@@ -72,12 +58,11 @@
             <div class="col-lg-5">
                 <div class="intro-excerpt">
                     <h1>${furnitureDTO.furnitureName}</h1>
-                    <p class="mb-4">쇼파에 맞는 눕소의 추천 인테리어</p>
-                    <form method="get" action="${path}/showRoom.jsp">
-                        <input type="hidden" value="${furnitureDTO.texture}" name="texture">
-                        <input type="hidden" value="${furnitureDTO.category}" name="category">
-                        <input type="hidden" value="${furnitureDTO.furnitureName}" name="sofaName">
-                        <input type="hidden" value="${furnitureDTO.furnitureDescription}" name="description">
+                    <p class="mb-4">가구 보기</p>
+                    <form method="get" action="showRoom.jsp">
+                        <input type="hidden" value="[Fabric,Wood]" name="texture">
+                        <input type="hidden" value="single sofa" name="category">
+                        <input type="hidden" value="Mild Sofa" name="sofaName">
                         <p><button type="submit" class="btn btn-secondary me-2">Show Room으로 확인하기</button></p>
                     </form>
                 </div>
@@ -228,34 +213,33 @@
                 <div class="customer-review">
                     <h3 class="small-title">Customer review</h3>
                     상품을 구매하신 분들이 작성한 리뷰입니다.<br><br>
-                   <c:forEach items="${furnitureDTO.reviewList}" var="item">
                     <ul class="product-comments clearfix">
+                    	<c:forEach items="${furnitureDTO.reviewList}" var="item">
 	                        <li class="mb-30">
 	                            <div class="pro-reviewer">
 	                            <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-	                                <img src="${pageContext.request.contextPath}/reviewImg/${reviewImg.imgSrc}" alt="이미지" >
+	                                <img src="${path}/assets/${reviewImg.imgSrc}" alt="이미지" width="120" height="120">
                                 </c:forEach>
 	                            </div>
 	                            <div class="pro-reviewer-comment">
 	                                <div class="fix">
 	                                    <div class="pull-left mbl-center">
 	                                        <h5><strong>${item.user.name}</strong></h5>
-	                                        <c:forEach var="i" begin="1" end="${item.score}">
+	                                        <p class="reply-date">${item.regDate}</p>
+	                                    </div>
+	                                    <div class="comment-reply pull-right">
+	                                       <c:forEach var="i" begin="1" end="${item.score}">
 	                                       		 ⭐
 	                                    	</c:forEach>
-	                                        <p class="reply-date">${item.regDate}</p>
-	                                    </div>             
-	                                    <div class="comment-reply pull-right">
-	                                    	<br>
 	                                	</div>
-	                                	 <div>
-		                                	<p>${item.review}</p>
-		                                </div>
                                 	</div>
+		                                <div>
+		                                <p><br>${item.review}</p>
+		                                </div>
 	                            </div>
 	                        </li>
+                         </c:forEach>
                     </ul>
-               	 </c:forEach>
                 </div>
                 
             </div>
@@ -267,34 +251,32 @@
                     <div class="row">
                         <h3 class="small-title">Q & A</h3>
                         구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.
-                        <a href="qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}&furnitureImgSrc=${furnitureDTO.furnitureImgSrc}" class="btn btn-secondary me-2">Go to Q&A</a>
+                        <a href="qna/qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}" class="btn btn-secondary me-2">Go to Q&A</a>
                     </div>
                     <br><br>
-                   <c:forEach items="${furnitureDTO.qnaList}" var="item">
                     <ul class="product-comments clearfix">
+                   	 <c:forEach items="${furnitureDTO.qnaList}" var="item">
                         <li class="mb-30">
                             <div class="pro-reviewer-comment">
                                 <div class="fix">
                                     <div class="pull-left mbl-center">
-                                    	<h6><strong class="qnASeq">${item.qnASeq}</strong></h6>
-                                    	<h6><strong class="password">${item.password}</strong></h6>
                                         <h5><strong>${item.name}</strong></h5>
                                         <p class="reply-date">${item.regDate}</p>
                                     </div>
                                     <div class="comment-reply pull-right">
                                         <a href="#" class="reply-button"><i class="fa fa-reply"></i></a>
-                                        <a href="#" class="delete-button"><i class="fa fa-close"></i></a>
+                                        <a href="#"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
                                 <p>${item.question}</p>
                                  <div class="pull-left mbl-center answer-section" >
-                                      <h5><strong>${item.answer}</strong></h5>
+                                      <h5><strong>A: ${item.answer}</strong></h5>
                                        <p class="answer-date">${item.answerDate}</p>
                                  </div>
                             </div>
                         </li>
+					</c:forEach>
                     </ul>
-                  	</c:forEach>
                 </div>
             </div>
         </div>

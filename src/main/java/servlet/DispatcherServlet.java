@@ -43,8 +43,8 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key"); //
 		String methodName = request.getParameter("methodName");
-		ModelAndView mv = null;
-		Method method = null;
+
+		
 		
 		System.out.println("dispatcher key = " + key +" , methodName = " + methodName);
 
@@ -52,16 +52,9 @@ public class DispatcherServlet extends HttpServlet {
 			
 			Controller con = map.get(key);
 			Class<?> clz = clzMap.get(key);
-			if(methodName.equals("furnitureInfo")) {
-				method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class,String.class);
-				
-				mv = (ModelAndView)method.invoke(con, request, response,"");
-			}else {
-				method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
-				
-				mv = (ModelAndView)method.invoke(con, request, response);
-			}
+			Method method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
 			
+			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
 			
 
 			if(mv.isRedirect()) {

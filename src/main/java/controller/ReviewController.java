@@ -1,28 +1,18 @@
 package controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import dto.FurnitureDTO;
 import dto.ReviewDTO;
-import dto.UsersDTO;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
-import service.FurnitureService;
-import service.FurnitureServiceImpl;
 import service.ReviewService;
 import service.ReviewServiceImpl;
 
 public class ReviewController implements Controller {
 	ReviewService service = new ReviewServiceImpl();
-	FurnitureService furnitureService = new FurnitureServiceImpl();
 	
 	
 	
@@ -37,6 +27,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("admin/adminReview.jsp");
     }
     
+
     public ModelAndView selectAllByUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	HttpSession session = request.getSession();
     	UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
@@ -48,14 +39,15 @@ public class ReviewController implements Controller {
     }
     
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+
     	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
-    	String reqUrl = request.getParameter("mypage");
     	
     	PrintWriter out = response.getWriter();
     	response.setContentType("text/html;charset=utf-8");
     	
     	service.delete(reviewSeq);
     	
+
     	request.setAttribute("message", "삭제에 성공했습니다.");
     	
     	if(reqUrl.equals("mypage")) {
@@ -145,8 +137,8 @@ public class ReviewController implements Controller {
                 return temp.substring( temp.indexOf("=") + 2 ,  temp.length() - 1);
             }
         }
-        return null;
-    }
+        	return null;
+	}
 	
 	
 	// 욕설 필터링 메서드
