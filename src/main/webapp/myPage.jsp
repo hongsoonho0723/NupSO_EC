@@ -51,7 +51,6 @@
 		<!-- Start Menu Section -->
 		<jsp:include page="assets/common/user/mypageMenu.jsp"/>
 		<!-- End Menu Section -->
-
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
@@ -102,13 +101,11 @@
              </div>
             </div>
         <br>
+     
 		<jsp:include page="assets/common/user/footer.jsp"/>
-		
-
-
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		<script src="assets/js/tiny-slider.js"></script>
 		<script src="assets/js/custom.js"></script>
 	</body>
+	
+	
 
 </html>
