@@ -7,6 +7,7 @@
 <style>
 	#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section{display:none;}
 	.pull-left.mbl-center>h6{display:none;}
+	
 </style>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
@@ -320,9 +321,9 @@
             <label class="tab_item" for="qna">Q & A</label>
 
             <%--                상품 상세 설명 탭 --%>
-            <div class="tab_content" id="detail_content">
+            <div class="tab_content" id="detail_content" style= "padding-left:100px;">
             	<c:forEach items="${furnitureDTO.imgDetailList}" var="item">
-               	 	<img src="${path}/assets/${item.imgSrc}">
+               	 	<img class="center-image" src="${path}/assets/${item.imgSrc}">
                 </c:forEach>
             </div>
 
