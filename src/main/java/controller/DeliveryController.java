@@ -40,18 +40,20 @@ public class DeliveryController implements Controller{
 		int orderState = Integer.parseInt(request.getParameter("orderState"));
 		String deliveryDate = request.getParameter("deliveryDate");
 		String regDate = request.getParameter("regDate");
-		System.out.println(orderSeq);
+		
+		OrderDTO order = new OrderDTO();
+		order.setOrderSeq(orderSeq);
+		order.setUserSeq(userSeq);
+		order.setTotalPrice(totalPrice);
+		order.setOrderState(orderState);
+		order.setDeliveryDate(deliveryDate);
+		order.setRegDate(regDate);
+		
+		service.update(order);
+		
 		
 		List<OrderDTO> list = service.selectAll();
-		for (OrderDTO order : list) {
-			if(order.getOrderSeq() == orderSeq) {
-				order.setUserSeq(userSeq);
-				order.setTotalPrice(totalPrice);
-				order.setOrderState(orderState);
-				order.setDeliveryDate(deliveryDate);
-				order.setRegDate(regDate);
-			}
-		}
+		
 		
 		request.setAttribute("list", list);
 		

@@ -8,4 +8,6 @@ import dto.OrderDTO;
 public interface DeliveryDAO {
 	// 배송 관리를 위한 주문 현황 조회
 		List<OrderDTO> selectAll() throws SQLException;
+
+		int update(OrderDTO order) throws SQLException;
 }

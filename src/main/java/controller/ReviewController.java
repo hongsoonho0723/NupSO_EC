@@ -93,7 +93,7 @@ public class ReviewController implements Controller {
     	if(part!=null) {
 			imgName = this.getFilename(part);
 			
-			String saveDir = "C:/Edu/reviewImg";
+			String saveDir = "C://Edu//WebProgramming//WebWork//NupSO_EC//src//main//webapp//assets//img";
 			
 			if (imgName!=null && !imgName.equals("")) {
 				for(int i=0; i<imgType.length ; i++) {

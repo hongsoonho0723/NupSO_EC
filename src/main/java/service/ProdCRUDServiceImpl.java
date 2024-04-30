@@ -32,5 +32,13 @@ public class ProdCRUDServiceImpl implements ProdCRUDService{
 	        }
 	        return generatedKey;
 	    }
+
+	@Override
+	public int update(FurnitureDTO furniture) throws SQLException {
+		 int result = prodCRUDDAO.update(furniture);
+		return result;
+	}
 	
+	 
+	 
 }
