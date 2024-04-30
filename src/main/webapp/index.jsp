@@ -21,7 +21,7 @@
 	rel="stylesheet">
 <link href="assets/css/tiny-slider.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
-<title>NupSO - Index</title>
+<title>NupSO</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">

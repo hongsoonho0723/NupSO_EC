@@ -12,9 +12,12 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
   <style type="text/css">
-  img.img-fluid mb-5{width: 216px;height: 160px}
-  
-  
+
+ .img-fluid.mr-3 {
+    width: 216px;
+    height: 160px;
+    object
+  }
   
   </style>
 
@@ -56,88 +59,66 @@
 
 
 		<!-- Start Team Section -->
-		<div class="untree_co-section">
-			<div class="container">
 
-				<div class="row mb-5">
-					<div class="col-lg-5 mx-auto text-center">
-						<h2 class="section-title">팀원 소개</h2>
-					</div>
-				</div>
+		<!-- End Team Section -->
 
-				<div class="row">
-
-					<!-- Start Column 1 -->
-					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-					<img src="${path}/assets/images/changhoon.jpg" class="img-fluid mb-5">
-						<h3>신창훈</h3>
-            <span class="d-block position mb-4"></span>
-            <p>팀원 중 한 분이 도망가는 상황에서 팀의 사기가 저하되었음에도 불구하고, 남은 팀원들이 끝까지 최선을 다해주셨습니다. 이번 프로젝트에서 각자 맡은 기능을 열심히 수행하고, 
+		<br><br>
+<div class="col-md-6 mb-5">
+<div class="d-flex align-items-center"" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="${path}/assets/images/changhoon.jpg" class="img-fluid mr-3">
+        <div style="margin-left: 20px;">
+            <h3>신창훈</h3>
+            <p>팀원 중 한 분이 도망가는 상황에서 팀의 사기가 저하되었음에도 불구하고, 
+            남은 팀원들이 끝까지 최선을 다해주셨습니다. 이번 프로젝트에서 각자 맡은 기능을 열심히 수행하고, 
             팀의 목표를 위해 노력한 모든 팀원들에게 감사드립니다!!</p>
-            <p class="mb-0"><span class="icon-arrow_forward"></span></a></p>
-					</div> 
-					<!-- End Column 1 -->
-
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="${path}/assets/images/yunguk.jpg" class="img-fluid mb-5" >
-						<h3>김윤국</h3>
-            <span class="d-block position mb-4"></span>
+        </div>
+    </div>
+    <br>
+<div class="d-flex align-items-center"" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="${path}/assets/images/yunguk.jpg" class="img-fluid mr-3">
+        <div style="margin-left: 20px;">
+            <h3>김윤국</h3>
             <p>이번 2차 프로젝트를 진행하며 개인적으로 부족했던 역량을 키울 수 있었습니다. 
             또한 팀장으로서 프로젝트를 무사히 마치기 위해 일정 관리 및 팀을 어떻게 이끌어 나가야 할 지 고민할 수 있었던 
             좋은 기회가 되었습니다. 이번 프로젝트 기간 동안 함께 고생한 팀원분들에게도 감사하다는 말씀 드립니다.</p>
-            <p class="mb-0"><span class="icon-arrow_forward"></span></a></p>
-
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="${path}/assets/images/youhan.jpg" class="img-fluid mb-5">
-						<h3>박유한</h3>
-            <span class="d-block position mb-4"></span>
+        </div>
+    </div>
+    <br>
+ <div class="d-flex align-items-center"" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="${path}/assets/images/youhan.jpg" class="img-fluid mr-3">
+        <div style="margin-left: 20px;">
+            <h3>박유한</h3>
             <p>프로젝트를 진행하면서 우여곡절이 많았습니다. 그럴 때마다 팀원들의 도움으로 해결할 수 있었습니다. 
             이 자리를 빌려 감사하다고 말씀드리고 싶습니다. 
             덕분에 이 프로젝트에서 한 부분을 맡을 수 있었고 그 책임을 다할 수 있었습니다. 
             기대치에 맞게 성장했는지는 모르겠지만 한 단계 한 단계 나아간다는 느낌을 받을 수 있었습니다. 
-            프로젝트를 함께할 수 있어서 감사했습니다. </p>
-            <p class="mb-0"><span class="icon-arrow_forward"></span></a></p>
-					</div> 
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/person_4.jpg" class="img-fluid mb-5">
-						<h3>정다희</h3>
-            <span class="d-block position mb-4"></span>
-            <p>Separated they live in.
-            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-            <p class="mb-0"><span class="icon-arrow_forward"></span></a></p>
-
-          
-					</div> 
-					<!-- End Column 4 -->
-
-				<!-- Start Column 5 -->
-					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="${path}/assets/images/soonho.png" class="img-fluid mb-5">
-						<h3>홍순호</h3>
-            <span class="d-block position mb-4"></span>
+            프로젝트를 함께할 수 있어서 감사했습니다.</p>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex align-items-center" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="${path}/assets/images/dahee.png" class="img-fluid mr-3">
+        <div style="margin-left: 20px;">
+            <h3>정다희</h3>
+            <p>팀프로젝트를 할 때마다 각자 다양한 스타일과 성향이 있는 것을 새삼 느낍니다. 
+            여러 사람이 모여서 작업하는 과정이 처음엔 어색하기도 하지만 모르는 걸 
+            새롭게 알게 되기도 하고 결국엔 혼자 할 때보다 훨씬 시너지를 낼 수 있는 것 같습니다. 
+            레고를 맞추듯 다른 사람이 한 것을 하나하나 연결해보는 과정이 어렵기도, 재밌기도 했습니다.  
+            MVC구조를 익힌 것을 바탕으로 이후 프레임워크 부분도 많이 연습해보고 싶습니다. 
+            부족한 부분을 항상 친절하게 알려준 다른 팀원 분들께 감사합니다.</p>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex align-items-center" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="${path}/assets/images/soonho.png" class="img-fluid mr-3">
+        <div style="margin-left: 20px;">
+            <h3>홍순호</h3>
             <p>처음 시작할 때 mvc 구조에 대해서 헷갈리던 부분이 있었는데 프로젝트를 진행하면서 데이터의 
             흐름에 대해서 알게 되었습니다. 또한 팀원들과 협업하는 과정에서 좀 더 많이 말하고 의견을 공유할수록 
             더 탄탄하고 좋은 서비스가 탄생할 수 있다는 것을 느끼게 되었습니다</p>
-            <p class="mb-0"><span class="icon-arrow_forward"></span></a></p>
-
-          
-					</div> 
-				<!-- End Column 5 -->
-					
-
-				</div>
-			</div>
-		</div>
-		<!-- End Team Section -->
-
+        </div>
+    </div>
+</div>
 		
 
 		<!-- Start Testimonial Slider -->
@@ -189,7 +170,7 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;&rdquo;</p>
+													<p>&ldquo;이 사이트면 마누라랑 자식도 바꿀수 있다&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
