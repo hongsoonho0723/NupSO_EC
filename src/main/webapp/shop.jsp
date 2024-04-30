@@ -13,9 +13,9 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 <style type="text/css">
-
-
-
+h2 {
+    color: white;
+}
 
 </style>
 
@@ -32,7 +32,7 @@
 		<jsp:include page="assets/common/user/header.jsp"></jsp:include>
 		<!-- End Header/Navigation -->
 		<!-- Start Hero Section -->
-				<div class="hero">
+	<div class="hero">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-5">
@@ -40,9 +40,17 @@
 						<h1>
 							Shop<span class="d-block"></span>
 						</h1>
-						<p class="mb-4">
-							<!-- <a href="#" class="btn btn-white-outline">Explore</a> -->
+						<h2>하루종일<br> 눕고 싶고,<br>자고 싶은 쇼파.</h2>
+								<p class="mb-4">하루종일 누워있고만 싶어라</p>
+						<p class="mb-4" style="font-weight: 500; font-size: 1rem;">
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 						</p>
+						
 					</div>
 				</div>
 				<div class="col-lg-7">
