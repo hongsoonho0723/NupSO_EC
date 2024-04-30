@@ -51,4 +51,27 @@ public class DeliveryDAOImpl implements DeliveryDAO{
         }
 		return list;
     }
+
+	@Override
+	public int update(OrderDTO order) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement ps = null;
+	     String sql = proFiles.getProperty("order.update");
+	     int result=0;
+	     
+	     try {
+	            con = DbUtil.getConnection();
+	            ps = con.prepareStatement(sql);
+	            ps.setInt(1, order.getOrderState());
+	            ps.setInt(2, order.getOrderSeq());
+	            result = ps.executeUpdate();
+	            
+	        }finally {
+	            DbUtil.dbClose(con, ps, null);
+	        }
+		return result;
+	}
+	
+	
+	
 }

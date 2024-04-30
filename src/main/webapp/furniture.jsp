@@ -8,6 +8,7 @@
 	#qna_content > div > ul > li > div > div.pull-left.mbl-center.answer-section{display:none;}
 	.pull-left.mbl-center>h6{display:none;}
 </style>
+<title>눕소 상품 상세페이지</title>
 <script>
     //Q&A 삭제 버튼 눌렀을 경우
     
@@ -165,7 +166,7 @@
             <div class="col-lg-5">
                 <div class="intro-excerpt">
                     <h1>${furnitureDTO.furnitureName}</h1>
-                    <p class="mb-4">쇼파에 맞는 눕소의 추천 인테리어</p>
+                    <p class="mb-4">쇼파의 재질, 카테고리, 설명을 기준으로 AI가 인테리어를 추천합니다.</p>
                     <form method="get" action="${path}/showRoom.jsp">
                         <input type="hidden" value="${furnitureDTO.texture}" name="texture">
                         <input type="hidden" value="${furnitureDTO.category}" name="category">
@@ -338,7 +339,7 @@
 	                            <div class="pro-reviewer-comment">
 	                              <div class="pro-reviewer">
 		                             <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-		                                <img src="assets/img/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
+		                                <img src="${path}/assets/img/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
 	                                 </c:forEach>
 	                            	</div>
 	                                <div class="fix">

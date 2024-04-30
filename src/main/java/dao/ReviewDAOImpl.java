@@ -64,8 +64,8 @@ public class ReviewDAOImpl implements ReviewDAO {
             while(rs.next()){
                 review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
                         rs.getString(4),rs.getInt(5),rs.getString(6));
-                review.getFurniture().setFurnitureName(rs.getString(7));
-                review.getUser().setName(rs.getString(8));
+                review.getFurniture().setFurnitureName(rs.getString("furniture_name"));
+                review.getUser().setName(rs.getString("user_name"));
                 list.add(review);
             }
         }finally {
@@ -91,7 +91,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             while(rs.next()){
                 review = new ReviewDTO(rs.getInt(1),rs.getInt(2),rs.getInt(3),
                         rs.getString(4),rs.getInt(5),rs.getString(6));
-                review.getUser().setName(rs.getString(8));
+                review.getUser().setName(rs.getString("user_name"));
                 System.out.println("리뷰 select All userName "+review.getUser().getName());
                 list.add(review);
             }
