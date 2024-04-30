@@ -95,7 +95,7 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
     	        ps.setInt(5, furniture.getStock());
     	        ps.setString(6, furniture.getCategory());
     	        ps.setString(7, furniture.getTexture());
-    	        ps.setString(8, furniture.getFurnitureImgSrc());
+    	        ps.setString(8, "images/"+furniture.getFurnitureImgSrc());
 
     	        result = ps.executeUpdate();
 
