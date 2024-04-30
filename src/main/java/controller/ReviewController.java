@@ -81,7 +81,7 @@ public class ReviewController implements Controller {
     	int furnitureSeq = Integer.parseInt(request.getParameter("furnitureSeq"));
     	String review = request.getParameter("review");
     	int score = Integer.parseInt(request.getParameter("score"));
-    	String imgType[] = {".jpg",".png",".svg"};
+    	String imgType[] = {".jpg",".png",".svg",".JPG","PNG",".SVG"};
     	PrintWriter out = response.getWriter();
     	response.setContentType("text/html;charset=utf-8");
     	String imgName = null;
