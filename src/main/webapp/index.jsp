@@ -22,6 +22,15 @@
 <link href="assets/css/tiny-slider.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 <title>NupSO - Index</title>
+
+<style>
+.bold {
+	font-weight: 520;
+}
+
+</style>
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -39,10 +48,11 @@
 				<div class="col-lg-5">
 					<div class="intro-excerpt">
 						<h1>
-							Discover Your Dreamy Sofa <span class="d-block"></span>
+							눕고 싶은 소파,<br>
+							눕소. <span class="d-block"></span>
 						</h1>
-						<p class="mb-4">
-							당신의 휴식을 위한 최적의 선택, 눕소의 프리미엄 소파를 탐색하세요. <a
+						<p class="mb-4" style="font-weight: 500; font-size: 1rem;">
+							당신의 휴식을 위한 최적의 선택, <br>눕소의 프리미엄 소파와 함께하세요.<br><a
 								href="${path}/front?key=furniture&methodName=selectFurnitureList"
 								class="btn btn-secondary me-2" style="margin-top: 10px;">Shop
 								Now</a>
@@ -67,8 +77,8 @@
 
 				<!-- Start Column 1 -->
 				<div class="col-md-12 col-lg-3 mb-5 mb-lg-0" >
-					<h2 class="mb-4 section-title" style="weight: bold">인기 상품</h2>
-					<p class="mb-4">NupSO에서 판매량이 가장 높은 제품들입니다.</p>
+					<h2 class="mb-4 section-title" style="weight: bold">Top Products</h2>
+					<p class="mb-4" style="font-weight: 510;">NupSO에서 판매량이 가장 높은 제품들입니다.</p>
 					<p>
 						<a
 							href="${path}/front?key=furniture&methodName=selectFurnitureList"
@@ -116,59 +126,53 @@ $(document).ready(function() {
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-6">
-					<h2 class="section-title">Why Choose Us</h2>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-						aliquet velit. Aliquam vulputate velit imperdiet dolor tempor
-						tristique.</p>
-
+					<h2 class="section-title" style="font-weight: 600">눕소의 특별함.</h2>
+					<p>최고의 휴식을 선사하는 프리미엄 소파, NupSO입니다.<br>누워보면 알 수 있는, 눕고 싶은 순간의 완벽함을 제공합니다.</p>
 					<div class="row my-5">
+					<div class="col-6 col-md-6">
+							<div class="feature">
+								<div class="icon">
+									<img src="assets/images/return.svg" alt="Image"
+										class="imf-fluid">
+								</div>
+								<h5>완벽한 공간을 위한 맞춤 추천</h5>
+								<p>각 소파에 어울리는 인테리어 사진들을 보며, 마음에 쏙 드는 공간을 쉽게 상상하고 고를 수 있어요."</p>
+							</div>
+						</div>
+						
+					<div class="col-6 col-md-6">
+							<div class="feature">
+								<div class="icon">
+									<img src="assets/images/bag.svg" alt="Image" class="imf-fluid">
+								</div>
+								<h5>편리한 결제, 카카오페이</h5>
+								<p>결제는 빠르고 편리하게, 카카오페이로! 몇 번의 클릭으로 쉽게 주문하고, 안전한 결제 경험을 즐겨보세요.</p>
+							</div>
+						</div>
+						
 						<div class="col-6 col-md-6">
 							<div class="feature">
 								<div class="icon">
 									<img src="assets/images/truck.svg" alt="Image"
 										class="img-fluid">
 								</div>
-								<h3>Fast &amp; Free Shipping</h3>
-								<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-									aliquet velit. Aliquam vulputate.</p>
+								<h5>소파에 특화된 세심한 선택</h5>
+								<p>다양한 사이즈와 색상 중에서, 당신의 취향과 집안에 꼭 맞는 그 한 조각을 찾아보세요.</p>
 							</div>
 						</div>
-
-						<div class="col-6 col-md-6">
-							<div class="feature">
-								<div class="icon">
-									<img src="assets/images/bag.svg" alt="Image" class="imf-fluid">
-								</div>
-								<h3>Easy to Shop</h3>
-								<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-									aliquet velit. Aliquam vulputate.</p>
-							</div>
-						</div>
-
+						
 						<div class="col-6 col-md-6">
 							<div class="feature">
 								<div class="icon">
 									<img src="assets/images/support.svg" alt="Image"
 										class="imf-fluid">
 								</div>
-								<h3>24/7 Support</h3>
-								<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-									aliquet velit. Aliquam vulputate.</p>
+								<h5>맞춤형 상담으로 딱 맞는 소파를</h5>
+								<p>상담사가 1시간 이내에 답변드리고, 상세한 조언을 통해 완벽한 소파를 선택할 수 있도록 도와드릴게요.<br>
+								다른 고객님들의 리뷰도 꼭 확인해 보세요!</p>
 							</div>
 						</div>
-
-						<div class="col-6 col-md-6">
-							<div class="feature">
-								<div class="icon">
-									<img src="assets/images/return.svg" alt="Image"
-										class="imf-fluid">
-								</div>
-								<h3>Hassle Free Returns</h3>
-								<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-									aliquet velit. Aliquam vulputate.</p>
-							</div>
-						</div>
-
+						
 					</div>
 				</div>
 
