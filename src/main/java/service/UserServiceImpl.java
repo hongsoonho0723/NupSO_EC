@@ -74,6 +74,20 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
+
+	@Override
+	public UsersDTO findUserBySeq(int userSeq) throws SQLException {
+		UsersDTO user = userDAO.findUserBySeq(userSeq);
+		
+		return user;
+	}
+
+	@Override
+	public String updateUserBySeq(UsersDTO usersDTO) {
+		String result = userDAO.updateUserBySeq(usersDTO); 
+		System.out.println("UserService.updateUserBySeq 실행");
+		return result;
+	}
     
 	
 

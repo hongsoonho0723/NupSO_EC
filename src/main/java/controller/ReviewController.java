@@ -37,6 +37,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("admin/adminReview.jsp");
     }
     
+
     public ModelAndView selectAllByUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	HttpSession session = request.getSession();
     	UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
@@ -55,11 +56,9 @@ public class ReviewController implements Controller {
     		reqUrl = request.getParameter("mypage");
     	}
     	
-    	PrintWriter out = response.getWriter();
-    	response.setContentType("text/html;charset=utf-8");
-    	
     	service.delete(reviewSeq);
     	
+
     	request.setAttribute("message", "삭제에 성공했습니다.");
     	
 

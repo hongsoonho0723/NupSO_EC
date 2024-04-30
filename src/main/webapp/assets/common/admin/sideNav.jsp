@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    // 각 토글링할 항목에 대한 클릭 이벤트 처리
+    // 각 토글링할 항목에 대한 클릭 이벤트 처리 
     $(".nav-link.collapsed").click(function(){
         // 해당 항목의 다음 요소를 토글 (보이기/감추기)
         $(this).next(".collapse").toggle();
@@ -48,8 +48,8 @@ $(document).ready(function(){
                             </a>
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                	<a class="nav-link" href="#">상품 등록</a>
-                                    <a class="nav-link" href="#">상품 조회</a>
+                                	<a class="nav-link" href="${path}/admin/adminCRUDC.jsp">상품 등록</a>
+                                    <a class="nav-link" href="${path}/front?key=product&methodName=selectAll">상품 조회</a>
                                 </nav>
                             </div>
                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -60,7 +60,7 @@ $(document).ready(function(){
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">배송 조회</a>
+                                    <a class="nav-link" href="${path}/front?key=delivery&methodName=selectAll">배송 조회</a>
                                 </nav>
                             </div>
                                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -99,7 +99,7 @@ $(document).ready(function(){
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as: 관리자</div>
-                        Mady by NupSo
+                        Made by NupSo
                     </div>
                 </nav>
             </div>

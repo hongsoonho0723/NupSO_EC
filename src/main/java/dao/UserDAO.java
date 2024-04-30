@@ -39,5 +39,9 @@ public interface UserDAO {
 	List<UsersDTO> selectAge() throws SQLException;
 
 	UsersDTO findUserById(String userId) throws SQLException;
+	
+	/*사용자 고유 번호로 사용자 정보 찾기*/
+	UsersDTO findUserBySeq(int userSeq) throws SQLException;
 
+	String updateUserBySeq(UsersDTO usersDTO);
 }
