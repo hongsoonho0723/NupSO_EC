@@ -371,7 +371,7 @@
                 <div class="customer-review">
                     <div class="row">
                         <h3 class="small-title">Q & A</h3>
-                        구매하시려는 상품에 대헤 궁금한 점이 있으면 문의해주세요.
+                        구매하시려는 상품에 대해 궁금한 점이 있으면 문의해주세요.
                         <a href="qna.jsp?furnitureSeq=${furnitureDTO.furnitureSeq}&furnitureImgSrc=${furnitureDTO.furnitureImgSrc}" class="btn btn-secondary me-2">Go to Q&A</a>
                     </div>
                     <br><br>
