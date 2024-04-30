@@ -43,12 +43,6 @@ h2 {
 						<h2>하루종일<br> 눕고 싶고,<br>자고 싶은 쇼파.</h2>
 								<p class="mb-4">하루종일 누워있고만 싶어라</p>
 						<p class="mb-4" style="font-weight: 500; font-size: 1rem;">
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
 						</p>
 						
 					</div>
