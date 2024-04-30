@@ -179,7 +179,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">상품 관리</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">관리 페이지</a>
+                                        <a class="small text-white stretched-link" href="${path}/front?key=product&methodName=selectAll">관리 페이지</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">배송 관리</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">관리 페이지</a>
+                                        <a class="small text-white stretched-link" href="${path}/front?key=delivery&methodName=selectAll">관리 페이지</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
