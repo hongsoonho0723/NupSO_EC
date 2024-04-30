@@ -32,7 +32,7 @@
     const category = params.get('category');
     const sofaName = params.get('sofaName');
     const description = params.get('description');
-
+	
     //let prompt = "recommend a room that goes well with the "+sofaName+". The material is "+texture+
     //", and it's a "+category +description;
     let prompt = "recommend a room that goes well with the " + sofaName + ". The material is " + texture +

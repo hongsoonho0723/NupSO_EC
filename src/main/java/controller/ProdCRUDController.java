@@ -79,23 +79,26 @@ public class ProdCRUDController implements Controller{
 		String furnitureImgSrc = request.getParameter("furnitureImgSrc");
 		
 		
+		FurnitureDTO furniture = new FurnitureDTO();
+		
+		furniture.setFurnitureSeq(furnitureSeq);
+		furniture.setFurnitureNumber(furnitureNumber);
+		furniture.setFurnitureName(furnitureName);
+		furniture.setFurnitureDescription(furnitureDescription);
+		furniture.setPrice(price);
+		furniture.setStock(stock);
+		furniture.setCategory(category);
+		furniture.setFlag(flag);
+		furniture.setFurnitureImgSrc(furnitureImgSrc);
+		
+		service.update(furniture);
+		
+		
 		List<FurnitureDTO> list = service.selectAll();
-		for (FurnitureDTO furniture : list) {
-			if(furniture.getFurnitureSeq() == furnitureSeq) {
-				furniture.setFurnitureNumber(furnitureNumber);
-				furniture.setFurnitureName(furnitureName);
-				furniture.setFurnitureDescription(furnitureDescription);
-				furniture.setPrice(price);
-				furniture.setStock(stock);
-				furniture.setCategory(category);
-				furniture.setFlag(flag);
-				furniture.setFurnitureImgSrc(furnitureImgSrc);
-			}
-		}
+		
 		
 		request.setAttribute("list", list);
 		
-		System.out.println(list);
 		
 		return new ModelAndView("admin/adminCRUD.jsp");
 	}

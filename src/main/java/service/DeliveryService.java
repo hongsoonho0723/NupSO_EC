@@ -7,4 +7,6 @@ import dto.OrderDTO;
 
 public interface DeliveryService {
     List<OrderDTO> selectAll() throws SQLException;
+    
+    int update(OrderDTO order) throws SQLException;
 }
