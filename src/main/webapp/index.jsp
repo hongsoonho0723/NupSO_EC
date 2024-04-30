@@ -63,10 +63,10 @@
 	<!-- Start Product Section -->
 	<div class="product-section">
 		<div class="container">
-			<div class="row" id = "popular-items">
+			<div class="row" id="popular-items">
 
 				<!-- Start Column 1 -->
-				<div class="col-md-12 col-lg-3 mb-5 mb-lg-0" >
+				<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 					<h2 class="mb-4 section-title" style="weight: bold">인기 상품</h2>
 					<p class="mb-4">NupSO에서 판매량이 가장 높은 제품들입니다.</p>
 					<p>
@@ -74,42 +74,59 @@
 							href="${path}/front?key=furniture&methodName=selectFurnitureList"
 							class="btn" style="margin-top: 10px;" class="btn">상품 전체 보기</a>
 					</p>
-					
+
 				</div>
-				
-				</div>
-				</div>
-</div>
-	
+
+			</div>
+		</div>
+	</div>
+
 	<!-- End Product Section -->
 	<script>
-	let rootPath = '${path}'; // JSP에서 JavaScript 변수로 변환
-$(document).ready(function() {
-    $.ajax({
-        url: rootPath + '/ajax?key=furnitureAjax&methodName=selectFurnitureOrderBySales', // 서버 URL
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            let content = '';
-            $.each(data, function(i, item) {
-            	if(i<3){
-                content += '<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">';
-                content += '<a class="product-item" href="' + rootPath + '/front?key=furniture&methodName=furnitureInfo&furnitureName=' + item.furnitureName + '">';
-                content += '<img src="assets/' + item.furnitureImgSrc + '" class="img-fluid product-thumbnail" alt="이미지가 경로에 없습니다.">';
-                content += '<h3 class="product-title">' + item.furnitureName + '</h3>';
-                content += '<strong class="product-price">' + Number(item.price).toLocaleString() + '</strong>';
-                content += '<span class="icon-cross"><img src="assets/images/cross.svg" class="img-fluid"></span>';
-                content += '</a></div>';
-            	}
-            });
-            $('#popular-items').append(content); //판매량 순으로 쇼파 목록 삽입할 dom 요소 설정
-        },
-        error: function() {
-            alert('데이터를 불러오는데 실패했습니다.');
-        }
-    });
-});
-</script>
+		let rootPath = '${path}'; // JSP에서 JavaScript 변수로 변환
+		$(document)
+				.ready(
+						function() {
+							$
+									.ajax({
+										url : rootPath
+												+ '/ajax?key=furnitureAjax&methodName=selectFurnitureOrderBySales', // 서버 URL
+										type : 'GET',
+										dataType : 'json',
+										success : function(data) {
+											let content = '';
+											$
+													.each(
+															data,
+															function(i, item) {
+																if (i < 3) {
+																	content += '<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">';
+																	content += '<a class="product-item" href="'
+																			+ rootPath
+																			+ '/front?key=furniture&methodName=furnitureInfo&furnitureName='
+																			+ item.furnitureName
+																			+ '">';
+																	content += '<img src="assets/' + item.furnitureImgSrc + '" class="img-fluid product-thumbnail" alt="이미지가 경로에 없습니다.">';
+																	content += '<h3 class="product-title">'
+																			+ item.furnitureName
+																			+ '</h3>';
+																	content += '<strong class="product-price">'
+																			+ Number(
+																					item.price)
+																					.toLocaleString()
+																			+ '</strong>';
+																	content += '<span class="icon-cross"><img src="assets/images/cross.svg" class="img-fluid"></span>';
+																	content += '</a></div>';
+																}
+															});
+											$('#popular-items').append(content); //판매량 순으로 쇼파 목록 삽입할 dom 요소 설정
+										},
+										error : function() {
+											alert('데이터를 불러오는데 실패했습니다.');
+										}
+									});
+						});
+	</script>
 
 	<!-- Start Why Choose Us Section -->
 	<div class="why-choose-section">
@@ -188,35 +205,29 @@ $(document).ready(function() {
 	<div class="we-help-section">
 		<div class="container">
 			<div class="row justify-content-between">
-				<div class="col-lg-7 mb-5 mb-lg-0">
-					<div class="imgs-grid">
-						<div class="grid grid-1">
-							<img src="assets/images/img-grid-1.jpg" alt="Untree.co">
-						</div>
-						<div class="grid grid-2">
-							<img src="assets/images/img-grid-2.jpg" alt="Untree.co">
-						</div>
-						<div class="grid grid-3">
-							<img src="assets/images/img-grid-3.jpg" alt="Untree.co">
-						</div>
+				<div class="col-lg-7 mb-6 mb-lg-0">
+					<div class="grid grid-1">
+						<img src="assets/images/picasso1.png" alt="Untree.co">
 					</div>
+					<!-- <div class="grid grid-2">
+						<img src="assets/images/picasso2.png" alt="Untree.co">
+					</div> -->
+				
 				</div>
-				<div class="col-lg-5 ps-lg-5">
-					<h2 class="section-title mb-4">We Help You Make Modern
-						Interior Design</h2>
-					<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae
-						odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-						vulputate velit imperdiet dolor tempor tristique. Pellentesque
-						habitant morbi tristique senectus et netus et malesuada</p>
 
-					<ul class="list-unstyled custom-list my-4">
-						<li>Donec vitae odio quis nisl dapibus malesuada</li>
-						<li>Donec vitae odio quis nisl dapibus malesuada</li>
-						<li>Donec vitae odio quis nisl dapibus malesuada</li>
-						<li>Donec vitae odio quis nisl dapibus malesuada</li>
+				<div class="col-lg-5 ps-lg-5" style="padding-top: 50px;">
+					<h2 class="section-title mb-4">벤치마킹 사이트 (picasso)</h2>
+
+					<ul class="list-unstyled custom-list my-4" style="padding-top: 40px;" >
+						<li>2003년부터 컨셉과 방향이 명확한 공간 창출 디자인가구를 유통하고 있습니다</li>
+						<li>기업, 공공기관, 업소, 학교 등 고객 요구사항에 맞추어 대형 납품, 나라장터 경험이 풍부합니다.</li>
+						<li>의자, 테이블, 소파, 야외가구 등 가구전문MD가 매월 신제품 발굴 및 개발 수입유통판매를 진행하고
+							있습니다.</li>
+						<li>꾸준한 성장과 혁신성으로 벤처기업 육성에 관한 조치법 제 25조의 규정에 의하여 기관 인증을 받은 업체
+							입니다.</li>
 					</ul>
 					<p>
-						<a href="#" class="btn">Explore</a>
+						<a href="https://www.e-picasso.com/" class="btn" target="blank">구경하기</a>
 					</p>
 				</div>
 			</div>
