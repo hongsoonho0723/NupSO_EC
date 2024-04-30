@@ -23,8 +23,10 @@
 		
 	$(function(){
 		$(document).on("click",".product-review-btn",function(){
-			
-			if($(".product-order-state").text().trim() !== "배송 완료"){
+			let tr = $(this).closest("tr");
+			let revieComment = tr.find("td:eq(7)").text();
+
+			if( revieComment !== "배송 완료"){
 				event.preventDefault();
 				alert("배송 완료된 후 리뷰를 작성할 수 있습니다.");
 				return;
