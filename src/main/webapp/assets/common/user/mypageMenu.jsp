@@ -17,6 +17,7 @@
 
                    	<a href="wishList.jsp" class="btn btn-secondary me-2">관심 목록</a>
 					<a href="personalInfo.jsp" class="btn btn-secondary me-2">개인정보수정</a>
+					<a href="${path}/front?key=order&methodName=selectOrderAll" class="btn btn-secondary me-2">마이페이지</a>
                     </p>
                	</div>
                    </p>
