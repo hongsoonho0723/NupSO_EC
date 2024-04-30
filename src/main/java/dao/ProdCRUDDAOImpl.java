@@ -106,4 +106,35 @@ public class ProdCRUDDAOImpl implements ProdCRUDDAO{
 
     	    return result; // 상품 추가 실패 시 -1 반환
     	}
+
+		@Override
+		public int update(FurnitureDTO furniture) throws SQLException {
+			Connection con = null;
+    	    PreparedStatement ps = null;
+    	    ResultSet rs = null;
+    	    String sql = proFiles.getProperty("prodCRUD.update");
+	    	int result =0;
+	    	
+	    	 try {
+	                con = DbUtil.getConnection();
+	                ps = con.prepareStatement(sql);
+	                ps.setString(1, furniture.getFurnitureName());
+	                ps.setString(2, furniture.getFurnitureNumber());
+	                ps.setString(3, furniture.getFurnitureDescription());
+	                ps.setInt(4, furniture.getPrice());
+	                ps.setInt(5, furniture.getStock());
+	                ps.setString(6, furniture.getCategory());
+	                ps.setInt(7, furniture.getSaleCount());
+	                ps.setInt(8, furniture.getFlag());
+	                ps.setString(9, furniture.getFurnitureImgSrc());
+	                ps.setInt(10, furniture.getFurnitureSeq());
+	                result = ps.executeUpdate();
+	            } finally {
+	                DbUtil.dbClose(con, ps);
+	            }
+			return result;
+		}
+    	
+    	
+    	
 }

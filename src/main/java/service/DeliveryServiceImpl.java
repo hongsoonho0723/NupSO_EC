@@ -16,4 +16,12 @@ private DeliveryDAO deliveryDAO = new DeliveryDAOImpl();
 		System.out.println("Service에서 DAO로부터 받은 데이터: " + list); 
 		return list;
 	}
+
+	@Override
+	public int update(OrderDTO order) throws SQLException {
+		int result = deliveryDAO.update(order);
+		return result;
+	}
+	
+	
 }
