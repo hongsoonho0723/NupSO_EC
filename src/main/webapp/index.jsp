@@ -33,6 +33,16 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+
+.post-thumbnail img {
+  width: 380px;
+  height: 250px;
+  object-fit: cover;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -417,7 +427,7 @@ $(document).ready(function() {
 					<h2 class="section-title">Recent Blog</h2>
 				</div>
 				<div class="col-md-6 text-start text-md-end">
-					<a href="#" class="more">View All Posts</a>
+					<a href="#" class="more">View the Top</a>
 				</div>
 			</div>
 
@@ -425,15 +435,15 @@ $(document).ready(function() {
 
 				<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 					<div class="post-entry">
-						<a href="#" class="post-thumbnail"><img
-							src="assets/images/post-1.jpg" alt="Image" class="img-fluid"></a>
+						<a href="https://m.blog.naver.com/interior_boda/222102371917" class="post-thumbnail" target="blank"><img
+							src="assets/images/BlogSite01.JPG" alt="Image" class="img-fluid" width="216" height="150"></a>
 						<div class="post-content-entry">
 							<h3>
-								<a href="#">First Time Home Owner Ideas</a>
+								<a href="https://m.blog.naver.com/interior_boda/222102371917" target="blank">인테리어보다의 신나는하루</a>
 							</h3>
 							<div class="meta">
-								<span>by <a href="#">Kristin Watson</a></span> <span>on <a
-									href="#">Dec 19, 2021</a></span>
+								<span>by <a href="https://m.blog.naver.com/interior_boda/222102371917" target="blank">인테리어보다</a></span> <span>on <a
+									href="#">Sep 28, 2020</a></span>
 							</div>
 						</div>
 					</div>
@@ -441,15 +451,15 @@ $(document).ready(function() {
 
 				<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 					<div class="post-entry">
-						<a href="#" class="post-thumbnail"><img
-							src="assets/images/post-2.jpg" alt="Image" class="img-fluid"></a>
+						<a href="https://blog.naver.com/janginstyle/221569248367" class="post-thumbnail" target="blank"><img
+							src="assets/img/BlogSite02.png" alt="Image" class="img-fluid" width="216" height="150"></a>
 						<div class="post-content-entry">
 							<h3>
-								<a href="#">How To Keep Your Furniture Clean</a>
+								<a href="https://blog.naver.com/janginstyle/221569248367" target="blank">장인가구</a>
 							</h3>
 							<div class="meta">
-								<span>by <a href="#">Robert Fox</a></span> <span>on <a
-									href="#">Dec 15, 2021</a></span>
+								<span>by <a href="https://blog.naver.com/janginstyle/221569248367" target="blank">장인가구</a></span> <span>on <a
+									href="#">Jun 24, 2019</a></span>
 							</div>
 						</div>
 					</div>
@@ -457,15 +467,15 @@ $(document).ready(function() {
 
 				<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 					<div class="post-entry">
-						<a href="#" class="post-thumbnail"><img
-							src="assets/images/post-3.jpg" alt="Image" class="img-fluid"></a>
+						<a href="https://houseidea.tistory.com/410" class="post-thumbnail" target="blank"><img
+							src="assets/img/BlogSite03.PNG" alt="Image" class="img-fluid" width="216" height="150"></a>
 						<div class="post-content-entry">
 							<h3>
-								<a href="#">Small Space Furniture Apartment Ideas</a>
+								<a href="https://houseidea.tistory.com/410" target="blank">나만을 위한 프라이빗 작고 예쁜집</a>
 							</h3>
 							<div class="meta">
-								<span>by <a href="#">Kristin Watson</a></span> <span>on <a
-									href="#">Dec 12, 2021</a></span>
+								<span>by <a href="https://houseidea.tistory.com/410" target="blank">예쁜집IDEA</a></span> <span>on <a
+									href="#">Nov 15, 2023</a></span>
 							</div>
 						</div>
 					</div>
