@@ -33,8 +33,16 @@
     const sofaName = params.get('sofaName');
     const description = params.get('description');
 
-    let prompt = "recommend a room that goes well with the "+sofaName+". The material is "+texture+
-    ", and it's a "+category +description;
+    //let prompt = "recommend a room that goes well with the "+sofaName+". The material is "+texture+
+    //", and it's a "+category +description;
+    let prompt = "recommend a room that goes well with the " + sofaName + ". The material is " + texture +
+    ", and it's a " + category + description + ". Based on your current interior style,"+ 
+    "we recommend selecting furniture that complements the " + sofaName + ". For example,"+ 
+    "if your interior has a modern style,"+ 
+    "you might consider sleek and minimalistic furniture pieces. "+
+    "If it's more traditional, classic furniture with rich textures and warm colors could be a better fit"+
+    ". Additionally, consider the size" 
+    +"and layout of your room to ensure the furniture you choose fits well and enhances the overall aesthetic.";
     console.log(prompt)
     query({"inputs": prompt}).then((response) => {
         // Use image

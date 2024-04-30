@@ -12,7 +12,12 @@
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
+<style type="text/css">
+h2 {
+    color: white;
+}
 
+</style>
 
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -26,21 +31,36 @@
 		<!-- Start Header/Navigation -->
 		<jsp:include page="assets/common/user/header.jsp"></jsp:include>
 		<!-- End Header/Navigation -->
-
 		<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Shop</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">	
-						</div>
+	<div class="hero">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-5">
+					<div class="intro-excerpt">
+						<h1>
+							Shop<span class="d-block"></span>
+						</h1>
+						<h2>하루종일<br> 눕고 싶고,<br>자고 싶은 쇼파.</h2>
+								<p class="mb-4">하루종일 누워있고만 싶어라</p>
+						<p class="mb-4" style="font-weight: 500; font-size: 1rem;">
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+						</p>
+						
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="hero-img-wrap">
+						<img src="assets/images/shop.png" class="img-fluid">
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 		<!-- End Hero Section -->
 		
 		<div class="untree_co-section product-section before-footer-section">
