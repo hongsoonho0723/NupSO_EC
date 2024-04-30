@@ -134,6 +134,7 @@ public class OrderDAOImpl implements OrderDAO {
 		 PreparedStatement ps = null;
 		 String sql = proFile.getProperty("order.insertOrderInfo");
 		 //insert into order_info values(order_info_seq.nextval,?,?,?,?,?,?)
+		 String sql2 ="update furniture set stock=(select stock from furniture where furniture_seq=?)-? where furniture_seq=?";
 		 int result=0;
 			  int orderSeq =0; //현재 orderSeq값 
 			  String sql1 ="select max(order_seq) from orders";
@@ -172,6 +173,22 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 		 
 	
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql2);
+			ps.setInt(1, furnitureSeq);
+			ps.setInt(2, quantity);
+			ps.setInt(3, furnitureSeq);
+			
+			result= ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+		
+		
+		
+		
 		}//for end
 		 
 		 

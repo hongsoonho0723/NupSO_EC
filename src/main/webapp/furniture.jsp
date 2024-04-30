@@ -338,7 +338,7 @@
 	                            <div class="pro-reviewer-comment">
 	                              <div class="pro-reviewer">
 		                             <c:forEach items="${item.reviewImgs}" var="reviewImg">   
-		                                <img src="assets/img/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
+		                                <img src="C://Edu//reviewImg/${reviewImg.imgSrc}" alt="이미지" width="150" height="150">
 	                                 </c:forEach>
 	                            	</div>
 	                                <div class="fix">
