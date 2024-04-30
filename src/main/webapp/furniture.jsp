@@ -75,8 +75,9 @@
  			    $("#url").val(currentPageURL);  
             	$("#furnitureForm").submit();
             }
-        		
         })
+        
+        		
  
          //관심목록 저장버튼 이벤트
         $("#wishList").click(function(){
@@ -111,7 +112,49 @@
         
         
         
-    	
+        //결제 버튼 클릭시 이벤트
+        $("#checkout").click(function(){
+        	$("#key").val("checkout");
+        	$("#methodName").val("checkout");
+        	
+        	$("#furnitureForm").submit();
+        	
+        	
+        })
+        
+         
+             	
+        //선택한 값들 저장해주기
+        $(document).on("change", "#quantity", function(){
+            let selectedQuantity = this.value; // 선택된 수량 값 읽기
+            $("#quantityInput").val(selectedQuantity); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#colorName", function(){
+            let selectedColorName = this.value; // 선택된 수량 값 읽기
+            $("#colorNameInput").val(selectedColorName); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#sizeVal", function(){
+            let selectedSizeVal = this.value; // 선택된 수량 값 읽기
+            $("#sizeValInput").val(selectedSizeVal); // hidden input 필드에 선택된 수량 설정
+        });
+	
+        
+        //유저 아이디 확인후 버튼 유무
+     	function userCheck(){
+     	   let userId = $("#userId").val();
+     	   if(userId == "null"){
+     		   
+     		   $("[date-id=btn]").remove();
+     		   $("#btn").text("로그인 하고 이용해주세요");
+     	   } 
+     	   
+     	}
+        userCheck();
+
+    
+    
     });// ready end
 
 </script>
@@ -206,13 +249,12 @@
                                 </tr>
                             </table>
     					
-                            <div class="form-group">
+
+                            <div id="btn" class="form-group">
                                 <p>
-                                    <button id="wishList" class="btn btn-secondary me-2">♥️</button>
-                                    <button id="cart" class="btn btn-secondary me-2">🛍️</button>
-                                    <button class="btn btn-black btn-lg py-3 btn-block"
-                                            onclick="window.location='thankyou.html'">구매하기
-                                    </button>
+                                    <button date-id="btn" id="wishList" class="btn btn-secondary me-2">♥️</button>
+                                    <button date-id="btn" id="cart" class="btn btn-secondary me-2">🛍️</button>
+                                    <button date-id="btn" id="checkout" class="btn btn-black btn-lg py-3 btn-block">구매하기</button>
                                 </p>
 							
                             </div>
@@ -222,7 +264,11 @@
 							<input type="hidden" name="quantity" id="quantityInput">
 							<input type="hidden" name="colorName" id="colorNameInput">
 							<input type="hidden" name="sizeVal" id="sizeValInput">
+							<input type="hidden" name="furniturePrice" id="furniturePrice" value="${furnitureDTO.price}">
+							<input type="hidden" name="furnitureName" id="furnitureName" value="${furnitureDTO.furnitureName}">
 							<input type="hidden" name="url" id="url">
+							<input type="hidden" name="userId" id="userId" value="<%= session.getAttribute("userId") %>">
+							<input type="hidden" name="texture" value="${furnitureDTO.texture}" >
 						</form>
                         </div>
                     </div>

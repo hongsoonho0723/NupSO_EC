@@ -11,6 +11,7 @@ public interface CartDAO {
 	List<CartDTO> selectAll(int userSeq) throws SQLException ;
 
 	int delete(int furintureSeq) throws SQLException;
+
 	
 	int insertCart(CartDTO cartDTO) throws SQLException;;
 }

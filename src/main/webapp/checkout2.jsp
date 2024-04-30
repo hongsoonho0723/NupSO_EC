@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 		<!doctype html>
 		<html lang="en">
 
@@ -8,8 +8,8 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 			<meta name="author" content="Untree.co">
-    		<link rel="shortcut icon" href="${path}/assets/images/cow.png">
-    
+			<link rel="shortcut icon" href="${path}/assets/images/cow.png">
+
 			<meta name="description" content="" />
 			<meta name="keywords" content="bootstrap, bootstrap4" />
 
@@ -19,7 +19,7 @@
 				rel="stylesheet">
 			<link href="${path}/assets/css/tiny-slider.css" rel="stylesheet">
 			<link href="${path}/assets/css/style.css" rel="stylesheet">
-			<title>결제하기</title>
+			<title>결제하기 </title>
 		
 		<!-- 달력에 필요함 -->
 		  <link href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" rel="stylesheet">
@@ -35,7 +35,6 @@
 		  <script>
 		  $(function(){
 			  
-			  selectAll()
 			  
 			  // 쉼표를 추가하여 숫자를 포맷하는 함수
 				function numberWithCommas(x) {
@@ -51,43 +50,8 @@
 		        changeYear: true // 연도 변경 기능 활성화
 		    });
 		    
-		    function selectAll(){
-	        	$.ajax({
-	        		 url: "ajax/checkout", //통신할 서버의 주소
-					 type: "post", //요청방식(get | post | put | delete | fetch)
-					 dataType:"json", //서버가 보내오는 응답데이터타입(text | html | xml | json)
-					 data: { key: "cartAjax", methodName: "selectAll" },
-					success :function(result , status){
-						  //화면갱신
-						  console.log("result = "+result)
-						  let table="";
-						  let str="";
-						  let total=0;
-						  $.each(result,function(index,item){
-							/*   상품이름 색상 수량 금액 */
-					              table += "<tr>";
-					              table += "<td><h2 class='h5 text-black'>"+item.furnitureDTO.furnitureName+"</h2></td>";
-					              table += "<td>" + item.colorName + "</td>";
-					              table += "<td>" + item.quantity + "</td>";
-					              table += "<td>" + item.furnitureDTO.price + "</td>";
-					              table += "</tr>";												
-					              
-					              total += (item.furnitureDTO.price*item.quantity);
-					              
-					         });
-								$("#listTable tr:gt(0)").remove();
-					            $("#listTable").append(table); 
-					            $("#totalInput").val(total);
-					            $("#total").text(numberWithCommas(total+" 원"));
-					            
-					 },
-					 error : function(err, status){
-						 //통신에 실패하면 해야할 일 
-						 alert(err+"발생했어요 status :" + status);
-					 }
-				 });//ajax end
+		   
 		    
-		    };//selectAll end
 			    
 		  });//load end
 		  </script>
@@ -212,11 +176,16 @@
 								</div>
 
 							</div>
+							<input type="hidden" id="furnitureSeq" name="furnitureSeq" value="${param.furnitureSeq}">
+							<input type="hidden" id="furnitureName" name="furnitureName" value="${param.furnitureName}">
+							<input type="hidden" id="quantity" name="quantity" value="${param.quantity}">
+							<input type="hidden" id="colorName" name="colorName" value="${param.colorName}">
+							<input type="hidden" id="sizeVal" name="sizeVal" value="${param.sizeVal}">
+							<input type="hidden" id="totalInput" name="totalPrice" value="${param.furniturePrice}">
+
 							<input type="hidden" name="key" value="order">
-							<input type="hidden" name="methodName" value="insertOrder">
-							<input type="hidden" id="totalInput" name="totalPrice">
-							</form>
-							
+							<input type="hidden" name="methodName" value="insertOrderInof">
+						</form>
 							
 							
 						</div>
@@ -242,22 +211,32 @@
 												<th>금액</th>
 											</thead>
 											<tbody id="listTable">
-											
+
+
+
+											<th>${param.furnitureName}</th>
+											<th>${param.colorName}</th>
+											<th>${param.quantity}</th>
+											<th><fmt:formatNumber value ="${param.furniturePrice}"/></th>
+
+
+
+
 											</tbody>
 											
 											<tfoot>
 												<th>총 금액 :</th>
 												<th></th>
 												<th></th>
-												<th id="total"></th>
+												<th><fmt:formatNumber value ="${param.furniturePrice}"/>원</th>
+												
 											</tfoot>
-											
 											
 											
 										</table>
 
 							
-									
+								
 									
 									<!-- /////////////////////// -->
 

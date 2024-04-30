@@ -12,7 +12,8 @@ public interface CartService {
 
 	
 	int delete(int furnitureSeq) throws SQLException;
-	
+
 	int insertCart(CartDTO cartDTO) throws SQLException;
+	
 
 }

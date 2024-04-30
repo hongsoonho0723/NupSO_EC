@@ -18,6 +18,7 @@ public class CartAjaxController implements RestController {
 	
 	
 	public void selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("111111111111");
 		HttpSession session = request.getSession();
 		int userSeq = (Integer) session.getAttribute("userSeq");
 
