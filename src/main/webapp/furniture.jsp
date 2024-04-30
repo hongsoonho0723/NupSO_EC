@@ -36,6 +36,7 @@
                         	console.log(err)
                            alert(err);
                         }
+
                     });
                     
                 }else{
@@ -76,7 +77,39 @@
             }
         })
         
-        //버튼 변경
+        		
+ 
+         //관심목록 저장버튼 이벤트
+        $("#wishList").click(function(){
+        	
+        	$("#furnitureForm").attr("action","${path}/front?key=wishList&methodName=insert&furnitureName=${furnitureDTO.furnitureName}")
+			$("#colorNameInput").val($("#colorName").val());
+			$("#sizeValInput").val($("#sizeVal").val());
+			  
+			 $("#furnitureForm").submit();
+        	
+			 alert("관심 목록에 추가되었습니다.")
+        		
+        })
+        
+        
+        //선택한 값들 저장해주기
+        $(document).on("change", "#quantity", function(){
+            let selectedQuantity = this.value; // 선택된 수량 값 읽기
+            $("#quantityInput").val(selectedQuantity); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#colorName", function(){
+            let selectedColorName = this.value; // 선택된 수량 값 읽기
+            $("#colorNameInput").val(selectedColorName); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#sizeVal", function(){
+            let selectedSizeVal = this.value; // 선택된 수량 값 읽기
+            $("#sizeValInput").val(selectedSizeVal); // hidden input 필드에 선택된 수량 설정
+        });
+	
+        
         
         
         //결제 버튼 클릭시 이벤트
@@ -216,9 +249,10 @@
                                 </tr>
                             </table>
     					
+
                             <div id="btn" class="form-group">
                                 <p>
-                                    <a href="" date-id="btn" class="btn btn-secondary me-2">♥️</a>
+                                    <button date-id="btn" id="wishList" class="btn btn-secondary me-2">♥️</button>
                                     <button date-id="btn" id="cart" class="btn btn-secondary me-2">🛍️</button>
                                     <button date-id="btn" id="checkout" class="btn btn-black btn-lg py-3 btn-block">구매하기</button>
                                 </p>

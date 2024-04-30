@@ -35,6 +35,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("admin/adminReview.jsp");
     }
     
+
     public ModelAndView selectAllByUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	HttpSession session = request.getSession();
     	UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
@@ -45,6 +46,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("myPageReview.jsp");
     }
     
+
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
     	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
     	String reqUrl ="";
@@ -52,13 +54,12 @@ public class ReviewController implements Controller {
     		reqUrl = request.getParameter("mypage");
     	}
     	
-    	PrintWriter out = response.getWriter();
-    	response.setContentType("text/html;charset=utf-8");
-    	
     	service.delete(reviewSeq);
     	
+
     	request.setAttribute("message", "삭제에 성공했습니다.");
     	
+
     	if(reqUrl.equals("mypage")) {
     		return this.selectAllByUser(request, response);
     	}else {
@@ -67,6 +68,10 @@ public class ReviewController implements Controller {
     		return new ModelAndView("admin/adminReview.jsp");
     	}
     }
+    
+ 
+    
+ 
     
     public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
     	HttpSession session = request.getSession();

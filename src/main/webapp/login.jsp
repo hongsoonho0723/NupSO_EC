@@ -8,12 +8,13 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Untree.co">
-<link rel="shortcut icon" href="favicon.png">
 
 <meta name="description" content="" />
 <meta name="keywords" content="bootstrap, bootstrap4" />
 
 <!-- Bootstrap CSS -->
+<link rel="shortcut icon" href="${path}/assets/images/cow.png">
+
 <link href="${path}/assets/css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -60,9 +61,9 @@
 					//화면갱신
 					console.log("result = " + result)
 					if (result && result.name) {
-						alert("아이디 일치");
-						//window.location.href = "index.jsp";
-						window.history.back();
+						alert("로그인 성공");
+						window.location.href = "index.jsp";
+						//window.history.back();
 						
 					} else {
 
@@ -72,7 +73,7 @@
 				},
 				error : function(err, status) {
 					//통신에 실패하면 해야할 일 
-					alert(err + "발생했어요 status :" + status);
+					alert("정보를 확인해주세요");
 				}
 			});//ajax end
 

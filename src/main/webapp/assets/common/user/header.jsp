@@ -41,9 +41,9 @@ boolean isLoggedIn = (session != null && session.getAttribute("loginUser") != nu
                 </li>
                 <li><a class="nav-link" href="${path}/front?key=furniture&methodName=selectFurnitureList">Shop</a></li>
                 <li><a class="nav-link" href="about.jsp">About us</a></li>
-                <li><a class="nav-link" href="#">Services</a></li>
-                <li><a class="nav-link" href="#">Blog</a></li>
-                <li><a class="nav-link" href="#">Contact us</a></li>
+                <li><a class="nav-link" href="privacyPolicy.jsp">Privacy Policy</a></li>
+                <!-- <li><a class="nav-link" href="#">Blog</a></li>
+                <li><a class="nav-link" href="#">Contact us</a></li> -->
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                <% if (!isLoggedIn) { %>
@@ -51,16 +51,17 @@ boolean isLoggedIn = (session != null && session.getAttribute("loginUser") != nu
                <% } 
                else { %>
                    <li><a class="nav-link" href="#"><img src="assets/images/logout.svg" id = "logoutButton" title ="로그아웃" alt ="로그아웃" width="24px" height="24px"></a></li>
-                   <li><a class="nav-link" href="myPage.jsp"><img src="assets/images/user.svg" title ="마이페이지" alt="마이페이지" width="24px" height="24px"></a></li>
-                       <script>
+
+
+                   <li><a class="nav-link" href="${path}/front?key=order&methodName=selectOrderAll"><img src="assets/images/user.svg" title ="마이페이지" alt="마이페이지" width="24px" height="24px"></a></li>
+				    <script>
                     // 모달 보여주기
                        document.getElementById('logoutButton').onclick = function() {
                            document.getElementById('confirmModal').style.display = 'flex';
                        };
                        </script>
-               
-               
-               <% } %>
+				<% } %>
+
                <li><a class="nav-link" href="cart.jsp"><img src="assets/images/cart.svg" title ="장바구니" alt="장바구니"></a></li>
                <li><a class="nav-link" href="admin/adminLogin.jsp"><img src="assets/images/admin.svg" title ="관리자 로그인" alt ="관리자 로그인"></a></li>
             </ul>

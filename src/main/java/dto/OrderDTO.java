@@ -24,7 +24,10 @@ public class OrderDTO {
 	OrderInfoDTO orderInfo = new OrderInfoDTO();
 	FurnitureDTO furniture = new FurnitureDTO();
 	
-	private String DeliveryState;
+
+	//마이페이지에서 사용하는 변수 추가
+	private String deliveryState;
+
 	
 	public OrderDTO() {}
 
@@ -75,11 +78,12 @@ public class OrderDTO {
 
 
 	public String getDeliveryState() {
-		return DeliveryState;
+		return deliveryState;
 	}
 
 	public void setDeliveryState(String deliveryState) {
-		DeliveryState = deliveryState;
+		this.deliveryState = deliveryState;
+
 	}
 
 	public OrderInfoDTO getOrderInfo() {

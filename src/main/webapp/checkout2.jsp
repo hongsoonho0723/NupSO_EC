@@ -8,7 +8,7 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 			<meta name="author" content="Untree.co">
-			<link rel="shortcut icon" href="favicon.png">
+			<link rel="shortcut icon" href="${path}/assets/images/cow.png">
 
 			<meta name="description" content="" />
 			<meta name="keywords" content="bootstrap, bootstrap4" />
@@ -19,7 +19,7 @@
 				rel="stylesheet">
 			<link href="${path}/assets/css/tiny-slider.css" rel="stylesheet">
 			<link href="${path}/assets/css/style.css" rel="stylesheet">
-			<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+			<title>결제하기 </title>
 		
 		<!-- 달력에 필요함 -->
 		  <link href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" rel="stylesheet">

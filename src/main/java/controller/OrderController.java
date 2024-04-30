@@ -63,6 +63,9 @@ public class OrderController implements Controller {
 	   
 	   
 	   orderService.insertOrder(orderDTO);
+	   
+	   List<OrderDTO> list = orderService.selectOrderAll(userSeq);
+	   request.setAttribute("list", list);
       
       return new ModelAndView("myPage.jsp");
    }
@@ -93,6 +96,9 @@ public class OrderController implements Controller {
 			   deliveryPhone,deliveryMemo,furnitureSeq,quantity,colorName,sizeVal);
 	  
 	   //orderService.insertOrderInof(orderDTO);
+	   
+	   List<OrderDTO> list = orderService.selectOrderAll(userSeq);
+	   request.setAttribute("list", list);
 	   
 	   return new ModelAndView("myPage.jsp");
    }
