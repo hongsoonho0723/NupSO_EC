@@ -9,6 +9,7 @@ public class CartDTO {
 	private String regDate;
 	private String colorName;
 	private String sizeVal;
+	private int price;
 	
 	FurnitureDTO furnitureDTO= new FurnitureDTO();
 	
@@ -22,16 +23,25 @@ public class CartDTO {
 		this.regDate = regDate;
 	}
 
+	public CartDTO(int userSeq,int furnitureSeq,int quantity,String colorName, String sizeVal) {
+		super();
+		this.userSeq = userSeq;
+		this.furnitureSeq = furnitureSeq;
+		this.quantity = quantity;
+		this.colorName = colorName;
+		this.sizeVal = sizeVal;
+		
+	}
 	
 	
 	
-	
-	public CartDTO(int furnitureSeq, int quantity, String colorName, String sizeVal, FurnitureDTO furnitureDTO) {
+	public CartDTO(int furnitureSeq, int quantity, String colorName, String sizeVal, int price, FurnitureDTO furnitureDTO) {
 		super();
 		this.furnitureSeq = furnitureSeq;
 		this.quantity = quantity;
 		this.colorName = colorName;
 		this.sizeVal = sizeVal;
+		this.price =price;
 		this.furnitureDTO = furnitureDTO;
 	}
 
@@ -81,6 +91,30 @@ public class CartDTO {
 
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getColorName() {
+		return colorName;
+	}
+
+	public void setColorName(String colorName) {
+		this.colorName = colorName;
+	}
+
+	public String getSizeVal() {
+		return sizeVal;
+	}
+
+	public void setSizeVal(String sizeVal) {
+		this.sizeVal = sizeVal;
 	}
 
 	

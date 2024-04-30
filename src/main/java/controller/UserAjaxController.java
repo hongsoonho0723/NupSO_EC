@@ -1,6 +1,6 @@
 package controller;
 
-import java.io.PrintWriter;
+import java.io.PrintWriter; 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
@@ -43,6 +43,8 @@ public class UserAjaxController implements RestController {
 		session.setAttribute("userSeq", dbDTO.getUserSeq());
 		session.setAttribute("userId", dbDTO.getUserId());
 		session.setAttribute("userName", dbDTO.getName());
+		
+
 		
 		Gson gson = new Gson();
 		String jsonArr = gson.toJson(dbDTO);
@@ -106,5 +108,41 @@ public class UserAjaxController implements RestController {
 		out.print(jsonArr);
 
 	}
-
+	
+	//유저 seq로 유저 정보 조회
+	public void selectUserBySeq(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		int userSeq = (int) session.getAttribute("userSeq");
+		UsersDTO usersDTO = userService.findUserBySeq(userSeq);
+		System.out.println("UserAjaxController.selectUserBySeq");
+		System.out.println("userSeq = " + userSeq);
+		System.out.println("usersDTO = " + usersDTO);
+		Gson gson = new Gson();
+		String jsonArr = gson.toJson(usersDTO);
+		PrintWriter out = response.getWriter();
+		out.print(jsonArr);
+	}
+	
+	//유저 seq로 유저 정보 업데이트
+	public void updateUserBySeq(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+        HttpSession session = request.getSession();
+        int userSeq = (int) session.getAttribute("userSeq");
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String phone = request.getParameter("phone");
+        String addr = request.getParameter("addr");
+        
+        UsersDTO usersDTO = new UsersDTO(userSeq, name, password, addr, age, phone);
+        
+        System.out.println("UserAjaxController.updateUserBySeq 실행. 업데이트할 정보 " + usersDTO);
+        
+        String result = userService.updateUserBySeq(usersDTO);
+        
+        PrintWriter out = response.getWriter();
+        out.print(result);
+        
+	}
 }

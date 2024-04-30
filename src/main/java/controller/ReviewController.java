@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import dto.FurnitureDTO;
 import dto.ReviewDTO;
@@ -37,6 +35,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("admin/adminReview.jsp");
     }
     
+
     public ModelAndView selectAllByUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	HttpSession session = request.getSession();
     	UsersDTO user = (UsersDTO)session.getAttribute("loginUser");
@@ -47,6 +46,7 @@ public class ReviewController implements Controller {
 		return new ModelAndView("myPageReview.jsp");
     }
     
+
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
     	int reviewSeq = Integer.parseInt(request.getParameter("reviewSeq"));
     	String reqUrl ="";
@@ -54,13 +54,12 @@ public class ReviewController implements Controller {
     		reqUrl = request.getParameter("mypage");
     	}
     	
-    	PrintWriter out = response.getWriter();
-    	response.setContentType("text/html;charset=utf-8");
-    	
     	service.delete(reviewSeq);
     	
+
     	request.setAttribute("message", "삭제에 성공했습니다.");
     	
+
     	if(reqUrl.equals("mypage")) {
     		return this.selectAllByUser(request, response);
     	}else {
@@ -69,6 +68,10 @@ public class ReviewController implements Controller {
     		return new ModelAndView("admin/adminReview.jsp");
     	}
     }
+    
+ 
+    
+ 
     
     public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
     	HttpSession session = request.getSession();
@@ -82,14 +85,6 @@ public class ReviewController implements Controller {
     	String imgName = null;
     	String Type = null;
     	boolean state = false;
-    	
-    	if(containsProfanity(review)) { // list의 욕설이 있을 경우
-    		out.println("<script>");
-	        out.println("alert('리뷰에 욕설이 포함되어 있습니다. 다시 작성해주세요.')");
-	        out.println("history.back();");
-	        out.println("</script>");
-    	    return null; // 욕설이 포함된 리뷰는 거부하고 메서드 종료
-    	}
     	
     	OrderController con = new OrderController();
     	ModelAndView mv = con.selectOrderAll(request, response);
@@ -121,8 +116,6 @@ public class ReviewController implements Controller {
     		int userSeq = user.getUserSeq();
     		service.insert(furnitureSeq,userSeq,review,score,imgName,Type);
     		
-    		request.setAttribute("message", "등록에 성공했습니다.");
-    		
         	return mv;
     	}
 		return null;
@@ -150,20 +143,5 @@ public class ReviewController implements Controller {
         }
         return null;
     }
-	
-	
-	// 욕설 필터링 메서드
-	public boolean containsProfanity(String review) {
-	    String[] profanities = {"ㅅㅂ", "씨발", "씨바","ㅆㅂ"}; // 욕설 단어 리스트
-
-	    for (String profanity : profanities) {
-	        Pattern pattern = Pattern.compile("\\b" + profanity + "\\b", Pattern.CASE_INSENSITIVE); // 대소문자 구분x 설정
-	        Matcher matcher = pattern.matcher(review);
-	        if (matcher.find()) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
     
 }

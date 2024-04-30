@@ -6,7 +6,7 @@
     <div class="container relative">
 
         <div class="sofa-img">
-            <img src="assets/images/sofa.png" alt="Image" class="img-fluid">
+            <img src="assets/images/sofa.png" alt="Image" class="img-fluid" >
         </div>
 
         <div class="row">
@@ -36,7 +36,7 @@
 
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
-                <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+                <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Nupso<span>.</span></a></div>
                 <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus
                     malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
                     Pellentesque habitant</p>

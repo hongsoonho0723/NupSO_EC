@@ -15,6 +15,8 @@ public interface UserService {
 
     UsersDTO findUserById(String userId) throws SQLException;
     
+    
+    
     UsersDTO login(UsersDTO usersDTO) throws SQLException;
 
     boolean idCheck(String userIds) throws SQLException;
@@ -25,5 +27,8 @@ public interface UserService {
 	List<UsersDTO> selectGender() throws SQLException;
 
 	List<UsersDTO> selectAge() throws SQLException;
+	
+	UsersDTO findUserBySeq(int userSeq) throws SQLException;
 
+	String updateUserBySeq(UsersDTO usersDTO);
 }
