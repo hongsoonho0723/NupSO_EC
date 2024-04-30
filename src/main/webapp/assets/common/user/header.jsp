@@ -41,9 +41,9 @@ boolean isLoggedIn = (session != null && session.getAttribute("loginUser") != nu
                 </li>
                 <li><a class="nav-link" href="${path}/front?key=furniture&methodName=selectFurnitureList">Shop</a></li>
                 <li><a class="nav-link" href="about.jsp">About us</a></li>
-                <li><a class="nav-link" href="#">Services</a></li>
-                <li><a class="nav-link" href="#">Blog</a></li>
-                <li><a class="nav-link" href="#">Contact us</a></li>
+                <li><a class="nav-link" href="privacyPolicy.jsp">Privacy Policy</a></li>
+                <!-- <li><a class="nav-link" href="#">Blog</a></li>
+                <li><a class="nav-link" href="#">Contact us</a></li> -->
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                <% if (!isLoggedIn) { %>

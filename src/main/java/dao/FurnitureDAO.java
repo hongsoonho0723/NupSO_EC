@@ -27,4 +27,5 @@ public interface FurnitureDAO {
 	int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException;
 
 	List<FurnitureDTO> selectFurnitureOrderBySales();
+
 }

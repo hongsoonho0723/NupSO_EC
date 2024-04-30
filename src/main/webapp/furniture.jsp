@@ -36,6 +36,7 @@
                         	console.log(err)
                            alert(err);
                         }
+
                     });
                     
                 }else{
@@ -58,6 +59,55 @@
         	 }
         	
         });//답변 이벤트 end
+        
+        //장바구니 저장버튼 이벤트
+        $("#cart").click(function(){
+        	$("#key").val("cart");
+        	$("#methodName").val("insertCart");
+        	
+        	if(confirm("장바구니로 이동하시겠습니까?")) {
+ 			    $("#url").val("cart.jsp");  
+        		// 확인을 선택한 경우 폼 제출
+        		$("#furnitureForm").submit();
+            	 window.location.href = cart.jsp;
+            } else {
+            	let currentPageURL = window.location.href;
+ 			    $("#url").val(currentPageURL);  
+            	$("#furnitureForm").submit();
+            }
+        		
+        })
+ 
+         //관심목록 저장버튼 이벤트
+        $("#wishList").click(function(){
+        	
+        	$("#furnitureForm").attr("action","${path}/front?key=wishList&methodName=insert&furnitureName=${furnitureDTO.furnitureName}")
+			$("#colorNameInput").val($("#colorName").val());
+			$("#sizeValInput").val($("#sizeVal").val());
+			  
+			 $("#furnitureForm").submit();
+        	
+			 alert("관심 목록에 추가되었습니다.")
+        		
+        })
+        
+        
+        //선택한 값들 저장해주기
+        $(document).on("change", "#quantity", function(){
+            let selectedQuantity = this.value; // 선택된 수량 값 읽기
+            $("#quantityInput").val(selectedQuantity); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#colorName", function(){
+            let selectedColorName = this.value; // 선택된 수량 값 읽기
+            $("#colorNameInput").val(selectedColorName); // hidden input 필드에 선택된 수량 설정
+        });
+
+        $(document).on("change", "#sizeVal", function(){
+            let selectedSizeVal = this.value; // 선택된 수량 값 읽기
+            $("#sizeValInput").val(selectedSizeVal); // hidden input 필드에 선택된 수량 설정
+        });
+	
         
         
         
@@ -104,6 +154,7 @@
                 <div class="row my-5">
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="feature">
+                           <form id="furnitureForm" method="post" action="front" >
                             <table class="table site-block-order-table mb-5">
                                 <tr>
                                     <td class="text-black font-weight-bold"><strong>가격</strong></td>
@@ -128,35 +179,51 @@
                                 </tr>
                                 <tr>
                                     <td>사이즈</td>
-                                    <td><select>
+                                    <td><select id="sizeVal">
                                         <option value="0">사이즈 선택</option>
                                         <c:forEach items="${furnitureDTO.sizeList}" var="item" varStatus="state">
-                                        	<option value="${state.index}">${item.sizeVal}</option>
+                                        	<option value="${item.sizeVal}">${item.sizeVal}</option>
                                          </c:forEach>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <td>색상</td>
-                                    <td><select>
+                                    <td><select id="colorName">
                                     		<option value="0">색상 선택</option>
                                     	<c:forEach items="${furnitureDTO.colorList}" var="item" varStatus="state">
-                                        	<option value="${state.index}">${item.colorName}</option>
+                                        	<option value="${item.colorName}">${item.colorName}</option>
                                          </c:forEach>
+                                    </select></td>
+                                </tr>      	
+                                <tr>
+                                    <td>수량</td>
+                                    <td><select id="quantity">
+                                    		<option value="0">수량 선택</option>
+                                    	<c:forEach begin="1" end="${furnitureDTO.stock}" var="index">
+    										<option value="${index}">${index}</option>
+										</c:forEach>
                                     </select></td>
                                 </tr>
                             </table>
-
+    					
                             <div class="form-group">
                                 <p>
-                                    <a href="" class="btn btn-secondary me-2">♥️</a>
-                                    <a href="" class="btn btn-secondary me-2">🛍️</a>
+                                    <button id="wishList" class="btn btn-secondary me-2">♥️</button>
+                                    <button id="cart" class="btn btn-secondary me-2">🛍️</button>
                                     <button class="btn btn-black btn-lg py-3 btn-block"
                                             onclick="window.location='thankyou.html'">구매하기
                                     </button>
                                 </p>
-
+							
                             </div>
-
+                       		<input type="hidden" name="key" id="key">
+							<input type="hidden" name="methodName" id="methodName">
+							<input type="hidden" name="furnitureSeq" id="furnitureSeq" value="${furnitureDTO.furnitureSeq}">
+							<input type="hidden" name="quantity" id="quantityInput">
+							<input type="hidden" name="colorName" id="colorNameInput">
+							<input type="hidden" name="sizeVal" id="sizeValInput">
+							<input type="hidden" name="url" id="url">
+						</form>
                         </div>
                     </div>
                 </div>

@@ -103,6 +103,7 @@ public class FurnitureAjaxController implements RestController {
 		
 	}
 	
+
 	public void selectFurnitureOrderBySales(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		List<FurnitureDTO> furnitureList = furnitureService.selectFurnitureOrderBySales();
 		
@@ -112,4 +113,5 @@ public class FurnitureAjaxController implements RestController {
 		out.print(jsonFurnitureList);
 	}
 	
+
 }
