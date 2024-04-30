@@ -19,6 +19,7 @@
 		
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<jsp:include page="assets/common/user/header.jsp"/>
+
 	<script type="text/javascript">
 	
 	$(function(){
@@ -47,6 +48,7 @@
 	
 	
 	</script>	
+
 		
 	<title>My Review</title>
 </head>

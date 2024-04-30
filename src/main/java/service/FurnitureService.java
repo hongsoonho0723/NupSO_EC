@@ -24,8 +24,10 @@ public interface FurnitureService {
 	List<SizeDTO> selectSizeList(String furnitureName) throws SQLException;
 
 	int findReviewSeqByfurnitureSeq(int furnitureSeq) throws SQLException;
+
 	
 	List<FurnitureDTO> selectFurnitureOrderBySales() throws SQLException;
+
 
 	
 }

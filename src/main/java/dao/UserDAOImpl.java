@@ -225,6 +225,60 @@ public class UserDAOImpl implements UserDAO {
         return user;
 	}
 
-	
-    
+	@Override
+	public UsersDTO findUserBySeq(int userSeq) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UsersDTO user = null;
+		String sql = proFile.getProperty("user.findUserBySeq");
+		//String sql = "select * from users where user_seq = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, userSeq);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				user = new UsersDTO(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),
+                        rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+				
+			}
+			}finally {
+                DbUtil.dbClose(con, ps, rs);
+            }
+		System.out.println("dao user = " +user);
+		return user;
+	}
+
+	@Override
+	public String updateUserBySeq(UsersDTO usersDTO) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = proFile.getProperty("user.updateUserBySeq");
+		//UPDATE users SET name=?, password=?, age=?, phone=?, addr=? WHERE user_seq=?
+	    String result = null;
+	    try {
+        	con = DbUtil.getConnection();
+        	ps = con.prepareStatement(sql);
+        	ps.setString(1, usersDTO.getName());
+        	ps.setString(2, usersDTO.getPassword());
+        	ps.setInt(3, usersDTO.getAge());
+        	ps.setString(4, usersDTO.getPhone());
+        	ps.setString(5, usersDTO.getAddr());
+        	ps.setInt(6, usersDTO.getUserSeq());
+        	
+        	int cnt = ps.executeUpdate();
+        	if(cnt>0) {
+        		result = "success";
+        		System.out.println("dao result = "+result);
+        	}
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        	}finally {
+        		DbUtil.dbClose(con, ps);
+        	}
+		return result;
+		
+     
+	}
 }

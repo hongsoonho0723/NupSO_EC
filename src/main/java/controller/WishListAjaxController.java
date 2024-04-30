@@ -5,59 +5,40 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import dto.CartDTO;
+import dto.WishListDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.CartService;
-import service.CartServiceImpl;
+import service.WishListService;
+import service.WishListServiceImpl;
 
-public class CartAjaxController implements RestController {
-
-	CartService cartService = new CartServiceImpl();
+public class WishListAjaxController implements RestController {
 	
+	WishListService wishListService = new WishListServiceImpl();
 	
 	public void selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("111111111111");
 		HttpSession session = request.getSession();
 		int userSeq = (Integer) session.getAttribute("userSeq");
 
-		System.out.println("session userSeq = "+userSeq);
+		System.out.println("Wish List session userSeq = "+userSeq);
 		
-		List<CartDTO> list =cartService.selectAll(userSeq);
+		List<WishListDTO> list =wishListService.selectAll(userSeq);
 		
 		
 		Gson gson = new Gson();
 		String jsonArr = gson.toJson(list);
 		PrintWriter out = response.getWriter();
-		out.print(jsonArr);
-	
-		
+		out.print(jsonArr);	
 	}
-	
 	
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("delete메서드 call");
 		int furnitureSeq =  Integer.parseInt(request.getParameter("furnitureSeq"));
 		
-		System.out.println("furnitureSeq = "+furnitureSeq);
+		System.out.println("Wish List furnitureSeq = "+furnitureSeq);
 		
-		
-		
-		int result =  cartService.delete(furnitureSeq);
+		int result = wishListService.delete(furnitureSeq);
 	    PrintWriter out = response.getWriter();
 	    out.print(result);
 	}
-	
-	
-	public void checkout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("checkout메서드 call");
-		HttpSession session = request.getSession();
-		System.out.println(request.getParameter("furnitureList"));
-		
-		session.setAttribute("furnitureList", request.getParameter("furnitureList"));
-		
-		
-	}
-	
 }

@@ -35,7 +35,7 @@ public class CartDAOImpl implements CartDAO {
 		ResultSet rs = null;
 		List<CartDTO> list = new ArrayList<>();
 		String sql = proFile.getProperty("cart.selectAll");
-		//String sql = "select *from cart where user_seq=?"
+		//select FURNITURE_SEQ,QUANTITY,COLOR_NAME,SIZE_VAL from cart where user_seq=?
 		CartDTO cartDTO = new CartDTO();
 		
 		try {
@@ -47,8 +47,9 @@ public class CartDAOImpl implements CartDAO {
 			while(rs.next()) {
 				int furnitureSeq = rs.getInt(1);
 				FurnitureDTO furnitureDTO = FurnitureAdd(furnitureSeq);
+				int Price = furnitureDTO.getPrice();
 				
-				cartDTO = new CartDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),furnitureDTO);
+				cartDTO = new CartDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),Price,furnitureDTO);
 				
 				list.add(cartDTO);
 			}
@@ -67,6 +68,7 @@ public class CartDAOImpl implements CartDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = proFile.getProperty("cart.FurnitureAdd");
+		//select furniture_name,furniture_img_src,price from  furniture where furniture_seq = ?
 		FurnitureDTO furnitureDTO = new FurnitureDTO();
 		
 		try {
@@ -76,7 +78,7 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 		
 			if(rs.next()) {
-				furnitureDTO = new FurnitureDTO(rs.getString(1),rs.getString(2),rs.getInt(3));
+				furnitureDTO = new FurnitureDTO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4));
 			}
 		
 		return furnitureDTO;
@@ -115,5 +117,46 @@ public class CartDAOImpl implements CartDAO {
 				
 		return result;
 	}
+
+	@Override
+	public int insertCart(CartDTO cartDTO) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result =0;
+		String sql = proFile.getProperty("cart.insertCart");
+		//String sql =insert into cart values(cart_seq.nextval,?,?,?,default,?,?)
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, cartDTO.getUserSeq());
+			ps.setInt(2, cartDTO.getFurnitureSeq());
+			ps.setInt(3, cartDTO.getQuantity());
+			ps.setString(4, cartDTO.getSizeVal());
+			ps.setString(5, cartDTO.getColorName());
+			
+			result = ps.executeUpdate();
+			
+					
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+				
+		return result;
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
 
 }

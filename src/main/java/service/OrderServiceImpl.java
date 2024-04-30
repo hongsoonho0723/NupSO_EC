@@ -60,5 +60,18 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return deliveryState;
 	}
+
+	@Override
+	public int insertOrder(OrderDTO orderDTO) throws SQLException {
+
+		int rs = orderDao.insertOrder(orderDTO);
+		int result=0;
+		if(rs==1) {
+			result = orderDao.insertOrderInfo(orderDTO);
+		}
+		
+		
+		return result;
+	}
 	
 }
