@@ -273,12 +273,22 @@
 									
 									<!-- /////////////////////// -->
 
-										<div class="border p-3 mb-5">
+										<div class="border p-3 mb-2">
+										<h4>일반 결제</h4>
 											<div>
 											<input id="inicis" type="radio" name="pay" value="html5_inicis"> 
 											<label for="inicis">이니시스</label>
 											</div>
+
+											<div>
+											<input id="kcp" type="radio" name="pay" value="kcp"> 
+											<label for="kcp">NHN kcp</label>
+											</div>
 											
+										</div>
+											
+										<div class="border p-3 mb-2">
+										<h4>간편 결제</h4>
 											<div>
 											<input id="kakao" type="radio" name="pay" value="kakaopay"> 
 											<label for="kakao">카카오페이</label>
