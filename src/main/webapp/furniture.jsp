@@ -269,7 +269,7 @@
 							<input type="hidden" name="furniturePrice" id="furniturePrice" value="${furnitureDTO.price}">
 							<input type="hidden" name="furnitureName" id="furnitureName" value="${furnitureDTO.furnitureName}">
 							<input type="hidden" name="url" id="url">
-							<input type="hidden" name="userId" id="userId" value="<%= session.getAttribute("userId") %>">
+							<input type="hidden" name="userId" id="userId" value="<%=session.getAttribute("userId")%>">
 							<input type="hidden" name="texture" value="${furnitureDTO.texture}" >
 						</form>
                         </div>

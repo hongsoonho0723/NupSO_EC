@@ -44,4 +44,6 @@ public interface UserDAO {
 	UsersDTO findUserBySeq(int userSeq) throws SQLException;
 
 	String updateUserBySeq(UsersDTO usersDTO);
+
+	int deleteUser(int userSeq) throws SQLException;
 }

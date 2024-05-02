@@ -148,6 +148,13 @@ input[type="text"]:focus, input[type="number"]:focus {
 					
 				</div>
 				<button type="button" onclick="updateUser()" class="btn btn-primary-hover-outline" style="width: 40%;">정보 수정</button>
+				<form action="front" method="post">
+				<button type="submit" class="btn btn-primary-hover-outline" style="width: 10%;">회원탈퇴</button>
+				<input type="hidden" name="key" value="user" id="">
+				<input type="hidden" name="methodName" value="deleteUser" id="deleteUser">
+				<input type="hidden" name="userSeq" value="<%=session.getAttribute("userSeq")%>" id="userSeq">
+				
+				</form>
 			</div>
 		</div>
 	</div>
@@ -191,7 +198,7 @@ function updateUser() {
         phone: $('#phone').val(),
         addr: $('#addr1').val()+ " " +$('#addr2').val()
     };
-
+    
     $.ajax({
         url: rootPath + '/ajax?key=userAjax&methodName=updateUserBySeq',
         type: 'POST',

@@ -281,4 +281,26 @@ public class UserDAOImpl implements UserDAO {
 		
      
 	}
+
+	@Override
+	public int deleteUser(int userSeq) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result =0;
+		String sql = proFile.getProperty("user.deleteUser");
+		//user.deleteUser=update users set user_state='N' where userSeq=?
+	    try {
+        	con = DbUtil.getConnection();
+        	ps = con.prepareStatement(sql);
+        	ps.setInt(1, userSeq);
+        	result = ps.executeUpdate();
+	    }finally {
+	    	DbUtil.dbClose(con, ps);
+	    }
+		
+		
+		
+		return result;
+	}
 }

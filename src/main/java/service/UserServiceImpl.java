@@ -88,6 +88,13 @@ public class UserServiceImpl implements UserService {
 		System.out.println("UserService.updateUserBySeq 실행");
 		return result;
 	}
+
+	@Override
+	public int deleteUser(int userSeq) throws SQLException {
+		int result=userDAO.deleteUser(userSeq);
+		if (result == 0) throw new SQLException("사용자를 찾을 수 없습니다.");
+		return result;
+	}
     
 	
 
