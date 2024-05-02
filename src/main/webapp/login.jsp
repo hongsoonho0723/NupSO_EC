@@ -62,8 +62,17 @@
 					console.log("result = " + result)
 					if (result && result.name) {
 						alert("로그인 성공");
-						window.location.href = "index.jsp";
+						//window.location.href = "index.jsp";
 						//window.history.back();
+						//window.location.reload();
+						
+						let previousPageUrl = document.referrer;
+					        
+					      // 이전 페이지로 이동
+					    window.location.href = previousPageUrl;
+						
+						
+						
 						
 					} else {
 
