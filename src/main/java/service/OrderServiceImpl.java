@@ -13,8 +13,8 @@ public class OrderServiceImpl implements OrderService {
 	OrderDAO orderDao = new OrderDAOImpl();
 	
 	@Override
-	public List<OrderDTO> selectOrderFunitureName() throws SQLException, IOException {
-		List<OrderDTO> list = orderDao.selectOrderFunitureName();
+	public List<OrderDTO> selectOrderFurnitureName() throws SQLException, IOException {
+		List<OrderDTO> list = orderDao.selectOrderFurnitureName();
 
 		return list;
 	}

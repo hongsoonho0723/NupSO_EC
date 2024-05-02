@@ -24,7 +24,7 @@ $(document).ready(function(){
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">메인</div>
-                            <a class="nav-link" href="${path}/front?key=order&methodName=selectOrderFunitureName">
+                            <a class="nav-link" href="${path}/front?key=order&methodName=selectOrderFurnitureName">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 HOME
                             </a>

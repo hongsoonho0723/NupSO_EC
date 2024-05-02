@@ -8,7 +8,7 @@ import dto.OrderDTO;
 
 public interface OrderDAO {
 
-	List<OrderDTO> selectOrderFunitureName() throws SQLException;
+	List<OrderDTO> selectOrderFurnitureName() throws SQLException;
 
 	List<OrderDTO> selectOrderAll(int userSeq) throws SQLException;
 

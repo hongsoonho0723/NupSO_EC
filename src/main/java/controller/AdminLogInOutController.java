@@ -38,7 +38,7 @@ public class AdminLogInOutController implements Controller {
     		 session.setAttribute("adminPassword", adminPwd);
     		 
     		OrderController order = new OrderController();
-    		ModelAndView mv = order.selectOrderFunitureName(request, response);
+    		ModelAndView mv = order.selectOrderFurnitureName(request, response);
     		return mv; 
     	 }else {
     		 response.setContentType("text/html;charset=UTF-8");

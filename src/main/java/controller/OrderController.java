@@ -22,9 +22,9 @@ public class OrderController implements Controller {
       return null;
    }
    
-   public ModelAndView selectOrderFunitureName(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+   public ModelAndView selectOrderFurnitureName(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
       System.out.println("order controller까지 옴");
-      List<OrderDTO> list = orderService.selectOrderFunitureName();
+      List<OrderDTO> list = orderService.selectOrderFurnitureName();
        request.setAttribute("list", list);
 
        return new ModelAndView("admin/adminIndex.jsp");

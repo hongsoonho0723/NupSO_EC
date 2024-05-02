@@ -77,7 +77,7 @@
 
                                                <button class="btn btn-primary" type="submit">Login</button>
 
-                                               <%-- <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFunitureName">Login</a> --%>
+                                               <%-- <a class="btn btn-primary" href="${path}/front?key=order&methodName=selectOrderFurnitureName">Login</a> --%>
 
                                             </div>
                                         </form>

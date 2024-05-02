@@ -27,7 +27,7 @@ public class OrderDAOImpl implements OrderDAO {
 	    }
 	
 	@Override
-	public List<OrderDTO> selectOrderFunitureName() throws SQLException {
+	public List<OrderDTO> selectOrderFurnitureName() throws SQLException {
 		 Connection con = null;
 		 PreparedStatement ps = null;
 		 ResultSet rs = null;
