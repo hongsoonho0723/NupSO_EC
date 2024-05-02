@@ -13,7 +13,7 @@ if (typeof window.IMP === "undefined") {
 const button = document.querySelector("#btn");
 
 const onClickPay = async () => {
-    const addr1 = document.getElementById("addr1").value;
+	const addr1 = document.getElementById("addr1").value;
     const addr2 = document.getElementById("addr2").value;
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
@@ -23,10 +23,11 @@ const onClickPay = async () => {
     if (!addr1 || !addr2 || !name || !phone || !date) {
         alert("주소, 이름, 전화번호를 모두 입력해주세요.");
         return; // 필드가 하나라도 비어 있으면 결제를 진행하지 않음
-    }    
+    }   
+ 
 
     IMP.request_pay({
-        pg: 'kakaopay',
+        pg: $("#pay").val(),
         pay_method: 'card',
         name: '주문명:결제테스트',
         amount: $("#totalInput").val(),

@@ -88,7 +88,18 @@
 				 });//ajax end
 		    
 		    };//selectAll end
-			    
+			
+		    
+		    $("[name=pay]").on("click",function(){
+		    	  $("#pay").val($(this).val());
+				console.log("pay = "+$(this).val())
+		    
+		    
+		    })
+		    
+			
+			
+			
 		  });//load end
 		  </script>
 
@@ -215,6 +226,7 @@
 							<input type="hidden" name="key" value="order">
 							<input type="hidden" name="methodName" value="insertOrder">
 							<input type="hidden" id="totalInput" name="totalPrice">
+							<input type="hidden" id="pay">
 							</form>
 							
 							
@@ -256,40 +268,33 @@
 											
 										</table>
 
-							
+						
 									
 									
 									<!-- /////////////////////// -->
 
 										<div class="border p-3 mb-5">
-											<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"></a>
-													
-
-											<!--////////결제수단-->
-
-											<div class="ContentWrapper_article__1qahd">
-																						
-												<div class="PaymentMethodItem_article__2AASS">
-													<div class="PaymentMethodLabel_article__2FrYH">
-														<div class="PaymentMethodLabel_section-label__ifCBQ">
-														<input type="radio" id="general-payment-item" name="payment"
-																class="PaymentMethodLabel_label-input__knOyW"
-																disabled="">
-																
-																
-																<label for="general-payment-item"
-																class="PaymentMethodLabel_label-text__2YQb8"><span
-																	class="PaymentMethodLabel_area-text__2MvU-"><span
-																		class="PaymentMethodLabel_icon__3rc0M"><svg
-																			width="22" height="22" viewBox="0 0 22 23">
-																		
-																		</svg></span>
-																		
-																		<span class="PaymentMethodLabel_text__2n7PP">카카오페이</span></span></label>
-														</div>
-													</div>
-												</div>
+											<div>
+											<input id="inicis" type="radio" name="pay" value="html5_inicis"> 
+											<label for="inicis">이니시스</label>
 											</div>
+											
+											<div>
+											<input id="kakao" type="radio" name="pay" value="kakaopay"> 
+											<label for="kakao">카카오페이</label>
+											</div>
+											
+											<div>
+											<input id="payco" type="radio" name="pay" value="payco"> 
+											<label for="payco">페이코</label>
+											</div>
+											
+											<div>
+											<input id="toss" type="radio" name="pay" value="tosspay"> 
+											<label for="toss">토스</label>
+											</div>
+											
+											
 											
 										</div>
 
