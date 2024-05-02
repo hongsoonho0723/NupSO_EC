@@ -34,7 +34,7 @@
 ![mian](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/8328a0ea-ff05-4970-a3a0-9cab37b700cf)
 ![mian1](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/2643c9d7-8fd2-4790-8495-54b847fda9a0)
 
-DataBase
+<h2>DataBase</h2>
 ![database](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/55a4a404-08ff-47b1-9974-576319d96d18)
 <h2>기능 소개</h2>
 ![Function](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/b22a679d-7ae6-49c3-b935-d0660ad4575b)
