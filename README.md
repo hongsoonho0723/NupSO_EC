@@ -50,8 +50,6 @@
 
 ![mianfunction2](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/8d4fdf55-39e4-4400-b1dc-e2aa6553504d)
 
-
-
 ## Project Rules
 PR 충돌 방지를 위해 다음을 지켜주세요🙂
 - ### <b>작업 시작 전 main repository에서 pull 한 뒤에 작업 시작</b>
