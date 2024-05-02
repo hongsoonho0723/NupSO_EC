@@ -24,26 +24,19 @@
 
 ![environment](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/972dc5f9-6518-4c0e-8621-8bf757f2a8cd)
 ![Schedule](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/7f49e730-f91f-4d37-aa3b-2682298b0ed0)
-
 <h2>프로젝트 주제</h2>
 
 ![subject](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/68dcc2f1-a3c9-49bc-acc8-47c4a6c9ac5f)
-
 플로우 차트
-
 ![flowchart](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/7533e0a9-8cf0-4123-b3ec-b365205d1d59)
 ![flowchartadmin](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/f674460a-6754-4cc7-a376-55cd0ade69cb)
-
 화면 설계
-
 ![mian](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/8328a0ea-ff05-4970-a3a0-9cab37b700cf)
 ![mian1](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/2643c9d7-8fd2-4790-8495-54b847fda9a0)
 
 DataBase
 ![database](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/55a4a404-08ff-47b1-9974-576319d96d18)
-
 기능 소개
-
 ![Function](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/b22a679d-7ae6-49c3-b935-d0660ad4575b)
 ![mianfunction1](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/358f5ec1-be5b-4ff9-ae04-c0c735565c6a)
 ![mianfunction2](https://github.com/hongsoonho0723/NupSO_EC/assets/126222435/8d4fdf55-39e4-4400-b1dc-e2aa6553504d)
