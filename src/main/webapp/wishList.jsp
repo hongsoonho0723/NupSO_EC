@@ -32,21 +32,14 @@
     <script type="text/javascript" src="${path}/assets/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
 	$(function(){
-
-
 		
 		selectAll()
-       
-        
-        
+           
         // 쉼표를 추가하여 숫자를 포맷하는 함수
 		function numberWithCommas(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}
-        
-        
-        
-        
+
         function selectAll(){
     
         	$.ajax({
@@ -78,11 +71,7 @@
 				            $("#listTable").append(table);
 				            $("#totalInput").val(total);
 				            
-				            
-				            
-				      
-
-				            
+   
 				 },
 				 error : function(err, status){
 					 //통신에 실패하면 해야할 일 
@@ -160,6 +149,7 @@
         </div>
       </div>
     </div>
+	<jsp:include page="assets/common/user/footer.jsp"/>
 
     <script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
     <script src="${path}/assets/js/tiny-slider.js"></script>
