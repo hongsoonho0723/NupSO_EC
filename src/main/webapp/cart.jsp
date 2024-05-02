@@ -177,7 +177,8 @@
         </div>
       </div>
     </div>
-
+	<jsp:include page="assets/common/user/footer.jsp"/>
+	
     <script src="${path}/assets/js/bootstrap.bundle.min.js"></script>
     <script src="${path}/assets/js/tiny-slider.js"></script>
     <script src="${path}/assets/js/custom.js"></script>
